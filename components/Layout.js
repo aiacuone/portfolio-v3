@@ -13,6 +13,7 @@ export default function Layout({ children }) {
       background: isPhone ? 'green' : 'blue',
       width: '100vw',
       height: '100%',
+      // minHeight: '-webkit - fill - available',
     },
     header: {
       width: '100%',
