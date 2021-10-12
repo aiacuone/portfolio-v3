@@ -6,7 +6,7 @@ import { UserContext } from '../utils/UserContext'
 export default function Layout({ children }) {
   const { state } = useContext(UserContext)
   const { phone } = state
-  const { isPhone } = phone
+  const { isPhone, isPhoneLandscape } = phone
 
   const useStyles = makeStyles({
     root: {
@@ -21,8 +21,10 @@ export default function Layout({ children }) {
     },
     hamburger: {
       position: 'absolute',
-      bottom: 0,
+      bottom: !isPhoneLandscape && 10, //HEIGHT OF HAMBURGER FROM BOTTOM
+      right: isPhoneLandscape && 10, //HEIGHT OF HAMBURGER FROM RIGHT
       background: 'orange',
+      height: '50px',
     },
     me: {
       position: 'absolute',
@@ -47,6 +49,7 @@ export default function Layout({ children }) {
       background: 'green',
       height: '50px',
       width: '50px',
+      background: 'yellow',
     },
     skills: {
       position: 'absolute',
@@ -85,15 +88,17 @@ export default function Layout({ children }) {
 
   const MobileLayout = () => {
     return (
-      <Grid>
-        <Grid container className={classes.container}>
-          <Grid className={classes.skills}></Grid>
-          <Grid className={classes.london}></Grid>
-          <Grid className={classes.me}></Grid>
-          <Grid className={classes.links}></Grid>
-          <Grid className={classes.hamburger}>Hamburger</Grid>
-          {children}
-        </Grid>
+      <Grid
+        container
+        className={classes.container}
+        justifyContent="center"
+        alignItems="center">
+        <Grid className={classes.skills}>skills</Grid>
+        <Grid className={classes.london}>london</Grid>
+        <Grid className={classes.me}>me</Grid>
+        <Grid className={classes.links}>links</Grid>
+        <Grid className={classes.hamburger}>Hamburger</Grid>
+        {children}
       </Grid>
     )
   }
@@ -105,7 +110,9 @@ export default function Layout({ children }) {
         <Grid
           container
           justifyContent="center"
+          alignItems="center"
           className={classes.normContainer2}>
+          NormContainer2{children}
           <Grid
             container
             className={classes.backgroundContainer}
@@ -116,7 +123,6 @@ export default function Layout({ children }) {
             <Grid className={classes.me}>me</Grid>
             <Grid className={classes.links}>links</Grid>
           </Grid>
-          NormContainer2{children}
         </Grid>
       </Grid>
     )
