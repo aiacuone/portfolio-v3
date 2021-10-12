@@ -5,25 +5,126 @@ import { UserContext } from '../utils/UserContext'
 
 export default function Layout({ children }) {
   const { state } = useContext(UserContext)
-  const { isPhone } = state
+  const { phone } = state
+  const { isPhone } = phone
 
   const useStyles = makeStyles({
     root: {
       background: isPhone ? 'green' : 'blue',
-      // height: '100%',
+      width: '100vw',
+      height: '100%',
+    },
+    header: {
+      width: '100%',
+      background: 'yellow',
+      gridArea: '1/1/2/11',
+    },
+    hamburger: {
+      position: 'absolute',
+      bottom: 0,
+      background: 'orange',
+    },
+    me: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      height: '50px',
+      width: '50px',
+      background: 'red',
+    },
+    london: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      height: '50px',
+      width: '50px',
+      background: 'lime',
+    },
+    links: {
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      background: 'green',
+      height: '50px',
+      width: '50px',
+    },
+    skills: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      height: '50px',
+      width: '50px',
+      background: 'purple',
+    },
+    container: {
+      position: 'relative',
+      width: '100%',
+      height: '100%',
+    },
+    backgroundContainer: {
+      position: 'absolute',
+      background: 'orange',
+      height: '100%',
+    },
+    normContainer: {
+      height: '100%',
+      width: '100%',
+      display: 'grid',
+      background: 'red',
+      gridTemplateRows: '40px repeat(10,1fr)', //HEADER HEIGHT
+      gridTemplateColumns: 'repeat(10,1fr)',
+    },
+    normContainer2: {
+      gridArea: '2/1/12/11',
+      background: 'green',
+      position: 'relative',
     },
   })
 
   const classes = useStyles()
 
+  const MobileLayout = () => {
+    return (
+      <Grid>
+        <Grid container className={classes.container}>
+          <Grid className={classes.skills}></Grid>
+          <Grid className={classes.london}></Grid>
+          <Grid className={classes.me}></Grid>
+          <Grid className={classes.links}></Grid>
+          <Grid className={classes.hamburger}>Hamburger</Grid>
+          {children}
+        </Grid>
+      </Grid>
+    )
+  }
+
+  const NormalLayout = () => {
+    return (
+      <Grid container className={classes.normContainer}>
+        <Grid className={classes.header}>Header</Grid>
+        <Grid
+          container
+          justifyContent="center"
+          className={classes.normContainer2}>
+          <Grid
+            container
+            className={classes.backgroundContainer}
+            justifyContent="center">
+            background container
+            <Grid className={classes.skills}>skills</Grid>
+            <Grid className={classes.london}>london</Grid>
+            <Grid className={classes.me}>me</Grid>
+            <Grid className={classes.links}>links</Grid>
+          </Grid>
+          NormContainer2{children}
+        </Grid>
+      </Grid>
+    )
+  }
+
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      className={classes.root}>
-      test
-      {children}
+    <Grid className={classes.root}>
+      {isPhone ? <MobileLayout /> : <NormalLayout />}
     </Grid>
   )
 }

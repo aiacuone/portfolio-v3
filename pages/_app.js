@@ -15,7 +15,13 @@ function MyApp({ Component, pageProps }) {
     isPhoneWidthLandscape && isPhoneHeightLandscape ? true : false
   const isPhone = isPhonePotrait || isPhoneLandscape ? true : false
 
-  const state = { isPhone }
+  const state = {
+    phone: {
+      isPhone,
+      isPhoneLandscape,
+      isPhonePotrait,
+    },
+  }
 
   return (
     <UserContext.Provider value={{ state }}>
