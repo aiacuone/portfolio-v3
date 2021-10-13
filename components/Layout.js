@@ -36,7 +36,7 @@ export default function Layout({ children }) {
     },
     backgroundContainer: {
       position: 'absolute',
-      background: 'orange',
+      // background: 'orange',
       height: '100%',
     },
     normContainer: {

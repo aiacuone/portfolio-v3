@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles({
+  root: {},
   link: { padding: '10px 0', textAlign: 'center' },
 })
 
 export default function hamburger() {
   const classes = useStyles()
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" className={classes.root}>
       <Grid item>
         <Link href="/">
           <h3 className={classes.link}>HOME</h3>

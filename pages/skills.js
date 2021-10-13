@@ -1,43 +1,51 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
+import { UserContext } from '../utils/UserContext'
 
 const useStyles = makeStyles({
-  root: { height: '100%', width: '100%', background: 'red' },
-  header: {},
-  projectsButtons: {},
-  detailsButtons: {},
-  mainContainer: {},
-  viewButtons: {},
-  hamburger: {},
+  root: { height: '100%', width: '100%' },
+  normalContainer: { height: '100%', width: '100%' },
 })
 
-const useStylesM = makeStyles({})
+const useStylesP = makeStyles({
+  phoneContainer: { height: '100%', width: '100%' },
+})
 
 export default function skills() {
   const classes = useStyles()
+  const classesP = useStylesP()
 
   const { state } = useContext(UserContext)
   const { isPhone } = state.phone
 
-  const classesM = useStylesM()
-  const classes = useStyles()
-
-  const Mobile = () => {
-    return <Grid></Grid>
+  const Normal = () => {
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.normalContainer}>
+        SKILLS NORMAL
+      </Grid>
+    )
   }
 
   const Phone = () => {
-    return <Grid></Grid>
-  }
-
-  {
-    isPhone ? <Phone /> : <Normal />
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classesP.phoneContainer}>
+        SKILLS PHONE
+      </Grid>
+    )
   }
 
   return (
     <Grid container className={classes.root}>
-      SKILLS
+      {isPhone ? <Phone /> : <Normal />}
     </Grid>
   )
 }

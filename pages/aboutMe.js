@@ -1,28 +1,30 @@
 import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
+import { UserContext } from '../utils/UserContext'
 
-const useStylesM = makeStyles({})
-const useStyles = makeStyles({})
+const useStyles = makeStyles({
+  root: {},
+  phoneContainer: {},
+})
+const useStylesP = makeStyles({ phoneContainer: {} })
 
 export default function aboutMe() {
   const { state } = useContext(UserContext)
   const { isPhone } = state.phone
 
-  const classesM = useStylesM()
+  const classesP = useStylesP()
   const classes = useStyles()
 
-  const Mobile = () => {
-    return <Grid></Grid>
+  const Normal = () => {
+    return <Grid className={classes.normalContainer}>ABOUT ME NORMAL</Grid>
   }
 
   const Phone = () => {
-    return <Grid></Grid>
+    return <Grid className={classesP.phoneContainer}>ABOUT ME PHONE</Grid>
   }
 
-  {
-    isPhone ? <Phone /> : <Normal />
-  }
-
-  return <Grid>ABOUT ME</Grid>
+  return (
+    <Grid className={classes.root}> {isPhone ? <Phone /> : <Normal />}</Grid>
+  )
 }

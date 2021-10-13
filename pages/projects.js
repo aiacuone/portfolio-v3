@@ -24,26 +24,26 @@ const useStylesMobile = makeStyles({
   hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
 })
 
-const useStylesM = makeStyles({})
+const useStylesP = makeStyles({})
 
 export default function projects() {
   const { state } = useContext(UserContext)
   const { isPhone } = state.phone
 
-  const classesM = useStylesMobile()
+  const classesP = useStylesMobile()
 
   const Phone = () => {
     return (
-      <Grid className={classesM.mobileContainer}>
-        <Grid className={classesM.header} container justifyContent="center">
+      <Grid className={classesP.mobileContainer}>
+        <Grid className={classesP.header} container justifyContent="center">
           PROJECTS
         </Grid>
-        <Grid className={classesM.projectButtons}>PROJECT BUTTONS</Grid>
-        <Grid className={classesM.detailsButtons}>DETAIL BUTTONS</Grid>
-        <Grid className={classesM.projectHeader}>PROJECT HEADER</Grid>
-        <Grid className={classesM.mainContainer}>MAIN CONTAINER</Grid>
-        <Grid className={classesM.viewButtons}>VIEW BUTTONS</Grid>
-        <Grid className={classesM.hamburgerGap}></Grid>
+        <Grid className={classesP.projectButtons}>PROJECT BUTTONS</Grid>
+        <Grid className={classesP.detailsButtons}>DETAIL BUTTONS</Grid>
+        <Grid className={classesP.projectHeader}>PROJECT HEADER</Grid>
+        <Grid className={classesP.mainContainer}>MAIN CONTAINER</Grid>
+        <Grid className={classesP.viewButtons}>VIEW BUTTONS</Grid>
+        <Grid className={classesP.hamburgerGap}></Grid>
       </Grid>
     )
   }
@@ -53,6 +53,6 @@ export default function projects() {
   }
 
   return (
-    <Grid className={classesM.root}>{isPhone ? <Phone /> : <Normal />}</Grid>
+    <Grid className={classesP.root}>{isPhone ? <Phone /> : <Normal />}</Grid>
   )
 }
