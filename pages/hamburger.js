@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Grid from '@mui/material/Grid'
 import Link from 'next/link'
 import { makeStyles } from '@mui/styles'
+import { UserContext } from '../utils/UserContext'
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles({
   root: {},
@@ -9,6 +11,17 @@ const useStyles = makeStyles({
 })
 
 export default function hamburger() {
+  const { state } = useContext(UserContext)
+  const { isPhone } = state.phone
+  const router = useRouter()
+
+  useEffect(() => {
+    function goHome() {
+      return router.push('/')
+    }
+    !isPhone && goHome()
+  }, [isPhone])
+
   const classes = useStyles()
   return (
     <Grid container direction="column" className={classes.root}>

@@ -48,15 +48,50 @@ export default function Layout({ children }) {
       gridTemplateColumns: 'repeat(10,1fr)',
     },
     normContainer2: {
+      width: '100%',
+      height: '100%',
       gridArea: '2/1/12/11',
-      background: 'green',
+      // background: 'blue',
       position: 'relative',
+    },
+    me: {
+      position: 'absolute',
+      bottom: 10, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+      left: 10,
+      height: '50px',
+      width: '50px',
+      background: 'orange',
+    },
+    london: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+      height: '50px',
+      width: '50px',
+      background: 'lime',
+    },
+    links: {
+      position: 'absolute',
+      bottom: 10,
+      right: 10,
+      background: 'green',
+      height: '50px',
+      width: '50px',
+      background: 'yellow',
+    },
+    skills: {
+      position: 'absolute',
+      top: 10,
+      left: 10,
+      height: '50px',
+      width: '50px',
+      background: 'purple',
     },
   })
 
   const classes = useStyles()
 
-  const MobileLayout = () => {
+  const Phone = () => {
     return (
       <Grid
         container
@@ -71,7 +106,7 @@ export default function Layout({ children }) {
     )
   }
 
-  const NormalLayout = () => {
+  const Normal = () => {
     return (
       <Grid container className={classes.normContainer}>
         <Grid className={classes.header}>Header</Grid>
@@ -80,12 +115,11 @@ export default function Layout({ children }) {
           justifyContent="center"
           alignItems="center"
           className={classes.normContainer2}>
-          NormContainer2{children}
+          {children}
           <Grid
             container
             className={classes.backgroundContainer}
             justifyContent="center">
-            background container
             <Grid className={classes.skills}>skills</Grid>
             <Grid className={classes.london}>london</Grid>
             <Grid className={classes.me}>me</Grid>
@@ -97,8 +131,6 @@ export default function Layout({ children }) {
   }
 
   return (
-    <Grid className={classes.root}>
-      {isPhone ? <MobileLayout /> : <NormalLayout />}
-    </Grid>
+    <Grid className={classes.root}>{isPhone ? <Phone /> : <Normal />}</Grid>
   )
 }

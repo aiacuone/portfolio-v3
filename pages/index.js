@@ -48,7 +48,7 @@ const useStylesP = makeStyles({
     width: '50px',
     background: 'purple',
   },
-  linkContainer: {},
+  linkContainer: { zIndex: 2, background: 'purple' },
   link: { padding: '10px 0', textAlign: 'center' },
 
   phoneContainer: {
@@ -68,8 +68,47 @@ export default function Home() {
   const classes = useStyles()
   const classesP = useStylesP()
 
+  const Links = () => {
+    return (
+      <Grid
+        className={classesP.linkContainer}
+        alignItems="center"
+        direction="column">
+        HOME
+        <Grid item>
+          <Link href="projects">
+            <h3 className={classesP.link}>PROJECTS</h3>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Link href="skills">
+            <h3 className={classesP.link}>SKILLS</h3>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Link href="aboutMe">
+            <h3 className={classesP.link}>ABOUT ME</h3>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Link href="contactMe">
+            <h3 className={classesP.link}>CONTACT ME</h3>
+          </Link>
+        </Grid>
+      </Grid>
+    )
+  }
+
   const Normal = () => {
-    return <Grid className={classes.normalContainer}>INDEX NORMAL</Grid>
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.normalContainer}>
+        <Links />
+      </Grid>
+    )
   }
 
   const Phone = () => {
@@ -83,7 +122,7 @@ export default function Home() {
         <Grid className={classesP.london}>london</Grid>
         <Grid className={classesP.me}>me</Grid>
         <Grid className={classesP.links}>links</Grid>
-        <Grid
+        {/* <Grid
           className={classesP.linkContainer}
           alignItems="center"
           direction="column">
@@ -108,7 +147,8 @@ export default function Home() {
               <h3 className={classesP.link}>CONTACT ME</h3>
             </Link>
           </Grid>
-        </Grid>
+        </Grid> */}
+        <Links />
       </Grid>
     )
   }
