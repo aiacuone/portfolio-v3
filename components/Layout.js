@@ -26,40 +26,9 @@ export default function Layout({ children }) {
       right: isPhoneLandscape && 10, //HEIGHT OF HAMBURGER FROM RIGHT
       background: 'orange',
       height: '50px',
+      zIndex: 1,
     },
-    me: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      height: '50px',
-      width: '50px',
-      background: 'red',
-    },
-    london: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      height: '50px',
-      width: '50px',
-      background: 'lime',
-    },
-    links: {
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      background: 'green',
-      height: '50px',
-      width: '50px',
-      background: 'yellow',
-    },
-    skills: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      height: '50px',
-      width: '50px',
-      background: 'purple',
-    },
+
     container: {
       position: 'relative',
       width: '100%',
@@ -94,10 +63,6 @@ export default function Layout({ children }) {
         className={classes.container}
         justifyContent="center"
         alignItems="center">
-        <Grid className={classes.skills}>skills</Grid>
-        <Grid className={classes.london}>london</Grid>
-        <Grid className={classes.me}>me</Grid>
-        <Grid className={classes.links}>links</Grid>
         <Link href="/hamburger">
           <Grid className={classes.hamburger}>Hamburger</Grid>
         </Link>
