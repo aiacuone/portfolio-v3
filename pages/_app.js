@@ -1,10 +1,12 @@
 import '../styles/globals.css'
-import SiteLayout from '../components/Layout'
+import Layout from '../components/Layout'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useState } from 'react'
 import { UserContext } from '../utils/UserContext'
+import { useState, useEffect } from 'react'
 
 function MyApp({ Component, pageProps }) {
+  const [windowHeight, setWindowHeight] = useState()
+
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')
   const isPhoneHeightPortrait = useMediaQuery('(max-height:850px)')
   const isPhoneWidthLandscape = useMediaQuery('(max-width:850px')
@@ -16,6 +18,7 @@ function MyApp({ Component, pageProps }) {
   const isPhone = isPhonePotrait || isPhoneLandscape ? true : false
 
   const state = {
+    windowHeight,
     phone: {
       isPhone,
       isPhoneLandscape,
@@ -23,11 +26,26 @@ function MyApp({ Component, pageProps }) {
     },
   }
 
+  const setState = { setWindowHeight }
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight)
+
+    function handleResize() {
+      setWindowHeight(window.innerHeight + 'px')
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   return (
-    <UserContext.Provider value={{ state }}>
-      <SiteLayout>
+    <UserContext.Provider value={{ state, setState }}>
+      <Layout>
         <Component {...pageProps} />
-      </SiteLayout>
+      </Layout>
     </UserContext.Provider>
   )
 }

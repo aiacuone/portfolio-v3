@@ -5,15 +5,14 @@ import { UserContext } from '../utils/UserContext'
 
 export default function Layout({ children }) {
   const { state } = useContext(UserContext)
-  const { phone } = state
+  const { phone, windowHeight } = state
   const { isPhone, isPhoneLandscape } = phone
 
   const useStyles = makeStyles({
     root: {
       background: isPhone ? 'green' : 'blue',
       width: '100vw',
-      height: '100%',
-      // minHeight: '-webkit - fill - available',
+      height: windowHeight,
     },
     header: {
       width: '100%',

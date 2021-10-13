@@ -3,21 +3,20 @@ import styles from '../styles/Home.module.css'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
+  const [windowHeight, setWindowHeight] = useState()
   const useStyles = makeStyles({
     root: {
-      background: 'grey',
       height: '100%',
       width: '100%',
     },
-    container: {
-      // display: 'flex',
-      // flexDirection: 'column',
-      // background: 'purple',
-    },
+    container: {},
+    link: { padding: '10px 0', textAlign: 'center' },
   })
   const classes = useStyles()
+
   return (
     <Grid
       container
@@ -30,22 +29,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid
-        container
         className={classes.container}
         alignItems="center"
-        direction="column"
-        gap={4}>
+        direction="column">
         <Grid item>
-          <Link href="projects">PROJECTS</Link>
+          <Link href="projects">
+            <h3 className={classes.link}>PROJECTS</h3>
+          </Link>
         </Grid>
         <Grid item>
-          <Link href="skills">SKILLS</Link>
+          <Link href="skills">
+            <h3 className={classes.link}>SKILLS</h3>
+          </Link>
         </Grid>
         <Grid item>
-          <Link href="aboutMe">ABOUT ME</Link>
+          <Link href="aboutMe">
+            <h3 className={classes.link}>ABOUT ME</h3>
+          </Link>
         </Grid>
         <Grid item>
-          <Link href="contactMe">CONTACT ME</Link>
+          <Link href="contactMe">
+            <h3 className={classes.link}>CONTACT ME</h3>
+          </Link>
         </Grid>
       </Grid>
     </Grid>
