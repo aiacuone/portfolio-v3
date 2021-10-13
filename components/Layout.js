@@ -22,7 +22,7 @@ export default function Layout({ children }) {
     },
     hamburger: {
       position: 'absolute',
-      bottom: !isPhoneLandscape && 10, //HEIGHT OF HAMBURGER FROM BOTTOM
+      bottom: !isPhoneLandscape && 5, //HEIGHT OF HAMBURGER FROM BOTTOM
       right: isPhoneLandscape && 10, //HEIGHT OF HAMBURGER FROM RIGHT
       background: 'orange',
       height: '50px',
