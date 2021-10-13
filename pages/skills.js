@@ -1,5 +1,21 @@
 import React from 'react'
+import { makeStyles } from '@mui/styles'
+import Grid from '@mui/material/Grid'
 
 export default function skills() {
-  return <div>SKILLS</div>
+  const useStyles = makeStyles({
+    root: { height: '100%', width: '100%', background: 'red' },
+    header: {},
+    projectsButtons: {},
+    detailsButtons: {},
+    mainContainer: {},
+    viewButtons: {},
+    hamburger: {},
+  })
+  const classes = useStyles()
+  return (
+    <Grid container className={classes.root}>
+      SKILLS
+    </Grid>
+  )
 }

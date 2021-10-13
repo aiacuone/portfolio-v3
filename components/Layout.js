@@ -11,7 +11,7 @@ export default function Layout({ children }) {
 
   const useStyles = makeStyles({
     root: {
-      background: isPhone ? 'green' : 'blue',
+      // background: isPhone ? 'green' : 'blue',
       width: '100vw',
       height: windowHeight,
     },

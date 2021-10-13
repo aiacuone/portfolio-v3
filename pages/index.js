@@ -3,10 +3,8 @@ import styles from '../styles/Home.module.css'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [windowHeight, setWindowHeight] = useState()
   const useStyles = makeStyles({
     root: {
       height: '100%',
