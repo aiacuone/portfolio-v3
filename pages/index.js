@@ -32,6 +32,7 @@ export default function Home() {
         className={classes.container}
         alignItems="center"
         direction="column">
+        HOME
         <Grid item>
           <Link href="projects">
             <h3 className={classes.link}>PROJECTS</h3>

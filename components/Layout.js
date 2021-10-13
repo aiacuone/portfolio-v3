@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import { UserContext } from '../utils/UserContext'
+import Link from 'next/link'
 
 export default function Layout({ children }) {
   const { state } = useContext(UserContext)
@@ -97,7 +98,9 @@ export default function Layout({ children }) {
         <Grid className={classes.london}>london</Grid>
         <Grid className={classes.me}>me</Grid>
         <Grid className={classes.links}>links</Grid>
-        <Grid className={classes.hamburger}>Hamburger</Grid>
+        <Link href="/hamburger">
+          <Grid className={classes.hamburger}>Hamburger</Grid>
+        </Link>
         {children}
       </Grid>
     )
