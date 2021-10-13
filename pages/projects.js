@@ -24,6 +24,8 @@ const useStylesMobile = makeStyles({
   hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
 })
 
+const useStylesM = makeStyles({})
+
 export default function projects() {
   const { state } = useContext(UserContext)
   const { isPhone } = state.phone

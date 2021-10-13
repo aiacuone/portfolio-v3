@@ -11,7 +11,6 @@ export default function hamburger() {
   const classes = useStyles()
   return (
     <Grid container direction="column">
-      {/* HAMBURGER */}
       <Grid item>
         <Link href="/">
           <h3 className={classes.link}>HOME</h3>
