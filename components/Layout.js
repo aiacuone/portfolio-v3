@@ -87,6 +87,8 @@ export default function Layout({ children }) {
       width: '50px',
       background: 'purple',
     },
+
+    linksHeader: { height: '100%' },
   })
 
   const classes = useStyles()
@@ -109,7 +111,35 @@ export default function Layout({ children }) {
   const Normal = () => {
     return (
       <Grid container className={classes.normContainer}>
-        <Grid className={classes.header}>Header</Grid>
+        <Grid className={classes.header}>
+          <Grid
+            container
+            // justifyContent="flexEnd"
+            alignItems="center"
+            className={classes.linksHeader}>
+            <Grid
+              container
+              spacing={3}
+              className={classes.linksHeader2}
+              justifyContent="flex-end">
+              <Grid item>
+                <Link href="/">Home</Link>
+              </Grid>
+              <Grid item>
+                <Link href="projects">Projects</Link>
+              </Grid>
+              <Grid item>
+                <Link href="skills">Skills</Link>
+              </Grid>
+              <Grid item>
+                <Link href="aboutMe">About Me</Link>
+              </Grid>
+              <Grid item>
+                <Link href="contactMe">Contact Me</Link>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
         <Grid
           container
           justifyContent="center"

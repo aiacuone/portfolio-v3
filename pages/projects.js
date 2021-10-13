@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 
-const useStylesMobile = makeStyles({
+const useStylesP = makeStyles({
   root: {
     height: '100%',
     width: '100%',
@@ -24,13 +24,16 @@ const useStylesMobile = makeStyles({
   hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
 })
 
-const useStylesP = makeStyles({})
+const useStyles = makeStyles({
+  normalContainer: { height: '100%', width: '100%' },
+})
 
 export default function projects() {
   const { state } = useContext(UserContext)
   const { isPhone } = state.phone
 
-  const classesP = useStylesMobile()
+  const classesP = useStylesP()
+  const classes = useStyles()
 
   const Phone = () => {
     return (
@@ -49,7 +52,15 @@ export default function projects() {
   }
 
   const Normal = () => {
-    return <Grid></Grid>
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.normalContainer}>
+        PROJECTS NORMAL
+      </Grid>
+    )
   }
 
   return (

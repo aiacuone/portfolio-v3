@@ -122,32 +122,6 @@ export default function Home() {
         <Grid className={classesP.london}>london</Grid>
         <Grid className={classesP.me}>me</Grid>
         <Grid className={classesP.links}>links</Grid>
-        {/* <Grid
-          className={classesP.linkContainer}
-          alignItems="center"
-          direction="column">
-          HOME
-          <Grid item>
-            <Link href="projects">
-              <h3 className={classesP.link}>PROJECTS</h3>
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href="skills">
-              <h3 className={classesP.link}>SKILLS</h3>
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href="aboutMe">
-              <h3 className={classesP.link}>ABOUT ME</h3>
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href="contactMe">
-              <h3 className={classesP.link}>CONTACT ME</h3>
-            </Link>
-          </Grid>
-        </Grid> */}
         <Links />
       </Grid>
     )
