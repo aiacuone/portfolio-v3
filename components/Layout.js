@@ -5,16 +5,15 @@ import { UserContext } from '../utils/UserContext'
 import Link from 'next/link'
 // import MenuIcon from '@mui/icons-material/Menu'
 
-var showViewButtons
-export function handleShowViewButtons(boolean) {
-  showViewButtons = boolean
-}
-
 export default function Layout({ children }) {
   const { state, vars } = useContext(UserContext)
-  const { phone, windowHeight, showViewButtons } = state
+  const { phone, windowHeight } = state
   const { isPhone, isPhoneLandscape } = phone
-  const { height: hamburgerHeight, width: hamburgerWidth } = vars.hamburger
+  const {
+    height: hamburgerHeight,
+    width: hamburgerWidth,
+    padding: hamburgerPadding,
+  } = vars.hamburger
 
   const useStylesRoot = makeStyles({
     root: {
@@ -35,8 +34,8 @@ export default function Layout({ children }) {
       },
       hamburger: {
         position: 'absolute',
-        bottom: !isPhoneLandscape && 5, //HEIGHT OF HAMBURGER FROM BOTTOM
-        right: isPhoneLandscape && 10, //HEIGHT OF HAMBURGER FROM RIGHT
+        bottom: !isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM BOTTOM
+        right: isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM RIGHT
         background: 'orange',
         height: hamburgerHeight,
         width: hamburgerWidth,

@@ -11,8 +11,9 @@ const useStylesRoot = makeStyles({
 })
 
 export default function projects() {
-  const { state } = useContext(UserContext)
+  const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
+  const { hamburger } = vars
 
   const classesRoot = useStylesRoot()
 
@@ -95,15 +96,35 @@ export default function projects() {
           height: '100%',
           width: '100%',
           gridTemplateColumns: 'repeat(10,1fr)',
-          gridTemplateRows: '25px 40px repeat(10,1fr) 45px 45px 45px 60px',
+          gridTemplateRows: `25px 40px repeat(10,1fr) 45px 45px 45px ${
+            hamburger.padding * 2 + hamburger.height
+          }px`,
         },
         header: { gridArea: '1/1/2/11' },
         projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
-        mainContainer: { gridArea: '3/1/13/11', background: 'grey' },
+        mainContainer: { gridArea: '3/1/14/11', background: 'grey' },
         projectButtons: { gridArea: '13/1/14/11', background: 'purple' },
         detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
         viewButtons: { gridArea: '15/1/16/11', background: 'brown' },
         hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
+        github: {
+          height: '100%',
+          flexGrow: 1,
+          background: 'lime',
+        },
+        project: { height: '100%', flexGrow: 1, background: 'green' },
+        hamburger: {
+          width: hamburger.width,
+          height: hamburger.height,
+          // background: 'orange',
+          margin: `0px ${hamburger.padding}px`,
+        },
+        container: {
+          height: '100%',
+          width: '100%',
+          background: 'red',
+          display: 'flex',
+        },
       })
       const classes = useStyles()
       return (
@@ -111,12 +132,22 @@ export default function projects() {
           <Grid className={classes.header} container justifyContent="center">
             PROJECTS
           </Grid>
-          <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid>
+          {/* <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid> */}
           <Grid className={classes.detailsButtons}>DETAIL BUTTONS</Grid>
           <Grid className={classes.projectHeader}>PROJECT HEADER</Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
           <Grid className={classes.viewButtons}>VIEW BUTTONS</Grid>
-          <Grid className={classes.hamburgerGap}></Grid>
+          <Grid className={classes.hamburgerGap}>
+            <Grid
+              container
+              className={classes.container}
+              justifyContent="center"
+              alignItems="center">
+              <Grid className={classes.github}>Github</Grid>
+              <Grid className={classes.hamburger} />
+              <Grid className={classes.project}>Project</Grid>
+            </Grid>
+          </Grid>
         </Grid>
       )
     }

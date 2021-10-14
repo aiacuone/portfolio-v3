@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   const isPhone = isPhonePotrait || isPhoneLandscape ? true : false
 
   const vars = {
-    hamburger: { height: '50px', width: '50px' },
+    hamburger: { height: 50, width: 50, padding: 10 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
   }
 
   const state = {
