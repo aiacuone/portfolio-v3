@@ -62,20 +62,26 @@ export default function projects() {
           display: 'grid',
           height: '100%',
           width: '100%',
-          gridTemplateRows: 'repeat(10,1fr)',
+          gridTemplateRows: '20px repeat(9,1fr)',
           gridTemplateColumns: '120px repeat(9,1fr)', //WIDTH OF BUTTONS CONTAINER
         },
         buttonContainer: {
           background: 'yellow',
           gridArea: '1/1/11/2',
+          // borderTopRightRadius: '60px',
+          // borderBottomRightRadius: '60px',
         },
 
-        // header: { gridArea: '1/1/2/11' },
-        // projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
-        // mainContainer: { gridArea: '3/1/13/11', background: 'grey' },
+        header: { gridArea: '1/2/2/11', background: 'red' },
+        projectHeader: { gridArea: '2/2/3/11', background: 'orange' },
+        mainContainer: {
+          gridArea: '3/2/10/11',
+          background: 'grey',
+          marginRight: `${hamburger.width + hamburger.padding * 2}px`,
+        },
         // projectButtons: { gridArea: '13/1/14/11', background: 'purple' },
         // detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
-        // viewButtons: { gridArea: '15/1/16/11', background: 'brown' },
+        viewButtons: { gridArea: '10/2/11/11', background: 'brown' },
         // hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
       })
       const classes = useStyles()
@@ -105,18 +111,17 @@ export default function projects() {
 
       return (
         <Grid className={classes.root} alignItems="stretch">
-          {/* <Grid className={classes.buttonContainer}> */}
           <Buttons />
-          {/* </Grid> */}
-          {/* <Grid className={classes.header} container justifyContent="center">
+
+          <Grid className={classes.header} container justifyContent="center">
             PROJECTS
           </Grid>
-          <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid>
-          <Grid className={classes.detailsButtons}>DETAIL BUTTONS</Grid>
+          {/* <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid> */}
+          {/* <Grid className={classes.detailsButtons}>DETAIL BUTTONS</Grid> */}
           <Grid className={classes.projectHeader}>PROJECT HEADER</Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
           <Grid className={classes.viewButtons}>VIEW BUTTONS</Grid>
-          <Grid className={classes.hamburgerGap}></Grid> */}
+          <Grid className={classes.hamburgerGap}></Grid>
         </Grid>
       )
     }
@@ -135,9 +140,9 @@ export default function projects() {
         header: { gridArea: '1/1/2/11' },
         projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
         mainContainer: { gridArea: '3/1/14/11', background: 'grey' },
-        projectButtons: { gridArea: '13/1/14/11', background: 'purple' },
+        // viewButtons: { gridArea: '13/1/14/11', background: 'purple' },
         detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
-        viewButtons: { gridArea: '15/1/16/11', background: 'brown' },
+        projectButtons: { gridArea: '15/1/16/11', background: 'brown' },
         hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
         github: {
           height: '100%',
@@ -163,11 +168,11 @@ export default function projects() {
           <Grid className={classes.header} container justifyContent="center">
             PROJECTS
           </Grid>
-          {/* <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid> */}
+          <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid>
           <Grid className={classes.detailsButtons}>DETAIL BUTTONS</Grid>
           <Grid className={classes.projectHeader}>PROJECT HEADER</Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
-          <Grid className={classes.viewButtons}>VIEW BUTTONS</Grid>
+          {/* <Grid className={classes.viewButtons}>VIEW BUTTONS</Grid> */}
           <Grid className={classes.hamburgerGap}>
             <Grid
               container
