@@ -17,6 +17,10 @@ function MyApp({ Component, pageProps }) {
     isPhoneWidthLandscape && isPhoneHeightLandscape ? true : false
   const isPhone = isPhonePotrait || isPhoneLandscape ? true : false
 
+  const vars = {
+    hamburger: { height: '50px', width: '50px' },
+  }
+
   const state = {
     windowHeight,
     phone: {
@@ -42,7 +46,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   return (
-    <UserContext.Provider value={{ state, setState }}>
+    <UserContext.Provider value={{ state, setState, vars }}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
