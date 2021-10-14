@@ -3,28 +3,74 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 
-const useStyles = makeStyles({
-  root: {},
-  phoneContainer: {},
+const useStylesRoot = makeStyles({
+  root: { height: '100%', width: '100%' },
 })
-const useStylesP = makeStyles({ phoneContainer: {} })
 
 export default function aboutMe() {
-  const { state } = useContext(UserContext)
-  const { isPhone } = state.phone
+  const classesRoot = useStylesRoot()
 
-  const classesP = useStylesP()
-  const classes = useStyles()
+  const { state } = useContext(UserContext)
+  const { isPhone, isPhoneLandscape } = state.phone
 
   const Normal = () => {
-    return <Grid className={classes.normalContainer}>ABOUT ME NORMAL</Grid>
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: 'repeat(10,1fr)',
+        gridTemplateColumns: 'repeat(10,1fr)',
+      },
+    })
+    const classes = useStyles()
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.root}>
+        SKILLS NORMAL
+      </Grid>
+    )
   }
 
   const Phone = () => {
-    return <Grid className={classesP.phoneContainer}>ABOUT ME PHONE</Grid>
+    const Landscape = () => {
+      const useStyles = makeStyles({
+        root: {
+          width: '100%',
+          height: '100%',
+          display: 'grid',
+          gridTemplateRows: 'repeat(10,1fr)',
+          gridTemplateColumns: 'repeat(10,1fr)',
+        },
+      })
+      const classes = useStyles()
+      return <Grid className={classes.root}>Phone Landscape</Grid>
+    }
+
+    const Portrait = () => {
+      const useStyles = makeStyles({
+        root: {
+          width: '100%',
+          height: '100%',
+          display: 'grid',
+          gridTemplateRows: 'repeat(10,1fr)',
+          gridTemplateColumns: 'repeat(10,1fr)',
+        },
+      })
+      const classes = useStyles()
+      return <Grid className={classes.root}>Phone Portrait</Grid>
+    }
+
+    return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
 
   return (
-    <Grid className={classes.root}> {isPhone ? <Phone /> : <Normal />}</Grid>
+    <Grid container className={classesRoot.root}>
+      ABOUT ME
+      {isPhone ? <Phone /> : <Normal />}
+    </Grid>
   )
 }
