@@ -18,8 +18,18 @@ function MyApp({ Component, pageProps }) {
     isPhoneWidthLandscape && isPhoneHeightLandscape ? true : false
   const isPhone = isPhonePotrait || isPhoneLandscape ? true : false
 
+  const projectsObj = {
+    cheapshark: { name: 'Cheapshark', new: true },
+    TekkenNet: { name: 'Tekken-Net', new: true },
+    noteTaker: { name: 'Note Taker', new: false },
+  }
+
+  const projectsArr = Object.keys(projectsObj).map((project) => project)
+
   const vars = {
+    projectsArr,
     hamburger: { height: 50, width: 50, padding: 10 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
+    projectsObj,
   }
 
   const state = {

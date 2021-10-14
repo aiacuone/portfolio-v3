@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
+import Button from '@mui/material/Button'
 
 const useStylesRoot = makeStyles({
   root: {
@@ -13,7 +14,7 @@ const useStylesRoot = makeStyles({
 export default function projects() {
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
-  const { hamburger } = vars
+  const { hamburger, projectsArr, projectsObj } = vars
 
   const classesRoot = useStylesRoot()
 
@@ -61,22 +62,53 @@ export default function projects() {
           display: 'grid',
           height: '100%',
           width: '100%',
-          gridTemplateColumns: 'repeat(10,1fr)',
-          gridTemplateRows: '25px 50px repeat(10,1fr) 45px 45px 45px 60px',
+          gridTemplateRows: 'repeat(10,1fr)',
+          gridTemplateColumns: '120px repeat(9,1fr)', //WIDTH OF BUTTONS CONTAINER
         },
-        header: { gridArea: '1/1/2/11' },
-        projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
-        mainContainer: { gridArea: '3/1/13/11', background: 'grey' },
-        projectButtons: { gridArea: '13/1/14/11', background: 'purple' },
-        detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
-        viewButtons: { gridArea: '15/1/16/11', background: 'brown' },
-        hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
+        buttonContainer: {
+          background: 'yellow',
+          gridArea: '1/1/11/2',
+        },
+
+        // header: { gridArea: '1/1/2/11' },
+        // projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
+        // mainContainer: { gridArea: '3/1/13/11', background: 'grey' },
+        // projectButtons: { gridArea: '13/1/14/11', background: 'purple' },
+        // detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
+        // viewButtons: { gridArea: '15/1/16/11', background: 'brown' },
+        // hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
       })
       const classes = useStyles()
 
+      function handleProjectChange() {
+        console.log('project change')
+      }
+
+      const Buttons = () => {
+        const projectButtons = projectsArr.map((project) => {
+          return (
+            <Button onClick={handleProjectChange}>
+              {projectsObj[project].name}
+            </Button>
+          )
+        })
+        return (
+          <Grid className={classes.buttonContainer} container>
+            {projectButtons}
+            <Button onClick={console.log('basic details')}>BASIC</Button>
+            <Button onClick={console.log('technical details')}>
+              TECHNICAL
+            </Button>
+          </Grid>
+        )
+      }
+
       return (
-        <Grid className={classes.root}>
-          <Grid className={classes.header} container justifyContent="center">
+        <Grid className={classes.root} alignItems="stretch">
+          {/* <Grid className={classes.buttonContainer}> */}
+          <Buttons />
+          {/* </Grid> */}
+          {/* <Grid className={classes.header} container justifyContent="center">
             PROJECTS
           </Grid>
           <Grid className={classes.projectButtons}>PROJECT BUTTONS</Grid>
@@ -84,7 +116,7 @@ export default function projects() {
           <Grid className={classes.projectHeader}>PROJECT HEADER</Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
           <Grid className={classes.viewButtons}>VIEW BUTTONS</Grid>
-          <Grid className={classes.hamburgerGap}></Grid>
+          <Grid className={classes.hamburgerGap}></Grid> */}
         </Grid>
       )
     }
@@ -116,7 +148,6 @@ export default function projects() {
         hamburger: {
           width: hamburger.width,
           height: hamburger.height,
-          // background: 'orange',
           margin: `0px ${hamburger.padding}px`,
         },
         container: {
