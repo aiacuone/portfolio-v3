@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState()
+  const [showViewButtons, setShowViewButtons] = useState(false)
 
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')
   const isPhoneHeightPortrait = useMediaQuery('(max-height:850px)')
@@ -28,9 +29,10 @@ function MyApp({ Component, pageProps }) {
       isPhoneLandscape,
       isPhonePotrait,
     },
+    showViewButtons,
   }
 
-  const setState = { setWindowHeight }
+  const setState = { setWindowHeight, setShowViewButtons }
 
   useEffect(() => {
     setWindowHeight(window.innerHeight)
