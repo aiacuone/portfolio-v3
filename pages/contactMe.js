@@ -15,6 +15,7 @@ const useStylesRoot = makeStyles({
 export default function contactMe() {
   const classesRoot = useStylesRoot()
 
+  const buttonColor = 'white'
   const buttonsObj = {
     phone: { name: 'Phone', image: phone },
     linkedIn: { name: 'Linkedin', image: linkedin },
@@ -81,17 +82,17 @@ export default function contactMe() {
           gridArea: '2/10/11/11',
           background: 'lime',
         },
-        button: {
-          background: 'white',
-        },
+        button: {},
       })
       const classes = useStyles()
 
       const buttons = buttonsArr.map((button) => {
+        // const icon = () => <svg xmlns={button.image} fill={buttonColor}></svg>
         return (
           <Image
             className={classes.button}
             src={buttonsObj[button].image}
+            // src={icon}
             layout="fixed"
             width={50}
             height={50}

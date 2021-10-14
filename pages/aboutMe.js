@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -13,6 +15,14 @@ export default function aboutMe() {
   const { state, vars } = useContext(UserContext)
   const { hamburger } = vars
   const { isPhone, isPhoneLandscape } = state.phone
+
+  const aboutMeObj = {
+    hobbies: { name: 'Hobbies' },
+    work: { name: 'Work' },
+    myStory: { name: 'My Story' },
+  }
+
+  const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)
 
   const Normal = () => {
     const useStyles = makeStyles({
@@ -68,13 +78,30 @@ export default function aboutMe() {
           gridArea: '3/10/11/11',
           background: 'lime',
         },
+        button: {
+          background: 'red',
+        },
       })
       const classes = useStyles()
+
+      const buttons = aboutMeArr.map((item) => {
+        return (
+          <Grid
+            container
+            className={classes.button}
+            alignItems="center"
+            justifyContent="center">
+            {aboutMeObj[item].name.toUpperCase()}
+          </Grid>
+        )
+      })
       return (
         <Grid className={classes.root}>
           <Grid className={classes.header}>ABOUT ME</Grid>
           <Grid className={classes.aboutMeHeader}>ABOUT ME HEADER</Grid>
-          <Grid className={classes.buttonContainer}>BUTTON CONTAINER</Grid>
+          <Grid className={classes.buttonContainer} container>
+            {buttons}
+          </Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
           <Grid className={classes.hamburgerGap}></Grid>
         </Grid>
@@ -87,7 +114,7 @@ export default function aboutMe() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: `20px 30px repeat(17,1fr) ${
+          gridTemplateRows: `20px 30px repeat(16,1fr) 50px ${
             hamburger.padding * 2 + hamburger.width
           }px`,
           gridTemplateColumns: 'repeat(10,1fr)',
@@ -101,25 +128,44 @@ export default function aboutMe() {
           background: 'purple',
         },
         mainContainer: {
-          gridArea: '3/1/18/11',
+          gridArea: '3/1/19/11',
           background: 'orange',
         },
         buttonContainer: {
-          gridArea: '18/1/20/11',
+          gridArea: '19/1/20/11',
           background: 'yellow',
         },
         hamburgerGap: {
           gridArea: '20/1/21/11',
           background: 'brown',
         },
+        button: { flexGrow: 1, background: 'lime' },
+        container: { height: '100%' },
+        button2: { background: 'grey', borderRadius: 0, height: '100%' },
       })
       const classes = useStyles()
+
+      const buttons = aboutMeArr.map((item) => {
+        return (
+          <Grid item className={classes.button}>
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              className={classes.container}>
+              {aboutMeObj[item].name.toUpperCase()}
+            </Grid>
+          </Grid>
+        )
+      })
       return (
         <Grid className={classes.root}>
           <Grid className={classes.header}>SKILLS</Grid>
           <Grid className={classes.projectHeader}>SKILL HEADER</Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
-          <Grid className={classes.buttonContainer}>BUTTON CONTAINER</Grid>
+          <Grid className={classes.buttonContainer} container>
+            {buttons}
+          </Grid>
           <Grid className={classes.hamburgerGap} />
         </Grid>
       )
