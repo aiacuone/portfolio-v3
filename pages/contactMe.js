@@ -25,21 +25,54 @@ export default function contactMe() {
         height: '400px',
         width: '400px',
         background: 'white',
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr auto',
+        gridTemplateColumns: '100%',
+      },
+      mainContainer: { gridArea: '2/1/3/2', background: 'grey' },
+      buttonContainer: {
+        gridArea: '3/1/4/2',
+        background: 'orange',
+        padding: '10px 0',
+      },
+      header: {
+        gridArea: '1/1/2/2',
+        background: 'purple',
       },
     })
     const classes = useStyles()
+
+    const buttons = contactsArr.map((item) => {
+      const { image } = contactsObj[item]
+      return <Image src={image} layout="fixed" height={50} width={50} />
+    })
     return (
       <Grid
         container
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        <Grid
-          container
-          className={classes.container}
-          justifyContent="center"
-          alignItems="center">
-          CONTACT ME NORMAL
+        <Grid container className={classes.container}>
+          <Grid
+            container
+            className={classes.header}
+            justifyContent="center"
+            alignItems="center">
+            CONTACT ME
+          </Grid>
+          <Grid
+            container
+            className={classes.mainContainer}
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
+          <Grid
+            container
+            className={classes.buttonContainer}
+            justifyContent="space-around">
+            {buttons}
+          </Grid>
         </Grid>
       </Grid>
     )
