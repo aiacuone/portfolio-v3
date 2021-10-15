@@ -20,9 +20,6 @@ export default function skills() {
       root: {
         width: '100%',
         height: '100%',
-        display: 'grid',
-        gridTemplateRows: 'repeat(10,1fr)',
-        gridTemplateColumns: 'repeat(10,1fr)',
       },
     })
     const classes = useStyles()
@@ -172,7 +169,7 @@ export default function skills() {
 
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
-  console.log(skillsObj, skillsArr)
+
   return (
     <Grid container className={classesRoot.root}>
       {isPhone ? <Phone /> : <Normal />}

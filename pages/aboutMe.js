@@ -29,9 +29,6 @@ export default function aboutMe() {
       root: {
         width: '100%',
         height: '100%',
-        display: 'grid',
-        gridTemplateRows: 'repeat(10,1fr)',
-        gridTemplateColumns: 'repeat(10,1fr)',
       },
     })
     const classes = useStyles()
@@ -41,7 +38,7 @@ export default function aboutMe() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        SKILLS NORMAL
+        ABOUT ME NORMAL
       </Grid>
     )
   }
@@ -59,15 +56,15 @@ export default function aboutMe() {
           }px`, //WIDTH OF BUTTON CONTAINER
         },
         buttonContainer: {
-          gridArea: '1/1/11/2',
+          gridArea: '3/1/11/2',
           background: 'blue',
         },
         header: {
-          gridArea: '1/2/2/11',
+          gridArea: '1/1/2/11',
           background: 'orange',
         },
         aboutMeHeader: {
-          gridArea: '2/2/3/11',
+          gridArea: '2/1/3/11',
           background: 'purple',
         },
         mainContainer: {

@@ -8,6 +8,7 @@ const useStylesRoot = makeStyles({
   root: {
     height: '100%',
     width: '100%',
+    background: 'green',
   },
 })
 

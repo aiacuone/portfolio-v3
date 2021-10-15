@@ -37,9 +37,6 @@ export default function contactMe() {
       root: {
         width: '100%',
         height: '100%',
-        display: 'grid',
-        gridTemplateRows: 'repeat(10,1fr)',
-        gridTemplateColumns: 'repeat(10,1fr)',
       },
     })
     const classes = useStyles()
@@ -49,7 +46,7 @@ export default function contactMe() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        SKILLS NORMAL
+        CONTACT ME NORMAL
       </Grid>
     )
   }

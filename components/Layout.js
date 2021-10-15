@@ -17,7 +17,6 @@ export default function Layout({ children }) {
 
   const useStylesRoot = makeStyles({
     root: {
-      // background: isPhone ? 'green' : 'blue',
       width: '100vw',
       height: windowHeight,
     },
@@ -65,7 +64,7 @@ export default function Layout({ children }) {
         height: '100%',
         width: '100%',
         display: 'grid',
-        background: 'red',
+        // background: 'blue',
         gridTemplateRows: '40px repeat(10,1fr)', //HEADER HEIGHT
         gridTemplateColumns: 'repeat(10,1fr)',
       },
@@ -75,6 +74,53 @@ export default function Layout({ children }) {
         gridArea: '1/1/2/11',
       },
       linksHeader: { height: '100%' },
+      container: {
+        gridArea: '2/1/12/11',
+        position: 'relative',
+      },
+      backgroundContainer: {
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+      },
+      backgroundContainer2: {
+        height: '100%',
+        width: '100%',
+        position: 'relative',
+      },
+      me: {
+        position: 'absolute',
+        bottom: 10, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+        left: 10,
+        height: '50px',
+        width: '50px',
+        background: 'red',
+      },
+      london: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        height: '50px',
+        width: '50px',
+        background: 'lime',
+      },
+      links: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+        background: 'green',
+        height: '50px',
+        width: '50px',
+        background: 'yellow',
+      },
+      skills: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        height: '50px',
+        width: '50px',
+        background: 'purple',
+      },
     })
 
     const classes = useStyles()
@@ -113,16 +159,23 @@ export default function Layout({ children }) {
           container
           justifyContent="center"
           alignItems="center"
-          className={classes.normContainer2}>
+          className={classes.container}>
           {children}
-          <Grid
-            container
-            className={classes.backgroundContainer}
-            justifyContent="center">
-            <Grid className={classes.skills}>skills</Grid>
-            <Grid className={classes.london}>london</Grid>
-            <Grid className={classes.me}>me</Grid>
-            <Grid className={classes.links}>links</Grid>
+          <Grid container className={classes.backgroundContainer}>
+            <Grid className={classes.backgroundContainer2}>
+              <Grid item className={classes.me}>
+                me
+              </Grid>
+              <Grid item className={classes.links}>
+                links
+              </Grid>
+              <Grid item className={classes.skills}>
+                skills
+              </Grid>
+              <Grid item className={classes.london}>
+                london
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
