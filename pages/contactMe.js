@@ -3,10 +3,6 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
-import email from '../public/images/email.svg'
-import linkedin from '../public/images/linkedin.svg'
-import phone from '../public/images/phone.svg'
-import gitHub from '../public/images/gitHub.svg'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -15,28 +11,20 @@ const useStylesRoot = makeStyles({
 export default function contactMe() {
   const classesRoot = useStylesRoot()
 
-  const buttonColor = 'white'
-  const buttonsObj = {
-    phone: { name: 'Phone', image: phone },
-    linkedIn: { name: 'Linkedin', image: linkedin },
-    github: { name: 'GitHub', image: gitHub },
-
-    email: { name: 'Email', image: email },
-  }
-
-  const buttonsArr = Object.keys(buttonsObj).map((button) => {
-    return button
-  })
-
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
-  const { hamburger } = vars
+  const { hamburger, contactsArr, contactsObj } = vars
 
   const Normal = () => {
     const useStyles = makeStyles({
       root: {
         width: '100%',
         height: '100%',
+      },
+      container: {
+        height: '400px',
+        width: '400px',
+        background: 'white',
       },
     })
     const classes = useStyles()
@@ -46,7 +34,13 @@ export default function contactMe() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        CONTACT ME NORMAL
+        <Grid
+          container
+          className={classes.container}
+          justifyContent="center"
+          alignItems="center">
+          CONTACT ME NORMAL
+        </Grid>
       </Grid>
     )
   }
@@ -83,12 +77,12 @@ export default function contactMe() {
       })
       const classes = useStyles()
 
-      const buttons = buttonsArr.map((button) => {
+      const buttons = contactsArr.map((contact) => {
+        const { image } = contactsObj[contact]
         return (
           <Image
             className={classes.button}
-            src={buttonsObj[button].image}
-            // src={icon}
+            src={image}
             layout="fixed"
             width={40}
             height={40}
@@ -143,11 +137,12 @@ export default function contactMe() {
       })
       const classes = useStyles()
 
-      const buttons = buttonsArr.map((button) => {
+      const buttons = contactsArr.map((contact) => {
+        const { image } = contactsObj[contact]
         return (
           <Image
             className={classes.button}
-            src={buttonsObj[button].image}
+            src={image}
             layout="fixed"
             width={40}
             height={40}

@@ -76,6 +76,7 @@ export default function aboutMe() {
         buttonContainer: {
           gridArea: '3/1/11/2',
           background: 'blue',
+          minHeight: '150px',
         },
         header: {
           gridArea: '1/1/2/11',

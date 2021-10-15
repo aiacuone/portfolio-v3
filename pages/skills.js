@@ -78,6 +78,7 @@ export default function skills() {
         buttonContainer: {
           gridArea: '9/1/11/11',
           background: 'blue',
+          minWidth: '600px',
         },
       })
       const classes = useStyles()
@@ -129,6 +130,7 @@ export default function skills() {
         buttonContainer: {
           gridArea: '19/1/20/11',
           background: 'yellow',
+          minWidth: '250px',
         },
         hamburgerGap: {
           gridArea: '20/1/21/11',

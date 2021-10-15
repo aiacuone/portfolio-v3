@@ -4,6 +4,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { UserContext } from '../utils/UserContext'
 import { useState, useEffect } from 'react'
 import { images as skillsImages } from '../public/images/skills'
+import { images as contactImages } from '../public/images/contact'
 
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState()
@@ -27,23 +28,65 @@ function MyApp({ Component, pageProps }) {
 
   const projectsArr = Object.keys(projectsObj).map((project) => project)
 
-  const skillsObj = {
-    react: { name: 'React', image: skillsImages.react },
-    javascript: { name: 'JavaScript', image: skillsImages.javaScript },
-    next: { name: 'Next JS', image: skillsImages.next },
-    materialUI: { name: 'Material UI', image: skillsImages.materialUI },
-    git: { name: 'Git', image: skillsImages.git },
-    gitHub: { name: 'GitHub', image: skillsImages.gitHub },
-    npm: { name: 'NPM', image: skillsImages.npm },
-    css: { name: 'CSS', image: skillsImages.css },
-    html: { name: 'HTML', image: skillsImages.html },
-    OOP: { name: 'Object Oriented Programming', image: skillsImages.OOP },
-    lodash: { name: 'Lodash', image: skillsImages.lodash },
-    illustrator: { name: 'Adobe Illustrator', image: skillsImages.illustrator },
-    photoshop: { name: 'Adobe Photoshop', image: skillsImages.photoshop },
+  function getSkillsObj() {
+    const {
+      react,
+      javaScript,
+      next,
+      materialUI,
+      git,
+      gitHub,
+      npm,
+      css,
+      html,
+      OOP,
+      lodash,
+      illustrator,
+      photoshop,
+    } = skillsImages
+
+    const obj = {
+      react: { name: 'React', image: react },
+      javascript: { name: 'JavaScript', image: javaScript },
+      next: { name: 'Next JS', image: next },
+      materialUI: { name: 'Material UI', image: materialUI },
+      git: { name: 'Git', image: git },
+      gitHub: { name: 'GitHub', image: gitHub },
+      npm: { name: 'NPM', image: npm },
+      css: { name: 'CSS', image: css },
+      html: { name: 'HTML', image: html },
+      OOP: { name: 'Object Oriented Programming', image: OOP },
+      lodash: { name: 'Lodash', image: lodash },
+      illustrator: {
+        name: 'Adobe Illustrator',
+        image: illustrator,
+      },
+      photoshop: { name: 'Adobe Photoshop', image: photoshop },
+    }
+
+    return obj
   }
 
+  const skillsObj = getSkillsObj()
+
   const skillsArr = Object.keys(skillsObj).map((skill) => skill)
+
+  function getContactObj() {
+    const { email, linkedin, phone, gitHub } = contactImages
+
+    const obj = {
+      email: { name: 'Email', image: email },
+      linkedin: { name: 'Linkedin', image: linkedin },
+      phone: { name: 'Phone', image: phone },
+      gitHub: { name: 'GitHub', image: gitHub },
+    }
+
+    return obj
+  }
+
+  const contactsObj = getContactObj()
+
+  const contactsArr = Object.keys(contactsObj).map((contact) => contact)
 
   const normalPageContainerDimensions = {
     maxWidth: '1300px',
@@ -61,6 +104,9 @@ function MyApp({ Component, pageProps }) {
     skillsObj,
     skillsArr,
     normalPageContainerDimensions,
+    skillsObj,
+    contactsObj,
+    contactsArr,
   }
 
   const state = {
