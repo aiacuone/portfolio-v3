@@ -70,7 +70,7 @@ export default function aboutMe() {
           display: 'grid',
           gridTemplateRows: '20px 30px repeat(8,1fr)',
           gridTemplateColumns: `100px repeat(8,1fr) ${
-            hamburger.padding * 2 + hamburger.width
+            hamburger.padding + hamburger.width
           }px`, //WIDTH OF BUTTON CONTAINER
         },
         buttonContainer: {
@@ -131,7 +131,7 @@ export default function aboutMe() {
           height: '100%',
           display: 'grid',
           gridTemplateRows: `20px 30px repeat(16,1fr) 50px ${
-            hamburger.padding * 2 + hamburger.width
+            hamburger.padding + hamburger.width
           }px`,
           gridTemplateColumns: 'repeat(10,1fr)',
         },

@@ -44,7 +44,7 @@ export default function projects() {
         mainContainer: {
           gridArea: '3/2/10/11',
           background: 'grey',
-          marginRight: `${hamburger.width + hamburger.padding * 2}px`,
+          marginRight: `${hamburger.width + hamburger.padding}px`,
         },
         viewButtons: { gridArea: '10/2/11/11', background: 'brown' },
       })
@@ -96,7 +96,7 @@ export default function projects() {
           width: '100%',
           gridTemplateColumns: 'repeat(10,1fr)',
           gridTemplateRows: `25px 40px repeat(10,1fr) 45px 45px 45px ${
-            hamburger.padding * 2 + hamburger.height
+            hamburger.padding + hamburger.height
           }px`,
         },
         header: { gridArea: '1/1/2/11' },

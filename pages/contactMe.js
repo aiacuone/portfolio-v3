@@ -54,7 +54,7 @@ export default function contactMe() {
           display: 'grid',
           gridTemplateRows: '30px  repeat(8,1fr)',
           gridTemplateColumns: `80px repeat(8,1fr) ${
-            hamburger.padding * 2 + hamburger.width
+            hamburger.padding + hamburger.width
           }px`, //WIDTH OF BUTTON CONTAINER
         },
         buttonContainer: {
@@ -114,7 +114,7 @@ export default function contactMe() {
           height: '100%',
           display: 'grid',
           gridTemplateRows: `20px 30px repeat(16,1fr) 70px ${
-            hamburger.padding * 2 + hamburger.width
+            hamburger.padding + hamburger.width
           }px `,
           gridTemplateColumns: 'repeat(10,1fr)',
         },

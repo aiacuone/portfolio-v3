@@ -33,8 +33,10 @@ export default function Layout({ children }) {
       },
       hamburger: {
         position: 'absolute',
-        bottom: !isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM BOTTOM
-        right: isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM RIGHT
+        // bottom: !isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM BOTTOM
+        bottom: !isPhoneLandscape && 0,
+        // right: isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM RIGHT
+        right: isPhoneLandscape && 0,
         background: 'orange',
         height: hamburgerHeight,
         width: hamburgerWidth,

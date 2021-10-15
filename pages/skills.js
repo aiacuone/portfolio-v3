@@ -65,7 +65,9 @@ export default function skills() {
           height: '100%',
           display: 'grid',
           gridTemplateRows: '20px 30px repeat(8,1fr)',
-          gridTemplateColumns: 'repeat(10,1fr)',
+          gridTemplateColumns: `repeat(9,1fr) ${
+            hamburger.padding + hamburger.width
+          }px`,
         },
         header: {
           gridArea: '1/1/2/11',
@@ -80,6 +82,10 @@ export default function skills() {
           background: 'blue',
           minWidth: '600px',
         },
+        container: {
+          gridArea: '3/1/9/10',
+          background: 'grey',
+        },
       })
       const classes = useStyles()
 
@@ -93,6 +99,7 @@ export default function skills() {
         <Grid className={classes.root}>
           <Grid className={classes.header}>SKILLS</Grid>
           <Grid className={classes.projectHeader}>SKILL HEADER</Grid>
+          <Grid className={classes.container}>MAIN CONTAINER</Grid>
           <Grid
             className={classes.buttonContainer}
             container
@@ -111,7 +118,7 @@ export default function skills() {
           height: '100%',
           display: 'grid',
           gridTemplateRows: `20px 30px repeat(16,1fr) 110px ${
-            hamburger.padding * 2 + hamburger.width
+            hamburger.padding + hamburger.width
           }px`,
           gridTemplateColumns: 'repeat(10,1fr)',
         },
