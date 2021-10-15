@@ -12,14 +12,31 @@ export default function skills() {
   const classesRoot = useStylesRoot()
 
   const { state, vars } = useContext(UserContext)
-  const { hamburger, skillsObj, skillsArr } = vars
+  const {
+    hamburger,
+    skillsObj,
+    skillsArr,
+    normalPageContainerDimensions: container,
+  } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
   const Normal = () => {
+    const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
+      container
+
     const useStyles = makeStyles({
       root: {
         width: '100%',
         height: '100%',
+      },
+      container: {
+        background: 'white',
+        maxWidth: maxWidth,
+        width: width,
+        height: height,
+        // maxHeight: maxHeight,
+        minHeight: minHeight,
+        minWidth: minWidth,
       },
     })
     const classes = useStyles()
@@ -29,7 +46,13 @@ export default function skills() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        SKILLS NORMAL
+        <Grid
+          container
+          className={classes.container}
+          justifyContent="center"
+          alignItems="center">
+          SKILLS NORMAL
+        </Grid>
       </Grid>
     )
   }

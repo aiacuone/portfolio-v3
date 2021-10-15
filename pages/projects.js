@@ -15,7 +15,12 @@ const useStylesRoot = makeStyles({
 export default function projects() {
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
-  const { hamburger, projectsArr, projectsObj } = vars
+  const {
+    hamburger,
+    projectsArr,
+    projectsObj,
+    normalPageContainerDimensions: container,
+  } = vars
 
   const classesRoot = useStylesRoot()
 
@@ -147,8 +152,23 @@ export default function projects() {
   }
 
   const Normal = () => {
+    const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
+      container
+
     const useStyles = makeStyles({
-      root: { height: '100%', width: '100%' },
+      root: {
+        width: '100%',
+        height: '100%',
+      },
+      container: {
+        background: 'white',
+        maxWidth: maxWidth,
+        width: width,
+        height: height,
+        // maxHeight: maxHeight,
+        minHeight: minHeight,
+        minWidth: minWidth,
+      },
     })
     const classes = useStyles()
     return (
@@ -157,7 +177,13 @@ export default function projects() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        PROJECTS NORMAL
+        <Grid
+          container
+          className={classes.container}
+          justifyContent="center"
+          alignItems="center">
+          PROJECTS NORMAL
+        </Grid>
       </Grid>
     )
   }

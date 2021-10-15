@@ -45,12 +45,22 @@ function MyApp({ Component, pageProps }) {
 
   const skillsArr = Object.keys(skillsObj).map((skill) => skill)
 
+  const normalPageContainerDimensions = {
+    maxWidth: '1300px',
+    minWidth: '1000px',
+    maxHeight: '1200px',
+    minHeight: '500px',
+    width: '70vw',
+    height: '70vh',
+  }
+
   const vars = {
     projectsArr,
     hamburger: { height: 50, width: 50, padding: 10 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
     projectsObj,
     skillsObj,
     skillsArr,
+    normalPageContainerDimensions,
   }
 
   const state = {

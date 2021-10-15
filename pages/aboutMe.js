@@ -13,7 +13,7 @@ export default function aboutMe() {
   const classesRoot = useStylesRoot()
 
   const { state, vars } = useContext(UserContext)
-  const { hamburger } = vars
+  const { hamburger, normalPageContainerDimensions: container } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
   const aboutMeObj = {
@@ -25,10 +25,22 @@ export default function aboutMe() {
   const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)
 
   const Normal = () => {
+    const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
+      container
+
     const useStyles = makeStyles({
       root: {
         width: '100%',
         height: '100%',
+      },
+      container: {
+        background: 'white',
+        maxWidth: maxWidth,
+        width: width,
+        height: height,
+        // maxHeight: maxHeight,
+        minHeight: minHeight,
+        minWidth: minWidth,
       },
     })
     const classes = useStyles()
@@ -38,7 +50,13 @@ export default function aboutMe() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        ABOUT ME NORMAL
+        <Grid
+          container
+          className={classes.container}
+          justifyContent="center"
+          alignItems="center">
+          ABOUT ME NORMAL
+        </Grid>
       </Grid>
     )
   }
