@@ -88,6 +88,14 @@ function MyApp({ Component, pageProps }) {
 
   const contactsArr = Object.keys(contactsObj).map((contact) => contact)
 
+  const aboutMeObj = {
+    hobbies: { name: 'Hobbies' },
+    work: { name: 'Work' },
+    myStory: { name: 'My Story' },
+  }
+
+  const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)
+
   const normalPageContainerDimensions = {
     maxWidth: '1300px',
     minWidth: '600px',
@@ -107,6 +115,8 @@ function MyApp({ Component, pageProps }) {
     skillsObj,
     contactsObj,
     contactsArr,
+    aboutMeObj,
+    aboutMeArr,
   }
 
   const state = {

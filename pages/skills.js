@@ -39,16 +39,20 @@ export default function skills() {
         minWidth: minWidth,
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
-        gridTemplateRows: 'repeat(9,1fr) auto',
+        gridTemplateRows: 'auto repeat(8,1fr) auto',
       },
       mainContainer: {
         background: 'blue',
-        gridArea: '1/1/10/11',
+        gridArea: '2/1/10/11',
       },
       buttonContainer: {
         background: 'grey',
         gridArea: '10/1/11/11',
         padding: '10px 0',
+      },
+      header: {
+        background: 'orange',
+        gridArea: '1/1/2/11',
       },
     })
     const classes = useStyles()
@@ -65,9 +69,14 @@ export default function skills() {
         alignItems="center"
         className={classes.root}>
         <Grid className={classes.container}>
-          <Grid container className={classes.mainContainer}>
-            <Grid container className={classes.header}></Grid>
+          <Grid
+            container
+            className={classes.header}
+            justifyContent="center"
+            alignItems="center">
+            HEADER
           </Grid>
+          <Grid container className={classes.mainContainer}></Grid>
           <Grid
             container
             className={classes.buttonContainer}

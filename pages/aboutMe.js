@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+import ButtonGroup from '@mui/material/ButtonGroup'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -13,16 +13,13 @@ export default function aboutMe() {
   const classesRoot = useStylesRoot()
 
   const { state, vars } = useContext(UserContext)
-  const { hamburger, normalPageContainerDimensions: container } = vars
+  const {
+    hamburger,
+    normalPageContainerDimensions: container,
+    aboutMeObj,
+    aboutMeArr,
+  } = vars
   const { isPhone, isPhoneLandscape } = state.phone
-
-  const aboutMeObj = {
-    hobbies: { name: 'Hobbies' },
-    work: { name: 'Work' },
-    myStory: { name: 'My Story' },
-  }
-
-  const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)
 
   const Normal = () => {
     const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
@@ -41,21 +38,62 @@ export default function aboutMe() {
         // maxHeight: maxHeight,
         minHeight: minHeight,
         minWidth: minWidth,
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr auto',
+        gridTemplateColumns: '100%',
+      },
+      header: {
+        gridArea: '1/1/2/2',
+        background: 'red',
+      },
+      mainContainer: {
+        gridArea: '2/1/3/2',
+        background: 'grey',
+      },
+      buttonContainer: {
+        gridArea: '3/1/4/2',
+        background: 'orange',
       },
     })
     const classes = useStyles()
+
+    const Buttons = () => {
+      const buttons = aboutMeArr.map((item) => {
+        return <Button>{aboutMeObj[item].name}</Button>
+      })
+
+      return (
+        <ButtonGroup
+          variant="contained"
+          aria-label="outlined primary button group">
+          {buttons}
+        </ButtonGroup>
+      )
+    }
+
     return (
       <Grid
         container
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        <Grid
-          container
-          className={classes.container}
-          justifyContent="center"
-          alignItems="center">
-          ABOUT ME NORMAL
+        <Grid container className={classes.container}>
+          <Grid container className={classes.header} justifyContent="center">
+            HEADER
+          </Grid>
+          <Grid
+            container
+            className={classes.mainContainer}
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
+          <Grid
+            container
+            className={classes.buttonContainer}
+            justifyContent="center">
+            <Buttons />
+          </Grid>
         </Grid>
       </Grid>
     )
