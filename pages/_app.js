@@ -11,8 +11,8 @@ function MyApp({ Component, pageProps }) {
   const [showViewButtons, setShowViewButtons] = useState(false)
 
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')
-  const isPhoneHeightPortrait = useMediaQuery('(max-height:850px)')
-  const isPhoneWidthLandscape = useMediaQuery('(max-width:850px')
+  const isPhoneHeightPortrait = useMediaQuery('(max-height:920px)')
+  const isPhoneWidthLandscape = useMediaQuery('(max-width:920px')
   const isPhoneHeightLandscape = useMediaQuery('(max-height:430px')
   const isPhonePotrait =
     isPhoneWidthPortrait && isPhoneHeightPortrait ? true : false
@@ -90,7 +90,7 @@ function MyApp({ Component, pageProps }) {
 
   const normalPageContainerDimensions = {
     maxWidth: '1300px',
-    minWidth: '1000px',
+    minWidth: '600px',
     maxHeight: '1200px',
     minHeight: '500px',
     width: '70vw',
