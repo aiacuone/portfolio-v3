@@ -87,15 +87,14 @@ export default function contactMe() {
       const classes = useStyles()
 
       const buttons = buttonsArr.map((button) => {
-        // const icon = () => <svg xmlns={button.image} fill={buttonColor}></svg>
         return (
           <Image
             className={classes.button}
             src={buttonsObj[button].image}
             // src={icon}
             layout="fixed"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             alt=""
           />
         )
@@ -153,8 +152,8 @@ export default function contactMe() {
             className={classes.button}
             src={buttonsObj[button].image}
             layout="fixed"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             alt=""
           />
         )

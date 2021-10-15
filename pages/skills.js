@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
+import Image from 'next/image'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -11,7 +12,7 @@ export default function skills() {
   const classesRoot = useStylesRoot()
 
   const { state, vars } = useContext(UserContext)
-  const { hamburger } = vars
+  const { hamburger, skillsObj, skillsArr } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
   const Normal = () => {
@@ -55,16 +56,29 @@ export default function skills() {
           background: 'purple',
         },
         buttonContainer: {
-          gridArea: '8/1/10/11',
+          gridArea: '9/1/11/11',
           background: 'blue',
         },
       })
       const classes = useStyles()
+
+      const buttons = skillsArr.map((skill) => {
+        const skillObj = skillsObj[skill]
+        return (
+          <Image src={skillObj.image} layout="fixed" height={35} width={35} />
+        )
+      })
       return (
         <Grid className={classes.root}>
           <Grid className={classes.header}>SKILLS</Grid>
           <Grid className={classes.projectHeader}>SKILL HEADER</Grid>
-          <Grid className={classes.buttonContainer}>BUTTON CONTAINER</Grid>
+          <Grid
+            className={classes.buttonContainer}
+            container
+            justifyContent="space-around"
+            alignItems="center">
+            {buttons}
+          </Grid>
         </Grid>
       )
     }
@@ -75,7 +89,7 @@ export default function skills() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: `20px 30px repeat(17,1fr) ${
+          gridTemplateRows: `20px 30px repeat(16,1fr) 110px ${
             hamburger.padding * 2 + hamburger.width
           }px`,
           gridTemplateColumns: 'repeat(10,1fr)',
@@ -89,25 +103,68 @@ export default function skills() {
           background: 'purple',
         },
         mainContainer: {
-          gridArea: '3/1/16/11',
+          gridArea: '3/1/19/11',
           background: 'orange',
         },
         buttonContainer: {
-          gridArea: '16/1/20/11',
+          gridArea: '19/1/20/11',
           background: 'yellow',
         },
         hamburgerGap: {
           gridArea: '20/1/21/11',
           background: 'brown',
         },
+        buttonContainer1: {},
+        buttonContainer2: {},
       })
       const classes = useStyles()
+
+      const Buttons = () => {
+        const buttons1 = skillsArr.map((skill, index) => {
+          const skillObj = skillsObj[skill]
+          if (index >= skillsArr.length / 2) return
+          return (
+            <Image src={skillObj.image} layout="fixed" height={35} width={35} />
+          )
+        })
+
+        const buttons2 = skillsArr.map((skill, index) => {
+          const skillObj = skillsObj[skill]
+          if (index < skillsArr.length / 2) return
+          return (
+            <Image src={skillObj.image} layout="fixed" height={35} width={35} />
+          )
+        })
+
+        return (
+          <>
+            <Grid
+              container
+              className={classes.buttonContainer1}
+              justifyContent="space-around">
+              {buttons1}
+            </Grid>
+            <Grid
+              container
+              className={classes.buttonContainer2}
+              justifyContent="space-around">
+              {buttons2}
+            </Grid>
+          </>
+        )
+      }
       return (
         <Grid className={classes.root}>
           <Grid className={classes.header}>SKILLS</Grid>
           <Grid className={classes.projectHeader}>SKILL HEADER</Grid>
           <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
-          <Grid className={classes.buttonContainer}>BUTTON CONTAINER</Grid>
+          <Grid
+            className={classes.buttonContainer}
+            container
+            justifyContent="space-around"
+            alignItems="center">
+            <Buttons />
+          </Grid>
           <Grid className={classes.hamburgerGap} />
         </Grid>
       )
@@ -115,7 +172,7 @@ export default function skills() {
 
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
-
+  console.log(skillsObj, skillsArr)
   return (
     <Grid container className={classesRoot.root}>
       {isPhone ? <Phone /> : <Normal />}
