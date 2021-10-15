@@ -189,11 +189,11 @@ export default function projects() {
         minWidth: minWidth,
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
-        gridTemplateRows: 'auto repeat(8,1fr) auto',
+        gridTemplateRows: 'auto auto repeat(7,1fr) auto',
       },
       detailsButton: { color: 'black', background: 'white' },
       mainContainer: {
-        gridArea: '2/1/10/11',
+        gridArea: '3/1/10/11',
         background: 'orange',
       },
       buttonContainer: { gridArea: '1/1/2/11', background: 'purple' },
@@ -202,6 +202,7 @@ export default function projects() {
         background: 'brown',
       },
       headerContainer: {
+        gridArea: '2/1/3/11',
         background: 'red',
       },
     })
@@ -273,7 +274,6 @@ export default function projects() {
         <Grid container className={classes.container}>
           <Grid
             container
-            // spacing={1}
             justifyContent="center"
             alignItems="center"
             className={classes.buttonContainer}
@@ -285,13 +285,18 @@ export default function projects() {
               <DetailButtons />
             </Grid>
           </Grid>
-          <Grid item className={classes.mainContainer}>
-            <Grid
-              container
-              className={classes.headerContainer}
-              justifyContent="center">
-              HEADER
-            </Grid>
+          <Grid
+            container
+            className={classes.headerContainer}
+            justifyContent="center">
+            HEADER
+          </Grid>
+          <Grid
+            container
+            className={classes.mainContainer}
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
           </Grid>
           <Grid
             container
