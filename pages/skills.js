@@ -37,21 +37,43 @@ export default function skills() {
         // maxHeight: maxHeight,
         minHeight: minHeight,
         minWidth: minWidth,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(10,1fr)',
+        gridTemplateRows: 'repeat(9,1fr) auto',
+      },
+      mainContainer: {
+        background: 'blue',
+        gridArea: '1/1/10/11',
+      },
+      buttonContainer: {
+        background: 'grey',
+        gridArea: '10/1/11/11',
+        padding: '10px 0',
       },
     })
     const classes = useStyles()
+    const buttons = skillsArr.map((skill) => {
+      const skillObj = skillsObj[skill]
+      return (
+        <Image src={skillObj.image} layout="fixed" height={45} width={45} />
+      )
+    })
     return (
       <Grid
         container
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        <Grid
-          container
-          className={classes.container}
-          justifyContent="center"
-          alignItems="center">
-          SKILLS NORMAL
+        <Grid className={classes.container}>
+          <Grid container className={classes.mainContainer}>
+            <Grid container className={classes.header}></Grid>
+          </Grid>
+          <Grid
+            container
+            className={classes.buttonContainer}
+            justifyContent="space-around">
+            {buttons}
+          </Grid>
         </Grid>
       </Grid>
     )
