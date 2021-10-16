@@ -30,8 +30,8 @@ export default function Layout({ children }) {
         position: 'relative',
         width: '100%',
         height: '100%',
-        minHeight: '330px',
-        minWidth: '330px',
+        minHeight: '270px',
+        minWidth: '270px',
       },
       hamburger: {
         position: 'absolute',

@@ -117,6 +117,10 @@ function MyApp({ Component, pageProps }) {
     contactsArr,
     aboutMeObj,
     aboutMeArr,
+    headerHeightPortrait: '30',
+    secondHeaderHeightPortrait: '50',
+    headerHeightLandscape: '20',
+    secondHeaderHeightLandscape: '40',
   }
 
   const state = {

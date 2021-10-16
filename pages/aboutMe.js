@@ -18,6 +18,10 @@ export default function aboutMe() {
     normalPageContainerDimensions: container,
     aboutMeObj,
     aboutMeArr,
+    headerHeightLandscape,
+    secondHeaderHeightLandscape,
+    headerHeightPortrait,
+    secondHeaderHeightPortrait,
   } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
@@ -106,7 +110,7 @@ export default function aboutMe() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: '20px 30px repeat(8,1fr)',
+          gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
           gridTemplateColumns: `100px repeat(8,1fr) ${
             hamburger.padding + hamburger.width
           }px`, //WIDTH OF BUTTON CONTAINER
@@ -182,7 +186,7 @@ export default function aboutMe() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: `20px 30px repeat(16,1fr) 50px ${
+          gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(16,1fr) 50px ${
             hamburger.padding + hamburger.width
           }px`,
           gridTemplateColumns: 'repeat(10,1fr)',
@@ -228,9 +232,27 @@ export default function aboutMe() {
       })
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header}>SKILLS</Grid>
-          <Grid className={classes.projectHeader}>SKILL HEADER</Grid>
-          <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
+          <Grid
+            className={classes.header}
+            container
+            justifyContent="center"
+            alignItems="center">
+            SKILLS
+          </Grid>
+          <Grid
+            className={classes.projectHeader}
+            container
+            justifyContent="center"
+            alignItems="center">
+            SKILL HEADER
+          </Grid>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
           <Grid className={classes.buttonContainer} container>
             {buttons}
           </Grid>

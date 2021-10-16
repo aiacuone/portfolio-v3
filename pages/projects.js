@@ -25,6 +25,10 @@ export default function projects() {
     projectsArr,
     projectsObj,
     normalPageContainerDimensions: container,
+    headerHeightPortrait,
+    secondHeaderHeightPortrait,
+    headerHeightLandscape,
+    secondHeaderHeightLandscape,
   } = vars
 
   const classesRoot = useStylesRoot()
@@ -74,7 +78,7 @@ export default function projects() {
           display: 'grid',
           height: '100%',
           width: '100%',
-          gridTemplateRows: '20px repeat(9,1fr)',
+          gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
           gridTemplateColumns: `120px repeat(8,1fr) ${
             hamburger.width + hamburger.padding
           }px`, //WIDTH OF BUTTONS CONTAINER
@@ -115,7 +119,11 @@ export default function projects() {
         <Grid className={classes.root} alignItems="stretch">
           <Buttons />
 
-          <Grid className={classes.header} container justifyContent="center">
+          <Grid
+            className={classes.header}
+            container
+            justifyContent="center"
+            alignItems="center">
             PROJECTS
           </Grid>
           <Grid
@@ -151,7 +159,7 @@ export default function projects() {
           height: '100%',
           width: '100%',
           gridTemplateColumns: 'repeat(10,1fr)',
-          gridTemplateRows: `25px 40px repeat(10,1fr) 45px 45px 45px ${
+          gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(10,1fr) 45px 45px 45px ${
             hamburger.padding + hamburger.height
           }px`,
         },
@@ -161,11 +169,6 @@ export default function projects() {
         detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
         projectButtons: { gridArea: '15/1/16/11', background: 'brown' },
         hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
-        // github: {
-        //   height: '100%',
-        //   flexGrow: 1,
-        //   background: 'lime',
-        // },
         github: {
           gridArea: '1/1/2/2',
           background: 'grey',

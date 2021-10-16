@@ -13,7 +13,8 @@ export default function contactMe() {
 
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
-  const { hamburger, contactsArr, contactsObj } = vars
+  const { hamburger, contactsArr, contactsObj, secondHeaderHeightPortrait } =
+    vars
 
   const Normal = () => {
     const useStyles = makeStyles({
@@ -85,7 +86,7 @@ export default function contactMe() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: '30px  repeat(8,1fr)',
+          gridTemplateRows: `${secondHeaderHeightPortrait}px  repeat(8,1fr)`,
           gridTemplateColumns: `80px repeat(8,1fr) ${
             hamburger.padding + hamburger.width
           }px`, //WIDTH OF BUTTON CONTAINER
@@ -95,7 +96,7 @@ export default function contactMe() {
           background: 'blue',
         },
         header: {
-          gridArea: '1/2/2/11',
+          gridArea: '1/2/2/10',
           background: 'orange',
         },
         mainContainer: {
@@ -125,7 +126,11 @@ export default function contactMe() {
       })
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header} container justifyContent="center">
+          <Grid
+            className={classes.header}
+            container
+            justifyContent="center"
+            alignItems="center">
             CONTACT ME
           </Grid>
           <Grid
@@ -154,7 +159,7 @@ export default function contactMe() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: `20px 30px repeat(16,1fr) 70px ${
+          gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) 70px ${
             hamburger.padding + hamburger.width
           }px `,
           gridTemplateColumns: 'repeat(10,1fr)',
@@ -193,7 +198,11 @@ export default function contactMe() {
       })
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header} container justifyContent="center">
+          <Grid
+            className={classes.header}
+            container
+            justifyContent="center"
+            alignItems="center">
             CONTACT ME
           </Grid>
           <Grid
