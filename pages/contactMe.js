@@ -45,7 +45,7 @@ export default function contactMe() {
 
     const buttons = contactsArr.map((item) => {
       const { image } = contactsObj[item]
-      return <Image src={image} layout="fixed" height={50} width={50} />
+      return <Image src={image} layout="fixed" height={40} width={40} />
     })
     return (
       <Grid

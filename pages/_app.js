@@ -107,7 +107,7 @@ function MyApp({ Component, pageProps }) {
 
   const vars = {
     projectsArr,
-    hamburger: { height: 50, width: 50, padding: 7 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
+    hamburger: { height: 35, width: 35, padding: 7 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
     projectsObj,
     skillsObj,
     skillsArr,
@@ -117,10 +117,10 @@ function MyApp({ Component, pageProps }) {
     contactsArr,
     aboutMeObj,
     aboutMeArr,
-    headerHeightPortrait: '30',
-    secondHeaderHeightPortrait: '50',
-    headerHeightLandscape: '20',
-    secondHeaderHeightLandscape: '40',
+    headerHeightPortrait: 30,
+    secondHeaderHeightPortrait: 50,
+    headerHeightLandscape: 20,
+    secondHeaderHeightLandscape: 25,
   }
 
   const state = {

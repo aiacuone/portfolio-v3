@@ -14,7 +14,7 @@ const useStylesRoot = makeStyles({
   detailButtons: {
     flexGrow: 1,
   },
-  viewButton: { height: '100%', background: 'white' },
+  viewButton: { height: '100%', background: 'white', whiteSpace: 'nowrap' },
 })
 
 export default function projects() {
@@ -55,11 +55,19 @@ export default function projects() {
   }
 
   const ViewGitHubButton = () => {
-    return <Button className={classesRoot.viewButton}>View GitHub</Button>
+    return (
+      <Button fullWidth className={classesRoot.viewButton}>
+        View GitHub
+      </Button>
+    )
   }
 
   const ViewProjectButton = () => {
-    return <Button className={classesRoot.viewButton}>View Project</Button>
+    return (
+      <Button fullWidth className={classesRoot.viewButton}>
+        View Project
+      </Button>
+    )
   }
 
   const ViewButtons = () => {
@@ -166,7 +174,11 @@ export default function projects() {
         header: { gridArea: '1/1/2/11' },
         projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
         mainContainer: { gridArea: '3/1/14/11', background: 'grey' },
-        projectButtons: { gridArea: '14/1/15/11', background: 'yellow' },
+        projectButtons: {
+          gridArea: '14/1/15/11',
+          background: 'yellow',
+          minWidth: '340px',
+        },
         detailsButtons: { gridArea: '15/1/16/11', background: 'brown' },
         hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
         github: {
@@ -190,6 +202,8 @@ export default function projects() {
         },
         projectButton: {
           flexGrow: 1,
+
+          // width: '30%',
         },
         viewButton: {
           height: '100%',
