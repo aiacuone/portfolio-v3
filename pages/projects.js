@@ -14,7 +14,13 @@ const useStylesRoot = makeStyles({
   detailButtons: {
     flexGrow: 1,
   },
-  viewButton: { height: '100%', background: 'white', whiteSpace: 'nowrap' },
+  viewButton: {
+    height: '100%',
+    whiteSpace: 'nowrap',
+    flexGrow: 1,
+    background: 'white',
+  },
+  projectButton: { flexGrow: 1 },
 })
 
 export default function projects() {
@@ -55,29 +61,31 @@ export default function projects() {
   }
 
   const ViewGitHubButton = () => {
-    return (
-      <Button fullWidth className={classesRoot.viewButton}>
-        View GitHub
-      </Button>
-    )
+    return <Button className={classesRoot.viewButton}>View GitHub</Button>
   }
 
   const ViewProjectButton = () => {
-    return (
-      <Button fullWidth className={classesRoot.viewButton}>
-        View Project
-      </Button>
-    )
+    return <Button className={classesRoot.viewButton}>View Project</Button>
   }
 
   const ViewButtons = () => {
     return (
-      <ButtonGroup>
+      <Grid container>
         <ViewGitHubButton />
         <ViewProjectButton />
-      </ButtonGroup>
+      </Grid>
     )
   }
+
+  const projectButtons = projectsArr.map((project) => {
+    return (
+      <Button
+        onClick={handleProjectChange}
+        className={classesRoot.projectButton}>
+        {projectsObj[project].name}
+      </Button>
+    )
+  })
 
   const Phone = () => {
     const Landscape = () => {
@@ -108,13 +116,6 @@ export default function projects() {
       const classes = useStyles()
 
       const Buttons = () => {
-        const projectButtons = projectsArr.map((project) => {
-          return (
-            <Button onClick={handleProjectChange}>
-              {projectsObj[project].name}
-            </Button>
-          )
-        })
         return (
           <Grid className={classes.buttonContainer} container>
             {projectButtons}
@@ -202,8 +203,6 @@ export default function projects() {
         },
         projectButton: {
           flexGrow: 1,
-
-          // width: '30%',
         },
         viewButton: {
           height: '100%',
@@ -211,18 +210,6 @@ export default function projects() {
       })
       const classes = useStyles()
 
-      const ProjectButtons = () => {
-        const projectButtons = projectsArr.map((project) => {
-          return (
-            <Button
-              onClick={handleProjectChange}
-              className={classes.projectButton}>
-              {projectsObj[project].name}
-            </Button>
-          )
-        })
-        return projectButtons
-      }
       return (
         <Grid className={classes.root}>
           <Grid
@@ -233,7 +220,7 @@ export default function projects() {
             PROJECTS
           </Grid>
           <Grid className={classes.projectButtons} container>
-            <ProjectButtons />
+            {projectButtons}
           </Grid>
           <Grid className={classes.detailsButtons} container>
             <DetailButtons />
@@ -297,81 +284,26 @@ export default function projects() {
         minWidth: minWidth,
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
-        gridTemplateRows: 'auto auto repeat(7,1fr) auto',
+        gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
       },
-      detailsButton: { color: 'black', background: 'white' },
+      detailsButton: { color: 'black', background: 'white', flexGrow: 1 },
+      headerContainer: {
+        gridArea: '1/1/2/11',
+        background: 'red',
+      },
+
+      projectButtonContainer: { gridArea: '2/1/3/11', background: 'purple' },
+      detailsButtonContainer: { gridArea: '3/1/4/11', background: 'grey' },
       mainContainer: {
-        gridArea: '3/1/10/11',
+        gridArea: '4/1/10/11',
         background: 'orange',
       },
-      buttonContainer: { gridArea: '1/1/2/11', background: 'purple' },
       viewButtonsContainer: {
         gridArea: '10/1/11/11',
         background: 'brown',
       },
-      headerContainer: {
-        gridArea: '2/1/3/11',
-        background: 'red',
-      },
     })
     const classes = useStyles()
-
-    const ProjectButtons = () => {
-      const projectButtons = projectsArr.map((project) => {
-        return (
-          <Button
-            onClick={handleProjectChange}
-            className={classes.projectButton}>
-            {projectsObj[project].name}
-          </Button>
-        )
-      })
-      return (
-        <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group">
-          {projectButtons}
-        </ButtonGroup>
-      )
-    }
-
-    const DetailButtons = () => {
-      return (
-        <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group">
-          <Button
-            onClick={console.log('basic details')}
-            className={classes.detailsButton}>
-            BASIC
-          </Button>
-          <Button
-            onClick={console.log('technical details')}
-            className={classes.detailsButton}>
-            TECHNICAL
-          </Button>
-        </ButtonGroup>
-      )
-    }
-
-    const ViewButtons = () => {
-      return (
-        <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group">
-          <Button
-            onClick={console.log('VIEW GITHuB')}
-            className={classes.detailsButton}>
-            VIEW GITHUB
-          </Button>
-          <Button
-            onClick={console.log('VIEW PROJECT')}
-            className={classes.detailsButton}>
-            VIEW PROJECT
-          </Button>
-        </ButtonGroup>
-      )
-    }
 
     return (
       <Grid
@@ -384,14 +316,12 @@ export default function projects() {
             container
             justifyContent="center"
             alignItems="center"
-            className={classes.buttonContainer}
+            className={classes.projectButtonContainer}
             direction="column">
-            <Grid item>
-              <ProjectButtons />
-            </Grid>
-            <Grid item>
-              <DetailButtons />
-            </Grid>
+            <Grid container>{projectButtons}</Grid>
+          </Grid>
+          <Grid container className={classes.detailsButtonContainer}>
+            <DetailButtons />
           </Grid>
           <Grid
             container

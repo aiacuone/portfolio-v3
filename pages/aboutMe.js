@@ -7,6 +7,7 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
+  button: { flexGrow: 1 },
 })
 
 export default function aboutMe() {
@@ -24,6 +25,14 @@ export default function aboutMe() {
     secondHeaderHeightPortrait,
   } = vars
   const { isPhone, isPhoneLandscape } = state.phone
+
+  const buttons = aboutMeArr.map((item) => {
+    return (
+      <Button className={classesRoot.button}>
+        {aboutMeObj[item].name.toUpperCase()}
+      </Button>
+    )
+  })
 
   const Normal = () => {
     const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
@@ -61,20 +70,6 @@ export default function aboutMe() {
     })
     const classes = useStyles()
 
-    const Buttons = () => {
-      const buttons = aboutMeArr.map((item) => {
-        return <Button>{aboutMeObj[item].name}</Button>
-      })
-
-      return (
-        <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group">
-          {buttons}
-        </ButtonGroup>
-      )
-    }
-
     return (
       <Grid
         container
@@ -96,7 +91,8 @@ export default function aboutMe() {
             container
             className={classes.buttonContainer}
             justifyContent="center">
-            <Buttons />
+            {/* <Buttons /> */}
+            {buttons}
           </Grid>
         </Grid>
       </Grid>
@@ -136,23 +132,9 @@ export default function aboutMe() {
           gridArea: '3/10/11/11',
           background: 'lime',
         },
-        button: {
-          background: 'red',
-        },
       })
       const classes = useStyles()
 
-      const buttons = aboutMeArr.map((item) => {
-        return (
-          <Grid
-            container
-            className={classes.button}
-            alignItems="center"
-            justifyContent="center">
-            {aboutMeObj[item].name.toUpperCase()}
-          </Grid>
-        )
-      })
       return (
         <Grid className={classes.root}>
           <Grid className={classes.header} container justifyContent="center">
@@ -217,19 +199,6 @@ export default function aboutMe() {
       })
       const classes = useStyles()
 
-      const buttons = aboutMeArr.map((item) => {
-        return (
-          <Grid item className={classes.button}>
-            <Grid
-              container
-              justifyContent="center"
-              alignItems="center"
-              className={classes.container}>
-              {aboutMeObj[item].name.toUpperCase()}
-            </Grid>
-          </Grid>
-        )
-      })
       return (
         <Grid className={classes.root}>
           <Grid
@@ -237,14 +206,14 @@ export default function aboutMe() {
             container
             justifyContent="center"
             alignItems="center">
-            SKILLS
+            ABOUT ME
           </Grid>
           <Grid
             className={classes.projectHeader}
             container
             justifyContent="center"
             alignItems="center">
-            SKILL HEADER
+            HOBBIES
           </Grid>
           <Grid
             className={classes.mainContainer}
