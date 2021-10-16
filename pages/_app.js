@@ -107,7 +107,7 @@ function MyApp({ Component, pageProps }) {
 
   const vars = {
     projectsArr,
-    hamburger: { height: 50, width: 50, padding: 10 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
+    hamburger: { height: 50, width: 50, padding: 7 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
     projectsObj,
     skillsObj,
     skillsArr,

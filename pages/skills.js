@@ -42,11 +42,11 @@ export default function skills() {
         gridTemplateRows: 'auto repeat(8,1fr) auto',
       },
       mainContainer: {
-        background: 'blue',
+        background: 'grey',
         gridArea: '2/1/10/11',
       },
       buttonContainer: {
-        background: 'grey',
+        background: 'blue',
         gridArea: '10/1/11/11',
         padding: '10px 0',
       },
@@ -76,7 +76,13 @@ export default function skills() {
             alignItems="center">
             HEADER
           </Grid>
-          <Grid container className={classes.mainContainer}></Grid>
+          <Grid
+            container
+            className={classes.mainContainer}
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
           <Grid
             container
             className={classes.buttonContainer}

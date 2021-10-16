@@ -125,7 +125,9 @@ export default function contactMe() {
       })
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header}>CONTACT ME</Grid>
+          <Grid className={classes.header} container justifyContent="center">
+            CONTACT ME
+          </Grid>
           <Grid
             justifyContent="space-around"
             alignItems="center"
@@ -134,7 +136,13 @@ export default function contactMe() {
             direction="column">
             {buttons}
           </Grid>
-          <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
           <Grid className={classes.hamburgerGap}></Grid>
         </Grid>
       )
@@ -185,8 +193,16 @@ export default function contactMe() {
       })
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header}>CONTACT ME</Grid>
-          <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
+          <Grid className={classes.header} container justifyContent="center">
+            CONTACT ME
+          </Grid>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
           <Grid
             className={classes.buttonContainer}
             container

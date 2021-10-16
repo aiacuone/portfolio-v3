@@ -117,11 +117,11 @@ export default function aboutMe() {
           minHeight: '150px',
         },
         header: {
-          gridArea: '1/1/2/11',
+          gridArea: '1/2/2/10',
           background: 'orange',
         },
         aboutMeHeader: {
-          gridArea: '2/1/3/11',
+          gridArea: '2/2/3/10',
           background: 'purple',
         },
         mainContainer: {
@@ -151,12 +151,26 @@ export default function aboutMe() {
       })
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header}>ABOUT ME</Grid>
-          <Grid className={classes.aboutMeHeader}>ABOUT ME HEADER</Grid>
+          <Grid className={classes.header} container justifyContent="center">
+            ABOUT ME
+          </Grid>
+          <Grid
+            className={classes.aboutMeHeader}
+            container
+            justifyContent="center"
+            alignItems="center">
+            ABOUT ME HEADER
+          </Grid>
           <Grid className={classes.buttonContainer} container>
             {buttons}
           </Grid>
-          <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
           <Grid className={classes.hamburgerGap}></Grid>
         </Grid>
       )

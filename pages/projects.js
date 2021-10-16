@@ -11,6 +11,10 @@ const useStylesRoot = makeStyles({
     width: '100%',
     background: 'green',
   },
+  detailButtons: {
+    flexGrow: 1,
+  },
+  viewButton: { height: '100%', background: 'white' },
 })
 
 export default function projects() {
@@ -29,6 +33,40 @@ export default function projects() {
     console.log('project change')
   }
 
+  const DetailButtons = () => {
+    return (
+      <Grid container>
+        <Button
+          onClick={console.log('basic details')}
+          className={classesRoot.detailButtons}>
+          BASIC
+        </Button>
+        <Button
+          onClick={console.log('technical details')}
+          className={classesRoot.detailButtons}>
+          TECHNICAL
+        </Button>
+      </Grid>
+    )
+  }
+
+  const ViewGitHubButton = () => {
+    return <Button className={classesRoot.viewButton}>View GitHub</Button>
+  }
+
+  const ViewProjectButton = () => {
+    return <Button className={classesRoot.viewButton}>View Project</Button>
+  }
+
+  const ViewButtons = () => {
+    return (
+      <ButtonGroup>
+        <ViewGitHubButton />
+        <ViewProjectButton />
+      </ButtonGroup>
+    )
+  }
+
   const Phone = () => {
     const Landscape = () => {
       const useStyles = makeStyles({
@@ -37,21 +75,23 @@ export default function projects() {
           height: '100%',
           width: '100%',
           gridTemplateRows: '20px repeat(9,1fr)',
-          gridTemplateColumns: '120px repeat(9,1fr)', //WIDTH OF BUTTONS CONTAINER
+          gridTemplateColumns: `120px repeat(8,1fr) ${
+            hamburger.width + hamburger.padding
+          }px`, //WIDTH OF BUTTONS CONTAINER
         },
         buttonContainer: {
           background: 'yellow',
           gridArea: '1/1/11/2',
         },
 
-        header: { gridArea: '1/2/2/11', background: 'red' },
-        projectHeader: { gridArea: '2/2/3/11', background: 'orange' },
+        header: { gridArea: '1/2/2/10', background: 'red' },
+        projectHeader: { gridArea: '2/2/3/10', background: 'orange' },
         mainContainer: {
-          gridArea: '3/2/10/11',
+          gridArea: '3/2/10/10',
           background: 'grey',
           marginRight: `${hamburger.width + hamburger.padding}px`,
         },
-        viewButtons: { gridArea: '10/2/11/11', background: 'brown' },
+        viewButtons: { gridArea: '10/2/11/10', background: 'brown' },
       })
       const classes = useStyles()
 
@@ -66,10 +106,7 @@ export default function projects() {
         return (
           <Grid className={classes.buttonContainer} container>
             {projectButtons}
-            <Button onClick={console.log('basic details')}>BASIC</Button>
-            <Button onClick={console.log('technical details')}>
-              TECHNICAL
-            </Button>
+            <DetailButtons />
           </Grid>
         )
       }
@@ -81,9 +118,27 @@ export default function projects() {
           <Grid className={classes.header} container justifyContent="center">
             PROJECTS
           </Grid>
-          <Grid className={classes.projectHeader}>PROJECT HEADER</Grid>
-          <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
-          <Grid className={classes.viewButtons}>VIEW BUTTONS</Grid>
+          <Grid
+            className={classes.projectHeader}
+            container
+            justifyContent="center"
+            alignItems="center">
+            PROJECT HEADER
+          </Grid>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
+          <Grid
+            container
+            alignItems="center"
+            className={classes.viewButtons}
+            justifyContent="center">
+            <ViewButtons />
+          </Grid>
           <Grid className={classes.hamburgerGap}></Grid>
         </Grid>
       )
@@ -106,25 +161,35 @@ export default function projects() {
         detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
         projectButtons: { gridArea: '15/1/16/11', background: 'brown' },
         hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
+        // github: {
+        //   height: '100%',
+        //   flexGrow: 1,
+        //   background: 'lime',
+        // },
         github: {
-          height: '100%',
-          flexGrow: 1,
-          background: 'lime',
+          gridArea: '1/1/2/2',
+          background: 'grey',
         },
-        project: { height: '100%', flexGrow: 1, background: 'green' },
+        project: { gridArea: '1/3/2/3', background: 'black' },
         hamburger: {
-          width: hamburger.width,
-          height: hamburger.height,
-          margin: `0px ${hamburger.padding}px`,
+          gridArea: '1/2/3/3',
+          background: 'red',
         },
         container: {
           height: '100%',
           width: '100%',
-          background: 'red',
-          display: 'flex',
+          background: 'purple',
+          display: 'grid',
+          gridTemplateColumns: `1fr ${
+            hamburger.width + hamburger.padding * 2
+          }px 1fr`,
+          gridTemplateRows: `1fr ${hamburger.padding}px`,
         },
         projectButton: {
           flexGrow: 1,
+        },
+        viewButton: {
+          height: '100%',
         },
       })
       const classes = useStyles()
@@ -143,24 +208,50 @@ export default function projects() {
       }
       return (
         <Grid className={classes.root}>
-          <Grid className={classes.header} container justifyContent="center">
+          <Grid
+            className={classes.header}
+            container
+            justifyContent="center"
+            alignItems="center">
             PROJECTS
           </Grid>
           <Grid className={classes.projectButtons} container>
             <ProjectButtons />
           </Grid>
-          <Grid className={classes.detailsButtons}>DETAIL BUTTONS</Grid>
-          <Grid className={classes.projectHeader}>PROJECT HEADER</Grid>
-          <Grid className={classes.mainContainer}>MAIN CONTAINER</Grid>
+          <Grid className={classes.detailsButtons}>
+            <DetailButtons />
+          </Grid>
+          <Grid
+            className={classes.projectHeader}
+            container
+            justifyContent="center"
+            alignItems="center">
+            PROJECT HEADER
+          </Grid>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
           <Grid className={classes.hamburgerGap}>
-            <Grid
-              container
-              className={classes.container}
-              justifyContent="center"
-              alignItems="center">
-              <Grid className={classes.github}>Github</Grid>
+            <Grid className={classes.container}>
+              <Grid
+                className={classes.github}
+                container
+                justifyContent="center"
+                alignItems="center">
+                <ViewGitHubButton />
+              </Grid>
               <Grid className={classes.hamburger} />
-              <Grid className={classes.project}>Project</Grid>
+              <Grid
+                className={classes.project}
+                container
+                justifyContent="center"
+                alignItems="center">
+                <ViewProjectButton />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
