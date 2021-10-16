@@ -16,6 +16,13 @@ export default function contactMe() {
   const { hamburger, contactsArr, contactsObj, secondHeaderHeightPortrait } =
     vars
 
+  const Buttons = ({ props }) => {
+    return contactsArr.map((item) => {
+      const { image } = contactsObj[item]
+      return <Image src={image} layout="fixed" {...props} />
+    })
+  }
+
   const Normal = () => {
     const useStyles = makeStyles({
       root: {
@@ -43,10 +50,6 @@ export default function contactMe() {
     })
     const classes = useStyles()
 
-    const buttons = contactsArr.map((item) => {
-      const { image } = contactsObj[item]
-      return <Image src={image} layout="fixed" height={40} width={40} />
-    })
     return (
       <Grid
         container
@@ -72,7 +75,7 @@ export default function contactMe() {
             container
             className={classes.buttonContainer}
             justifyContent="space-around">
-            {buttons}
+            <Buttons props={{ height: 40, width: 40 }} />
           </Grid>
         </Grid>
       </Grid>
@@ -111,19 +114,6 @@ export default function contactMe() {
       })
       const classes = useStyles()
 
-      const buttons = contactsArr.map((contact) => {
-        const { image } = contactsObj[contact]
-        return (
-          <Image
-            className={classes.button}
-            src={image}
-            layout="fixed"
-            width={40}
-            height={40}
-            alt=""
-          />
-        )
-      })
       return (
         <Grid className={classes.root}>
           <Grid
@@ -139,7 +129,7 @@ export default function contactMe() {
             className={classes.buttonContainer}
             container
             direction="column">
-            {buttons}
+            <Buttons props={{ height: 40, width: 40 }} />
           </Grid>
           <Grid
             className={classes.mainContainer}
@@ -183,19 +173,6 @@ export default function contactMe() {
       })
       const classes = useStyles()
 
-      const buttons = contactsArr.map((contact) => {
-        const { image } = contactsObj[contact]
-        return (
-          <Image
-            className={classes.button}
-            src={image}
-            layout="fixed"
-            width={40}
-            height={40}
-            alt=""
-          />
-        )
-      })
       return (
         <Grid className={classes.root}>
           <Grid
@@ -217,7 +194,7 @@ export default function contactMe() {
             container
             justifyContent="space-around"
             alignItems="center">
-            {buttons}
+            <Buttons props={{ height: 40, width: 40 }} />
           </Grid>
           <Grid className={classes.hamburgerGap} />
         </Grid>

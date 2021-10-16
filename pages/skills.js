@@ -6,6 +6,8 @@ import Image from 'next/image'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
+  buttonContainer1: {},
+  buttonContainer2: {},
 })
 
 export default function skills() {
@@ -22,13 +24,46 @@ export default function skills() {
     headerHeightLandscape,
     secondHeaderHeightLandscape,
   } = vars
-  const { isPhone, isPhoneLandscape } = state.phone
+  const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
 
   const Buttons = ({ props }) => {
-    return skillsArr.map((skill) => {
-      const { image } = skillsObj[skill]
-      return <Image src={image} layout="fixed" {...props} />
-    })
+    const Portrait = () => {
+      const buttons1 = skillsArr.map((skill, index) => {
+        const skillObj = skillsObj[skill]
+        if (index >= skillsArr.length / 2) return
+        return <Image src={skillObj.image} layout="fixed" {...props} />
+      })
+
+      const buttons2 = skillsArr.map((skill, index) => {
+        const skillObj = skillsObj[skill]
+        if (index < skillsArr.length / 2) return
+        return <Image src={skillObj.image} layout="fixed" {...props} />
+      })
+
+      return (
+        <>
+          <Grid
+            container
+            className={classesRoot.buttonContainer1}
+            justifyContent="space-around">
+            {buttons1}
+          </Grid>
+          <Grid
+            container
+            className={classesRoot.buttonContainer2}
+            justifyContent="space-around">
+            {buttons2}
+          </Grid>
+        </>
+      )
+    }
+    const Other = () => {
+      return skillsArr.map((skill) => {
+        const { image } = skillsObj[skill]
+        return <Image src={image} layout="fixed" {...props} />
+      })
+    }
+    return isPhonePortrait ? <Portrait /> : <Other />
   }
 
   const Normal = () => {
@@ -106,7 +141,7 @@ export default function skills() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
+          gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
           gridTemplateColumns: `repeat(9,1fr) ${
             hamburger.padding * 2 + hamburger.width
           }px`,
@@ -197,45 +232,9 @@ export default function skills() {
           gridArea: '20/1/21/11',
           background: 'brown',
         },
-        buttonContainer1: {},
-        buttonContainer2: {},
       })
       const classes = useStyles()
 
-      const Buttons = () => {
-        const buttons1 = skillsArr.map((skill, index) => {
-          const skillObj = skillsObj[skill]
-          if (index >= skillsArr.length / 2) return
-          return (
-            <Image src={skillObj.image} layout="fixed" height={35} width={35} />
-          )
-        })
-
-        const buttons2 = skillsArr.map((skill, index) => {
-          const skillObj = skillsObj[skill]
-          if (index < skillsArr.length / 2) return
-          return (
-            <Image src={skillObj.image} layout="fixed" height={35} width={35} />
-          )
-        })
-
-        return (
-          <>
-            <Grid
-              container
-              className={classes.buttonContainer1}
-              justifyContent="space-around">
-              {buttons1}
-            </Grid>
-            <Grid
-              container
-              className={classes.buttonContainer2}
-              justifyContent="space-around">
-              {buttons2}
-            </Grid>
-          </>
-        )
-      }
       return (
         <Grid className={classes.root}>
           <Grid
@@ -264,7 +263,7 @@ export default function skills() {
             container
             justifyContent="space-around"
             alignItems="center">
-            <Buttons />
+            <Buttons props={{ height: 35, width: 35 }} />
           </Grid>
           <Grid className={classes.hamburgerGap} />
         </Grid>
@@ -273,7 +272,6 @@ export default function skills() {
 
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
-
   return (
     <Grid container className={classesRoot.root}>
       {isPhone ? <Phone /> : <Normal />}

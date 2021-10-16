@@ -26,13 +26,15 @@ export default function aboutMe() {
   } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
-  const buttons = aboutMeArr.map((item) => {
-    return (
-      <Button className={classesRoot.button}>
-        {aboutMeObj[item].name.toUpperCase()}
-      </Button>
-    )
-  })
+  const Buttons = () => {
+    return aboutMeArr.map((item) => {
+      return (
+        <Button className={classesRoot.button}>
+          {aboutMeObj[item].name.toUpperCase()}
+        </Button>
+      )
+    })
+  }
 
   const Normal = () => {
     const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
@@ -91,8 +93,7 @@ export default function aboutMe() {
             container
             className={classes.buttonContainer}
             justifyContent="center">
-            {/* <Buttons /> */}
-            {buttons}
+            <Buttons />
           </Grid>
         </Grid>
       </Grid>
@@ -148,7 +149,7 @@ export default function aboutMe() {
             ABOUT ME HEADER
           </Grid>
           <Grid className={classes.buttonContainer} container>
-            {buttons}
+            <Buttons />
           </Grid>
           <Grid
             className={classes.mainContainer}
@@ -223,7 +224,7 @@ export default function aboutMe() {
             MAIN CONTAINER
           </Grid>
           <Grid className={classes.buttonContainer} container>
-            {buttons}
+            <Buttons />
           </Grid>
           <Grid className={classes.hamburgerGap} />
         </Grid>

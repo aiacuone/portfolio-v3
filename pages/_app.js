@@ -14,11 +14,11 @@ function MyApp({ Component, pageProps }) {
   const isPhoneHeightPortrait = useMediaQuery('(max-height:920px)')
   const isPhoneWidthLandscape = useMediaQuery('(max-width:920px')
   const isPhoneHeightLandscape = useMediaQuery('(max-height:430px')
-  const isPhonePotrait =
+  const isPhonePortrait =
     isPhoneWidthPortrait && isPhoneHeightPortrait ? true : false
   const isPhoneLandscape =
     isPhoneWidthLandscape && isPhoneHeightLandscape ? true : false
-  const isPhone = isPhonePotrait || isPhoneLandscape ? true : false
+  const isPhone = isPhonePortrait || isPhoneLandscape ? true : false
 
   const projectsObj = {
     cheapshark: { name: 'Cheapshark', new: true },
@@ -98,7 +98,7 @@ function MyApp({ Component, pageProps }) {
 
   const normalPageContainerDimensions = {
     maxWidth: '1300px',
-    minWidth: '600px',
+    minWidth: '650px',
     maxHeight: '1200px',
     minHeight: '500px',
     width: '70vw',
@@ -128,7 +128,7 @@ function MyApp({ Component, pageProps }) {
     phone: {
       isPhone,
       isPhoneLandscape,
-      isPhonePotrait,
+      isPhonePortrait,
     },
     showViewButtons,
   }

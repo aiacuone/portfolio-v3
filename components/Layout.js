@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import { UserContext } from '../utils/UserContext'
 import Link from 'next/link'
-// import MenuIcon from '@mui/icons-material/Menu'
 
 export default function Layout({ children }) {
   const { state, vars } = useContext(UserContext)
@@ -36,9 +35,7 @@ export default function Layout({ children }) {
       hamburger: {
         position: 'absolute',
         bottom: !isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM BOTTOM
-        // bottom: !isPhoneLandscape && 0,
         right: isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM RIGHT
-        // right: isPhoneLandscape && 0,
         background: 'orange',
         height: hamburgerHeight,
         width: hamburgerWidth,
@@ -68,7 +65,6 @@ export default function Layout({ children }) {
         height: '100%',
         width: '100%',
         display: 'grid',
-        // background: 'blue',
         gridTemplateRows: '40px repeat(10,1fr)', //HEADER HEIGHT
         gridTemplateColumns: 'repeat(10,1fr)',
         minHeight: '600px',
@@ -133,11 +129,7 @@ export default function Layout({ children }) {
     return (
       <Grid container className={classes.root}>
         <Grid className={classes.header}>
-          <Grid
-            container
-            // justifyContent="flexEnd"
-            alignItems="center"
-            className={classes.linksHeader}>
+          <Grid container alignItems="center" className={classes.linksHeader}>
             <Grid
               container
               spacing={3}
