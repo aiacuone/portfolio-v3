@@ -24,6 +24,13 @@ export default function skills() {
   } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
+  const Buttons = ({ props }) => {
+    return skillsArr.map((skill) => {
+      const { image } = skillsObj[skill]
+      return <Image src={image} layout="fixed" {...props} />
+    })
+  }
+
   const Normal = () => {
     const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
       container
@@ -60,12 +67,6 @@ export default function skills() {
       },
     })
     const classes = useStyles()
-    const buttons = skillsArr.map((skill) => {
-      const skillObj = skillsObj[skill]
-      return (
-        <Image src={skillObj.image} layout="fixed" height={45} width={45} />
-      )
-    })
     return (
       <Grid
         container
@@ -91,7 +92,7 @@ export default function skills() {
             container
             className={classes.buttonContainer}
             justifyContent="space-around">
-            {buttons}
+            <Buttons props={{ height: 45, width: 45 }} />
           </Grid>
         </Grid>
       </Grid>
@@ -130,12 +131,6 @@ export default function skills() {
       })
       const classes = useStyles()
 
-      const buttons = skillsArr.map((skill) => {
-        const skillObj = skillsObj[skill]
-        return (
-          <Image src={skillObj.image} layout="fixed" height={35} width={35} />
-        )
-      })
       return (
         <Grid className={classes.root}>
           <Grid
@@ -164,7 +159,7 @@ export default function skills() {
             container
             justifyContent="space-around"
             alignItems="center">
-            {buttons}
+            <Buttons props={{ height: 35, width: 35 }} />
           </Grid>
         </Grid>
       )
