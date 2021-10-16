@@ -112,7 +112,7 @@ export default function aboutMe() {
           display: 'grid',
           gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
           gridTemplateColumns: `100px repeat(8,1fr) ${
-            hamburger.padding + hamburger.width
+            hamburger.padding * 2 + hamburger.width
           }px`, //WIDTH OF BUTTON CONTAINER
         },
         buttonContainer: {
@@ -187,7 +187,7 @@ export default function aboutMe() {
           height: '100%',
           display: 'grid',
           gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(16,1fr) 50px ${
-            hamburger.padding + hamburger.width
+            hamburger.padding * 2 + hamburger.width
           }px`,
           gridTemplateColumns: 'repeat(10,1fr)',
         },

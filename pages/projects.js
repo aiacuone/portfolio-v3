@@ -80,7 +80,7 @@ export default function projects() {
           width: '100%',
           gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
           gridTemplateColumns: `120px repeat(8,1fr) ${
-            hamburger.width + hamburger.padding
+            hamburger.width + hamburger.padding * 2
           }px`, //WIDTH OF BUTTONS CONTAINER
         },
         buttonContainer: {
@@ -160,14 +160,14 @@ export default function projects() {
           width: '100%',
           gridTemplateColumns: 'repeat(10,1fr)',
           gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(10,1fr) 45px 45px 45px ${
-            hamburger.padding + hamburger.height
+            hamburger.padding * 2 + hamburger.height
           }px`,
         },
         header: { gridArea: '1/1/2/11' },
         projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
         mainContainer: { gridArea: '3/1/14/11', background: 'grey' },
-        detailsButtons: { gridArea: '14/1/15/11', background: 'yellow' },
-        projectButtons: { gridArea: '15/1/16/11', background: 'brown' },
+        projectButtons: { gridArea: '14/1/15/11', background: 'yellow' },
+        detailsButtons: { gridArea: '15/1/16/11', background: 'brown' },
         hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
         github: {
           gridArea: '1/1/2/2',
@@ -221,7 +221,7 @@ export default function projects() {
           <Grid className={classes.projectButtons} container>
             <ProjectButtons />
           </Grid>
-          <Grid className={classes.detailsButtons}>
+          <Grid className={classes.detailsButtons} container>
             <DetailButtons />
           </Grid>
           <Grid
