@@ -27,18 +27,22 @@ export default function skills() {
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
 
   const Buttons = ({ size }) => {
-    const props = { height: size, width: size }
+    const SkillsButton = ({ src }) => {
+      const props = { height: size, width: size }
+      return <Image src={src} layout="fixed" {...props} />
+    }
+
     const Portrait = () => {
       const buttons1 = skillsArr.map((skill, index) => {
-        const skillObj = skillsObj[skill]
+        const { image } = skillsObj[skill]
         if (index >= skillsArr.length / 2) return
-        return <Image src={skillObj.image} layout="fixed" {...props} />
+        return <SkillsButton src={image} />
       })
 
       const buttons2 = skillsArr.map((skill, index) => {
-        const skillObj = skillsObj[skill]
+        const { image } = skillsObj[skill]
         if (index < skillsArr.length / 2) return
-        return <Image src={skillObj.image} layout="fixed" {...props} />
+        return <SkillsButton src={image} />
       })
 
       return (
@@ -61,7 +65,7 @@ export default function skills() {
     const Other = () => {
       return skillsArr.map((skill) => {
         const { image } = skillsObj[skill]
-        return <Image src={image} layout="fixed" {...props} />
+        return <SkillsButton src={image} />
       })
     }
     return isPhonePortrait ? <Portrait /> : <Other />
@@ -158,6 +162,7 @@ export default function skills() {
         gridArea: '9/1/11/10',
         background: 'blue',
         minWidth: '600px',
+        flexWrap: 'nowrap',
       },
       container: {
         gridArea: '3/1/9/10',

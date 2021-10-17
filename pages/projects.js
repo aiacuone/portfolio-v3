@@ -13,14 +13,18 @@ const useStylesRoot = makeStyles({
   },
   detailButtons: {
     flexGrow: 1,
+    // overflow: 'hidden',
   },
   viewButton: {
     height: '100%',
     whiteSpace: 'nowrap',
     flexGrow: 1,
     background: 'white',
+    overflow: 'hidden',
   },
+
   projectButton: { flexGrow: 1 },
+  viewButtonContainer: { flexWrap: 'nowrap' },
 })
 
 export default function projects() {
@@ -70,7 +74,7 @@ export default function projects() {
 
   const ViewButtons = () => {
     return (
-      <Grid container>
+      <Grid container className={classesRoot.viewButtonContainer}>
         <ViewGitHubButton />
         <ViewProjectButton />
       </Grid>
@@ -101,6 +105,7 @@ export default function projects() {
       buttonContainer: {
         background: 'yellow',
         gridArea: '1/1/11/2',
+        zIndex: 2,
       },
 
       header: { gridArea: '1/2/2/10', background: 'red' },
@@ -111,6 +116,11 @@ export default function projects() {
         marginRight: `${hamburger.width + hamburger.padding}px`,
       },
       viewButtons: { gridArea: '10/2/11/10', background: 'brown' },
+      hamburgerGap: {
+        gridArea: '1/10/11/11',
+        background: 'purple',
+        zIndex: 2,
+      },
     })
     const classes = useStyles()
 
@@ -155,7 +165,7 @@ export default function projects() {
           justifyContent="center">
           <ViewButtons />
         </Grid>
-        <Grid className={classes.hamburgerGap}></Grid>
+        <Grid className={classes.hamburgerGap} />
       </Grid>
     )
   }
