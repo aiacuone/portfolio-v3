@@ -7,7 +7,7 @@ import { images as skillsImages } from '../public/images/skills'
 import { images as contactImages } from '../public/images/contact'
 
 function MyApp({ Component, pageProps }) {
-  const [windowHeight, setWindowHeight] = useState()
+  const [windowHeight, setWindowHeight] = useState('100%')
   const [showViewButtons, setShowViewButtons] = useState(false)
 
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')
@@ -136,13 +136,10 @@ function MyApp({ Component, pageProps }) {
   const setState = { setWindowHeight, setShowViewButtons }
 
   useEffect(() => {
-    setWindowHeight(window.innerHeight)
-
     function handleResize() {
       setWindowHeight(window.innerHeight + 'px')
     }
     window.addEventListener('resize', handleResize)
-
     return () => {
       window.removeEventListener('resize', handleResize)
     }
