@@ -16,8 +16,8 @@ export default function Layout({ children }) {
 
   const useStylesRoot = makeStyles({
     root: {
-      width: '100vw',
-      height: windowHeight,
+      width: '100%',
+      height: '100%',
     },
   })
 
@@ -27,8 +27,8 @@ export default function Layout({ children }) {
     const useStyles = makeStyles({
       root: {
         position: 'relative',
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: windowHeight,
         minHeight: '270px',
         minWidth: '270px',
       },

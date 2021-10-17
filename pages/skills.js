@@ -26,7 +26,8 @@ export default function skills() {
   } = vars
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
 
-  const Buttons = ({ props }) => {
+  const Buttons = ({ size }) => {
+    const props = { height: size, width: size }
     const Portrait = () => {
       const buttons1 = skillsArr.map((skill, index) => {
         const skillObj = skillsObj[skill]
@@ -127,151 +128,152 @@ export default function skills() {
             container
             className={classes.buttonContainer}
             justifyContent="space-around">
-            <Buttons props={{ height: 45, width: 45 }} />
+            <Buttons size={45} />
           </Grid>
         </Grid>
       </Grid>
     )
   }
 
+  const Landscape = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
+        gridTemplateColumns: `repeat(9,1fr) ${
+          hamburger.padding * 2 + hamburger.width
+        }px`,
+      },
+      header: {
+        gridArea: '1/1/2/10',
+        background: 'red',
+      },
+      projectHeader: {
+        gridArea: '2/1/3/10',
+        background: 'purple',
+      },
+      buttonContainer: {
+        gridArea: '9/1/11/10',
+        background: 'blue',
+        minWidth: '600px',
+      },
+      container: {
+        gridArea: '3/1/9/10',
+        background: 'grey',
+      },
+    })
+    const classes = useStyles()
+
+    return (
+      <Grid className={classes.root}>
+        <Grid
+          className={classes.header}
+          container
+          justifyContent="center"
+          alignItems="center">
+          SKILLS
+        </Grid>
+        <Grid
+          className={classes.projectHeader}
+          container
+          justifyContent="center"
+          alignItems="center">
+          SKILL HEADER
+        </Grid>
+        <Grid
+          className={classes.container}
+          container
+          justifyContent="center"
+          alignItems="center">
+          MAIN CONTAINER
+        </Grid>
+        <Grid
+          className={classes.buttonContainer}
+          container
+          justifyContent="space-around"
+          alignItems="center">
+          <Buttons size={35} />
+        </Grid>
+      </Grid>
+    )
+  }
+
+  const Portrait = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(16,1fr) 110px ${
+          hamburger.padding * 2 + hamburger.width
+        }px`,
+        gridTemplateColumns: 'repeat(10,1fr)',
+      },
+      header: {
+        gridArea: '1/1/2/11',
+        background: 'blue',
+      },
+      projectHeader: {
+        gridArea: '2/1/3/11',
+        background: 'purple',
+      },
+      mainContainer: {
+        gridArea: '3/1/19/11',
+        background: 'orange',
+      },
+      buttonContainer: {
+        gridArea: '19/1/20/11',
+        background: 'yellow',
+        minWidth: '250px',
+      },
+      hamburgerGap: {
+        gridArea: '20/1/21/11',
+        background: 'brown',
+      },
+    })
+    const classes = useStyles()
+
+    return (
+      <Grid className={classes.root}>
+        <Grid
+          className={classes.header}
+          container
+          justifyContent="center"
+          alignItems="center">
+          SKILLS
+        </Grid>
+        <Grid
+          className={classes.projectHeader}
+          container
+          justifyContent="center"
+          alignItems="center">
+          SKILL HEADER
+        </Grid>
+        <Grid
+          className={classes.mainContainer}
+          container
+          justifyContent="center"
+          alignItems="center">
+          MAIN CONTAINER
+        </Grid>
+        <Grid
+          className={classes.buttonContainer}
+          container
+          justifyContent="space-around"
+          alignItems="center">
+          <Buttons size={35} />
+        </Grid>
+        <Grid className={classes.hamburgerGap} />
+      </Grid>
+    )
+  }
+
   const Phone = () => {
-    const Landscape = () => {
-      const useStyles = makeStyles({
-        root: {
-          width: '100%',
-          height: '100%',
-          display: 'grid',
-          gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
-          gridTemplateColumns: `repeat(9,1fr) ${
-            hamburger.padding * 2 + hamburger.width
-          }px`,
-        },
-        header: {
-          gridArea: '1/1/2/10',
-          background: 'red',
-        },
-        projectHeader: {
-          gridArea: '2/1/3/10',
-          background: 'purple',
-        },
-        buttonContainer: {
-          gridArea: '9/1/11/10',
-          background: 'blue',
-          minWidth: '600px',
-        },
-        container: {
-          gridArea: '3/1/9/10',
-          background: 'grey',
-        },
-      })
-      const classes = useStyles()
-
-      return (
-        <Grid className={classes.root}>
-          <Grid
-            className={classes.header}
-            container
-            justifyContent="center"
-            alignItems="center">
-            SKILLS
-          </Grid>
-          <Grid
-            className={classes.projectHeader}
-            container
-            justifyContent="center"
-            alignItems="center">
-            SKILL HEADER
-          </Grid>
-          <Grid
-            className={classes.container}
-            container
-            justifyContent="center"
-            alignItems="center">
-            MAIN CONTAINER
-          </Grid>
-          <Grid
-            className={classes.buttonContainer}
-            container
-            justifyContent="space-around"
-            alignItems="center">
-            <Buttons props={{ height: 35, width: 35 }} />
-          </Grid>
-        </Grid>
-      )
-    }
-
-    const Portrait = () => {
-      const useStyles = makeStyles({
-        root: {
-          width: '100%',
-          height: '100%',
-          display: 'grid',
-          gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(16,1fr) 110px ${
-            hamburger.padding * 2 + hamburger.width
-          }px`,
-          gridTemplateColumns: 'repeat(10,1fr)',
-        },
-        header: {
-          gridArea: '1/1/2/11',
-          background: 'blue',
-        },
-        projectHeader: {
-          gridArea: '2/1/3/11',
-          background: 'purple',
-        },
-        mainContainer: {
-          gridArea: '3/1/19/11',
-          background: 'orange',
-        },
-        buttonContainer: {
-          gridArea: '19/1/20/11',
-          background: 'yellow',
-          minWidth: '250px',
-        },
-        hamburgerGap: {
-          gridArea: '20/1/21/11',
-          background: 'brown',
-        },
-      })
-      const classes = useStyles()
-
-      return (
-        <Grid className={classes.root}>
-          <Grid
-            className={classes.header}
-            container
-            justifyContent="center"
-            alignItems="center">
-            SKILLS
-          </Grid>
-          <Grid
-            className={classes.projectHeader}
-            container
-            justifyContent="center"
-            alignItems="center">
-            SKILL HEADER
-          </Grid>
-          <Grid
-            className={classes.mainContainer}
-            container
-            justifyContent="center"
-            alignItems="center">
-            MAIN CONTAINER
-          </Grid>
-          <Grid
-            className={classes.buttonContainer}
-            container
-            justifyContent="space-around"
-            alignItems="center">
-            <Buttons props={{ height: 35, width: 35 }} />
-          </Grid>
-          <Grid className={classes.hamburgerGap} />
-        </Grid>
-      )
-    }
-
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
+
   return (
     <Grid container className={classesRoot.root}>
       {isPhone ? <Phone /> : <Normal />}

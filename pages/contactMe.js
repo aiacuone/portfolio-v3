@@ -16,7 +16,8 @@ export default function contactMe() {
   const { hamburger, contactsArr, contactsObj, secondHeaderHeightPortrait } =
     vars
 
-  const Buttons = ({ props }) => {
+  const Buttons = ({ size }) => {
+    const props = { height: size, width: size }
     return contactsArr.map((item) => {
       const { image } = contactsObj[item]
       return <Image src={image} layout="fixed" {...props} />
@@ -75,132 +76,132 @@ export default function contactMe() {
             container
             className={classes.buttonContainer}
             justifyContent="space-around">
-            <Buttons props={{ height: 40, width: 40 }} />
+            <Buttons size={40} />
           </Grid>
         </Grid>
       </Grid>
     )
   }
 
+  const Landscape = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: `${secondHeaderHeightPortrait}px  repeat(8,1fr)`,
+        gridTemplateColumns: `80px repeat(8,1fr) ${
+          hamburger.padding * 2 + hamburger.width
+        }px`, //WIDTH OF BUTTON CONTAINER
+      },
+      buttonContainer: {
+        gridArea: '1/1/11/2',
+        background: 'blue',
+      },
+      header: {
+        gridArea: '1/2/2/10',
+        background: 'orange',
+      },
+      mainContainer: {
+        gridArea: '2/2/11/10',
+        background: 'grey',
+      },
+      hamburgerGap: {
+        gridArea: '2/10/11/11',
+        background: 'lime',
+      },
+      button: {},
+    })
+    const classes = useStyles()
+
+    return (
+      <Grid className={classes.root}>
+        <Grid
+          className={classes.header}
+          container
+          justifyContent="center"
+          alignItems="center">
+          CONTACT ME
+        </Grid>
+        <Grid
+          justifyContent="space-around"
+          alignItems="center"
+          className={classes.buttonContainer}
+          container
+          direction="column">
+          <Buttons size={35} />
+        </Grid>
+        <Grid
+          className={classes.mainContainer}
+          container
+          justifyContent="center"
+          alignItems="center">
+          MAIN CONTAINER
+        </Grid>
+        <Grid className={classes.hamburgerGap}></Grid>
+      </Grid>
+    )
+  }
+
+  const Portrait = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) 70px ${
+          hamburger.padding * 2 + hamburger.width
+        }px `,
+        gridTemplateColumns: 'repeat(10,1fr)',
+      },
+      header: {
+        gridArea: '1/1/2/11',
+        background: 'blue',
+      },
+      mainContainer: {
+        gridArea: '2/1/19/11',
+        background: 'orange',
+      },
+      buttonContainer: {
+        gridArea: '19/1/20/11',
+        background: 'yellow',
+      },
+      hamburgerGap: {
+        gridArea: '20/1/21/11',
+        background: 'brown',
+      },
+    })
+    const classes = useStyles()
+
+    return (
+      <Grid className={classes.root}>
+        <Grid
+          className={classes.header}
+          container
+          justifyContent="center"
+          alignItems="center">
+          CONTACT ME
+        </Grid>
+        <Grid
+          className={classes.mainContainer}
+          container
+          justifyContent="center"
+          alignItems="center">
+          MAIN CONTAINER
+        </Grid>
+        <Grid
+          className={classes.buttonContainer}
+          container
+          justifyContent="space-around"
+          alignItems="center">
+          <Buttons size={35} />
+        </Grid>
+        <Grid className={classes.hamburgerGap} />
+      </Grid>
+    )
+  }
+
   const Phone = () => {
-    const Landscape = () => {
-      const useStyles = makeStyles({
-        root: {
-          width: '100%',
-          height: '100%',
-          display: 'grid',
-          gridTemplateRows: `${secondHeaderHeightPortrait}px  repeat(8,1fr)`,
-          gridTemplateColumns: `80px repeat(8,1fr) ${
-            hamburger.padding * 2 + hamburger.width
-          }px`, //WIDTH OF BUTTON CONTAINER
-        },
-        buttonContainer: {
-          gridArea: '1/1/11/2',
-          background: 'blue',
-        },
-        header: {
-          gridArea: '1/2/2/10',
-          background: 'orange',
-        },
-        mainContainer: {
-          gridArea: '2/2/11/10',
-          background: 'grey',
-        },
-        hamburgerGap: {
-          gridArea: '2/10/11/11',
-          background: 'lime',
-        },
-        button: {},
-      })
-      const classes = useStyles()
-
-      return (
-        <Grid className={classes.root}>
-          <Grid
-            className={classes.header}
-            container
-            justifyContent="center"
-            alignItems="center">
-            CONTACT ME
-          </Grid>
-          <Grid
-            justifyContent="space-around"
-            alignItems="center"
-            className={classes.buttonContainer}
-            container
-            direction="column">
-            <Buttons props={{ height: 40, width: 40 }} />
-          </Grid>
-          <Grid
-            className={classes.mainContainer}
-            container
-            justifyContent="center"
-            alignItems="center">
-            MAIN CONTAINER
-          </Grid>
-          <Grid className={classes.hamburgerGap}></Grid>
-        </Grid>
-      )
-    }
-
-    const Portrait = () => {
-      const useStyles = makeStyles({
-        root: {
-          width: '100%',
-          height: '100%',
-          display: 'grid',
-          gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) 70px ${
-            hamburger.padding * 2 + hamburger.width
-          }px `,
-          gridTemplateColumns: 'repeat(10,1fr)',
-        },
-        header: {
-          gridArea: '1/1/2/11',
-          background: 'blue',
-        },
-        mainContainer: {
-          gridArea: '2/1/19/11',
-          background: 'orange',
-        },
-        buttonContainer: {
-          gridArea: '19/1/20/11',
-          background: 'yellow',
-        },
-        hamburgerGap: {
-          gridArea: '20/1/21/11',
-          background: 'brown',
-        },
-      })
-      const classes = useStyles()
-
-      return (
-        <Grid className={classes.root}>
-          <Grid
-            className={classes.header}
-            container
-            justifyContent="center"
-            alignItems="center">
-            CONTACT ME
-          </Grid>
-          <Grid
-            className={classes.mainContainer}
-            container
-            justifyContent="center"
-            alignItems="center">
-            MAIN CONTAINER
-          </Grid>
-          <Grid
-            className={classes.buttonContainer}
-            container
-            justifyContent="space-around"
-            alignItems="center">
-            <Buttons props={{ height: 40, width: 40 }} />
-          </Grid>
-          <Grid className={classes.hamburgerGap} />
-        </Grid>
-      )
-    }
-
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
 
