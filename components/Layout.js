@@ -23,14 +23,18 @@ export default function Layout({ children }) {
 
   const classesRoot = useStylesRoot()
 
+  console.log(windowHeight, 'windowHeight')
+
   const Phone = () => {
     const useStyles = makeStyles({
       root: {
         position: 'relative',
         width: '100vw',
+        // height: `${windowHeight}px`,
         height: windowHeight,
         minHeight: '270px',
         minWidth: '270px',
+        // background: 'red',
       },
       hamburger: {
         position: 'absolute',
