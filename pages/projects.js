@@ -119,7 +119,7 @@ export default function projects() {
       hamburgerGap: {
         gridArea: '1/10/11/11',
         background: 'purple',
-        zIndex: 2,
+        zIndex: 1,
       },
     })
     const classes = useStyles()

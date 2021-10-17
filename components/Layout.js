@@ -39,7 +39,7 @@ export default function Layout({ children }) {
         background: 'orange',
         height: hamburgerHeight,
         width: hamburgerWidth,
-        zIndex: 1,
+        zIndex: 100,
       },
     })
 
