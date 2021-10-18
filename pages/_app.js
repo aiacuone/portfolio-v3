@@ -136,7 +136,7 @@ function MyApp({ Component, pageProps }) {
   const setState = { setWindowHeight, setShowViewButtons }
 
   useEffect(() => {
-    setWindowHeight(window.innerHeight)
+    setWindowHeight(window.innerHeight + 'px')
 
     function handleResize() {
       setWindowHeight(window.innerHeight + 'px')
