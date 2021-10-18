@@ -38,6 +38,9 @@ export default function skills() {
   const { setSelections } = setState
 
   const selection = selections['skills']
+  const selectedSkill = skillsObj[skillsArr[selection]]
+  const { getDetails } = selectedSkill
+  const mainDetails = getDetails()
 
   const Buttons = ({ size }) => {
     const SkillsButton = ({ src, index }) => {
@@ -158,7 +161,7 @@ export default function skills() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            MAIN CONTAINER
+            {mainDetails}
           </Grid>
           <Grid container className={classes.buttonContainer}>
             <Buttons size={45} />
@@ -221,7 +224,7 @@ export default function skills() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          {mainDetails}
         </Grid>
         <Grid
           className={classes.buttonContainer}
@@ -290,7 +293,7 @@ export default function skills() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          {mainDetails}
         </Grid>
         <Grid
           className={classes.buttonContainer}

@@ -22,7 +22,8 @@ export default function projects() {
   const { setSelections } = setState
 
   const selection = selections['projects']
-  console.log(selection)
+  const selectedProject = projectsObj[projectsArr[selection.project]]
+  const { details } = selectedProject
 
   const useStylesRoot = makeStyles({
     root: {
@@ -127,6 +128,9 @@ export default function projects() {
     )
   })
 
+  const mainDetails =
+    selections['projects'].details === 0 ? details.basic : details.technical
+
   const Landscape = () => {
     const useStyles = makeStyles({
       root: {
@@ -192,7 +196,7 @@ export default function projects() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          {mainDetails}
         </Grid>
         <Grid
           container
@@ -282,7 +286,7 @@ export default function projects() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          {mainDetails}
         </Grid>
         <Grid className={classes.hamburgerGap}>
           <Grid className={classes.container}>
@@ -378,7 +382,7 @@ export default function projects() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            MAIN CONTAINER
+            {mainDetails}
           </Grid>
           <Grid
             container

@@ -30,9 +30,30 @@ function MyApp({ Component, pageProps }) {
   const isPhone = isPhonePortrait || isPhoneLandscape ? true : false
 
   const projectsObj = {
-    cheapshark: { name: 'Cheapshark', new: true },
-    TekkenNet: { name: 'Tekken-Net', new: true },
-    noteTaker: { name: 'Note Taker', new: false },
+    cheapshark: {
+      name: 'Cheapshark',
+      new: true,
+      details: {
+        basic: 'CHEAPSHARK BASIC DETAILS',
+        technical: 'CHEAPSHARK TECHNICAL DETAILS',
+      },
+    },
+    TekkenNet: {
+      name: 'Tekken-Net',
+      new: true,
+      details: {
+        basic: 'TEKKEN NET BASIC DETAILS',
+        technical: 'TEKKEN NET TECHNICAL DETAILS',
+      },
+    },
+    noteTaker: {
+      name: 'Note Taker',
+      new: false,
+      details: {
+        basic: 'NOTE TAKER BASIC DETAILS',
+        technical: 'NOTE TAKER TECHNICAL DETAILS',
+      },
+    },
   }
 
   const projectsArr = Object.keys(projectsObj).map((project) => project)
@@ -55,22 +76,97 @@ function MyApp({ Component, pageProps }) {
     } = skillsImages
 
     const obj = {
-      react: { name: 'React', image: react },
-      javascript: { name: 'JavaScript', image: javaScript },
-      next: { name: 'Next JS', image: next },
-      materialUI: { name: 'Material UI', image: materialUI },
-      git: { name: 'Git', image: git },
-      gitHub: { name: 'GitHub', image: gitHub },
-      npm: { name: 'NPM', image: npm },
-      css: { name: 'CSS', image: css },
-      html: { name: 'HTML', image: html },
-      OOP: { name: 'Object Oriented Programming', image: OOP },
-      lodash: { name: 'Lodash', image: lodash },
+      react: {
+        name: 'React',
+        image: react,
+        getDetails: () => {
+          return <p>REACT MAIN DETAILS</p>
+        },
+      },
+      javascript: {
+        name: 'JavaScript',
+        image: javaScript,
+        getDetails: () => {
+          return <p>JAVA SCRIPT MAIN DETAILS</p>
+        },
+      },
+      next: {
+        name: 'Next JS',
+        image: next,
+        getDetails: () => {
+          return <p>NEXT MAIN DETAILS</p>
+        },
+      },
+      materialUI: {
+        name: 'Material UI',
+        image: materialUI,
+        getDetails: () => {
+          return <p>MATERIAL UI MAIN DETAILS</p>
+        },
+      },
+      git: {
+        name: 'Git',
+        image: git,
+        getDetails: () => {
+          return <p>GIT MAIN DETAILS</p>
+        },
+      },
+      gitHub: {
+        name: 'GitHub',
+        image: gitHub,
+        getDetails: () => {
+          return <p>GITHUB MAIN DETAILS</p>
+        },
+      },
+      npm: {
+        name: 'NPM',
+        image: npm,
+        getDetails: () => {
+          return <p>NPM MAIN DETAILS</p>
+        },
+      },
+      css: {
+        name: 'CSS',
+        image: css,
+        getDetails: () => {
+          return <p>CSS MAIN DETAILS</p>
+        },
+      },
+      html: {
+        name: 'HTML',
+        image: html,
+        getDetails: () => {
+          return <p>HTML MAIN DETAILS</p>
+        },
+      },
+      OOP: {
+        name: 'Object Oriented Programming',
+        image: OOP,
+        getDetails: () => {
+          return <p>OOP MAIN DETAILS</p>
+        },
+      },
+      lodash: {
+        name: 'Lodash',
+        image: lodash,
+        getDetails: () => {
+          return <p>LODASH MAIN DETAILS</p>
+        },
+      },
       illustrator: {
         name: 'Adobe Illustrator',
         image: illustrator,
+        getDetails: () => {
+          return <p>ILLUSTRATOR MAIN DETAILS</p>
+        },
       },
-      photoshop: { name: 'Adobe Photoshop', image: photoshop },
+      photoshop: {
+        name: 'Adobe Photoshop',
+        image: photoshop,
+        getDetails: () => {
+          return <p>PHOTOSHOP MAIN DETAILS</p>
+        },
+      },
     }
 
     return obj
@@ -98,10 +194,34 @@ function MyApp({ Component, pageProps }) {
   const contactsArr = Object.keys(contactsObj).map((contact) => contact)
 
   const aboutMeObj = {
-    hobbies: { name: 'Hobbies', icon: SportsEsportsIcon },
-    work: { name: 'Work', icon: WorkIcon },
-    details: { name: 'Details', icon: PersonIcon },
-    story: { name: 'Story', icon: MenuBookIcon },
+    hobbies: {
+      name: 'Hobbies',
+      icon: SportsEsportsIcon,
+      getDetails: () => {
+        return <p>HOBBIES MAIN DETAILS</p>
+      },
+    },
+    work: {
+      name: 'Work',
+      icon: WorkIcon,
+      getDetails: () => {
+        return <p>WORK MAIN DETAILS</p>
+      },
+    },
+    details: {
+      name: 'Details',
+      icon: PersonIcon,
+      getDetails: () => {
+        return <p>DETAILS MAIN DETAILS</p>
+      },
+    },
+    story: {
+      name: 'Story',
+      icon: MenuBookIcon,
+      getDetails: () => {
+        return <p>STORY MAIN DETAILS</p>
+      },
+    },
   }
 
   const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)

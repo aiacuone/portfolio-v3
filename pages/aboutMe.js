@@ -22,6 +22,9 @@ export default function aboutMe() {
   const { setSelections } = setState
   const { isPhone, isPhoneLandscape } = state.phone
   const selection = selections['aboutMe']
+  const selectedOption = aboutMeObj[aboutMeArr[selection]]
+  const { getDetails } = selectedOption
+  const mainDetails = getDetails()
 
   const Landscape = () => {
     const useStyles = makeStyles({
@@ -78,7 +81,7 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          {mainDetails}
         </Grid>
         <Grid className={classes.hamburgerGap}></Grid>
       </Grid>
@@ -143,7 +146,7 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          {mainDetails}
         </Grid>
         <Grid className={classes.buttonContainer} container>
           <Buttons />
@@ -208,7 +211,7 @@ export default function aboutMe() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            MAIN CONTAINER
+            {mainDetails}
           </Grid>
           <Grid
             container
