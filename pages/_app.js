@@ -5,6 +5,10 @@ import { UserContext } from '../utils/UserContext'
 import { useState, useEffect } from 'react'
 import { images as skillsImages } from '../public/images/skills'
 import { images as contactImages } from '../public/images/contact'
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
+import WorkIcon from '@mui/icons-material/Work'
+import PersonIcon from '@mui/icons-material/Person'
+import MenuBookIcon from '@mui/icons-material/MenuBook'
 
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState()
@@ -89,9 +93,10 @@ function MyApp({ Component, pageProps }) {
   const contactsArr = Object.keys(contactsObj).map((contact) => contact)
 
   const aboutMeObj = {
-    hobbies: { name: 'Hobbies' },
-    work: { name: 'Work' },
-    myStory: { name: 'My Story' },
+    hobbies: { name: 'Hobbies', icon: SportsEsportsIcon },
+    work: { name: 'Work', icon: WorkIcon },
+    details: { name: 'Details', icon: PersonIcon },
+    story: { name: 'Story', icon: MenuBookIcon },
   }
 
   const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)

@@ -1,18 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
+import Box from '@mui/material/Box'
+import BottomNavigation from '@mui/material/BottomNavigation'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 
-const useStylesRoot = makeStyles({
-  root: { height: '100%', width: '100%' },
-  button: { flexGrow: 1 },
-})
+import RestoreIcon from '@mui/icons-material/Restore'
 
 export default function aboutMe() {
-  const classesRoot = useStylesRoot()
-
   const { state, vars } = useContext(UserContext)
   const {
     hamburger,
@@ -26,79 +24,7 @@ export default function aboutMe() {
   } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
-  const Buttons = () => {
-    return aboutMeArr.map((item) => {
-      return (
-        <Button className={classesRoot.button}>
-          {aboutMeObj[item].name.toUpperCase()}
-        </Button>
-      )
-    })
-  }
-
-  const Normal = () => {
-    const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
-      container
-
-    const useStyles = makeStyles({
-      root: {
-        width: '100%',
-        height: '100%',
-      },
-      container: {
-        background: 'white',
-        maxWidth: maxWidth,
-        width: width,
-        height: height,
-        // maxHeight: maxHeight,
-        minHeight: minHeight,
-        minWidth: minWidth,
-        display: 'grid',
-        gridTemplateRows: 'auto 1fr auto',
-        gridTemplateColumns: '100%',
-      },
-      header: {
-        gridArea: '1/1/2/2',
-        background: 'red',
-      },
-      mainContainer: {
-        gridArea: '2/1/3/2',
-        background: 'grey',
-      },
-      buttonContainer: {
-        gridArea: '3/1/4/2',
-        background: 'orange',
-      },
-    })
-    const classes = useStyles()
-
-    return (
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        className={classes.root}>
-        <Grid container className={classes.container}>
-          <Grid container className={classes.header} justifyContent="center">
-            HEADER
-          </Grid>
-          <Grid
-            container
-            className={classes.mainContainer}
-            justifyContent="center"
-            alignItems="center">
-            MAIN CONTAINER
-          </Grid>
-          <Grid
-            container
-            className={classes.buttonContainer}
-            justifyContent="center">
-            <Buttons />
-          </Grid>
-        </Grid>
-      </Grid>
-    )
-  }
+  const [selection, setSelection] = useState(0)
 
   const Landscape = () => {
     const useStyles = makeStyles({
@@ -234,6 +160,109 @@ export default function aboutMe() {
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
 
+  const Normal = () => {
+    const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
+      container
+
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+      },
+      container: {
+        background: 'white',
+        maxWidth: maxWidth,
+        width: width,
+        height: height,
+        // maxHeight: maxHeight,
+        minHeight: minHeight,
+        minWidth: minWidth,
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr auto',
+        gridTemplateColumns: '100%',
+      },
+      header: {
+        gridArea: '1/1/2/2',
+        background: 'red',
+      },
+      mainContainer: {
+        gridArea: '2/1/3/2',
+        background: 'grey',
+      },
+      buttonContainer: {
+        gridArea: '3/1/4/2',
+        background: 'orange',
+        zIndex: 3,
+      },
+    })
+    const classes = useStyles()
+
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.root}>
+        <Grid container className={classes.container}>
+          <Grid container className={classes.header} justifyContent="center">
+            HEADER
+          </Grid>
+          <Grid
+            container
+            className={classes.mainContainer}
+            justifyContent="center"
+            alignItems="center">
+            MAIN CONTAINER
+          </Grid>
+          <Grid
+            container
+            className={classes.buttonContainer}
+            justifyContent="center">
+            <Buttons />
+          </Grid>
+        </Grid>
+      </Grid>
+    )
+  }
+
+  const Buttons = () => {
+    return (
+      <Box sx={{ width: '100%' }}>
+        <BottomNavigation
+          showLabels
+          value={selection}
+          className={classesRoot.bottomNav}
+          onChange={(event, newSelection) => {
+            console.log(newSelection, 'newSelection')
+            setSelection(newSelection)
+          }}>
+          {aboutMeArr.map((item) => {
+            const { name, icon: Icon } = aboutMeObj[item]
+            console.log(Icon, 'Icon')
+            return (
+              <BottomNavigationAction
+                icon={<Icon />}
+                label={name.toUpperCase()}
+                className={classesRoot.button}
+              />
+            )
+          })}
+        </BottomNavigation>
+      </Box>
+    )
+  }
+
+  const useStylesRoot = makeStyles({
+    root: { height: '100%', width: '100%' },
+    bottomNav: {
+      display: 'flex',
+      flexDirection: isPhoneLandscape && 'column',
+      background: 'brown',
+      height: '100%',
+    },
+  })
+
+  const classesRoot = useStylesRoot()
   return (
     <Grid container className={classesRoot.root}>
       {isPhone ? <Phone /> : <Normal />}
