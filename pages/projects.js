@@ -5,8 +5,8 @@ import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 
 export default function projects() {
-  const { state, vars } = useContext(UserContext)
-  const [selection, setSelection] = useState({ details: 0, project: 0 })
+  const { state, vars, setState } = useContext(UserContext)
+  // const [selection, setSelection] = useState({ details: 0, project: 0 })
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const {
     hamburger,
@@ -18,6 +18,12 @@ export default function projects() {
     headerHeightLandscape,
     secondHeaderHeightLandscape,
   } = vars
+
+  const { selections } = state
+  const { setSelections } = setState
+
+  const selection = selections['projects']
+  console.log(selection)
 
   const useStylesRoot = makeStyles({
     root: {
@@ -76,7 +82,13 @@ export default function projects() {
             <Button
               fullWidth
               className={classesRoot.detailButtons}
-              onClick={() => setSelection({ ...selection, details: index })}>
+              onClick={() => {
+                const newSelections = { ...selections }
+                newSelections['projects'].details = index
+                setSelections(newSelections)
+              }}
+              // onClick={() => setSelection({ ...selection, details: index })}
+            >
               {button}
             </Button>
           </Grid>
@@ -111,7 +123,11 @@ export default function projects() {
         style={{ background: index == selection.project && 'orange' }}>
         <Grid container className={classesRoot.projectButtonContainer2}>
           <Button
-            onClick={() => setSelection({ ...selection, project: index })}
+            onClick={() => {
+              const newSelections = { ...selections }
+              newSelections['projects'].project = index
+              setSelections(newSelections)
+            }}
             className={classesRoot.projectButton}>
             {projectsObj[project].name}
           </Button>
