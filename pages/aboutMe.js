@@ -239,7 +239,6 @@ export default function aboutMe() {
   //         }}>
   //         {aboutMeArr.map((item) => {
   //           const { name, icon: Icon } = aboutMeObj[item]
-  //           console.log(Icon, 'Icon')
   //           return (
   //             <BottomNavigationAction
   //               icon={<Icon />}

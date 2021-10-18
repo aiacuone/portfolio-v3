@@ -23,8 +23,6 @@ export default function Layout({ children }) {
 
   const classesRoot = useStylesRoot()
 
-  console.log(windowHeight, 'windowHeight')
-
   const Phone = () => {
     const useStyles = makeStyles({
       root: {

@@ -11,14 +11,12 @@ const useStylesRoot = makeStyles({
   buttonContainer2: {},
   button: { zIndex: 1 },
   imageContainer: {
-    // padding: '5px 0',
     flexGrow: 1,
     cursor: 'pointer',
     height: '100%',
     zIndex: 1,
   },
   imageContainer2: {
-    // background: 'lime',
     height: '100%',
   },
 })
@@ -307,8 +305,6 @@ export default function skills() {
   const Phone = () => {
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
-
-  console.log(selection)
 
   return (
     <Grid container className={classesRoot.root}>

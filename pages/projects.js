@@ -4,32 +4,10 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 
-const useStylesRoot = makeStyles({
-  root: {
-    height: '100%',
-    width: '100%',
-    background: 'green',
-  },
-  detailButtons: {
-    flexGrow: 1,
-    zIndex: 3,
-  },
-  viewButton: {
-    height: '100%',
-    whiteSpace: 'nowrap',
-    flexGrow: 1,
-    background: 'white',
-    overflow: 'hidden',
-  },
-
-  projectButton: { flexGrow: 1, zIndex: 1 },
-  viewButtonContainer: { flexWrap: 'nowrap' },
-})
-
 export default function projects() {
   const { state, vars } = useContext(UserContext)
   const [selection, setSelection] = useState({ details: 0, project: 0 })
-  const { isPhone, isPhoneLandscape } = state.phone
+  const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const {
     hamburger,
     projectsArr,
@@ -41,24 +19,70 @@ export default function projects() {
     secondHeaderHeightLandscape,
   } = vars
 
+  const useStylesRoot = makeStyles({
+    root: {
+      height: '100%',
+      width: '100%',
+      background: 'green',
+    },
+    detailButtons: {
+      // flexGrow: 1,
+
+      width: '100%',
+      zIndex: 3,
+      height: '100%',
+    },
+    viewButton: {
+      height: '100%',
+      whiteSpace: 'nowrap',
+      flexGrow: 1,
+      background: 'white',
+      overflow: 'hidden',
+      // width: isPhonePortrait && '50%',
+    },
+
+    projectButton: { flexGrow: 1, zIndex: 1 },
+    viewButtonContainer: { flexWrap: 'nowrap' },
+    detailContainer: {
+      // flexGrow: 1,
+      padding: 0,
+      // background: 'green',
+      // width: '100%',
+      width: isPhoneLandscape ? '100%' : '50%',
+    },
+    detailContainer2: { height: '100%' },
+    projectButtonContainer: {
+      flexGrow: 1,
+    },
+    projectButtonContainer2: {
+      height: '100%',
+    },
+  })
+
   const classesRoot = useStylesRoot()
 
   const DetailButtons = () => {
-    return (
-      <Grid container>
-        <Button
-          onClick={() => setSelection({ ...selection, details: 0 })}
-          // onClick={() => console.log('selection')}
-          className={classesRoot.detailButtons}>
-          BASIC
-        </Button>
-        <Button
-          onClick={() => setSelection({ ...selection, details: 1 })}
-          className={classesRoot.detailButtons}>
-          TECHNICAL
-        </Button>
-      </Grid>
-    )
+    const arr = ['basic', 'technical']
+    const buttons = arr.map((button, index) => {
+      return (
+        <Grid
+          className={classesRoot.detailContainer}
+          style={{ background: selection.details == index && 'blue' }}>
+          <Grid
+            container
+            justifyContent="center"
+            className={classesRoot.detailContainer2}>
+            <Button
+              fullWidth
+              className={classesRoot.detailButtons}
+              onClick={() => setSelection({ ...selection, details: index })}>
+              {button}
+            </Button>
+          </Grid>
+        </Grid>
+      )
+    })
+    return <Grid container>{buttons}</Grid>
   }
 
   const ViewGitHubButton = () => {
@@ -79,12 +103,20 @@ export default function projects() {
   }
 
   const projectButtons = projectsArr.map((project, index) => {
+    const containerProps = { container }
     return (
-      <Button
-        onClick={() => setSelection({ ...selection, project: index })}
-        className={classesRoot.projectButton}>
-        {projectsObj[project].name}
-      </Button>
+      <Grid
+        // container
+        className={classesRoot.projectButtonContainer}
+        style={{ background: index == selection.project && 'orange' }}>
+        <Grid container className={classesRoot.projectButtonContainer2}>
+          <Button
+            onClick={() => setSelection({ ...selection, project: index })}
+            className={classesRoot.projectButton}>
+            {projectsObj[project].name}
+          </Button>
+        </Grid>
+      </Grid>
     )
   })
 
