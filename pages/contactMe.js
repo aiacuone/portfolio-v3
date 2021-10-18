@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
+  // button: { margin: '10px 0', background: 'red' },
 })
 
 export default function contactMe() {
@@ -20,7 +21,14 @@ export default function contactMe() {
     const props = { height: size, width: size }
     return contactsArr.map((item) => {
       const { image } = contactsObj[item]
-      return <Image src={image} layout="fixed" {...props} />
+      return (
+        <Image
+          className={classesRoot.button}
+          src={image}
+          layout="fixed"
+          {...props}
+        />
+      )
     })
   }
 
@@ -149,7 +157,7 @@ export default function contactMe() {
         width: '100%',
         height: '100%',
         display: 'grid',
-        gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) 70px ${
+        gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) 45px ${
           hamburger.padding * 2 + hamburger.width
         }px `,
         gridTemplateColumns: 'repeat(10,1fr)',
@@ -194,7 +202,7 @@ export default function contactMe() {
           container
           justifyContent="space-around"
           alignItems="center">
-          <Buttons size={35} />
+          <Buttons size={30} />
         </Grid>
         <Grid className={classes.hamburgerGap} />
       </Grid>

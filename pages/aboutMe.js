@@ -7,6 +7,7 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 import Box from '@mui/material/Box'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import RestoreIcon from '@mui/icons-material/Restore'
 
 export default function aboutMe() {
   const { state, vars } = useContext(UserContext)
@@ -22,45 +23,7 @@ export default function aboutMe() {
   } = vars
   const { isPhone, isPhoneLandscape } = state.phone
 
-  const [value, setValue] = useState(aboutMeArr[0])
-
-  // const Buttons = () => {
-  //   return aboutMeArr.map((item) => {
-  //     return (
-  //       <Button className={classesRoot.button}>
-  //         {aboutMeObj[item].name.toUpperCase()}
-  //       </Button>
-  //     )
-  //   })
-  // }
-
-  const Buttons = () => {
-    return (
-      <Box sx={{ width: '100%' }}>
-        <BottomNavigation
-          showLabels
-          value={value}
-          className={classesRoot.bottomNav}
-          onChange={(event, newValue) => {
-            console.log(newValue, 'newValue')
-            setValue(newValue)
-          }}>
-          {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
-          {aboutMeArr.map((item) => {
-            const { name } = aboutMeObj[item]
-            return (
-              <BottomNavigationAction
-                label={name.toUpperCase()}
-                className={classesRoot.button}
-              />
-            )
-          })}
-        </BottomNavigation>
-      </Box>
-    )
-  }
+  const [selection, setSelection] = useState(0)
 
   const Landscape = () => {
     const useStyles = makeStyles({
@@ -228,6 +191,7 @@ export default function aboutMe() {
       buttonContainer: {
         gridArea: '3/1/4/2',
         background: 'orange',
+        zIndex: 3,
       },
     })
     const classes = useStyles()
@@ -260,13 +224,40 @@ export default function aboutMe() {
     )
   }
 
+  const Buttons = () => {
+    return (
+      <Box sx={{ width: '100%' }}>
+        <BottomNavigation
+          showLabels
+          value={selection}
+          className={classesRoot.bottomNav}
+          onChange={(event, newSelection) => {
+            console.log(newSelection, 'newSelection')
+            setSelection(newSelection)
+          }}>
+          {aboutMeArr.map((item) => {
+            const { name, icon: Icon } = aboutMeObj[item]
+            console.log(Icon, 'Icon')
+            return (
+              <BottomNavigationAction
+                icon={<Icon />}
+                label={name.toUpperCase()}
+                className={classesRoot.button}
+              />
+            )
+          })}
+        </BottomNavigation>
+      </Box>
+    )
+  }
+
   const useStylesRoot = makeStyles({
     root: { height: '100%', width: '100%' },
-    // button: { flexGrow: 1 },
     bottomNav: {
       display: 'flex',
       flexDirection: isPhoneLandscape && 'column',
-      // width: '100%',
+      background: 'brown',
+      height: '100%',
     },
   })
 
