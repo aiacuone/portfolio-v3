@@ -3,7 +3,6 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
-import Button from '@mui/material/Button'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -23,8 +22,7 @@ const useStylesRoot = makeStyles({
 
 export default function skills() {
   const classesRoot = useStylesRoot()
-  const [selection, setSelection] = useState(0)
-  const { state, vars } = useContext(UserContext)
+  const { state, vars, setState } = useContext(UserContext)
   const {
     hamburger,
     skillsObj,
@@ -36,13 +34,17 @@ export default function skills() {
     secondHeaderHeightLandscape,
   } = vars
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
+  const { selections } = state
+  const { setSelections } = setState
+
+  const selection = selections['skills']
 
   const Buttons = ({ size }) => {
     const SkillsButton = ({ src, index }) => {
       const props = { height: size, width: size }
       return (
         <Grid
-          onClick={() => setSelection(index)}
+          onClick={() => setSelections({ ...selections, skills: index })}
           s
           className={classesRoot.imageContainer}
           style={{ background: index == selection && 'purple' }}>
@@ -117,7 +119,6 @@ export default function skills() {
         maxWidth: maxWidth,
         width: width,
         height: height,
-        // maxHeight: maxHeight,
         minHeight: minHeight,
         minWidth: minWidth,
         display: 'grid',
@@ -131,7 +132,6 @@ export default function skills() {
       buttonContainer: {
         background: 'blue',
         gridArea: '10/1/11/11',
-        // padding: '10px 0',
       },
       header: {
         background: 'orange',

@@ -171,7 +171,6 @@ export default function aboutMe() {
         maxWidth: maxWidth,
         width: width,
         height: height,
-        // maxHeight: maxHeight,
         minHeight: minHeight,
         minWidth: minWidth,
         display: 'grid',

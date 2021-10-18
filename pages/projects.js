@@ -6,7 +6,6 @@ import Button from '@mui/material/Button'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
-  // const [selection, setSelection] = useState({ details: 0, project: 0 })
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const {
     hamburger,
@@ -32,8 +31,6 @@ export default function projects() {
       background: 'green',
     },
     detailButtons: {
-      // flexGrow: 1,
-
       width: '100%',
       zIndex: 3,
       height: '100%',
@@ -44,16 +41,12 @@ export default function projects() {
       flexGrow: 1,
       background: 'white',
       overflow: 'hidden',
-      // width: isPhonePortrait && '50%',
     },
 
     projectButton: { flexGrow: 1, zIndex: 1 },
     viewButtonContainer: { flexWrap: 'nowrap' },
     detailContainer: {
-      // flexGrow: 1,
       padding: 0,
-      // background: 'green',
-      // width: '100%',
       width: isPhoneLandscape ? '100%' : '50%',
     },
     detailContainer2: { height: '100%' },
@@ -86,9 +79,7 @@ export default function projects() {
                 const newSelections = { ...selections }
                 newSelections['projects'].details = index
                 setSelections(newSelections)
-              }}
-              // onClick={() => setSelection({ ...selection, details: index })}
-            >
+              }}>
               {button}
             </Button>
           </Grid>
@@ -334,7 +325,6 @@ export default function projects() {
         maxWidth: maxWidth,
         width: width,
         height: height,
-        // maxHeight: maxHeight,
         minHeight: minHeight,
         minWidth: minWidth,
         display: 'grid',
