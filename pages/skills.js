@@ -64,15 +64,15 @@ export default function skills() {
 
     const Portrait = () => {
       const buttons1 = skillsArr.map((skill, index) => {
-        const { image } = skillsObj[skill]
+        const { image, name } = skillsObj[skill]
         if (index >= skillsArr.length / 2) return
-        return <SkillsButton index={index} src={image} />
+        return <SkillsButton index={index} src={image} key={name + index} />
       })
 
       const buttons2 = skillsArr.map((skill, index) => {
-        const { image } = skillsObj[skill]
+        const { image, name } = skillsObj[skill]
         if (index < skillsArr.length / 2) return
-        return <SkillsButton index={index} src={image} />
+        return <SkillsButton index={index} src={image} key={name + index} />
       })
 
       return (
@@ -94,8 +94,10 @@ export default function skills() {
     }
     const Other = () => {
       return skillsArr.map((skill, index) => {
-        const { image } = skillsObj[skill]
-        return <SkillsButton index={index} src={image} />
+        const { image, name } = skillsObj[skill]
+        return (
+          <SkillsButton index={index} src={image} key={name + index + index} />
+        )
       })
     }
     return isPhonePortrait ? <Portrait /> : <Other />

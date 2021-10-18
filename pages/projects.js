@@ -66,6 +66,7 @@ export default function projects() {
     const buttons = arr.map((button, index) => {
       return (
         <Grid
+          key={button + index}
           className={classesRoot.detailContainer}
           style={{ background: selection.details == index && 'blue' }}>
           <Grid
@@ -103,10 +104,9 @@ export default function projects() {
   }
 
   const projectButtons = projectsArr.map((project, index) => {
-    const containerProps = { container }
     return (
       <Grid
-        // container
+        key={project.name + index}
         className={classesRoot.projectButtonContainer}
         style={{ background: index == selection.project && 'orange' }}>
         <Grid container className={classesRoot.projectButtonContainer2}>

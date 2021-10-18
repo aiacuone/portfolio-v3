@@ -146,6 +146,7 @@ function MyApp({ Component, pageProps }) {
     function handleResize() {
       setWindowHeight(window.innerHeight + 'px')
     }
+
     window.addEventListener('resize', handleResize)
 
     return () => {

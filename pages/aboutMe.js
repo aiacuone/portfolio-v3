@@ -257,6 +257,7 @@ export default function aboutMe() {
       const { name, icon: Icon } = aboutMeObj[item]
       return (
         <Grid
+          key={item.name}
           onClick={() => setSelection(index)}
           className={classesRoot.button}
           style={{ background: index == selection && 'purple' }}>

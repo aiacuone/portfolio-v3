@@ -19,10 +19,11 @@ export default function contactMe() {
 
   const Buttons = ({ size }) => {
     const props = { height: size, width: size }
-    return contactsArr.map((item) => {
+    return contactsArr.map((item, index) => {
       const { image } = contactsObj[item]
       return (
         <Image
+          key={item.name + index}
           className={classesRoot.button}
           src={image}
           layout="fixed"
