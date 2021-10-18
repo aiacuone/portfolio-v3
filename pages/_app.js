@@ -13,6 +13,11 @@ import MenuBookIcon from '@mui/icons-material/MenuBook'
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState()
   const [showViewButtons, setShowViewButtons] = useState(false)
+  const [selections, setSelections] = useState({
+    projects: { project: 0, details: 0 },
+    skills: 0,
+    aboutMe: 0,
+  })
 
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')
   const isPhoneHeightPortrait = useMediaQuery('(max-height:920px)')
@@ -136,9 +141,10 @@ function MyApp({ Component, pageProps }) {
       isPhonePortrait,
     },
     showViewButtons,
+    selections,
   }
 
-  const setState = { setWindowHeight, setShowViewButtons }
+  const setState = { setWindowHeight, setShowViewButtons, setSelections }
 
   useEffect(() => {
     setWindowHeight(window.innerHeight + 'px')

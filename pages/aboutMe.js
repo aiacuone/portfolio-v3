@@ -2,18 +2,12 @@ import React, { useContext, useState } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import Box from '@mui/material/Box'
-import BottomNavigation from '@mui/material/BottomNavigation'
-import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import Typography from '@mui/material/Typography'
-import Image from 'next/image'
 
 import RestoreIcon from '@mui/icons-material/Restore'
 
 export default function aboutMe() {
-  const { state, vars } = useContext(UserContext)
+  const { state, vars, setState } = useContext(UserContext)
   const {
     hamburger,
     normalPageContainerDimensions: container,
@@ -24,9 +18,10 @@ export default function aboutMe() {
     headerHeightPortrait,
     secondHeaderHeightPortrait,
   } = vars
+  const { selections } = state
+  const { setSelections } = setState
   const { isPhone, isPhoneLandscape } = state.phone
-
-  const [selection, setSelection] = useState(0)
+  const selection = selections['aboutMe']
 
   const Landscape = () => {
     const useStyles = makeStyles({
@@ -227,38 +222,13 @@ export default function aboutMe() {
     )
   }
 
-  // const Buttons = () => {
-  //   return (
-  //     <Box sx={{ width: '100%' }}>
-  //       <BottomNavigation
-  //         showLabels
-  //         value={selection}
-  //         className={classesRoot.bottomNav}
-  //         onChange={(event, newSelection) => {
-  //           setSelection(newSelection)
-  //         }}>
-  //         {aboutMeArr.map((item) => {
-  //           const { name, icon: Icon } = aboutMeObj[item]
-  //           return (
-  //             <BottomNavigationAction
-  //               icon={<Icon />}
-  //               label={name.toUpperCase()}
-  //               className={classesRoot.button}
-  //             />
-  //           )
-  //         })}
-  //       </BottomNavigation>
-  //     </Box>
-  //   )
-  // }
-
   const Buttons = () => {
     const buttons = aboutMeArr.map((item, index) => {
       const { name, icon: Icon } = aboutMeObj[item]
       return (
         <Grid
           key={item.name}
-          onClick={() => setSelection(index)}
+          onClick={() => setSelections({ ...selections, ['aboutMe']: index })}
           className={classesRoot.button}
           style={{ background: index == selection && 'purple' }}>
           <Grid
