@@ -3,10 +3,10 @@ import Layout from '../components/Layout'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { UserContext } from '../utils/UserContext'
 import { useState, useEffect } from 'react'
-import { images as contactImages } from '../public/images/contact'
 import { skillsObj, skillsArr } from '../utils/skillsDetails'
 import { projectsObj, projectsArr } from '../utils/projectsDetails'
 import { aboutMeObj, aboutMeArr } from '../utils/aboutMeDetails'
+import { contactsObj, contactsArr } from '../utils/contactDetails'
 
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState()
@@ -26,23 +26,6 @@ function MyApp({ Component, pageProps }) {
   const isPhoneLandscape =
     isPhoneWidthLandscape && isPhoneHeightLandscape ? true : false
   const isPhone = isPhonePortrait || isPhoneLandscape ? true : false
-
-  function getContactObj() {
-    const { email, linkedin, phone, gitHub } = contactImages
-
-    const obj = {
-      email: { name: 'Email', image: email },
-      linkedin: { name: 'Linkedin', image: linkedin },
-      phone: { name: 'Phone', image: phone },
-      gitHub: { name: 'GitHub', image: gitHub },
-    }
-
-    return obj
-  }
-
-  const contactsObj = getContactObj()
-
-  const contactsArr = Object.keys(contactsObj).map((contact) => contact)
 
   const normalPageContainerDimensions = {
     maxWidth: '1300px',
