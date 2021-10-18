@@ -233,7 +233,6 @@ export default function aboutMe() {
           value={selection}
           className={classesRoot.bottomNav}
           onChange={(event, newSelection) => {
-            console.log(newSelection, 'newSelection')
             setSelection(newSelection)
           }}>
           {aboutMeArr.map((item) => {

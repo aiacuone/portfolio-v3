@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
 
 const useStylesRoot = makeStyles({
   root: {
@@ -13,7 +12,7 @@ const useStylesRoot = makeStyles({
   },
   detailButtons: {
     flexGrow: 1,
-    // overflow: 'hidden',
+    zIndex: 3,
   },
   viewButton: {
     height: '100%',
@@ -23,12 +22,13 @@ const useStylesRoot = makeStyles({
     overflow: 'hidden',
   },
 
-  projectButton: { flexGrow: 1 },
+  projectButton: { flexGrow: 1, zIndex: 1 },
   viewButtonContainer: { flexWrap: 'nowrap' },
 })
 
 export default function projects() {
   const { state, vars } = useContext(UserContext)
+  const [selection, setSelection] = useState({ details: 0, project: 0 })
   const { isPhone, isPhoneLandscape } = state.phone
   const {
     hamburger,
@@ -43,20 +43,17 @@ export default function projects() {
 
   const classesRoot = useStylesRoot()
 
-  function handleProjectChange() {
-    console.log('project change')
-  }
-
   const DetailButtons = () => {
     return (
       <Grid container>
         <Button
-          onClick={console.log('basic details')}
+          onClick={() => setSelection({ ...selection, details: 0 })}
+          // onClick={() => console.log('selection')}
           className={classesRoot.detailButtons}>
           BASIC
         </Button>
         <Button
-          onClick={console.log('technical details')}
+          onClick={() => setSelection({ ...selection, details: 1 })}
           className={classesRoot.detailButtons}>
           TECHNICAL
         </Button>
@@ -81,10 +78,10 @@ export default function projects() {
     )
   }
 
-  const projectButtons = projectsArr.map((project) => {
+  const projectButtons = projectsArr.map((project, index) => {
     return (
       <Button
-        onClick={handleProjectChange}
+        onClick={() => setSelection({ ...selection, project: index })}
         className={classesRoot.projectButton}>
         {projectsObj[project].name}
       </Button>
@@ -355,7 +352,6 @@ export default function projects() {
       </Grid>
     )
   }
-
   return (
     <Grid className={classesRoot.root}>{isPhone ? <Phone /> : <Normal />}</Grid>
   )

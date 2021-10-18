@@ -1,18 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
+import Button from '@mui/material/Button'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
   buttonContainer1: {},
   buttonContainer2: {},
+  button: { zIndex: 1 },
 })
 
 export default function skills() {
   const classesRoot = useStylesRoot()
-
+  const [selection, setSelection] = useState(0)
   const { state, vars } = useContext(UserContext)
   const {
     hamburger,
@@ -27,22 +29,29 @@ export default function skills() {
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
 
   const Buttons = ({ size }) => {
-    const SkillsButton = ({ src }) => {
+    const SkillsButton = ({ src, index }) => {
       const props = { height: size, width: size }
-      return <Image src={src} layout="fixed" {...props} />
+      return (
+        <Image
+          src={src}
+          layout="fixed"
+          {...props}
+          onClick={() => setSelection(index)}
+        />
+      )
     }
 
     const Portrait = () => {
       const buttons1 = skillsArr.map((skill, index) => {
         const { image } = skillsObj[skill]
         if (index >= skillsArr.length / 2) return
-        return <SkillsButton src={image} />
+        return <SkillsButton index={index} src={image} />
       })
 
       const buttons2 = skillsArr.map((skill, index) => {
         const { image } = skillsObj[skill]
         if (index < skillsArr.length / 2) return
-        return <SkillsButton src={image} />
+        return <SkillsButton index={index} src={image} />
       })
 
       return (
@@ -63,9 +72,9 @@ export default function skills() {
       )
     }
     const Other = () => {
-      return skillsArr.map((skill) => {
+      return skillsArr.map((skill, index) => {
         const { image } = skillsObj[skill]
-        return <SkillsButton src={image} />
+        return <SkillsButton index={index} src={image} />
       })
     }
     return isPhonePortrait ? <Portrait /> : <Other />
@@ -278,6 +287,8 @@ export default function skills() {
   const Phone = () => {
     return isPhoneLandscape ? <Landscape /> : <Portrait />
   }
+
+  console.log(selection)
 
   return (
     <Grid container className={classesRoot.root}>
