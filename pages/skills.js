@@ -15,6 +15,7 @@ const useStylesRoot = makeStyles({
     flexGrow: 1,
     cursor: 'pointer',
     height: '100%',
+    zIndex: 1,
   },
   imageContainer2: {
     // background: 'lime',
@@ -43,6 +44,8 @@ export default function skills() {
       const props = { height: size, width: size }
       return (
         <Grid
+          onClick={() => setSelection(index)}
+          s
           className={classesRoot.imageContainer}
           style={{ background: index == selection && 'purple' }}>
           <Grid
@@ -55,7 +58,6 @@ export default function skills() {
               src={src}
               layout="fixed"
               {...props}
-              onClick={() => setSelection(index)}
             />
           </Grid>
         </Grid>
