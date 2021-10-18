@@ -23,8 +23,12 @@ export default function aboutMe() {
   const { isPhone, isPhoneLandscape } = state.phone
   const selection = selections['aboutMe']
   const selectedOption = aboutMeObj[aboutMeArr[selection]]
-  const { getDetails } = selectedOption
+  const { getDetails, name: optionName } = selectedOption
   const mainDetails = getDetails()
+
+  const HeaderText = () => {
+    return <Typography>{optionName.toUpperCase()}</Typography>
+  }
 
   const Landscape = () => {
     const useStyles = makeStyles({
@@ -71,7 +75,7 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
-          ABOUT ME HEADER
+          <HeaderText />
         </Grid>
         <Grid className={classes.buttonContainer} container direction="column">
           <Buttons />
@@ -139,7 +143,7 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
-          HOBBIES
+          <HeaderText />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -204,7 +208,7 @@ export default function aboutMe() {
         className={classes.root}>
         <Grid container className={classes.container}>
           <Grid container className={classes.header} justifyContent="center">
-            HEADER
+            <HeaderText />
           </Grid>
           <Grid
             container

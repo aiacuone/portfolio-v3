@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
+import Typography from '@mui/material/Typography'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -41,6 +42,10 @@ export default function skills() {
   const selectedSkill = skillsObj[skillsArr[selection]]
   const { getDetails } = selectedSkill
   const mainDetails = getDetails()
+
+  const HeaderText = () => {
+    return <Typography>{selectedSkill.name.toUpperCase()}</Typography>
+  }
 
   const Buttons = ({ size }) => {
     const SkillsButton = ({ src, index }) => {
@@ -154,7 +159,7 @@ export default function skills() {
             className={classes.header}
             justifyContent="center"
             alignItems="center">
-            HEADER
+            <HeaderText />
           </Grid>
           <Grid
             container
@@ -217,7 +222,7 @@ export default function skills() {
           container
           justifyContent="center"
           alignItems="center">
-          SKILL HEADER
+          <HeaderText />
         </Grid>
         <Grid
           className={classes.container}
@@ -286,7 +291,7 @@ export default function skills() {
           container
           justifyContent="center"
           alignItems="center">
-          SKILL HEADER
+          <HeaderText />
         </Grid>
         <Grid
           className={classes.mainContainer}

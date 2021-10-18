@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
+import Typography from '@mui/material/Typography'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },

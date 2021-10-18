@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -23,7 +24,7 @@ export default function projects() {
 
   const selection = selections['projects']
   const selectedProject = projectsObj[projectsArr[selection.project]]
-  const { details } = selectedProject
+  const { details, name: projectName } = selectedProject
 
   const useStylesRoot = makeStyles({
     root: {
@@ -131,6 +132,10 @@ export default function projects() {
   const mainDetails =
     selections['projects'].details === 0 ? details.basic : details.technical
 
+  const HeaderText = () => {
+    return <Typography>{projectName.toUpperCase()}</Typography>
+  }
+
   const Landscape = () => {
     const useStyles = makeStyles({
       root: {
@@ -189,7 +194,7 @@ export default function projects() {
           container
           justifyContent="center"
           alignItems="center">
-          PROJECT HEADER
+          <HeaderText />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -279,7 +284,7 @@ export default function projects() {
           container
           justifyContent="center"
           alignItems="center">
-          PROJECT HEADER
+          <HeaderText />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -375,7 +380,7 @@ export default function projects() {
             container
             className={classes.headerContainer}
             justifyContent="center">
-            HEADER
+            <HeaderText />
           </Grid>
           <Grid
             container
