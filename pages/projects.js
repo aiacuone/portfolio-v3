@@ -129,8 +129,10 @@ export default function projects() {
     )
   })
 
-  const mainDetails =
+  const getMainDetails =
     selections['projects'].details === 0 ? details.basic : details.technical
+
+  const mainDetails = getMainDetails()
 
   const HeaderText = () => {
     return <Typography>{projectName.toUpperCase()}</Typography>
