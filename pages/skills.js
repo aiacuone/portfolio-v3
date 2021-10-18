@@ -7,9 +7,19 @@ import Button from '@mui/material/Button'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
-  buttonContainer1: {},
+  buttonContainer: { height: '50%' },
   buttonContainer2: {},
   button: { zIndex: 1 },
+  imageContainer: {
+    // padding: '5px 0',
+    flexGrow: 1,
+    cursor: 'pointer',
+    height: '100%',
+  },
+  imageContainer2: {
+    // background: 'lime',
+    height: '100%',
+  },
 })
 
 export default function skills() {
@@ -32,12 +42,23 @@ export default function skills() {
     const SkillsButton = ({ src, index }) => {
       const props = { height: size, width: size }
       return (
-        <Image
-          src={src}
-          layout="fixed"
-          {...props}
-          onClick={() => setSelection(index)}
-        />
+        <Grid
+          className={classesRoot.imageContainer}
+          style={{ background: index == selection && 'purple' }}>
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            className={classesRoot.imageContainer2}>
+            <Image
+              className={classesRoot.button}
+              src={src}
+              layout="fixed"
+              {...props}
+              onClick={() => setSelection(index)}
+            />
+          </Grid>
+        </Grid>
       )
     }
 
@@ -58,13 +79,13 @@ export default function skills() {
         <>
           <Grid
             container
-            className={classesRoot.buttonContainer1}
+            className={classesRoot.buttonContainer}
             justifyContent="space-around">
             {buttons1}
           </Grid>
           <Grid
             container
-            className={classesRoot.buttonContainer2}
+            className={classesRoot.buttonContainer}
             justifyContent="space-around">
             {buttons2}
           </Grid>
@@ -99,7 +120,7 @@ export default function skills() {
         minWidth: minWidth,
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
-        gridTemplateRows: 'auto repeat(8,1fr) auto',
+        gridTemplateRows: 'auto repeat(8,1fr) 65px',
       },
       mainContainer: {
         background: 'grey',
@@ -108,7 +129,7 @@ export default function skills() {
       buttonContainer: {
         background: 'blue',
         gridArea: '10/1/11/11',
-        padding: '10px 0',
+        // padding: '10px 0',
       },
       header: {
         background: 'orange',
@@ -137,10 +158,7 @@ export default function skills() {
             alignItems="center">
             MAIN CONTAINER
           </Grid>
-          <Grid
-            container
-            className={classes.buttonContainer}
-            justifyContent="space-around">
+          <Grid container className={classes.buttonContainer}>
             <Buttons size={45} />
           </Grid>
         </Grid>
@@ -154,7 +172,7 @@ export default function skills() {
         width: '100%',
         height: '100%',
         display: 'grid',
-        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
+        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) 12px`,
         gridTemplateColumns: `repeat(9,1fr) ${
           hamburger.padding * 2 + hamburger.width
         }px`,
