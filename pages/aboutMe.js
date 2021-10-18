@@ -7,6 +7,8 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 import Box from '@mui/material/Box'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import Typography from '@mui/material/Typography'
+import Image from 'next/image'
 
 import RestoreIcon from '@mui/icons-material/Restore'
 
@@ -73,7 +75,7 @@ export default function aboutMe() {
           alignItems="center">
           ABOUT ME HEADER
         </Grid>
-        <Grid className={classes.buttonContainer} container>
+        <Grid className={classes.buttonContainer} container direction="column">
           <Buttons />
         </Grid>
         <Grid
@@ -225,30 +227,53 @@ export default function aboutMe() {
     )
   }
 
+  // const Buttons = () => {
+  //   return (
+  //     <Box sx={{ width: '100%' }}>
+  //       <BottomNavigation
+  //         showLabels
+  //         value={selection}
+  //         className={classesRoot.bottomNav}
+  //         onChange={(event, newSelection) => {
+  //           setSelection(newSelection)
+  //         }}>
+  //         {aboutMeArr.map((item) => {
+  //           const { name, icon: Icon } = aboutMeObj[item]
+  //           console.log(Icon, 'Icon')
+  //           return (
+  //             <BottomNavigationAction
+  //               icon={<Icon />}
+  //               label={name.toUpperCase()}
+  //               className={classesRoot.button}
+  //             />
+  //           )
+  //         })}
+  //       </BottomNavigation>
+  //     </Box>
+  //   )
+  // }
+
   const Buttons = () => {
-    return (
-      <Box sx={{ width: '100%' }}>
-        <BottomNavigation
-          showLabels
-          value={selection}
-          className={classesRoot.bottomNav}
-          onChange={(event, newSelection) => {
-            setSelection(newSelection)
-          }}>
-          {aboutMeArr.map((item) => {
-            const { name, icon: Icon } = aboutMeObj[item]
-            console.log(Icon, 'Icon')
-            return (
-              <BottomNavigationAction
-                icon={<Icon />}
-                label={name.toUpperCase()}
-                className={classesRoot.button}
-              />
-            )
-          })}
-        </BottomNavigation>
-      </Box>
-    )
+    const buttons = aboutMeArr.map((item, index) => {
+      const { name, icon: Icon } = aboutMeObj[item]
+      return (
+        <Grid
+          onClick={() => setSelection(index)}
+          className={classesRoot.button}
+          style={{ background: index == selection && 'purple' }}>
+          <Grid
+            container
+            className={classesRoot.container}
+            alignItems="center"
+            direction="column"
+            justifyContent="center">
+            <Icon />
+            <Typography>{name}</Typography>
+          </Grid>
+        </Grid>
+      )
+    })
+    return buttons
   }
 
   const useStylesRoot = makeStyles({
@@ -257,8 +282,9 @@ export default function aboutMe() {
       display: 'flex',
       flexDirection: isPhoneLandscape && 'column',
       background: 'brown',
-      height: '100%',
     },
+    button: { flexGrow: 1, cursor: 'pointer' },
+    container: { height: '100%' },
   })
 
   const classesRoot = useStylesRoot()
