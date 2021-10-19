@@ -5,6 +5,7 @@ import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { projectHeaders, projectSummaries } from '../components/'
+import { HowToRegOutlined } from '@mui/icons-material'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -63,6 +64,7 @@ export default function projects() {
       height: '100%',
       flexWrap: 'nowrap',
       overflowY: 'scroll',
+      zIndex: 3,
     },
     detailsItem: {
       background: 'red',
@@ -167,12 +169,12 @@ export default function projects() {
           className={classesRoot.mainDetailsContainer}
           direction="column">
           <Grid item>
-            <h2>BASIC DETAILS</h2>
+            <h3>BASIC DETAILS</h3>
           </Grid>
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Last Updated</h3>
+                <h4>Last Updated</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <p>{lastUpdated}</p>
@@ -182,7 +184,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Summary</h3>
+                <h4>Summary</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <ProjectSummary />
@@ -192,7 +194,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Methods Used</h3>
+                <h4>Methods Used</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <ul>
@@ -206,7 +208,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Screenshots</h3>
+                <h4>Screenshots</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <ul>
@@ -220,7 +222,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Areas</h3>
+                <h4>Areas</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <ul>
@@ -232,12 +234,12 @@ export default function projects() {
             </Grid>
           </Grid>
           <Grid item>
-            <h2>QUESTIONS</h2>
+            <h3>QUESTIONS</h3>
           </Grid>
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Why create this project?</h3>
+                <h4>Why create this project?</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <p>{create}</p>
@@ -247,7 +249,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>What was learnt?</h3>
+                <h4>What was learnt?</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <p>{learn}</p>
@@ -257,7 +259,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h3>Biggest challenges</h3>
+                <h4>Biggest challenges</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <p>{challenges}</p>
@@ -268,7 +270,189 @@ export default function projects() {
       )
     }
     const TechnicalDetails = () => {
-      return <Grid className={classesRoot.mainDetailsContainer}></Grid>
+      const {
+        hooks,
+        components,
+        libraries: librariesObj,
+        questions,
+      } = technicalDetails
+      const librariesArr = Object.keys(librariesObj)
+      const { how, change, future } = questions
+
+      const { libraries: selectedProjectLibrariesObj } =
+        projectObj.details.technical
+      const selectedProjectLibrariesArr = Object.keys(
+        selectedProjectLibrariesObj
+      )
+
+      function getShowMethods() {
+        var boolean
+
+        selectedProjectLibrariesArr.forEach((item) => {
+          const obj = selectedProjectLibrariesObj[item].methods
+          const arr = Object.keys(obj)
+          if (arr.length > 0) {
+            return (boolean = true)
+          }
+        })
+
+        return boolean
+      }
+
+      function getShowComponents() {
+        var boolean
+
+        selectedProjectLibrariesArr.forEach((item) => {
+          const obj = selectedProjectLibrariesObj[item].components
+          const arr = Object.keys(obj)
+          if (arr.length > 0) {
+            return (boolean = true)
+          }
+        })
+
+        return boolean
+      }
+
+      const showMethods = getShowMethods()
+      const showComponents = getShowComponents()
+
+      const LibraryMethods = () => {
+        const methods = selectedProjectLibrariesArr.map((item) => {
+          const { methods, name } = selectedProjectLibrariesObj[item]
+          const methodsArr = Object.keys(methods)
+          if (methodsArr.length == 0) return
+
+          return (
+            <Grid container direction="column">
+              <h4>{name}</h4>
+              {methodsArr.map((item) => {
+                const method = methods[item]
+                const { name, why } = method
+                return <p>{`${name}: ${why} `}</p>
+              })}
+            </Grid>
+          )
+        })
+        return methods
+      }
+
+      const LibraryComponents = () => {
+        const components = selectedProjectLibrariesArr.map((item) => {
+          const { components, name } = selectedProjectLibrariesObj[item]
+          const componentsArr = Object.keys(components)
+          if (componentsArr.length == 0) return
+
+          return (
+            <Grid container direction="column">
+              <h4>{name}</h4>
+
+              {componentsArr.map((item) => {
+                const component = components[item]
+                const { name, why } = component
+                return <p>{`${name}: ${why} `}</p>
+              })}
+            </Grid>
+          )
+        })
+        return components
+      }
+
+      return (
+        <Grid
+          container
+          spacing={1}
+          className={classesRoot.mainDetailsContainer}
+          direction="column">
+          <Typography textAlign="center">TECHNICAL DETAILS</Typography>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>Hooks</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                <ul>
+                  {hooks.map((hook) => {
+                    return <li>{hook}</li>
+                  })}
+                </ul>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>Components</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                {Object.keys(components).map((item) => {
+                  const { name, why } = components[item]
+                  return <p>{`${name}: ${why}`}</p>
+                })}
+              </Grid>
+            </Grid>
+          </Grid>
+          {showMethods && (
+            <Grid item>
+              <Grid container direction="column">
+                <Grid item>
+                  <h4>Library Methods</h4>
+                </Grid>
+                <Grid item className={classesRoot.text}>
+                  <LibraryMethods />
+                </Grid>
+              </Grid>
+            </Grid>
+          )}
+          {showComponents && (
+            <Grid item>
+              <Grid container direction="column">
+                <Grid item>
+                  <h4>Library Components</h4>
+                </Grid>
+                <Grid item className={classesRoot.text}>
+                  <LibraryComponents />
+                </Grid>
+              </Grid>
+            </Grid>
+          )}
+          <Grid item>
+            <Typography textAlign="center">QUESTIONS</Typography>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>How has your coding improved completing this project</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                {how}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>
+                  What would you change about this project and maybe implement
+                  later on?
+                </h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                {change}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>What ideas do you have for the future of this project?</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                {future}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      )
     }
     return (
       <Grid
