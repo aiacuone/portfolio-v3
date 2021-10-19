@@ -1,10 +1,10 @@
 export const projectsObj = {
   cheapshark: {
     name: 'Cheapshark',
-    new: true,
+    isNew: true,
+    internalName: 'cheapshark',
     details: {
       basic: {
-        getSummary: () => <p>This is the CHEAPSHARK summary</p>,
         lastUpdated: 'Last Updated',
         langLib: ['Lib 1', 'Lib 2'],
         methods: ['method one', 'method 2', 'method 3'],
@@ -17,7 +17,6 @@ export const projectsObj = {
       },
       technical: {
         hooks: ['hook1', 'hook2', 'hook3'],
-
         libarary: {
           components: {
             materialUI: {
@@ -42,12 +41,12 @@ export const projectsObj = {
       },
     },
   },
-  TekkenNet: {
+  tekkenNet: {
     name: 'Tekken-Net',
     new: true,
+    internalName: 'tekkenNet',
     details: {
       basic: {
-        getSummary: () => <p>This is the TEKKEN NET summary</p>,
         lastUpdated: 'Last Updated',
         langLib: ['Lib 1', 'Lib 2'],
         methods: ['method one', 'method 2', 'method 3'],
@@ -88,9 +87,9 @@ export const projectsObj = {
   noteTaker: {
     name: 'Note Taker',
     new: false,
+    internalName: 'noteTaker',
     details: {
       basic: {
-        getSummary: () => <p>This is the NOTE TAKER summary</p>,
         lastUpdated: 'Last Updated',
         langLib: ['Lib 1', 'Lib 2'],
         methods: ['method one', 'method 2', 'method 3'],

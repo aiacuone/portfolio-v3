@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import { projectHeaders } from '../components/'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -23,8 +24,8 @@ export default function projects() {
   const { setSelections } = setState
 
   const selection = selections['projects']
-  const selectedProject = projectsObj[projectsArr[selection.project]]
-  const { details, name: projectName } = selectedProject
+  const projectObj = projectsObj[projectsArr[selection.project]]
+  const { name: projectName, isNew, details: projectDetails } = projectObj
 
   const useStylesRoot = makeStyles({
     root: {
@@ -57,6 +58,13 @@ export default function projects() {
     },
     projectButtonContainer2: {
       height: '100%',
+    },
+    mainDetails: {
+      height: '100%',
+    },
+    detailsItem: {
+      background: 'red',
+      width: '80%',
     },
   })
 
@@ -129,10 +137,50 @@ export default function projects() {
     )
   })
 
-  const getMainDetails =
-    selections['projects'].details === 0 ? details.basic : details.technical
+  const MainDetails = () => {
+    const { basic: basicDetails, technical: technicalDetails } = projectDetails
+    const { lastUpdated } = basicDetails
 
-  const mainDetails = getMainDetails()
+    const detailSelection = selections['projects'].details
+
+    const ProjectHeader = () => {
+      return projectHeaders[projectObj.internalName]
+    }
+
+    const BasicDetails = () => {
+      return (
+        <Grid
+          container
+          spacing={1}
+          className={classesRoot.mainDetailsContainer}
+          direction="column">
+          <Grid item>
+            <p>{`Last Updated:${lastUpdated}`}</p>
+          </Grid>
+          <Grid item></Grid>
+          <Grid item></Grid>
+          <Grid item></Grid>
+          <Grid item></Grid>
+          <Grid item></Grid>
+        </Grid>
+      )
+    }
+    const TechnicalDetails = () => {
+      return <Grid className={classesRoot.mainDetailsContainer}></Grid>
+    }
+    return (
+      <Grid
+        container
+        direction="column"
+        className={classesRoot.mainDetails}
+        alignItems="center">
+        <ProjectHeader />
+        <Grid item className={classesRoot.detailsItem}>
+          {detailSelection === 0 ? <BasicDetails /> : <TechnicalDetails />}
+        </Grid>
+      </Grid>
+    )
+  }
 
   const HeaderText = () => {
     return <Typography>{projectName.toUpperCase()}</Typography>
@@ -203,7 +251,7 @@ export default function projects() {
           container
           justifyContent="center"
           alignItems="center">
-          {mainDetails}
+          <MainDetails />
         </Grid>
         <Grid
           container
@@ -293,7 +341,7 @@ export default function projects() {
           container
           justifyContent="center"
           alignItems="center">
-          {mainDetails}
+          <MainDetails />
         </Grid>
         <Grid className={classes.hamburgerGap}>
           <Grid className={classes.container}>
@@ -389,7 +437,7 @@ export default function projects() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            {mainDetails}
+            <MainDetails />
           </Grid>
           <Grid
             container
