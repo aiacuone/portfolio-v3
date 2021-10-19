@@ -69,6 +69,9 @@ export default function projects() {
       width: '80%',
       padding: '20px 0',
     },
+    text: {
+      marginLeft: '15px', //PADDING OF TEXT FROM LEFT OF MAIN CONTAINER
+    },
   })
 
   const classesRoot = useStylesRoot()
@@ -171,7 +174,7 @@ export default function projects() {
               <Grid item>
                 <h3>Last Updated</h3>
               </Grid>
-              <Grid item>
+              <Grid item className={classesRoot.text}>
                 <p>{lastUpdated}</p>
               </Grid>
             </Grid>
@@ -181,7 +184,7 @@ export default function projects() {
               <Grid item>
                 <h3>Summary</h3>
               </Grid>
-              <Grid item>
+              <Grid item className={classesRoot.text}>
                 <ProjectSummary />
               </Grid>
             </Grid>
@@ -191,10 +194,12 @@ export default function projects() {
               <Grid item>
                 <h3>Methods Used</h3>
               </Grid>
-              <Grid item>
-                {methods.map((method) => {
-                  return <p>{method}</p>
-                })}
+              <Grid item className={classesRoot.text}>
+                <ul>
+                  {methods.map((method) => {
+                    return <li>{method}</li>
+                  })}
+                </ul>
               </Grid>
             </Grid>
           </Grid>
@@ -203,10 +208,12 @@ export default function projects() {
               <Grid item>
                 <h3>Screenshots</h3>
               </Grid>
-              <Grid item>
-                {screenshots.map((screenshot) => {
-                  return <p>{screenshot}</p>
-                })}
+              <Grid item className={classesRoot.text}>
+                <ul>
+                  {screenshots.map((screenshot) => {
+                    return <li>{screenshot}</li>
+                  })}
+                </ul>
               </Grid>
             </Grid>
           </Grid>
@@ -215,10 +222,12 @@ export default function projects() {
               <Grid item>
                 <h3>Areas</h3>
               </Grid>
-              <Grid item>
-                {areas.map((area) => {
-                  return <p>{area}</p>
-                })}
+              <Grid item className={classesRoot.text}>
+                <ul>
+                  {areas.map((area) => {
+                    return <li>{area}</li>
+                  })}
+                </ul>
               </Grid>
             </Grid>
           </Grid>
@@ -230,7 +239,7 @@ export default function projects() {
               <Grid item>
                 <h3>Why create this project?</h3>
               </Grid>
-              <Grid item>
+              <Grid item className={classesRoot.text}>
                 <p>{create}</p>
               </Grid>
             </Grid>
@@ -240,7 +249,7 @@ export default function projects() {
               <Grid item>
                 <h3>What was learnt?</h3>
               </Grid>
-              <Grid item>
+              <Grid item className={classesRoot.text}>
                 <p>{learn}</p>
               </Grid>
             </Grid>
@@ -250,7 +259,7 @@ export default function projects() {
               <Grid item>
                 <h3>Biggest challenges</h3>
               </Grid>
-              <Grid item>
+              <Grid item className={classesRoot.text}>
                 <p>{challenges}</p>
               </Grid>
             </Grid>
