@@ -28,7 +28,13 @@ export const skillsObj = {
     name: 'JavaScript',
     image: javaScript,
     getDetails: () => {
-      return <p>JavaScriptDETAILS</p>
+      return (
+        <p>
+          JavaScriptDETAILS
+          <br />
+          test
+        </p>
+      )
     },
   },
   next: {
