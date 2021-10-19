@@ -1,5 +1,10 @@
 import React from 'react'
+import Grid from '@mui/material/Grid'
 
 export default function NoteTakerProjectHeader() {
-  return <div>NOTE TAKER PROJECT HEADER</div>
+  return (
+    <Grid container justifyContent="center">
+      NOTE TAKER PROJECT HEADER
+    </Grid>
+  )
 }

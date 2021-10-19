@@ -5,13 +5,14 @@ export const projectsObj = {
     internalName: 'cheapshark',
     details: {
       basic: {
-        lastUpdated: 'Last Updated',
+        lastUpdated: 'Last Updated CHEAPSHARK',
         langLib: ['Lib 1', 'Lib 2'],
         methods: ['method one', 'method 2', 'method 3'],
         screenshots: ['One', 'Two', 'Three'],
+        areas: ['area1', 'area2', 'area3'],
         questions: {
-          whyCreate: 'Why create?',
-          whatLearn: 'What did you learn?',
+          create: 'Why create?',
+          learn: 'What did you learn?',
           challenges: 'what challenges did you face?',
         },
       },
@@ -47,13 +48,14 @@ export const projectsObj = {
     internalName: 'tekkenNet',
     details: {
       basic: {
-        lastUpdated: 'Last Updated',
+        lastUpdated: 'Last Updated TEKKEN NET',
         langLib: ['Lib 1', 'Lib 2'],
         methods: ['method one', 'method 2', 'method 3'],
         screenshots: ['One', 'Two', 'Three'],
+        areas: ['area1', 'area2', 'area3'],
         questions: {
-          whyCreate: 'Why create?',
-          whatLearn: 'What did you learn?',
+          create: 'Why create?',
+          learn: 'What did you learn?',
           challenges: 'what challenges did you face?',
         },
       },
@@ -90,13 +92,14 @@ export const projectsObj = {
     internalName: 'noteTaker',
     details: {
       basic: {
-        lastUpdated: 'Last Updated',
+        lastUpdated: 'Last Updated NOTE TAKER',
         langLib: ['Lib 1', 'Lib 2'],
         methods: ['method one', 'method 2', 'method 3'],
         screenshots: ['One', 'Two', 'Three'],
+        areas: ['area1', 'area2', 'area3'],
         questions: {
-          whyCreate: 'Why create?',
-          whatLearn: 'What did you learn?',
+          create: 'Why create?',
+          learn: 'What did you learn?',
           challenges: 'what challenges did you face?',
         },
       },

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { projectHeaders } from '../components/'
+import { projectHeaders, projectSummaries } from '../components/'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -61,10 +61,13 @@ export default function projects() {
     },
     mainDetails: {
       height: '100%',
+      flexWrap: 'nowrap',
+      overflowY: 'scroll',
     },
     detailsItem: {
       background: 'red',
       width: '80%',
+      padding: '20px 0',
     },
   })
 
@@ -139,7 +142,6 @@ export default function projects() {
 
   const MainDetails = () => {
     const { basic: basicDetails, technical: technicalDetails } = projectDetails
-    const { lastUpdated } = basicDetails
 
     const detailSelection = selections['projects'].details
 
@@ -147,7 +149,14 @@ export default function projects() {
       return projectHeaders[projectObj.internalName]
     }
 
+    const ProjectSummary = () => {
+      return projectSummaries[projectObj.internalName]
+    }
+
     const BasicDetails = () => {
+      const { lastUpdated, langLib, methods, screenshots, questions, areas } =
+        basicDetails
+      const { create, learn, challenges } = questions
       return (
         <Grid
           container
@@ -155,13 +164,97 @@ export default function projects() {
           className={classesRoot.mainDetailsContainer}
           direction="column">
           <Grid item>
-            <p>{`Last Updated:${lastUpdated}`}</p>
+            <h2>BASIC DETAILS</h2>
           </Grid>
-          <Grid item></Grid>
-          <Grid item></Grid>
-          <Grid item></Grid>
-          <Grid item></Grid>
-          <Grid item></Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Last Updated</h3>
+              </Grid>
+              <Grid item>
+                <p>{lastUpdated}</p>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Summary</h3>
+              </Grid>
+              <Grid item>
+                <ProjectSummary />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Methods Used</h3>
+              </Grid>
+              <Grid item>
+                {methods.map((method) => {
+                  return <p>{method}</p>
+                })}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Screenshots</h3>
+              </Grid>
+              <Grid item>
+                {screenshots.map((screenshot) => {
+                  return <p>{screenshot}</p>
+                })}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Areas</h3>
+              </Grid>
+              <Grid item>
+                {areas.map((area) => {
+                  return <p>{area}</p>
+                })}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <h2>QUESTIONS</h2>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Why create this project?</h3>
+              </Grid>
+              <Grid item>
+                <p>{create}</p>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>What was learnt?</h3>
+              </Grid>
+              <Grid item>
+                <p>{learn}</p>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h3>Biggest challenges</h3>
+              </Grid>
+              <Grid item>
+                <p>{challenges}</p>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       )
     }
