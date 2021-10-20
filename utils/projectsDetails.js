@@ -30,7 +30,7 @@ export const projectsObj = {
     internalName: 'cheapshark',
     details: {
       basic: {
-        lastUpdated: 'Last Updated CHEAPSHARK',
+        lastUpdated: 'October, 2021',
         langLib: [
           'react',
           'material',

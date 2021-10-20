@@ -5,7 +5,6 @@ import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { projectHeaders, projectSummaries } from '../components/'
-import { HowToRegOutlined } from '@mui/icons-material'
 import Image from 'next/image'
 import { skillsObj } from '../utils/skillsDetails'
 
@@ -18,7 +17,6 @@ export default function projects() {
     projectsObj,
     normalPageContainerDimensions: container,
     headerHeightPortrait,
-    secondHeaderHeightPortrait,
     headerHeightLandscape,
     secondHeaderHeightLandscape,
   } = vars
@@ -39,17 +37,21 @@ export default function projects() {
     detailButtons: {
       width: '100%',
       zIndex: 3,
-      height: '100%',
+      height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
     },
     viewButton: {
-      height: '100%',
+      height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
       whiteSpace: 'nowrap',
       flexGrow: 1,
       background: 'white',
       overflow: 'hidden',
     },
 
-    projectButton: { flexGrow: 1, zIndex: 1 },
+    projectButton: {
+      flexGrow: 1,
+      zIndex: 1,
+      height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px',
+    },
     viewButtonContainer: { flexWrap: 'nowrap' },
     detailContainer: {
       padding: 0,
@@ -70,18 +72,21 @@ export default function projects() {
     },
     detailsItem: {
       background: 'red',
-      width: isPhone ? '95%' : '80%',
-      padding: '20px 0',
+      width: '100%',
+      padding: isPhone ? '0 5px' : '0 70px',
     },
     text: {
       marginLeft: '15px', //PADDING OF TEXT FROM LEFT OF MAIN CONTAINER
     },
     langLib: {
-      padding: '5px 15px', //PADDING AROUND LANGUAGE/LIBRARY/APP SYMBOLS
+      padding: isPhone ? '5px 5px' : '5px 15px', //PADDING AROUND LANGUAGE/LIBRARY/APP SYMBOLS
+      minWidth: '65px',
     },
-    symbol: {
-      // background: 'blue',
+    symbol: {},
+    mainDetailsContainer: {
+      paddingTop: '20px', //PADDING BETWEEN PROJECT HEADER AND START OF MAIN CONTAINER TEXT
     },
+    paddingGap: { height: '30px' },
   })
 
   const classesRoot = useStylesRoot()
@@ -158,10 +163,6 @@ export default function projects() {
 
     const detailSelection = selections['projects'].details
 
-    const ProjectHeader = () => {
-      return projectHeaders[projectObj.internalName]
-    }
-
     const ProjectSummary = () => {
       return projectSummaries[projectObj.internalName]
     }
@@ -173,7 +174,7 @@ export default function projects() {
       return (
         <Grid
           container
-          spacing={1}
+          spacing={1} //SPACING BETWEEN ITEMS OF MAIN CONTAINER
           className={classesRoot.mainDetailsContainer}
           direction="column">
           <Grid item>
@@ -204,13 +205,6 @@ export default function projects() {
               <Grid item>
                 <h4>Languages/Libraries/Applications</h4>
               </Grid>
-              {/* <Grid item className={classesRoot.text}>
-                <ul>
-                  {langLib.map((area) => {
-                    return <li>{area}</li>
-                  })}
-                </ul>
-              </Grid> */}
               <Grid container>
                 {langLib.map((item) => {
                   return (
@@ -223,15 +217,14 @@ export default function projects() {
                         <Image
                           src={`/images/skills/${item}.svg`}
                           layout="fixed"
-                          height={40}
-                          width={40}
+                          height={isPhone ? 30 : 40}
+                          width={isPhone ? 30 : 40}
                         />
                         <Typography textAlign="center">
                           {skillsObj[item].name}
                         </Typography>
                       </Grid>
                     </Grid>
-                    // <p>{item}</p>
                   )
                 })}
               </Grid>
@@ -267,7 +260,7 @@ export default function projects() {
           </Grid>
 
           <Grid item>
-            <Typography textAlign="center">QUESTIONS</Typography>
+            <Typography textAlign="center">Key Points</Typography>
           </Grid>
           <Grid item>
             <Grid container direction="column">
@@ -282,7 +275,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h4>What was learnt?</h4>
+                <h4>Lessons</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <p>{learn}</p>
@@ -396,7 +389,9 @@ export default function projects() {
           spacing={1}
           className={classesRoot.mainDetailsContainer}
           direction="column">
-          <Typography textAlign="center">TECHNICAL DETAILS</Typography>
+          <Grid item>
+            <Typography textAlign="center">TECHNICAL DETAILS</Typography>
+          </Grid>
           <Grid item>
             <Grid container direction="column">
               <Grid item>
@@ -449,7 +444,7 @@ export default function projects() {
             </Grid>
           )}
           <Grid item>
-            <Typography textAlign="center">QUESTIONS</Typography>
+            <Typography textAlign="center">Questions</Typography>
           </Grid>
           <Grid item>
             <Grid container direction="column">
@@ -493,16 +488,13 @@ export default function projects() {
         direction="column"
         className={classesRoot.mainDetails}
         alignItems="center">
-        <ProjectHeader />
         <Grid item className={classesRoot.detailsItem}>
+          <ProjectHeader />
           {detailSelection === 0 ? <BasicDetails /> : <TechnicalDetails />}
+          <Grid container className={classesRoot.paddingGap} />
         </Grid>
       </Grid>
     )
-  }
-
-  const HeaderText = () => {
-    return <Typography>{projectName.toUpperCase()}</Typography>
   }
 
   const Landscape = () => {
@@ -511,7 +503,7 @@ export default function projects() {
         display: 'grid',
         height: '100%',
         width: '100%',
-        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
+        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
         gridTemplateColumns: `120px repeat(8,1fr) ${
           hamburger.width + hamburger.padding * 2
         }px`, //WIDTH OF BUTTONS CONTAINER
@@ -523,9 +515,8 @@ export default function projects() {
       },
 
       header: { gridArea: '1/2/2/10', background: 'red' },
-      projectHeader: { gridArea: '2/2/3/10', background: 'orange' },
       mainContainer: {
-        gridArea: '3/2/10/10',
+        gridArea: '2/2/10/10',
         background: 'grey',
         marginRight: `${hamburger.width + hamburger.padding}px`,
       },
@@ -559,13 +550,6 @@ export default function projects() {
           PROJECTS
         </Grid>
         <Grid
-          className={classes.projectHeader}
-          container
-          justifyContent="center"
-          alignItems="center">
-          <HeaderText />
-        </Grid>
-        <Grid
           className={classes.mainContainer}
           container
           justifyContent="center"
@@ -584,6 +568,10 @@ export default function projects() {
     )
   }
 
+  const ProjectHeader = () => {
+    return projectHeaders[projectObj.internalName]
+  }
+
   const Portrait = () => {
     const useStyles = makeStyles({
       root: {
@@ -591,13 +579,12 @@ export default function projects() {
         height: '100%',
         width: '100%',
         gridTemplateColumns: 'repeat(10,1fr)',
-        gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(10,1fr) 45px 45px 45px ${
+        gridTemplateRows: `${headerHeightPortrait}px repeat(12,1fr)  auto auto ${
           hamburger.padding * 2 + hamburger.height
         }px`,
       },
       header: { gridArea: '1/1/2/11' },
-      projectHeader: { gridArea: '2/1/3/11', background: 'orange' },
-      mainContainer: { gridArea: '3/1/14/11', background: 'grey' },
+      mainContainer: { gridArea: '2/1/14/11', background: 'grey' },
       projectButtons: {
         gridArea: '14/1/15/11',
         background: 'yellow',
@@ -647,13 +634,6 @@ export default function projects() {
         </Grid>
         <Grid className={classes.detailsButtons} container>
           <DetailButtons />
-        </Grid>
-        <Grid
-          className={classes.projectHeader}
-          container
-          justifyContent="center"
-          alignItems="center">
-          <HeaderText />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -709,15 +689,11 @@ export default function projects() {
         gridTemplateColumns: 'repeat(10,1fr)',
         gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
       },
-      detailsButton: { color: 'black', background: 'white', flexGrow: 1 },
-      headerContainer: {
-        gridArea: '1/1/2/11',
-        background: 'red',
-      },
+      detailsButton: { color: 'black', flexGrow: 1 },
+      projectButtonContainer: { gridArea: '1/1/2/11', background: 'purple' },
       detailsButtonContainer: { gridArea: '2/1/3/11', background: 'grey' },
-      projectButtonContainer: { gridArea: '3/1/4/11', background: 'purple' },
       mainContainer: {
-        gridArea: '4/1/10/11',
+        gridArea: '3/1/10/11',
         background: 'orange',
       },
       viewButtonsContainer: {
@@ -744,12 +720,6 @@ export default function projects() {
           </Grid>
           <Grid container className={classes.detailsButtonContainer}>
             <DetailButtons />
-          </Grid>
-          <Grid
-            container
-            className={classes.headerContainer}
-            justifyContent="center">
-            <HeaderText />
           </Grid>
           <Grid
             container

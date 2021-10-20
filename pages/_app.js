@@ -48,10 +48,11 @@ function MyApp({ Component, pageProps }) {
     contactsArr,
     aboutMeObj,
     aboutMeArr,
-    headerHeightPortrait: 30,
+    headerHeightPortrait: 20,
     secondHeaderHeightPortrait: 50,
     headerHeightLandscape: 20,
     secondHeaderHeightLandscape: 25,
+    buttonsNormalHeight: '30px',
   }
 
   const state = {
