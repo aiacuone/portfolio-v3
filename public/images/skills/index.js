@@ -37,6 +37,3 @@ export const images = {
   moon,
   phone,
 }
-export const images2 = 'images 2'
-
-console.log(images, 'images images')

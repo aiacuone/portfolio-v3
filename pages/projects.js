@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography'
 import { projectHeaders, projectSummaries } from '../components/'
 import Image from 'next/image'
 import { skillsObj } from '../utils/skillsDetails'
+import { images as skillsImages } from '../public/images/skills'
+import { InsertEmoticonOutlined } from '@material-ui/icons'
+// import { screenshots } from '../public/images/screenshots'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -87,6 +90,10 @@ export default function projects() {
       paddingTop: '20px', //PADDING BETWEEN PROJECT HEADER AND START OF MAIN CONTAINER TEXT
     },
     paddingGap: { height: '30px' },
+    screenshotContainer: {
+      padding: '20px',
+    },
+    screenshot: {},
   })
 
   const classesRoot = useStylesRoot()
@@ -250,11 +257,24 @@ export default function projects() {
                 <h4>Screenshots</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <ul>
+                <Grid
+                  container
+                  justifyContent="center"
+                  spacing={1}
+                  className={classesRoot.screenshotContainer}>
                   {screenshots.map((screenshot) => {
-                    return <li>{screenshot}</li>
+                    return (
+                      <Grid item className={classesRoot.screenshot}>
+                        <Image
+                          src={screenshot}
+                          layout="fixed"
+                          height={100}
+                          width={300}
+                        />
+                      </Grid>
+                    )
                   })}
-                </ul>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -347,14 +367,26 @@ export default function projects() {
           const { methods, name } = selectedProjectLibrariesObj[item]
           const methodsArr = Object.keys(methods)
           if (methodsArr.length == 0) return
+          const image = skillsImages[item]
 
           return (
             <Grid container direction="column">
-              <h4>{name}</h4>
+              <Grid container alignItems="center" spacing={1}>
+                <Grid item>
+                  <Image src={image} layout="fixed" width={30} height={30} />
+                </Grid>
+                <Grid item>
+                  <h4>{name}</h4>
+                </Grid>
+              </Grid>
               {methodsArr.map((item) => {
                 const method = methods[item]
                 const { name, why } = method
-                return <p>{`${name}: ${why} `}</p>
+                return (
+                  <Grid>
+                    <p>{`${name}: ${why} `}</p>
+                  </Grid>
+                )
               })}
             </Grid>
           )
@@ -367,11 +399,18 @@ export default function projects() {
           const { components, name } = selectedProjectLibrariesObj[item]
           const componentsArr = Object.keys(components)
           if (componentsArr.length == 0) return
+          const image = skillsImages[item]
 
           return (
             <Grid container direction="column">
-              <h4>{name}</h4>
-
+              <Grid container alignItems="center" spacing={1}>
+                <Grid item>
+                  <Image src={image} layout="fixed" width={30} height={30} />
+                </Grid>
+                <Grid item>
+                  <h4>{name}</h4>
+                </Grid>
+              </Grid>
               {componentsArr.map((item) => {
                 const component = components[item]
                 const { name, why } = component

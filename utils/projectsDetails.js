@@ -1,28 +1,13 @@
-import images from '../public/images/skills'
-import images2 from '../public/images/skills'
-// const {
-//   // javaScript,
-//   // react,
-//   next,
-//   materialUI,
-//   git,
-//   gitHub,
-//   npm,
-//   css,
-//   html,
-//   OOP,
-//   lodash,
-//   illustrator,
-//   photoshop,
-//   adobe,
-//   email,
-//   linkedin,
-//   moon,
-//   phone,
-// } = images
+import { screenshots } from '../public/images/screenshots'
+const {
+  cheapshark1,
+  cheapshark2,
+  noteTaker1,
+  noteTaker2,
+  tekkenNet1,
+  tekkenNet2,
+} = screenshots
 
-console.log(images, 'images projects')
-console.log(images2, 'images2 projects')
 export const projectsObj = {
   cheapshark: {
     name: 'Cheapshark',
@@ -42,7 +27,7 @@ export const projectsObj = {
           'git',
         ],
         methods: ['method one', 'method 2', 'method 3'],
-        screenshots: ['One', 'Two', 'Three'],
+        screenshots: [cheapshark1, cheapshark2],
         areas: ['area1', 'area2', 'area3'],
         questions: {
           create: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
@@ -107,7 +92,7 @@ export const projectsObj = {
         lastUpdated: 'Last Updated TEKKEN NET',
         langLib: ['react', 'material', 'next'],
         methods: ['method one', 'method 2', 'method 3'],
-        screenshots: ['One', 'Two', 'Three'],
+        screenshots: [tekkenNet1, tekkenNet2],
         areas: ['area1', 'area2', 'area3'],
         questions: {
           create: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
@@ -173,7 +158,7 @@ export const projectsObj = {
           'git',
         ],
         methods: ['method one', 'method 2', 'method 3'],
-        screenshots: ['One', 'Two', 'Three'],
+        screenshots: [noteTaker1, noteTaker2],
         areas: ['area1', 'area2', 'area3'],
         questions: {
           create: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
