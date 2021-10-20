@@ -169,7 +169,7 @@ export default function projects() {
           className={classesRoot.mainDetailsContainer}
           direction="column">
           <Grid item>
-            <h3>BASIC DETAILS</h3>
+            <Typography textAlign="center">BASIC DETAILS</Typography>
           </Grid>
           <Grid item>
             <Grid container direction="column">
@@ -234,7 +234,7 @@ export default function projects() {
             </Grid>
           </Grid>
           <Grid item>
-            <h3>QUESTIONS</h3>
+            <Typography textAlign="center">QUESTIONS</Typography>
           </Grid>
           <Grid item>
             <Grid container direction="column">

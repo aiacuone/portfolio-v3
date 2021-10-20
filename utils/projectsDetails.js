@@ -25,24 +25,17 @@ export const projectsObj = {
         components: {
           resizeDetector: {
             name: 'React Resize Detector',
-            why: 'Why did I use resize detector',
+            why: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non elementum magna, vitae dapibus ex. Nulla mauris ligula, euismod ac massa ac, porta tristique elit.`,
           },
         },
         libraries: {
-          resizeDetector: {
-            name: 'Resize Detector',
-            components: {
-              resizeDetector: {
-                name: 'Resize Detector',
-                why: 'Why did I use resize detector',
-              },
-            },
-            methods: {},
-          },
           materialUI: {
             name: 'Material UI',
             components: {
-              drawer: { name: 'Drawer', why: 'Why did I use this component?' },
+              drawer: {
+                name: 'Drawer',
+                why: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non elementum magna, vitae dapibus ex. Nulla mauris ligula, euismod ac massa ac, porta tristique elit.`,
+              },
             },
             methods: {},
           },
@@ -51,17 +44,22 @@ export const projectsObj = {
             methods: {
               debounce: {
                 name: 'Debounce',
-                why: 'Why did I use this Library Method?',
+                why: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non elementum magna, vitae dapibus ex. Nulla mauris ligula, euismod ac massa ac, porta tristique elit.`,
               },
             },
             components: {},
           },
         },
         questions: {
-          how: 'How has your coding improved with this project?',
-          change:
-            'What would you change about this project and maybe implement later on?',
-          future: 'What ideas do you have for the future of this project?',
+          how: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+
+          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          change: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+
+          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          future: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+
+          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
         },
       },
     },
@@ -135,9 +133,15 @@ export const projectsObj = {
         screenshots: ['One', 'Two', 'Three'],
         areas: ['area1', 'area2', 'area3'],
         questions: {
-          create: 'Why create?',
-          learn: 'What did you learn?',
-          challenges: 'what challenges did you face?',
+          create: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+
+          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          learn: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+
+          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          challenges: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+
+          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
         },
       },
       technical: {
