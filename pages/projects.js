@@ -6,6 +6,8 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { projectHeaders, projectSummaries } from '../components/'
 import { HowToRegOutlined } from '@mui/icons-material'
+import Image from 'next/image'
+import { skillsObj } from '../utils/skillsDetails'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -68,11 +70,17 @@ export default function projects() {
     },
     detailsItem: {
       background: 'red',
-      width: '80%',
+      width: isPhone ? '95%' : '80%',
       padding: '20px 0',
     },
     text: {
       marginLeft: '15px', //PADDING OF TEXT FROM LEFT OF MAIN CONTAINER
+    },
+    langLib: {
+      padding: '5px 15px', //PADDING AROUND LANGUAGE/LIBRARY/APP SYMBOLS
+    },
+    symbol: {
+      // background: 'blue',
     },
   })
 
@@ -159,7 +167,7 @@ export default function projects() {
     }
 
     const BasicDetails = () => {
-      const { lastUpdated, langLib, methods, screenshots, questions, areas } =
+      const { lastUpdated, langLib, methods, screenshots, questions } =
         basicDetails
       const { create, learn, challenges } = questions
       return (
@@ -194,6 +202,44 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
+                <h4>Languages/Libraries/Applications</h4>
+              </Grid>
+              {/* <Grid item className={classesRoot.text}>
+                <ul>
+                  {langLib.map((area) => {
+                    return <li>{area}</li>
+                  })}
+                </ul>
+              </Grid> */}
+              <Grid container>
+                {langLib.map((item) => {
+                  return (
+                    <Grid item className={classesRoot.langLib}>
+                      <Grid
+                        className={classesRoot.symbol}
+                        container
+                        alignItems="center"
+                        direction="column">
+                        <Image
+                          src={`/images/skills/${item}.svg`}
+                          layout="fixed"
+                          height={40}
+                          width={40}
+                        />
+                        <Typography textAlign="center">
+                          {skillsObj[item].name}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    // <p>{item}</p>
+                  )
+                })}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
                 <h4>Methods Used</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
@@ -219,20 +265,7 @@ export default function projects() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Grid container direction="column">
-              <Grid item>
-                <h4>Areas</h4>
-              </Grid>
-              <Grid item className={classesRoot.text}>
-                <ul>
-                  {areas.map((area) => {
-                    return <li>{area}</li>
-                  })}
-                </ul>
-              </Grid>
-            </Grid>
-          </Grid>
+
           <Grid item>
             <Typography textAlign="center">QUESTIONS</Typography>
           </Grid>

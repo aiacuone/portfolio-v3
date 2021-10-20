@@ -1,3 +1,28 @@
+import images from '../public/images/skills'
+import images2 from '../public/images/skills'
+// const {
+//   // javaScript,
+//   // react,
+//   next,
+//   materialUI,
+//   git,
+//   gitHub,
+//   npm,
+//   css,
+//   html,
+//   OOP,
+//   lodash,
+//   illustrator,
+//   photoshop,
+//   adobe,
+//   email,
+//   linkedin,
+//   moon,
+//   phone,
+// } = images
+
+console.log(images, 'images projects')
+console.log(images2, 'images2 projects')
 export const projectsObj = {
   cheapshark: {
     name: 'Cheapshark',
@@ -6,7 +31,16 @@ export const projectsObj = {
     details: {
       basic: {
         lastUpdated: 'Last Updated CHEAPSHARK',
-        langLib: ['Lib 1', 'Lib 2'],
+        langLib: [
+          'react',
+          'material',
+          'next',
+          'lodash',
+          'illustrator',
+          'html',
+          'css',
+          'git',
+        ],
         methods: ['method one', 'method 2', 'method 3'],
         screenshots: ['One', 'Two', 'Three'],
         areas: ['area1', 'area2', 'area3'],
@@ -71,7 +105,7 @@ export const projectsObj = {
     details: {
       basic: {
         lastUpdated: 'Last Updated TEKKEN NET',
-        langLib: ['Lib 1', 'Lib 2'],
+        langLib: ['react', 'material', 'next'],
         methods: ['method one', 'method 2', 'method 3'],
         screenshots: ['One', 'Two', 'Three'],
         areas: ['area1', 'area2', 'area3'],
@@ -128,7 +162,16 @@ export const projectsObj = {
     details: {
       basic: {
         lastUpdated: 'Last Updated NOTE TAKER',
-        langLib: ['Lib 1', 'Lib 2'],
+        langLib: [
+          'react',
+          'material',
+          'next',
+          'lodash',
+          'illustrator',
+          'html',
+          'css',
+          'git',
+        ],
         methods: ['method one', 'method 2', 'method 3'],
         screenshots: ['One', 'Two', 'Three'],
         areas: ['area1', 'area2', 'area3'],

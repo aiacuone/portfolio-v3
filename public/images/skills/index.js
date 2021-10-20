@@ -1,4 +1,4 @@
-import javaScript from './javascript.svg'
+import javaScript from './javaScript.svg'
 import react from './react.svg'
 import next from './next.svg'
 import materialUI from './material.svg'
@@ -11,6 +11,11 @@ import OOP from './object.svg'
 import lodash from './lodash.svg'
 import illustrator from './illustrator.svg'
 import photoshop from './photoshop.svg'
+import adobe from './adobe.svg'
+import email from './email.svg'
+import linkedin from './linkedin.svg'
+import moon from './moon.svg'
+import phone from './phone.svg'
 
 export const images = {
   javaScript,
@@ -26,4 +31,12 @@ export const images = {
   lodash,
   illustrator,
   photoshop,
+  adobe,
+  email,
+  linkedin,
+  moon,
+  phone,
 }
+export const images2 = 'images 2'
+
+console.log(images, 'images images')

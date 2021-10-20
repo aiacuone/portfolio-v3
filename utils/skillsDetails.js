@@ -24,7 +24,7 @@ export const skillsObj = {
       return <p> ReactDETAILS</p>
     },
   },
-  javascript: {
+  javaScript: {
     name: 'JavaScript',
     image: javaScript,
     getDetails: () => {
@@ -44,7 +44,7 @@ export const skillsObj = {
       return <p>NextDETAILS</p>
     },
   },
-  materialUI: {
+  material: {
     name: 'Material UI',
     image: materialUI,
     getDetails: () => {
@@ -101,14 +101,14 @@ export const skillsObj = {
     },
   },
   illustrator: {
-    name: 'Adobe Illustrator',
+    name: 'Illustrator',
     image: illustrator,
     getDetails: () => {
       return <p>IllustratorDETAILS</p>
     },
   },
   photoshop: {
-    name: 'Adobe Photoshop',
+    name: 'Photoshop',
     image: photoshop,
     getDetails: () => {
       return <p>PhotoshopDETAILS</p>
