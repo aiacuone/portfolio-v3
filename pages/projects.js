@@ -345,7 +345,7 @@ export default function projects() {
         selectedProjectLibrariesObj
       )
 
-      function getShowMethods() {
+      function getShowLibraryMethods() {
         var boolean
 
         selectedProjectLibrariesArr.forEach((item) => {
@@ -359,7 +359,7 @@ export default function projects() {
         return boolean
       }
 
-      function getShowComponents() {
+      function getShowLibraryComponents() {
         var boolean
 
         selectedProjectLibrariesArr.forEach((item) => {
@@ -373,8 +373,8 @@ export default function projects() {
         return boolean
       }
 
-      const showMethods = getShowMethods()
-      const showComponents = getShowComponents()
+      const showLibraryMethods = getShowLibraryMethods()
+      const showLibraryComponents = getShowLibraryComponents()
 
       const LibraryMethods = () => {
         const methods = selectedProjectLibrariesArr.map((item) => {
@@ -436,6 +436,16 @@ export default function projects() {
         return components
       }
 
+      const getShowComponents = () => {
+        var boolean
+        if (Object.keys(components).length > 0) {
+          boolean = true
+        }
+        return boolean
+      }
+
+      const showComponents = getShowComponents()
+
       return (
         <Grid
           container
@@ -459,20 +469,22 @@ export default function projects() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Grid container direction="column">
-              <Grid item>
-                <h4>Components</h4>
-              </Grid>
-              <Grid item className={classesRoot.text}>
-                {Object.keys(components).map((item) => {
-                  const { name, why } = components[item]
-                  return <p>{`${name}: ${why}`}</p>
-                })}
+          {showComponents && (
+            <Grid item>
+              <Grid container direction="column">
+                <Grid item>
+                  <h4>Components</h4>
+                </Grid>
+                <Grid item className={classesRoot.text}>
+                  {Object.keys(components).map((item) => {
+                    const { name, why } = components[item]
+                    return <p>{`${name}: ${why}`}</p>
+                  })}
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          {showMethods && (
+          )}
+          {showLibraryMethods && (
             <Grid item>
               <Grid container direction="column">
                 <Grid item>
@@ -484,7 +496,7 @@ export default function projects() {
               </Grid>
             </Grid>
           )}
-          {showComponents && (
+          {showLibraryComponents && (
             <Grid item>
               <Grid container direction="column">
                 <Grid item>
