@@ -1,7 +1,3 @@
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
-import WorkIcon from '@mui/icons-material/Work'
-import PersonIcon from '@mui/icons-material/Person'
-import MenuBookIcon from '@mui/icons-material/MenuBook'
 import { images } from '../public/images/aboutMe'
 
 const { hobbies, work, details, story } = images

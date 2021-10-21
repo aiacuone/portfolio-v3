@@ -57,6 +57,10 @@ export const projectsObj = {
                 name: 'Drawer',
                 why: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non elementum magna, vitae dapibus ex. Nulla mauris ligula, euismod ac massa ac, porta tristique elit.`,
               },
+              grid: {
+                name: 'Grid',
+                why: 'Basic structure and layout of Application',
+              },
             },
             methods: {},
           },

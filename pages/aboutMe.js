@@ -5,8 +5,6 @@ import { UserContext } from '../utils/UserContext'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 
-import RestoreIcon from '@mui/icons-material/Restore'
-
 export default function aboutMe() {
   const { state, vars, setState } = useContext(UserContext)
   const {
@@ -46,7 +44,12 @@ export default function aboutMe() {
             alignItems="center"
             direction="column"
             justifyContent="center">
-            <Image src={icon} layout="fixed" width={50} height={50} />
+            <Image
+              src={icon}
+              layout="fixed"
+              width={isPhone ? 30 : 50}
+              height={isPhone ? 30 : 50}
+            />
             <Typography>{name}</Typography>
           </Grid>
         </Grid>

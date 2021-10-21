@@ -417,16 +417,18 @@ export default function projects() {
                 <Grid item>
                   <h4>{name}</h4>
                 </Grid>
+                {methodsArr.map((item) => {
+                  const method = methods[item]
+                  const { name, why } = method
+                  return (
+                    <Grid item>
+                      <p>
+                        <b>{`${name}:`}</b> {`${why}`}
+                      </p>
+                    </Grid>
+                  )
+                })}
               </Grid>
-              {methodsArr.map((item) => {
-                const method = methods[item]
-                const { name, why } = method
-                return (
-                  <Grid>
-                    <p>{`${name}: ${why} `}</p>
-                  </Grid>
-                )
-              })}
             </Grid>
           )
         })
@@ -449,12 +451,18 @@ export default function projects() {
                 <Grid item>
                   <h4>{name}</h4>
                 </Grid>
+                {componentsArr.map((item) => {
+                  const component = components[item]
+                  const { name, why } = component
+                  return (
+                    <Grid item>
+                      <p>
+                        <b>{`${name}:`}</b> {`${why} `}
+                      </p>
+                    </Grid>
+                  )
+                })}
               </Grid>
-              {componentsArr.map((item) => {
-                const component = components[item]
-                const { name, why } = component
-                return <p>{`${name}: ${why} `}</p>
-              })}
             </Grid>
           )
         })
@@ -478,7 +486,9 @@ export default function projects() {
           className={classesRoot.mainDetailsContainer}
           direction="column">
           <Grid item>
-            <Typography textAlign="center">TECHNICAL DETAILS</Typography>
+            <Typography textAlign="center">
+              <b>TECHNICAL DETAILS</b>
+            </Typography>
           </Grid>
           <Grid item>
             <Grid container direction="column">
@@ -513,7 +523,9 @@ export default function projects() {
             <Grid item>
               <Grid container direction="column">
                 <Grid item>
-                  <h4>Library Methods</h4>
+                  <Typography>
+                    <b>Library Methods</b>
+                  </Typography>
                 </Grid>
                 <Grid item className={classesRoot.text}>
                   <LibraryMethods />
@@ -525,7 +537,9 @@ export default function projects() {
             <Grid item>
               <Grid container direction="column">
                 <Grid item>
-                  <h4>Library Components</h4>
+                  <Typography>
+                    <b>Library Components</b>
+                  </Typography>
                 </Grid>
                 <Grid item className={classesRoot.text}>
                   <LibraryComponents />
