@@ -33,8 +33,7 @@ export default function aboutMe() {
 
   const Buttons = () => {
     const buttons = aboutMeArr.map((item, index) => {
-      const { name, icon: Icon } = aboutMeObj[item]
-      // const { name, icon } = aboutMeObj[item]
+      const { name, icon } = aboutMeObj[item]
       return (
         <Grid
           key={item.name}
@@ -47,9 +46,8 @@ export default function aboutMe() {
             alignItems="center"
             direction="column"
             justifyContent="center">
-            <Icon fontSize="large" />
-            {/* <Image src={<Icon />} layout="filled" width={30} height={30} /> */}
-            {/* <Typography>{name}</Typography> */}
+            <Image src={icon} layout="fixed" width={50} height={50} />
+            <Typography>{name}</Typography>
           </Grid>
         </Grid>
       )
