@@ -140,6 +140,10 @@ export default function skills() {
       buttonContainer: {
         background: 'blue',
         gridArea: '10/1/11/11',
+        // maxWidth: '500px',
+      },
+      buttonContainer2: {
+        maxWidth: '800px', //WIDTH OF BUTTON CONTAINER
       },
       header: {
         background: 'orange',
@@ -168,8 +172,13 @@ export default function skills() {
             alignItems="center">
             {mainDetails}
           </Grid>
-          <Grid container className={classes.buttonContainer}>
-            <Buttons size={40} />
+          <Grid
+            container
+            className={classes.buttonContainer}
+            justifyContent="center">
+            <Grid className={classes.buttonContainer2} container>
+              <Buttons size={40} />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

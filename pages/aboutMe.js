@@ -29,7 +29,7 @@ export default function aboutMe() {
     return <Typography>{optionName.toUpperCase()}</Typography>
   }
 
-  const Buttons = () => {
+  const Buttons = ({ size }) => {
     const buttons = aboutMeArr.map((item, index) => {
       const { name, icon } = aboutMeObj[item]
       return (
@@ -44,12 +44,7 @@ export default function aboutMe() {
             alignItems="center"
             direction="column"
             justifyContent="center">
-            <Image
-              src={icon}
-              layout="fixed"
-              width={isPhone ? 30 : 50}
-              height={isPhone ? 30 : 50}
-            />
+            <Image src={icon} layout="fixed" width={size} height={size} />
             <Typography>{name}</Typography>
           </Grid>
         </Grid>
@@ -106,7 +101,7 @@ export default function aboutMe() {
           <HeaderText />
         </Grid>
         <Grid className={classes.buttonContainer} container direction="column">
-          <Buttons />
+          <Buttons size={30} />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -181,7 +176,7 @@ export default function aboutMe() {
           {mainDetails}
         </Grid>
         <Grid className={classes.buttonContainer} container>
-          <Buttons />
+          <Buttons size={30} />
         </Grid>
         <Grid className={classes.hamburgerGap} />
       </Grid>
@@ -225,6 +220,9 @@ export default function aboutMe() {
         background: 'orange',
         zIndex: 3,
       },
+      buttonContainer2: {
+        maxWidth: '500px',
+      },
     })
     const classes = useStyles()
 
@@ -249,7 +247,9 @@ export default function aboutMe() {
             container
             className={classes.buttonContainer}
             justifyContent="center">
-            <Buttons />
+            <Grid container className={classes.buttonContainer2}>
+              <Buttons size={40} />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
