@@ -67,16 +67,31 @@ export default function projects() {
     projectButtonContainer2: {
       height: '100%',
     },
-    mainDetails: {
+    // mainDetails: {
+    //   height: '100%',
+    //   flexWrap: 'nowrap',
+    //   overflowY: 'scroll',
+    //   zIndex: 3,
+
+    // },
+    mainDetailsContainer2: {
       height: '100%',
-      flexWrap: 'nowrap',
+      // flexWrap: 'nowrap',
       overflowY: 'scroll',
       zIndex: 3,
+      display: 'grid',
+      gridTemplateColumns: '1fr',
+      gridTemplateRows: '120px 1fr',
     },
-    detailsItem: {
+    projectHeaderContainer: {
+      background: 'white',
+      height: '120px',
+      gridArea: '1/1/2/3',
+    },
+    detailsContainer: {
       background: 'red',
-      width: '100%',
       padding: isPhone ? '0 5px' : '0 70px',
+      gridArea: '2/1/3/2',
     },
     text: {
       marginLeft: '15px', //PADDING OF TEXT FROM LEFT OF MAIN CONTAINER
@@ -93,7 +108,6 @@ export default function projects() {
     screenshotContainer: {
       padding: '20px',
     },
-    screenshot: {},
   })
 
   const classesRoot = useStylesRoot()
@@ -525,10 +539,16 @@ export default function projects() {
       <Grid
         container
         direction="column"
-        className={classesRoot.mainDetails}
+        className={classesRoot.mainDetailsContainer2}
         alignItems="center">
-        <Grid item className={classesRoot.detailsItem}>
+        <Grid
+          container
+          className={classesRoot.projectHeaderContainer}
+          justifyContent="center"
+          alignItems="center">
           <ProjectHeader />
+        </Grid>
+        <Grid container className={classesRoot.detailsContainer}>
           {detailSelection === 0 ? <BasicDetails /> : <TechnicalDetails />}
           <Grid container className={classesRoot.paddingGap} />
         </Grid>

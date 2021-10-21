@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Typography from '@mui/material/Typography'
+import Image from 'next/image'
 
 import RestoreIcon from '@mui/icons-material/Restore'
 
@@ -28,6 +29,32 @@ export default function aboutMe() {
 
   const HeaderText = () => {
     return <Typography>{optionName.toUpperCase()}</Typography>
+  }
+
+  const Buttons = () => {
+    const buttons = aboutMeArr.map((item, index) => {
+      const { name, icon: Icon } = aboutMeObj[item]
+      // const { name, icon } = aboutMeObj[item]
+      return (
+        <Grid
+          key={item.name}
+          onClick={() => setSelections({ ...selections, ['aboutMe']: index })}
+          className={classesRoot.button}
+          style={{ background: index == selection && 'purple' }}>
+          <Grid
+            container
+            className={classesRoot.container}
+            alignItems="center"
+            direction="column"
+            justifyContent="center">
+            <Icon fontSize="large" />
+            {/* <Image src={<Icon />} layout="filled" width={30} height={30} /> */}
+            {/* <Typography>{name}</Typography> */}
+          </Grid>
+        </Grid>
+      )
+    })
+    return buttons
   }
 
   const Landscape = () => {
@@ -226,30 +253,6 @@ export default function aboutMe() {
         </Grid>
       </Grid>
     )
-  }
-
-  const Buttons = () => {
-    const buttons = aboutMeArr.map((item, index) => {
-      const { name, icon: Icon } = aboutMeObj[item]
-      return (
-        <Grid
-          key={item.name}
-          onClick={() => setSelections({ ...selections, ['aboutMe']: index })}
-          className={classesRoot.button}
-          style={{ background: index == selection && 'purple' }}>
-          <Grid
-            container
-            className={classesRoot.container}
-            alignItems="center"
-            direction="column"
-            justifyContent="center">
-            <Icon />
-            <Typography>{name}</Typography>
-          </Grid>
-        </Grid>
-      )
-    })
-    return buttons
   }
 
   const useStylesRoot = makeStyles({
