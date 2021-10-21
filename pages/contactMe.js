@@ -4,10 +4,14 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
+import Link from 'next/link'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
   // button: { margin: '10px 0', background: 'red' },
+  button: {
+    zIndex: 3,
+  },
 })
 
 export default function contactMe() {
@@ -21,15 +25,24 @@ export default function contactMe() {
   const Buttons = ({ size }) => {
     const props = { height: size, width: size }
     return contactsArr.map((item, index) => {
-      const { image } = contactsObj[item]
+      const { image, link } = contactsObj[item]
+      if (!isPhone && item == 'phone') return
+
+      function handleClick() {}
+
       return (
-        <Image
-          key={item.name + index}
-          className={classesRoot.button}
-          src={image}
-          layout="fixed"
-          {...props}
-        />
+        <Link href={link}>
+          <a target="_blank">
+            <Image
+              onClick={handleClick}
+              key={item.name + index}
+              className={classesRoot.button}
+              src={image}
+              layout="fixed"
+              {...props}
+            />
+          </a>
+        </Link>
       )
     })
   }

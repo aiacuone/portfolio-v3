@@ -10,6 +10,7 @@ import { skillsObj } from '../utils/skillsDetails'
 import { images as skillsImages } from '../public/images/skills'
 import { InsertEmoticonOutlined } from '@material-ui/icons'
 // import { screenshots } from '../public/images/screenshots'
+import Link from 'next/link'
 
 export default function projects() {
   const { state, vars, setState } = useContext(UserContext)
@@ -29,7 +30,13 @@ export default function projects() {
 
   const selection = selections['projects']
   const projectObj = projectsObj[projectsArr[selection.project]]
-  const { name: projectName, isNew, details: projectDetails } = projectObj
+  const {
+    name: projectName,
+    isNew,
+    details: projectDetails,
+    projectLink,
+    projectGitHubLink,
+  } = projectObj
 
   const useStylesRoot = makeStyles({
     root: {
@@ -55,7 +62,7 @@ export default function projects() {
       zIndex: 1,
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px',
     },
-    viewButtonContainer: { flexWrap: 'nowrap' },
+    viewButtonContainer: { flexWrap: 'nowrap', zIndex: 3 },
     detailContainer: {
       padding: 0,
       width: isPhoneLandscape ? '100%' : '50%',
@@ -144,18 +151,34 @@ export default function projects() {
   }
 
   const ViewGitHubButton = () => {
-    return <Button className={classesRoot.viewButton}>View GitHub</Button>
+    return (
+      <Grid className={classesRoot.viewButton}>
+        <Link href={projectGitHubLink}>
+          <a target="_blank">
+            <Button fullWidth>View GitHub</Button>
+          </a>
+        </Link>
+      </Grid>
+    )
   }
 
   const ViewProjectButton = () => {
-    return <Button className={classesRoot.viewButton}>View Project</Button>
+    return (
+      <Grid className={classesRoot.viewButton}>
+        <Link href={projectLink}>
+          <a target="_blank">
+            <Button fullWidth>View Project</Button>
+          </a>
+        </Link>
+      </Grid>
+    )
   }
 
   const ViewButtons = () => {
     return (
       <Grid container className={classesRoot.viewButtonContainer}>
-        <ViewGitHubButton />
         <ViewProjectButton />
+        <ViewGitHubButton />
       </Grid>
     )
   }

@@ -13,6 +13,8 @@ export const projectsObj = {
     name: 'Cheapshark',
     isNew: true,
     internalName: 'cheapshark',
+    projectLink: 'https://aiacuone-cheapshark-api.netlify.app/',
+    projectGitHubLink: 'https://github.com/aiacuone/Cheapshark',
     details: {
       basic: {
         lastUpdated: 'October, 2021',
@@ -87,6 +89,8 @@ export const projectsObj = {
     name: 'Tekken-Net',
     new: true,
     internalName: 'tekkenNet',
+    projectLink: 'https://aiacuone-tekkenet.netlify.app/',
+    projectGitHubLink: 'https://github.com/aiacuone/tekken-net',
     details: {
       basic: {
         lastUpdated: 'Last Updated TEKKEN NET',
@@ -144,6 +148,8 @@ export const projectsObj = {
     name: 'Note Taker',
     new: false,
     internalName: 'noteTaker',
+    projectLink: 'https://aiacuone-note-taker.netlify.app/',
+    projectGitHubLink: 'https://github.com/aiacuone/Note-Taker',
     details: {
       basic: {
         lastUpdated: 'Last Updated NOTE TAKER',

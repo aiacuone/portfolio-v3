@@ -169,7 +169,7 @@ export default function skills() {
             {mainDetails}
           </Grid>
           <Grid container className={classes.buttonContainer}>
-            <Buttons size={45} />
+            <Buttons size={40} />
           </Grid>
         </Grid>
       </Grid>
