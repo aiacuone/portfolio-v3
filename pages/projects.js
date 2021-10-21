@@ -90,7 +90,7 @@ export default function projects() {
     },
     detailsContainer: {
       background: 'red',
-      padding: isPhone ? '0 5px' : '0 70px',
+      padding: isPhone ? '0 5px' : '20px 70px',
       gridArea: '2/1/3/2',
     },
     text: {
@@ -102,7 +102,9 @@ export default function projects() {
     },
     symbol: {},
     mainDetailsContainer: {
-      paddingTop: '20px', //PADDING BETWEEN PROJECT HEADER AND START OF MAIN CONTAINER TEXT
+      // margin: 0,
+      // paddingTop: '20px', //PADDING BETWEEN PROJECT HEADER AND START OF MAIN CONTAINER TEXT
+      // padding: 0,
     },
     paddingGap: { height: '30px' },
     screenshotContainer: {
@@ -387,7 +389,7 @@ export default function projects() {
             <Grid container direction="column">
               <Grid container alignItems="center" spacing={1}>
                 <Grid item>
-                  <Image src={image} layout="fixed" width={30} height={30} />
+                  <Image src={image} layout="fixed" width={20} height={20} />
                 </Grid>
                 <Grid item>
                   <h4>{name}</h4>
@@ -419,7 +421,7 @@ export default function projects() {
             <Grid container direction="column">
               <Grid container alignItems="center" spacing={1}>
                 <Grid item>
-                  <Image src={image} layout="fixed" width={30} height={30} />
+                  <Image src={image} layout="fixed" width={20} height={20} />
                 </Grid>
                 <Grid item>
                   <h4>{name}</h4>
@@ -551,8 +553,7 @@ export default function projects() {
       <Grid
         container
         direction="column"
-        className={classesRoot.mainDetailsContainer2}
-        alignItems="center">
+        className={classesRoot.mainDetailsContainer2}>
         <Grid
           container
           className={classesRoot.projectHeaderContainer}
