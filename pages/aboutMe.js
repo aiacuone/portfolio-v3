@@ -21,9 +21,32 @@ export default function aboutMe() {
   const { setSelections } = setState
   const { isPhone, isPhoneLandscape } = state.phone
   const selection = selections['aboutMe']
-  const selectedOption = aboutMeObj[aboutMeArr[selection]]
-  const { getDetails, name: optionName } = selectedOption
+  const selectedOptionObj = aboutMeObj[aboutMeArr[selection]]
+  const { getDetails, name: optionName, icon } = selectedOptionObj
   const mainDetails = getDetails()
+
+  const useStylesRoot = makeStyles({
+    root: { height: '100%', width: '100%' },
+    bottomNav: {
+      display: 'flex',
+      flexDirection: isPhoneLandscape && 'column',
+      background: 'brown',
+    },
+    button: { flexGrow: 1, cursor: 'pointer' },
+    container: { height: '100%' },
+    mainContentHeaderContainer: {
+      // background: 'blue',
+      paddingBottom: '30px',
+    },
+    mainDetailsContainer: {
+      // width: '80%',
+      // background: 'orange',
+    },
+    mainDetailsContainer2: {
+      width: '80%',
+      // background: 'green',
+    },
+  })
 
   const HeaderText = () => {
     return <Typography>{optionName.toUpperCase()}</Typography>
@@ -51,6 +74,34 @@ export default function aboutMe() {
       )
     })
     return buttons
+  }
+
+  const Header = () => {
+    return (
+      <Grid container className={classesRoot.mainContentHeaderContainer}>
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item>
+            <Image src={icon} layout="fixed" height={80} width={80} />
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">{optionName}</Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    )
+  }
+
+  const MainDetails = () => {
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        className={classesRoot.mainDetailsContainer}>
+        <Grid container className={classesRoot.mainDetailsContainer2}>
+          <Typography>{mainDetails}</Typography>
+        </Grid>
+      </Grid>
+    )
   }
 
   const Landscape = () => {
@@ -108,6 +159,7 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
+          <Header />
           {mainDetails}
         </Grid>
         <Grid className={classes.hamburgerGap}></Grid>
@@ -173,6 +225,7 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
+          <Header />
           {mainDetails}
         </Grid>
         <Grid className={classes.buttonContainer} container>
@@ -213,7 +266,7 @@ export default function aboutMe() {
       },
       mainContainer: {
         gridArea: '2/1/3/2',
-        background: 'grey',
+        background: 'green',
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
@@ -236,36 +289,24 @@ export default function aboutMe() {
           <Grid container className={classes.header} justifyContent="center">
             <HeaderText />
           </Grid>
-          <Grid
-            container
-            className={classes.mainContainer}
-            justifyContent="center"
-            alignItems="center">
-            {mainDetails}
+          <Grid className={classes.mainContainer} container alignItems="center">
+            <Grid container>
+              <Header />
+              <MainDetails />
+            </Grid>
           </Grid>
           <Grid
             container
             className={classes.buttonContainer}
             justifyContent="center">
             <Grid container className={classes.buttonContainer2}>
-              <Buttons size={40} />
+              <Buttons size={35} />
             </Grid>
           </Grid>
         </Grid>
       </Grid>
     )
   }
-
-  const useStylesRoot = makeStyles({
-    root: { height: '100%', width: '100%' },
-    bottomNav: {
-      display: 'flex',
-      flexDirection: isPhoneLandscape && 'column',
-      background: 'brown',
-    },
-    button: { flexGrow: 1, cursor: 'pointer' },
-    container: { height: '100%' },
-  })
 
   const classesRoot = useStylesRoot()
   return (

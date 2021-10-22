@@ -45,8 +45,10 @@ export default function projects() {
       background: 'green',
     },
     detailButtons: {
-      width: '100%',
+      // width: '100%',
       zIndex: 3,
+      flexGrow: 1,
+      maxWidth: '300px',
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
     },
     viewButton: {
@@ -55,12 +57,14 @@ export default function projects() {
       flexGrow: 1,
       background: 'white',
       overflow: 'hidden',
+      maxWidth: '300px',
     },
 
     projectButton: {
       flexGrow: 1,
       zIndex: 1,
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px',
+      maxWidth: '300px',
     },
     viewButtonContainer: { flexWrap: 'nowrap', zIndex: 3 },
     detailContainer: {
@@ -69,7 +73,7 @@ export default function projects() {
     },
     detailContainer2: { height: '100%' },
     projectButtonContainer: {
-      flexGrow: 1,
+      // flexGrow: 1,
     },
     projectButtonContainer2: {
       height: '100%',
@@ -88,11 +92,11 @@ export default function projects() {
       zIndex: 3,
       display: 'grid',
       gridTemplateColumns: '1fr',
-      gridTemplateRows: '120px 1fr',
+      gridTemplateRows: `${isPhone ? '70px' : '120px'} 1fr`, //HEIGHT OF PROJECT CONTAINER
     },
     projectHeaderContainer: {
       background: 'white',
-      height: '120px',
+      // height: isPhone ? '50px' : '120px',
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
@@ -123,7 +127,7 @@ export default function projects() {
 
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
-    const buttons = arr.map((button, index) => {
+    const buttonsLandscape = arr.map((button, index) => {
       return (
         <Grid
           key={button + index}
@@ -147,7 +151,26 @@ export default function projects() {
         </Grid>
       )
     })
-    return <Grid container>{buttons}</Grid>
+
+    const buttons = arr.map((button, index) => {
+      return (
+        <Button
+          style={{ background: selection.details == index && 'blue' }}
+          className={classesRoot.detailButtons}
+          onClick={() => {
+            const newSelections = { ...selections }
+            newSelections['projects'].details = index
+            setSelections(newSelections)
+          }}>
+          {button}
+        </Button>
+      )
+    })
+    return (
+      <Grid container justifyContent="center">
+        {isPhoneLandscape ? buttonsLandscape : buttons}
+      </Grid>
+    )
   }
 
   const ViewGitHubButton = () => {
@@ -176,33 +199,57 @@ export default function projects() {
 
   const ViewButtons = () => {
     return (
-      <Grid container className={classesRoot.viewButtonContainer}>
+      <Grid
+        container
+        className={classesRoot.viewButtonContainer}
+        justifyContent="center">
         <ViewProjectButton />
         <ViewGitHubButton />
       </Grid>
     )
   }
 
-  const projectButtons = projectsArr.map((project, index) => {
-    return (
-      <Grid
-        key={project.name + index}
-        className={classesRoot.projectButtonContainer}
-        style={{ background: index == selection.project && 'orange' }}>
-        <Grid container className={classesRoot.projectButtonContainer2}>
-          <Button
-            onClick={() => {
-              const newSelections = { ...selections }
-              newSelections['projects'].project = index
-              setSelections(newSelections)
-            }}
-            className={classesRoot.projectButton}>
-            {projectsObj[project].name}
-          </Button>
+  const ProjectButtons = () => {
+    const projectButtonsLandscape = projectsArr.map((project, index) => {
+      return (
+        <Grid
+          container
+          justifyContent="center"
+          key={project.name + index}
+          className={classesRoot.projectButtonContainer}
+          style={{ background: index == selection.project && 'orange' }}>
+          <Grid container className={classesRoot.projectButtonContainer2}>
+            <Button
+              onClick={() => {
+                const newSelections = { ...selections }
+                newSelections['projects'].project = index
+                setSelections(newSelections)
+              }}
+              className={classesRoot.projectButton}>
+              {projectsObj[project].name}
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    )
-  })
+      )
+    })
+
+    const projectButtons = projectsArr.map((project, index) => {
+      return (
+        <Button
+          style={{ background: index == selection.project && 'orange' }}
+          onClick={() => {
+            const newSelections = { ...selections }
+            newSelections['projects'].project = index
+            setSelections(newSelections)
+          }}
+          className={classesRoot.projectButton}>
+          {projectsObj[project].name}
+        </Button>
+      )
+    })
+
+    return isPhoneLandscape ? projectButtonsLandscape : projectButtons
+  }
 
   const MainDetails = () => {
     const { basic: basicDetails, technical: technicalDetails } = projectDetails
@@ -641,7 +688,8 @@ export default function projects() {
     const Buttons = () => {
       return (
         <Grid className={classes.buttonContainer} container>
-          {projectButtons}
+          {/* {projectButtons} */}
+          <ProjectButtons />
           <DetailButtons />
         </Grid>
       )
@@ -739,7 +787,8 @@ export default function projects() {
           PROJECTS
         </Grid>
         <Grid className={classes.projectButtons} container>
-          {projectButtons}
+          {/* {projectButtons} */}
+          <ProjectButtons />
         </Grid>
         <Grid className={classes.detailsButtons} container>
           <DetailButtons />
@@ -825,7 +874,10 @@ export default function projects() {
             alignItems="center"
             className={classes.projectButtonContainer}
             direction="column">
-            <Grid container>{projectButtons}</Grid>
+            <Grid container justifyContent="center">
+              {/* {projectButtons} */}
+              <ProjectButtons />
+            </Grid>
           </Grid>
           <Grid container className={classes.detailsButtonContainer}>
             <DetailButtons />
