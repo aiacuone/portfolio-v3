@@ -36,9 +36,13 @@ export default function aboutMe() {
     container: { height: '100%' },
     mainContentHeaderContainer: {
       // background: 'blue',
-      padding: '30px',
+      paddingBottom: '30px',
     },
     mainDetailsContainer: {
+      // width: '80%',
+      // background: 'orange',
+    },
+    mainDetailsContainer2: {
       width: '80%',
       // background: 'green',
     },
@@ -89,8 +93,11 @@ export default function aboutMe() {
 
   const MainDetails = () => {
     return (
-      <Grid container justifyContent="center">
-        <Grid container className={classesRoot.mainDetailsContainer}>
+      <Grid
+        container
+        justifyContent="center"
+        className={classesRoot.mainDetailsContainer}>
+        <Grid container className={classesRoot.mainDetailsContainer2}>
           <Typography>{mainDetails}</Typography>
         </Grid>
       </Grid>
@@ -259,7 +266,7 @@ export default function aboutMe() {
       },
       mainContainer: {
         gridArea: '2/1/3/2',
-        background: 'grey',
+        background: 'green',
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
@@ -282,9 +289,11 @@ export default function aboutMe() {
           <Grid container className={classes.header} justifyContent="center">
             <HeaderText />
           </Grid>
-          <Grid className={classes.mainContainer}>
-            <Header />
-            <MainDetails />
+          <Grid className={classes.mainContainer} container alignItems="center">
+            <Grid container>
+              <Header />
+              <MainDetails />
+            </Grid>
           </Grid>
           <Grid
             container
