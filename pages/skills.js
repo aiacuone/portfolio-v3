@@ -5,24 +5,7 @@ import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 
-const useStylesRoot = makeStyles({
-  root: { height: '100%', width: '100%' },
-  buttonContainer: { height: '50%' },
-  buttonContainer2: {},
-  button: { zIndex: 1 },
-  imageContainer: {
-    flexGrow: 1,
-    cursor: 'pointer',
-    height: '100%',
-    zIndex: 1,
-  },
-  imageContainer2: {
-    height: '100%',
-  },
-})
-
 export default function skills() {
-  const classesRoot = useStylesRoot()
   const { state, vars, setState } = useContext(UserContext)
   const {
     hamburger,
@@ -39,9 +22,30 @@ export default function skills() {
   const { setSelections } = setState
 
   const selection = selections['skills']
-  const selectedSkill = skillsObj[skillsArr[selection]]
-  const { getDetails } = selectedSkill
+  const selectedSkillObj = skillsObj[skillsArr[selection]]
+  const { getDetails, image, name } = selectedSkillObj
   const mainDetails = getDetails()
+
+  const useStylesRoot = makeStyles({
+    root: { height: '100%', width: '100%' },
+    buttonContainer: { height: '50%' },
+    buttonContainer2: {},
+    button: { zIndex: 1 },
+    imageContainer: {
+      flexGrow: 1,
+      cursor: 'pointer',
+      height: '100%',
+      zIndex: 1,
+    },
+    imageContainer2: {
+      height: '100%',
+    },
+    mainDetailsContainer: {
+      padding: isPhone ? '10px 10px ' : '30px 70px',
+    },
+  })
+
+  const classesRoot = useStylesRoot()
 
   const Buttons = ({ size }) => {
     const SkillsButton = ({ src, index }) => {
@@ -109,6 +113,27 @@ export default function skills() {
     return isPhonePortrait ? <Portrait /> : <Other />
   }
 
+  const MainDetails = () => {
+    return (
+      <Grid container justifyContent="center">
+        <Grid container spacing={1} justifyContent="center" alignItems="center">
+          <Grid item>
+            <Image src={image} layout="fixed" height={70} width={70} />
+          </Grid>
+          <Grid item>
+            <Typography variant="h5">{name}</Typography>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          justifyContent="center"
+          className={classesRoot.mainDetailsContainer}>
+          <Typography>{mainDetails}</Typography>
+        </Grid>
+      </Grid>
+    )
+  }
+
   const Normal = () => {
     const { width, maxWidth, minWidth, height, maxHeight, minHeight } =
       container
@@ -154,7 +179,7 @@ export default function skills() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            {mainDetails}
+            <MainDetails />
           </Grid>
           <Grid
             container
@@ -211,7 +236,7 @@ export default function skills() {
           container
           justifyContent="center"
           alignItems="center">
-          {mainDetails}
+          <MainDetails />
         </Grid>
         <Grid
           className={classes.buttonContainer}
@@ -269,7 +294,7 @@ export default function skills() {
           container
           justifyContent="center"
           alignItems="center">
-          {mainDetails}
+          <MainDetails />
         </Grid>
         <Grid
           className={classes.buttonContainer}

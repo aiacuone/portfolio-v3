@@ -41,6 +41,9 @@ export default function aboutMe() {
     mainDetailsContainer2: {
       padding: isPhone ? '0 10px' : '0 70px', //PADDING OF MAIN CONTAINER
     },
+    headerText: {
+      // background: 'red',
+    },
   })
 
   const Buttons = ({ size }) => {
@@ -67,7 +70,7 @@ export default function aboutMe() {
     return buttons
   }
 
-  const Header = () => {
+  const Header = ({ variant, size }) => {
     return (
       <Grid
         container
@@ -77,10 +80,12 @@ export default function aboutMe() {
         <Grid>
           <Grid container alignItems="center" spacing={1}>
             <Grid item>
-              <Image src={icon} layout="fixed" height={80} width={80} />
+              <Image src={icon} layout="fixed" height={size} width={size} />
             </Grid>
             <Grid item>
-              <Typography variant="h4">{optionName}</Typography>
+              <Typography variant={variant} className={classesRoot.headerText}>
+                {optionName}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -147,7 +152,7 @@ export default function aboutMe() {
           justifyContent="center"
           alignItems="center">
           <Grid>
-            <Header />
+            <Header variant="h5" size={40} />
             <MainDetails />
           </Grid>
         </Grid>
@@ -204,7 +209,7 @@ export default function aboutMe() {
           justifyContent="center"
           alignItems="center">
           <Grid>
-            <Header />
+            <Header variant="h5" size={40} />
             <MainDetails />
           </Grid>
         </Grid>
@@ -265,7 +270,7 @@ export default function aboutMe() {
         <Grid container className={classes.container}>
           <Grid className={classes.mainContainer} container alignItems="center">
             <Grid container>
-              <Header />
+              <Header variant="h4" size={50} />
               <MainDetails />
             </Grid>
           </Grid>

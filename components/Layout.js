@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import { UserContext } from '../utils/UserContext'
 import Link from 'next/link'
+import Button from '@mui/material/Button'
 
 export default function Layout({ children }) {
   const { state, vars } = useContext(UserContext)
@@ -127,6 +128,26 @@ export default function Layout({ children }) {
       },
     })
 
+    const NavLinks = () => {
+      const navArr = [
+        { name: 'Home', link: '' },
+        { name: 'Projects', link: 'projects' },
+        { name: 'skills', link: 'skills' },
+        { name: 'About Me', link: 'aboutMe' },
+        { name: 'Contact Me', link: 'contactMe' },
+      ]
+      return navArr.map((nav) => {
+        const { name, link } = nav
+        return (
+          <Grid item>
+            <Link href={`/${link}`}>
+              <Button>{name}</Button>
+            </Link>
+          </Grid>
+        )
+      })
+    }
+
     const classes = useStyles()
     return (
       <Grid container className={classes.root}>
@@ -137,21 +158,7 @@ export default function Layout({ children }) {
               spacing={3}
               className={classes.linksHeader2}
               justifyContent="flex-end">
-              <Grid item>
-                <Link href="/">Home</Link>
-              </Grid>
-              <Grid item>
-                <Link href="projects">Projects</Link>
-              </Grid>
-              <Grid item>
-                <Link href="skills">Skills</Link>
-              </Grid>
-              <Grid item>
-                <Link href="aboutMe">About Me</Link>
-              </Grid>
-              <Grid item>
-                <Link href="contactMe">Contact Me</Link>
-              </Grid>
+              <NavLinks />
             </Grid>
           </Grid>
         </Grid>

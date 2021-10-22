@@ -52,7 +52,8 @@ export default function projects() {
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
     },
     viewButton: {
-      height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
+      // height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
+      height: '100%',
       whiteSpace: 'nowrap',
       flexGrow: 1,
       background: 'white',
@@ -174,27 +175,59 @@ export default function projects() {
   }
 
   const ViewGitHubButton = () => {
-    return (
-      <Grid className={classesRoot.viewButton}>
-        <Link href={projectGitHubLink}>
-          <a target="_blank">
-            <Button fullWidth>View GitHub</Button>
-          </a>
-        </Link>
-      </Grid>
-    )
+    const Landscape = () => {
+      return (
+        <Grid className={classesRoot.viewButton}>
+          <Link href={projectGitHubLink}>
+            <a target="_blank">
+              <Typography textAlign="center">VIEW GITHUB</Typography>
+            </a>
+          </Link>
+        </Grid>
+      )
+    }
+
+    const Other = () => {
+      return (
+        <Grid className={classesRoot.viewButton}>
+          <Link href={projectGitHubLink}>
+            <a target="_blank">
+              <Button fullWidth>View GitHub</Button>
+            </a>
+          </Link>
+        </Grid>
+      )
+    }
+    return isPhoneLandscape ? <Landscape /> : <Other />
   }
 
   const ViewProjectButton = () => {
-    return (
-      <Grid className={classesRoot.viewButton}>
-        <Link href={projectLink}>
-          <a target="_blank">
-            <Button fullWidth>View Project</Button>
-          </a>
-        </Link>
-      </Grid>
-    )
+    const Landscape = () => {
+      return (
+        <Grid className={classesRoot.viewButton}>
+          <Link href={projectLink}>
+            <a target="_blank">
+              <Typography textAlign="center">VIEW PROJECT</Typography>
+            </a>
+          </Link>
+        </Grid>
+      )
+    }
+
+    const Other = () => {
+      return (
+        <Grid className={classesRoot.viewButton}>
+          <Link href={projectLink}>
+            <a target="_blank">
+              <Button fullWidth>View Project</Button>
+              {/* <Typography textAlign="center">VIEW PROJECT</Typography> */}
+            </a>
+          </Link>
+        </Grid>
+      )
+    }
+
+    return isPhoneLandscape ? <Landscape /> : <Other />
   }
 
   const ViewButtons = () => {
@@ -202,7 +235,9 @@ export default function projects() {
       <Grid
         container
         className={classesRoot.viewButtonContainer}
-        justifyContent="center">
+        justifyContent="center"
+        // alignItems="center"
+      >
         <ViewProjectButton />
         <ViewGitHubButton />
       </Grid>
