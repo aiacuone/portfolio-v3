@@ -35,22 +35,13 @@ export default function aboutMe() {
     button: { flexGrow: 1, cursor: 'pointer' },
     container: { height: '100%' },
     mainContentHeaderContainer: {
-      // background: 'blue',
-      paddingBottom: '30px',
+      paddingBottom: isPhone ? '10px' : '30px',
     },
-    mainDetailsContainer: {
-      // width: '80%',
-      // background: 'orange',
-    },
+    mainDetailsContainer: {},
     mainDetailsContainer2: {
-      width: '80%',
-      // background: 'green',
+      padding: isPhone ? '0 10px' : '0 70px', //PADDING OF MAIN CONTAINER
     },
   })
-
-  const HeaderText = () => {
-    return <Typography>{optionName.toUpperCase()}</Typography>
-  }
 
   const Buttons = ({ size }) => {
     const buttons = aboutMeArr.map((item, index) => {
@@ -78,13 +69,19 @@ export default function aboutMe() {
 
   const Header = () => {
     return (
-      <Grid container className={classesRoot.mainContentHeaderContainer}>
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item>
-            <Image src={icon} layout="fixed" height={80} width={80} />
-          </Grid>
-          <Grid item>
-            <Typography variant="h4">{optionName}</Typography>
+      <Grid
+        container
+        className={classesRoot.mainContentHeaderContainer}
+        justifyContent="center"
+        alignItems="flex-end">
+        <Grid>
+          <Grid container alignItems="center" spacing={1}>
+            <Grid item>
+              <Image src={icon} layout="fixed" height={80} width={80} />
+            </Grid>
+            <Grid item>
+              <Typography variant="h4">{optionName}</Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -116,7 +113,7 @@ export default function aboutMe() {
         }px`, //WIDTH OF BUTTON CONTAINER
       },
       buttonContainer: {
-        gridArea: '3/1/11/2',
+        gridArea: '2/1/11/2',
         background: 'blue',
         minHeight: '150px',
       },
@@ -124,16 +121,13 @@ export default function aboutMe() {
         gridArea: '1/2/2/10',
         background: 'orange',
       },
-      aboutMeHeader: {
-        gridArea: '2/2/3/10',
-        background: 'purple',
-      },
       mainContainer: {
-        gridArea: '3/2/11/10',
+        gridArea: '2/2/11/10',
         background: 'grey',
+        overflowY: 'scroll',
       },
       hamburgerGap: {
-        gridArea: '3/10/11/11',
+        gridArea: '2/10/11/11',
         background: 'lime',
       },
     })
@@ -144,13 +138,6 @@ export default function aboutMe() {
         <Grid className={classes.header} container justifyContent="center">
           ABOUT ME
         </Grid>
-        <Grid
-          className={classes.aboutMeHeader}
-          container
-          justifyContent="center"
-          alignItems="center">
-          <HeaderText />
-        </Grid>
         <Grid className={classes.buttonContainer} container direction="column">
           <Buttons size={30} />
         </Grid>
@@ -159,8 +146,10 @@ export default function aboutMe() {
           container
           justifyContent="center"
           alignItems="center">
-          <Header />
-          {mainDetails}
+          <Grid>
+            <Header />
+            <MainDetails />
+          </Grid>
         </Grid>
         <Grid className={classes.hamburgerGap}></Grid>
       </Grid>
@@ -182,12 +171,8 @@ export default function aboutMe() {
         gridArea: '1/1/2/11',
         background: 'blue',
       },
-      projectHeader: {
-        gridArea: '2/1/3/11',
-        background: 'purple',
-      },
       mainContainer: {
-        gridArea: '3/1/19/11',
+        gridArea: '2/1/19/11',
         background: 'orange',
       },
       buttonContainer: {
@@ -214,19 +199,14 @@ export default function aboutMe() {
           ABOUT ME
         </Grid>
         <Grid
-          className={classes.projectHeader}
-          container
-          justifyContent="center"
-          alignItems="center">
-          <HeaderText />
-        </Grid>
-        <Grid
           className={classes.mainContainer}
           container
           justifyContent="center"
           alignItems="center">
-          <Header />
-          {mainDetails}
+          <Grid>
+            <Header />
+            <MainDetails />
+          </Grid>
         </Grid>
         <Grid className={classes.buttonContainer} container>
           <Buttons size={30} />
@@ -260,12 +240,9 @@ export default function aboutMe() {
         gridTemplateRows: 'auto 1fr auto',
         gridTemplateColumns: '100%',
       },
-      header: {
-        gridArea: '1/1/2/2',
-        background: 'red',
-      },
+
       mainContainer: {
-        gridArea: '2/1/3/2',
+        gridArea: '1/1/3/2',
         background: 'green',
       },
       buttonContainer: {
@@ -286,9 +263,6 @@ export default function aboutMe() {
         alignItems="center"
         className={classes.root}>
         <Grid container className={classes.container}>
-          <Grid container className={classes.header} justifyContent="center">
-            <HeaderText />
-          </Grid>
           <Grid className={classes.mainContainer} container alignItems="center">
             <Grid container>
               <Header />

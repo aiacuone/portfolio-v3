@@ -43,10 +43,6 @@ export default function skills() {
   const { getDetails } = selectedSkill
   const mainDetails = getDetails()
 
-  const HeaderText = () => {
-    return <Typography>{selectedSkill.name.toUpperCase()}</Typography>
-  }
-
   const Buttons = ({ size }) => {
     const SkillsButton = ({ src, index }) => {
       const props = { height: size, width: size }
@@ -135,19 +131,14 @@ export default function skills() {
       },
       mainContainer: {
         background: 'grey',
-        gridArea: '2/1/10/11',
+        gridArea: '1/1/10/11',
       },
       buttonContainer: {
         background: 'blue',
         gridArea: '10/1/11/11',
-        // maxWidth: '500px',
       },
       buttonContainer2: {
         maxWidth: '800px', //WIDTH OF BUTTON CONTAINER
-      },
-      header: {
-        background: 'orange',
-        gridArea: '1/1/2/11',
       },
     })
     const classes = useStyles()
@@ -158,13 +149,6 @@ export default function skills() {
         alignItems="center"
         className={classes.root}>
         <Grid className={classes.container}>
-          <Grid
-            container
-            className={classes.header}
-            justifyContent="center"
-            alignItems="center">
-            <HeaderText />
-          </Grid>
           <Grid
             container
             className={classes.mainContainer}
@@ -200,10 +184,6 @@ export default function skills() {
         gridArea: '1/1/2/10',
         background: 'red',
       },
-      projectHeader: {
-        gridArea: '2/1/3/10',
-        background: 'purple',
-      },
       buttonContainer: {
         gridArea: '9/1/11/10',
         background: 'blue',
@@ -211,7 +191,7 @@ export default function skills() {
         flexWrap: 'nowrap',
       },
       container: {
-        gridArea: '3/1/9/10',
+        gridArea: '2/1/9/10',
         background: 'grey',
       },
     })
@@ -225,13 +205,6 @@ export default function skills() {
           justifyContent="center"
           alignItems="center">
           SKILLS
-        </Grid>
-        <Grid
-          className={classes.projectHeader}
-          container
-          justifyContent="center"
-          alignItems="center">
-          <HeaderText />
         </Grid>
         <Grid
           className={classes.container}
@@ -266,12 +239,8 @@ export default function skills() {
         gridArea: '1/1/2/11',
         background: 'blue',
       },
-      projectHeader: {
-        gridArea: '2/1/3/11',
-        background: 'purple',
-      },
       mainContainer: {
-        gridArea: '3/1/19/11',
+        gridArea: '2/1/19/11',
         background: 'orange',
       },
       buttonContainer: {
@@ -294,13 +263,6 @@ export default function skills() {
           justifyContent="center"
           alignItems="center">
           SKILLS
-        </Grid>
-        <Grid
-          className={classes.projectHeader}
-          container
-          justifyContent="center"
-          alignItems="center">
-          <HeaderText />
         </Grid>
         <Grid
           className={classes.mainContainer}
