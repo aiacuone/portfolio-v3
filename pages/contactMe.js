@@ -12,6 +12,9 @@ const useStylesRoot = makeStyles({
   button: {
     zIndex: 3,
   },
+  mainContentContainer: {
+    // width: '70%',
+  },
 })
 
 export default function contactMe() {
@@ -45,6 +48,44 @@ export default function contactMe() {
         </Link>
       )
     })
+  }
+
+  const MainContent = () => {
+    return (
+      <Grid
+        className={classesRoot.mainContentContainer}
+        container
+        justifyContent="center"
+        alignItems="center">
+        <Grid>
+          <Grid container spacing={2} direction="column">
+            <Grid item>
+              <p>
+                <b>Name: </b>Adrian Iacuone
+              </p>
+            </Grid>
+            <Grid item>
+              <p>
+                <b>Email: </b>aiacuone@gmail.com
+              </p>
+            </Grid>
+            <Grid item>
+              <p>
+                <b>Location: </b>Balham, London
+              </p>
+            </Grid>
+
+            {!isPhone && (
+              <Grid item>
+                <p>
+                  <b>Phone: </b>07 393 961 334
+                </p>
+              </Grid>
+            )}
+          </Grid>
+        </Grid>
+      </Grid>
+    )
   }
 
   const Normal = () => {
@@ -93,7 +134,7 @@ export default function contactMe() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            MAIN CONTAINER
+            <MainContent />
           </Grid>
           <Grid
             container
@@ -159,7 +200,7 @@ export default function contactMe() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          <MainContent />
         </Grid>
         <Grid className={classes.hamburgerGap}></Grid>
       </Grid>
@@ -210,7 +251,7 @@ export default function contactMe() {
           container
           justifyContent="center"
           alignItems="center">
-          MAIN CONTAINER
+          <MainContent />
         </Grid>
         <Grid
           className={classes.buttonContainer}
