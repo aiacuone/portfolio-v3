@@ -253,9 +253,7 @@ export default function aboutMe() {
       mainContainer: {
         gridArea: '1/1/3/2',
         background: 'green',
-        display: 'grid',
-        gridTemplateRows: 'repeat(10,1fr)',
-        gridTemplateColumns: 'repeat(10,1fr)',
+
         overflowY: 'scroll',
       },
       buttonContainer: {
@@ -265,14 +263,6 @@ export default function aboutMe() {
       },
       buttonContainer2: {
         maxWidth: '500px',
-      },
-      headerContainer: {
-        gridArea: '3/1/4/11',
-        // background: 'blue',
-      },
-      mainDetails: {
-        gridArea: '4/1/11/11',
-        // background: 'brown',
       },
     })
     const classes = useStyles()
@@ -285,12 +275,8 @@ export default function aboutMe() {
         className={classes.root}>
         <Grid container className={classes.container}>
           <Grid className={classes.mainContainer} container>
-            <Grid container className={classes.headerContainer}>
-              <Header variant="h4" size={50} />
-            </Grid>
-            <Grid container className={classes.mainDetails}>
-              <MainDetails />
-            </Grid>
+            <Header variant="h4" size={50} />
+            <MainDetails />
           </Grid>
           <Grid
             container
