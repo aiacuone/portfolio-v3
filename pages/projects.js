@@ -45,7 +45,7 @@ export default function projects() {
       background: 'green',
     },
     detailButtons: {
-      // width: '100%',
+      width: isPhonePortrait && '50%',
       zIndex: 3,
       flexGrow: 1,
       maxWidth: '300px',
@@ -180,61 +180,28 @@ export default function projects() {
   }
 
   const ViewGitHubButton = () => {
-    const Landscape = () => {
-      return (
-        <Grid className={classesRoot.viewButton}>
-          <Link href={projectGitHubLink}>
-            <a target="_blank">
-              <Typography textAlign="center">VIEW GITHUB</Typography>
-            </a>
-          </Link>
-        </Grid>
-      )
-    }
-
-    const Other = () => {
-      return (
-        <Grid className={classesRoot.viewButton}>
-          <Link href={projectGitHubLink}>
-            <a target="_blank">
-              <Button fullWidth>View GitHub</Button>
-            </a>
-          </Link>
-        </Grid>
-      )
-    }
-    // return isPhoneLandscape ? <Landscape /> : <Other />
-    return <Other />
+    return (
+      <Grid className={classesRoot.viewButton}>
+        <Link href={projectGitHubLink}>
+          <a target="_blank">
+            <Button fullWidth>View GitHub</Button>
+          </a>
+        </Link>
+      </Grid>
+    )
   }
 
   const ViewProjectButton = () => {
-    const Landscape = () => {
-      return (
-        <Grid className={classesRoot.viewButton}>
-          <Link href={projectLink}>
-            <a target="_blank">
-              <Typography textAlign="center">VIEW PROJECT</Typography>
-            </a>
-          </Link>
-        </Grid>
-      )
-    }
-
-    const Other = () => {
-      return (
-        <Grid className={classesRoot.viewButton} item>
-          <Link href={projectLink}>
-            <a target="_blank">
-              <Button fullWidth>View Project</Button>
-              {/* <Typography textAlign="center">VIEW PROJECT</Typography> */}
-            </a>
-          </Link>
-        </Grid>
-      )
-    }
-
-    // return isPhoneLandscape ? <Landscape /> : <Other />
-    return <Other />
+    return (
+      <Grid className={classesRoot.viewButton} item>
+        <Link href={projectLink}>
+          <a target="_blank">
+            <Button fullWidth>View Project</Button>
+            {/* <Typography textAlign="center">VIEW PROJECT</Typography> */}
+          </a>
+        </Link>
+      </Grid>
+    )
   }
 
   const ViewButtons = () => {
@@ -242,9 +209,7 @@ export default function projects() {
       <Grid
         container
         className={classesRoot.viewButtonContainer}
-        justifyContent="center"
-        // alignItems="center"
-      >
+        justifyContent="center">
         <ViewProjectButton />
         <ViewGitHubButton />
       </Grid>

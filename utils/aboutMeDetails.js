@@ -98,13 +98,15 @@ export const aboutMeObj = {
       )
     },
   },
-  details: {
-    name: 'Details',
-    icon: details,
-    getDetails: () => {
-      return <p>DETAILS MAIN DETAILS</p>
-    },
-  },
 }
 
 export const aboutMeArr = Object.keys(aboutMeObj).map((item) => item)
+
+//REMOVED FROM OBJECT
+// details: {
+//   name: 'Details',
+//   icon: details,
+//   getDetails: () => {
+//     return <p>DETAILS MAIN DETAILS</p>
+//   },
+// },
