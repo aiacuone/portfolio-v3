@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
@@ -23,6 +23,7 @@ export default function projects() {
     headerHeightPortrait,
     headerHeightLandscape,
     secondHeaderHeightLandscape,
+    handleScroll,
   } = vars
 
   const { selections } = state
@@ -642,6 +643,7 @@ export default function projects() {
     }
     return (
       <Grid
+        onScroll={handleScroll}
         container
         direction="column"
         className={classesRoot.mainDetailsContainer2}>

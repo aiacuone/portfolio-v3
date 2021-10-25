@@ -39,7 +39,7 @@ export default function aboutMe() {
     },
     mainDetailsContainer: {},
     mainDetailsContainer2: {
-      padding: isPhone ? '30px 30px' : '0 70px', //PADDING OF MAIN CONTAINER
+      padding: isPhone ? '0px 30px' : '0 70px', //PADDING OF MAIN CONTAINER
     },
     headerText: {
       // background: 'red',
@@ -93,14 +93,13 @@ export default function aboutMe() {
     )
   }
 
-  const MainDetails = ({ variant, size }) => {
+  const MainDetails = () => {
     return (
       <Grid
         container
         justifyContent="center"
         className={classesRoot.mainDetailsContainer}>
         <Grid container className={classesRoot.mainDetailsContainer2}>
-          {/* <Header variant={variant} size={size} /> */}
           <Typography>{mainDetails}</Typography>
         </Grid>
       </Grid>
@@ -131,6 +130,7 @@ export default function aboutMe() {
         gridArea: '2/2/11/10',
         background: 'grey',
         overflowY: 'scroll',
+        padding: '10px',
       },
       hamburgerGap: {
         gridArea: '2/10/11/11',
@@ -153,7 +153,7 @@ export default function aboutMe() {
           justifyContent="center"
           alignItems="center">
           <Grid>
-            {/* <Header  /> */}
+            <Header variant="h4" size={30} />
             <MainDetails variant="h5" size={40} />
           </Grid>
         </Grid>
@@ -180,6 +180,8 @@ export default function aboutMe() {
       mainContainer: {
         gridArea: '2/1/19/11',
         background: 'orange',
+        overflowY: 'scroll',
+        padding: '10px',
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
@@ -208,10 +210,11 @@ export default function aboutMe() {
           className={classes.mainContainer}
           container
           justifyContent="center"
-          alignItems="center">
+          // alignItems="center"
+        >
           <Grid>
-            {/* <Header  /> */}
-            <MainDetails variant="h5" size={40} />
+            <Header variant="h4" size={30} />
+            <MainDetails />
           </Grid>
         </Grid>
         <Grid className={classes.buttonContainer} container>
@@ -286,7 +289,7 @@ export default function aboutMe() {
               <Header variant="h4" size={50} />
             </Grid>
             <Grid container className={classes.mainDetails}>
-              <MainDetails variant="h4" size={50} />
+              <MainDetails />
             </Grid>
           </Grid>
           <Grid

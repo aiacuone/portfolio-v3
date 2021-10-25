@@ -9,7 +9,7 @@ import { aboutMeObj, aboutMeArr } from '../utils/aboutMeDetails'
 import { contactsObj, contactsArr } from '../utils/contactDetails'
 
 function MyApp({ Component, pageProps }) {
-  const [windowHeight, setWindowHeight] = useState()
+  const [windowHeight, setWindowHeight] = useState('100%')
   const [showViewButtons, setShowViewButtons] = useState(false)
   const [selections, setSelections] = useState({
     projects: { project: 0, details: 0 },
@@ -53,6 +53,7 @@ function MyApp({ Component, pageProps }) {
     headerHeightLandscape: 20,
     secondHeaderHeightLandscape: 25,
     buttonsNormalHeight: '30px',
+    handleScroll,
   }
 
   const state = {
@@ -81,6 +82,15 @@ function MyApp({ Component, pageProps }) {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+  // useEffect(() => {
+  //   setWindowHeight(window.innerHeight + 'px')
+  //   console.log(windowHeight)
+  // })
+
+  function handleScroll() {
+    setWindowHeight(window.innerHeight + 'px')
+    console.log('scroll')
+  }
   return (
     <UserContext.Provider value={{ state, setState, vars }}>
       <Layout>

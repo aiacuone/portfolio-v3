@@ -74,14 +74,11 @@ export default function contactMe() {
                 <b>Location: </b>Balham, London
               </p>
             </Grid>
-
-            {!isPhone && (
-              <Grid item>
-                <p>
-                  <b>Phone: </b>07 393 961 334
-                </p>
-              </Grid>
-            )}
+            <Grid item>
+              <p>
+                <b>Phone: </b>07393 961 334
+              </p>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
