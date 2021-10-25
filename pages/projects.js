@@ -59,6 +59,7 @@ export default function projects() {
       background: 'white',
       overflow: 'hidden',
       maxWidth: '300px',
+      margin: '0px 10px',
     },
 
     projectButton: {
@@ -101,7 +102,7 @@ export default function projects() {
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
-      background: 'red',
+      background: 'green',
       padding: isPhone ? '0 5px' : '20px 70px',
       gridArea: '2/1/3/2',
     },
@@ -216,7 +217,7 @@ export default function projects() {
 
     const Other = () => {
       return (
-        <Grid className={classesRoot.viewButton}>
+        <Grid className={classesRoot.viewButton} item>
           <Link href={projectLink}>
             <a target="_blank">
               <Button fullWidth>View Project</Button>
@@ -682,6 +683,7 @@ export default function projects() {
         </Grid>
         <Grid container className={classesRoot.detailsContainer}>
           {detailSelection === 0 ? <BasicDetails /> : <TechnicalDetails />}
+
           <Grid container className={classesRoot.paddingGap} />
         </Grid>
       </Grid>
@@ -705,7 +707,7 @@ export default function projects() {
         zIndex: 2,
       },
 
-      header: { gridArea: '1/2/2/10', background: 'red' },
+      header: { gridArea: '1/2/2/10', background: 'brown' },
       mainContainer: {
         gridArea: '2/2/10/10',
         background: 'grey',
@@ -782,7 +784,10 @@ export default function projects() {
         background: 'yellow',
         minWidth: '340px',
       },
-      detailsButtons: { gridArea: '15/1/16/11', background: 'brown' },
+      detailsButtons: {
+        gridArea: '15/1/16/11',
+        background: 'orange',
+      },
       hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
       github: {
         gridArea: '1/1/2/2',
@@ -892,6 +897,7 @@ export default function projects() {
       viewButtonsContainer: {
         gridArea: '10/1/11/11',
         background: 'brown',
+        padding: '5px',
       },
     })
     const classes = useStyles()
