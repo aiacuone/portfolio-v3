@@ -117,18 +117,26 @@ export default function skills() {
     return (
       <Grid container justifyContent="center">
         <Grid container spacing={1} justifyContent="center" alignItems="center">
-          <Grid item>
-            <Image src={image} layout="fixed" height={70} width={70} />
-          </Grid>
-          <Grid item>
-            <Typography variant="h5">{name}</Typography>
-          </Grid>
+          {isPhone && <Header />}
         </Grid>
         <Grid
           container
           justifyContent="center"
           className={classesRoot.mainDetailsContainer}>
           <Typography>{mainDetails}</Typography>
+        </Grid>
+      </Grid>
+    )
+  }
+
+  const Header = () => {
+    return (
+      <Grid container alignItems="center" spacing={1} justifyContent="center">
+        <Grid item>
+          <Image src={image} layout="fixed" height={70} width={70} />
+        </Grid>
+        <Grid item>
+          <Typography variant="h5">{name}</Typography>
         </Grid>
       </Grid>
     )
@@ -157,6 +165,9 @@ export default function skills() {
       mainContainer: {
         background: 'grey',
         gridArea: '1/1/10/11',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(10,1fr)',
+        gridTemplateRows: 'repeat(10,1fr)',
       },
       buttonContainer: {
         background: 'blue',
@@ -164,6 +175,14 @@ export default function skills() {
       },
       buttonContainer2: {
         maxWidth: '800px', //WIDTH OF BUTTON CONTAINER
+      },
+      headerContainer: {
+        gridArea: '3/1/4/11',
+        // background: 'red',
+      },
+      mainDetailsContainer: {
+        gridArea: '4/1/11/11',
+        // background: 'orange',
       },
     })
     const classes = useStyles()
@@ -177,9 +196,18 @@ export default function skills() {
           <Grid
             container
             className={classes.mainContainer}
-            justifyContent="center"
-            alignItems="center">
-            <MainDetails />
+            // justifyContent="center"
+            // alignItems="center"
+          >
+            <Grid container className={classes.headerContainer}>
+              <Header />
+            </Grid>
+            <Grid
+              container
+              className={classes.mainDetailsContainer}
+              alignItems="flex-start">
+              <MainDetails />
+            </Grid>
           </Grid>
           <Grid
             container

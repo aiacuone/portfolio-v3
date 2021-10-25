@@ -100,7 +100,7 @@ export default function aboutMe() {
         justifyContent="center"
         className={classesRoot.mainDetailsContainer}>
         <Grid container className={classesRoot.mainDetailsContainer2}>
-          <Header variant={variant} size={size} />
+          {/* <Header variant={variant} size={size} /> */}
           <Typography>{mainDetails}</Typography>
         </Grid>
       </Grid>
@@ -250,6 +250,10 @@ export default function aboutMe() {
       mainContainer: {
         gridArea: '1/1/3/2',
         background: 'green',
+        display: 'grid',
+        gridTemplateRows: 'repeat(10,1fr)',
+        gridTemplateColumns: 'repeat(10,1fr)',
+        overflowY: 'scroll',
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
@@ -258,6 +262,14 @@ export default function aboutMe() {
       },
       buttonContainer2: {
         maxWidth: '500px',
+      },
+      headerContainer: {
+        gridArea: '3/1/4/11',
+        // background: 'blue',
+      },
+      mainDetails: {
+        gridArea: '4/1/11/11',
+        // background: 'brown',
       },
     })
     const classes = useStyles()
@@ -269,8 +281,11 @@ export default function aboutMe() {
         alignItems="center"
         className={classes.root}>
         <Grid container className={classes.container}>
-          <Grid className={classes.mainContainer} container alignItems="center">
-            <Grid container>
+          <Grid className={classes.mainContainer} container>
+            <Grid container className={classes.headerContainer}>
+              <Header variant="h4" size={50} />
+            </Grid>
+            <Grid container className={classes.mainDetails}>
               <MainDetails variant="h4" size={50} />
             </Grid>
           </Grid>
