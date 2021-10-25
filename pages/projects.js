@@ -68,7 +68,11 @@ export default function projects() {
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px',
       maxWidth: '300px',
     },
-    viewButtonContainer: { flexWrap: 'nowrap', zIndex: 3 },
+    viewButtonContainer: {
+      flexWrap: 'nowrap',
+      zIndex: 3,
+      paddingTop: isPhone && '20px',
+    },
     detailContainer: {
       padding: 0,
       width: isPhoneLandscape ? '100%' : '50%',
@@ -102,7 +106,7 @@ export default function projects() {
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
-      background: 'green',
+      background: 'grey',
       padding: isPhone ? '0 5px' : '20px 70px',
       gridArea: '2/1/3/2',
     },
@@ -199,7 +203,8 @@ export default function projects() {
         </Grid>
       )
     }
-    return isPhoneLandscape ? <Landscape /> : <Other />
+    // return isPhoneLandscape ? <Landscape /> : <Other />
+    return <Other />
   }
 
   const ViewProjectButton = () => {
@@ -228,7 +233,8 @@ export default function projects() {
       )
     }
 
-    return isPhoneLandscape ? <Landscape /> : <Other />
+    // return isPhoneLandscape ? <Landscape /> : <Other />
+    return <Other />
   }
 
   const ViewButtons = () => {
@@ -683,7 +689,7 @@ export default function projects() {
         </Grid>
         <Grid container className={classesRoot.detailsContainer}>
           {detailSelection === 0 ? <BasicDetails /> : <TechnicalDetails />}
-
+          {isPhone && <ViewButtons />}
           <Grid container className={classesRoot.paddingGap} />
         </Grid>
       </Grid>
@@ -713,7 +719,8 @@ export default function projects() {
         background: 'grey',
         marginRight: `${hamburger.width + hamburger.padding}px`,
       },
-      viewButtons: { gridArea: '10/2/11/10', background: 'brown' },
+      // viewButtons: { gridArea: '10/2/11/10', background: 'brown' },
+      viewButtons: { background: 'brown' },
       hamburgerGap: {
         gridArea: '1/10/11/11',
         background: 'purple',
@@ -750,13 +757,7 @@ export default function projects() {
           alignItems="center">
           <MainDetails />
         </Grid>
-        <Grid
-          container
-          alignItems="center"
-          className={classes.viewButtons}
-          justifyContent="center">
-          <ViewButtons />
-        </Grid>
+
         <Grid className={classes.hamburgerGap} />
       </Grid>
     )
@@ -789,11 +790,6 @@ export default function projects() {
         background: 'orange',
       },
       hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
-      github: {
-        gridArea: '1/1/2/2',
-        background: 'grey',
-      },
-      project: { gridArea: '1/3/2/3', background: 'black' },
       hamburger: {
         gridArea: '1/2/3/3',
         background: 'red',
@@ -827,7 +823,6 @@ export default function projects() {
           PROJECTS
         </Grid>
         <Grid className={classes.projectButtons} container>
-          {/* {projectButtons} */}
           <ProjectButtons />
         </Grid>
         <Grid className={classes.detailsButtons} container>
@@ -842,21 +837,7 @@ export default function projects() {
         </Grid>
         <Grid className={classes.hamburgerGap}>
           <Grid className={classes.container}>
-            <Grid
-              className={classes.github}
-              container
-              justifyContent="center"
-              alignItems="center">
-              <ViewGitHubButton />
-            </Grid>
             <Grid className={classes.hamburger} />
-            <Grid
-              className={classes.project}
-              container
-              justifyContent="center"
-              alignItems="center">
-              <ViewProjectButton />
-            </Grid>
           </Grid>
         </Grid>
       </Grid>
