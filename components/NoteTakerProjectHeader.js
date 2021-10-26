@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { UserContext } from '../utils/UserContext'
 
 export default function NoteTakerProjectHeader() {
-  const { state, vars } = useContext(UserContext)
+  const { state } = useContext(UserContext)
   const { isPhone } = state.phone
 
   const useStyles = makeStyles({
