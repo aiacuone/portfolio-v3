@@ -6,8 +6,9 @@ import Link from 'next/link'
 import Button from '@mui/material/Button'
 
 export default function Layout({ children }) {
-  const { state, vars } = useContext(UserContext)
-  const { phone, windowHeight } = state
+  const { state, vars, setState } = useContext(UserContext)
+  const { phone, windowHeight, darkMode } = state
+  const { setDarkMode } = setState
   const { isPhone, isPhoneLandscape } = phone
   const {
     height: hamburgerHeight,
@@ -136,7 +137,7 @@ export default function Layout({ children }) {
         { name: 'About Me', link: 'aboutMe' },
         { name: 'Contact Me', link: 'contactMe' },
       ]
-      return navArr.map((nav) => {
+      const navLinks = navArr.map((nav) => {
         const { name, link } = nav
         return (
           <Grid item>
@@ -146,6 +147,14 @@ export default function Layout({ children }) {
           </Grid>
         )
       })
+      return (
+        <>
+          <Grid item>
+            <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button>
+          </Grid>
+          {navLinks}
+        </>
+      )
     }
 
     const classes = useStyles()

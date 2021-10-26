@@ -7,14 +7,47 @@ import { skillsObj, skillsArr } from '../utils/skillsDetails'
 import { projectsObj, projectsArr } from '../utils/projectsDetails'
 import { aboutMeObj, aboutMeArr } from '../utils/aboutMeDetails'
 import { contactsObj, contactsArr } from '../utils/contactDetails'
+// import { createTheme, ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
+import { borderRadius } from '@mui/system'
+import Paper from '@mui/material/Paper'
 
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState('100%')
   const [showViewButtons, setShowViewButtons] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
   const [selections, setSelections] = useState({
     projects: { project: 0, details: 0 },
     skills: 0,
     aboutMe: 0,
+  })
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+    components: {
+      MuiButtonBase: {
+        defaultProps: {
+          disableRipple: true,
+        },
+      },
+    },
+    shape: { borderRadius: 0 },
+    typography: {
+      fontFamily: 'Cantarell',
+      MuiButton: {
+        color: 'red',
+      },
+    },
+    overrides: {
+      MuiButton: {
+        root: {
+          fontSize: '3rem',
+        },
+      },
+    },
   })
 
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')
@@ -53,7 +86,8 @@ function MyApp({ Component, pageProps }) {
     headerHeightLandscape: 20,
     secondHeaderHeightLandscape: 25,
     buttonsNormalHeight: '30px',
-    handleScroll,
+    // handleScroll,
+    primaryColor: 'grey',
   }
 
   const state = {
@@ -65,9 +99,15 @@ function MyApp({ Component, pageProps }) {
     },
     showViewButtons,
     selections,
+    darkMode,
   }
 
-  const setState = { setWindowHeight, setShowViewButtons, setSelections }
+  const setState = {
+    setWindowHeight,
+    setShowViewButtons,
+    setSelections,
+    setDarkMode,
+  }
 
   useEffect(() => {
     setWindowHeight(window.innerHeight + 'px')
@@ -82,21 +122,17 @@ function MyApp({ Component, pageProps }) {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
-  // useEffect(() => {
-  //   setWindowHeight(window.innerHeight + 'px')
-  //   console.log(windowHeight)
-  // })
 
-  function handleScroll() {
-    setWindowHeight(window.innerHeight + 'px')
-    console.log('scroll')
-  }
   return (
-    <UserContext.Provider value={{ state, setState, vars }}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </UserContext.Provider>
+    <ThemeProvider theme={theme}>
+      <UserContext.Provider value={{ state, setState, vars }}>
+        <Paper style={{ width: '100%', height: '100%' }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Paper>
+      </UserContext.Provider>
+    </ThemeProvider>
   )
 }
 

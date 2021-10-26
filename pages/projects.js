@@ -24,6 +24,7 @@ export default function projects() {
     headerHeightLandscape,
     secondHeaderHeightLandscape,
     handleScroll,
+    primaryColor,
   } = vars
 
   const { selections } = state
@@ -43,7 +44,7 @@ export default function projects() {
     root: {
       height: '100%',
       width: '100%',
-      background: 'green',
+      // background: 'green',
     },
     detailButtons: {
       width: isPhonePortrait && '50%',
@@ -85,13 +86,6 @@ export default function projects() {
     projectButtonContainer2: {
       height: '100%',
     },
-    // mainDetails: {
-    //   height: '100%',
-    //   flexWrap: 'nowrap',
-    //   overflowY: 'scroll',
-    //   zIndex: 3,
-
-    // },
     mainDetailsContainer2: {
       height: '100%',
       // flexWrap: 'nowrap',
@@ -107,7 +101,7 @@ export default function projects() {
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
-      background: 'grey',
+      // background: '#c2c2c2',
       padding: isPhone ? '0 5px' : '20px 70px',
       gridArea: '2/1/3/2',
     },
@@ -683,7 +677,7 @@ export default function projects() {
       header: { gridArea: '1/2/2/10', background: 'brown' },
       mainContainer: {
         gridArea: '2/2/10/10',
-        background: 'grey',
+        // background: 'grey',
         marginRight: `${hamburger.width + hamburger.padding}px`,
       },
       // viewButtons: { gridArea: '10/2/11/10', background: 'brown' },
@@ -825,7 +819,7 @@ export default function projects() {
         height: '100%',
       },
       container: {
-        background: 'white',
+        // background: 'white',
         maxWidth: maxWidth,
         width: width,
         height: height,
@@ -836,15 +830,18 @@ export default function projects() {
         gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
       },
       detailsButton: { color: 'black', flexGrow: 1 },
-      projectButtonContainer: { gridArea: '1/1/2/11', background: 'purple' },
-      detailsButtonContainer: { gridArea: '2/1/3/11', background: 'grey' },
+      projectButtonContainer: {
+        gridArea: '1/1/2/11',
+        background: primaryColor,
+      },
+      detailsButtonContainer: { gridArea: '2/1/3/11', background: 'white' },
       mainContainer: {
         gridArea: '3/1/10/11',
-        background: 'orange',
+        // background: 'orange',
       },
       viewButtonsContainer: {
         gridArea: '10/1/11/11',
-        background: 'brown',
+        background: primaryColor,
         padding: '5px',
       },
     })
@@ -864,7 +861,6 @@ export default function projects() {
             className={classes.projectButtonContainer}
             direction="column">
             <Grid container justifyContent="center">
-              {/* {projectButtons} */}
               <ProjectButtons />
             </Grid>
           </Grid>

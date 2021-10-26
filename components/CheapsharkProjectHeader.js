@@ -30,7 +30,7 @@ export default function CheapsharkProjectHeader() {
     fishContainer: {
       position: 'absolute',
       left: isPhonePortrait ? 20 : isPhoneLandscape ? 50 : '5%',
-      top: isPhonePortrait ? 0 : isPhoneLandscape ? 0 : 20,
+      top: isPhonePortrait ? 0 : isPhoneLandscape ? 0 : 0,
     },
   })
   const classes = useStyles()
