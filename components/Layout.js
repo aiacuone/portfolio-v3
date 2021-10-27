@@ -6,8 +6,6 @@ import Link from 'next/link'
 import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
-import hamburger from '../public/images/misc/hamburger.svg'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {
@@ -23,7 +21,7 @@ export default function Layout({ children }) {
   } = vars.hamburger
   const { main: primaryColor, dark: darkPrimaryColor } = theme.palette.primary
   const router = useRouter()
-  console.log(router.pathname)
+
   const useStylesRoot = makeStyles({
     root: {
       width: '100%',
@@ -32,6 +30,62 @@ export default function Layout({ children }) {
   })
 
   const classesRoot = useStylesRoot()
+
+  const Hamburger = () => {
+    return (
+      <svg
+        height={hamburgerHeight}
+        width={hamburgerWidth}
+        onClick={handleClick}
+        enable-background="new 0 0 32 32"
+        id="Filled_Line"
+        version="1.1"
+        viewBox="0 0 32 32"
+        xmlSpace="preserve"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink">
+        <line
+          fill={darkMode ? 'white' : 'black'}
+          id="XMLID_837_"
+          stroke={darkMode ? 'white' : 'black'}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
+          x1="7"
+          x2="25"
+          y1="16"
+          y2="16"
+        />
+        <line
+          // fill={darkMode ? 'white' : 'black'}
+          id="XMLID_836_"
+          stroke={darkMode ? 'white' : 'black'}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
+          x1="7"
+          x2="25"
+          y1="25"
+          y2="25"
+        />
+        <line
+          // fill={darkMode ? 'white' : 'black'}
+          id="XMLID_835_"
+          stroke={darkMode ? 'white' : 'black'}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
+          x1="7"
+          x2="25"
+          y1="7"
+          y2="7"
+        />
+      </svg>
+    )
+  }
 
   function handleClick() {
     if (router.pathname == '/') {
@@ -70,14 +124,7 @@ export default function Layout({ children }) {
         justifyContent="center"
         alignItems="center">
         <Grid className={classes.hamburger}>
-          <Image
-            onClick={handleClick}
-            src={hamburger}
-            layout="fixed"
-            height={hamburgerHeight}
-            width={hamburgerWidth}
-            style={{ fill: 'red' }}
-          />
+          <Hamburger />
         </Grid>
         {children}
       </Grid>
