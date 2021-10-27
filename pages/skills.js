@@ -22,8 +22,11 @@ export default function skills() {
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const { selections, darkMode } = state
   const { setSelections } = setState
-  const { textLight: textBackgroundLight, textDark: textBackgroundDark } =
-    theme.palette.background
+  const {
+    textLight: textBackgroundLight,
+    textDark: textBackgroundDark,
+    paper: defaultBackground,
+  } = theme.palette.background
   const selection = selections['skills']
   const selectedSkillObj = skillsObj[skillsArr[selection]]
   const { getDetails, image, name } = selectedSkillObj
@@ -46,6 +49,7 @@ export default function skills() {
     },
     mainDetailsContainer: {
       padding: isPhone ? '10px 10px ' : '30px 70px',
+      // background: darkMode ? textBackgroundDark : 'blue',
     },
   })
 
@@ -219,20 +223,21 @@ export default function skills() {
         gridTemplateColumns: `repeat(9,1fr) ${
           hamburger.padding * 2 + hamburger.width
         }px`,
+        background: defaultBackground,
       },
       header: {
         gridArea: '1/1/2/10',
-        background: 'red',
+        background: primaryColor,
       },
       buttonContainer: {
         gridArea: '9/1/11/10',
-        background: 'blue',
+        background: primaryColor,
         minWidth: '600px',
         flexWrap: 'nowrap',
       },
       container: {
         gridArea: '2/1/9/10',
-        background: 'grey',
+        background: darkMode ? textBackgroundDark : textBackgroundLight,
       },
     })
     const classes = useStyles()
@@ -277,20 +282,20 @@ export default function skills() {
       },
       header: {
         gridArea: '1/1/2/11',
-        background: 'blue',
+        background: primaryColor,
       },
       mainContainer: {
         gridArea: '2/1/19/11',
-        background: 'orange',
+        background: darkMode ? textBackgroundDark : textBackgroundLight,
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
-        background: 'yellow',
+        background: primaryColor,
         minWidth: '250px',
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
-        background: 'brown',
+        background: defaultBackground,
       },
     })
     const classes = useStyles()

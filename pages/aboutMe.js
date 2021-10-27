@@ -26,29 +26,36 @@ export default function aboutMe() {
   const selectedOptionObj = aboutMeObj[aboutMeArr[selection]]
   const { getDetails, name: optionName, icon } = selectedOptionObj
   const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
-  const { textLight: textLightBackground, textDark: textDarkBackground } =
-    theme.palette.background
+  const {
+    textLight: textLightBackground,
+    textDark: textDarkBackground,
+    paper: backgroundColor,
+  } = theme.palette.background
   const mainDetails = getDetails()
 
   const useStylesRoot = makeStyles({
-    root: { height: '100%', width: '100%' },
+    root: {
+      height: '100%',
+      width: '100%',
+      // background: darkMode ? textDarkBackground : textLightBackground,
+    },
     bottomNav: {
       display: 'flex',
       flexDirection: isPhoneLandscape && 'column',
-      background: 'brown',
+      background: backgroundColor,
     },
     button: { flexGrow: 1, cursor: 'pointer' },
     container: { height: '100%' },
     mainContentHeaderContainer: {
       paddingBottom: isPhone ? '10px' : '30px',
     },
-    mainDetailsContainer: {},
+    mainDetailsContainer: {
+      background: darkMode ? textDarkBackground : textLightBackground,
+    },
     mainDetailsContainer2: {
       padding: isPhone ? '0px 30px' : '0 70px', //PADDING OF MAIN CONTAINER
     },
-    headerText: {
-      // background: 'red',
-    },
+    headerText: {},
   })
 
   const Buttons = ({ size }) => {
@@ -123,23 +130,24 @@ export default function aboutMe() {
         }px`, //WIDTH OF BUTTON CONTAINER
       },
       buttonContainer: {
-        gridArea: '2/1/11/2',
-        background: 'blue',
+        gridArea: '1/1/11/2',
+        background: primaryColor,
         minHeight: '150px',
       },
       header: {
         gridArea: '1/2/2/10',
-        background: 'orange',
+        background: primaryColor,
       },
       mainContainer: {
         gridArea: '2/2/11/10',
-        background: 'grey',
+        // background: 'grey',
         overflowY: 'scroll',
         padding: '10px',
+        zIndex: 50,
       },
       hamburgerGap: {
         gridArea: '2/10/11/11',
-        background: 'lime',
+        // background: 'lime',
       },
     })
     const classes = useStyles()
@@ -180,7 +188,7 @@ export default function aboutMe() {
       },
       header: {
         gridArea: '1/1/2/11',
-        background: 'blue',
+        background: primaryColor,
       },
       mainContainer: {
         gridArea: '2/1/19/11',
@@ -190,11 +198,12 @@ export default function aboutMe() {
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
-        background: 'yellow',
+        background: primaryColor,
+        // zIndex: 10,
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
-        background: 'brown',
+        background: backgroundColor,
       },
       button: { flexGrow: 1, background: 'lime' },
       container: { height: '100%' },
@@ -223,7 +232,7 @@ export default function aboutMe() {
           </Grid>
         </Grid>
         <Grid className={classes.buttonContainer} container>
-          <Buttons size={30} />
+          <Buttons size={25} />
         </Grid>
         <Grid className={classes.hamburgerGap} />
       </Grid>

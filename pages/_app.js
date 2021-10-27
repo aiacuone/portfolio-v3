@@ -16,7 +16,7 @@ import Paper from '@mui/material/Paper'
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState('100%')
   const [showViewButtons, setShowViewButtons] = useState(false)
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(false)
   const [selections, setSelections] = useState({
     projects: { project: 0, details: 0 },
     skills: 0,
@@ -27,16 +27,16 @@ function MyApp({ Component, pageProps }) {
     palette: {
       mode: darkMode ? 'dark' : 'light',
       background: {
-        paper: darkMode ? '#1c1c1c' : '#f5f5f5',
+        paper: darkMode ? '#1c1c1c' : '#e9e9e9',
         textDark: '#3c3c3c',
-        textLight: '#dedede',
+        textLight: '#f5f5f5',
       },
       primary: {
         main: '#607893',
       },
       secondary: {
         main: '#f5f5f5',
-        dark: '#d9d9d9',
+        dark: '#e9e9e9',
         contrastText: 'black',
       },
     },

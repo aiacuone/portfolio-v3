@@ -7,29 +7,33 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
 
-const useStylesRoot = makeStyles({
-  root: { height: '100%', width: '100%' },
-  // button: { margin: '10px 0', background: 'red' },
-  button: {
-    zIndex: 3,
-  },
-  mainContentContainer: {
-    // width: '70%',
-    // background: 'red',
-  },
-})
-
 export default function contactMe() {
-  const classesRoot = useStylesRoot()
   const theme = useTheme()
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
   const { darkMode } = state
-  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const {
+    main: primaryColor,
+    dark: primaryDarkColor,
+    paper: backgroundColor,
+  } = theme.palette.primary
   const { textLight: textLightBackground, textDark: textDarkBackground } =
     theme.palette.background
   const { hamburger, contactsArr, contactsObj, secondHeaderHeightPortrait } =
     vars
+
+  const useStylesRoot = makeStyles({
+    root: { height: '100%', width: '100%', backgroundColor },
+    // button: { margin: '10px 0', background: 'red' },
+    button: {
+      zIndex: 3,
+    },
+    mainContentContainer: {
+      // width: '70%',
+      // background: 'red',
+    },
+  })
+  const classesRoot = useStylesRoot()
 
   const Buttons = ({ size }) => {
     const props = { height: size, width: size }
@@ -167,19 +171,19 @@ export default function contactMe() {
       },
       buttonContainer: {
         gridArea: '1/1/11/2',
-        background: 'blue',
+        background: primaryColor,
       },
       header: {
         gridArea: '1/2/2/10',
-        background: 'orange',
+        background: primaryColor,
       },
       mainContainer: {
         gridArea: '2/2/11/10',
-        background: 'grey',
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
       hamburgerGap: {
         gridArea: '2/10/11/11',
-        background: 'lime',
+        // background: 'lime',
       },
       button: {},
     })
@@ -227,19 +231,19 @@ export default function contactMe() {
       },
       header: {
         gridArea: '1/1/2/11',
-        background: 'blue',
+        background: primaryColor,
       },
       mainContainer: {
         gridArea: '2/1/19/11',
-        background: 'orange',
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
-        background: 'yellow',
+        background: primaryColor,
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
-        background: 'brown',
+        // background: textDarkBackground,
       },
     })
     const classes = useStyles()
