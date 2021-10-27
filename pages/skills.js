@@ -4,8 +4,10 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 
 export default function skills() {
+  const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const {
     hamburger,
@@ -18,12 +20,14 @@ export default function skills() {
     secondHeaderHeightLandscape,
   } = vars
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
-  const { selections } = state
+  const { selections, darkMode } = state
   const { setSelections } = setState
-
+  const { textLight: textBackgroundLight, textDark: textBackgroundDark } =
+    theme.palette.background
   const selection = selections['skills']
   const selectedSkillObj = skillsObj[skillsArr[selection]]
   const { getDetails, image, name } = selectedSkillObj
+  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
   const mainDetails = getDetails()
 
   const useStylesRoot = makeStyles({
@@ -55,7 +59,7 @@ export default function skills() {
           onClick={() => setSelections({ ...selections, skills: index })}
           s
           className={classesRoot.imageContainer}
-          style={{ background: index == selection && 'purple' }}>
+          style={{ background: index == selection && primaryDarkColor }}>
           <Grid
             container
             justifyContent="center"
@@ -163,11 +167,11 @@ export default function skills() {
         gridTemplateRows: 'auto repeat(8,1fr) 65px',
       },
       mainContainer: {
-        background: 'grey',
+        background: darkMode ? textBackgroundDark : textBackgroundLight,
         gridArea: '1/1/10/11',
       },
       buttonContainer: {
-        background: 'blue',
+        background: primaryColor,
         gridArea: '10/1/11/11',
       },
       buttonContainer2: {

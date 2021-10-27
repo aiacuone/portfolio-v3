@@ -33,7 +33,8 @@ export default function projects() {
   const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
   const { main: secondaryColor, dark: secondaryColorDark } =
     theme.palette.secondary
-
+  const { textLight: textLightBackground, textDark: textDarkBackground } =
+    theme.palette.background
   const selection = selections['projects']
   const projectObj = projectsObj[projectsArr[selection.project]]
   const {
@@ -106,7 +107,7 @@ export default function projects() {
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
-      background: darkMode ? '#3c3c3c' : '#dedede', //DARK MODE COLOURS MAIN CONTAINER
+      background: darkMode ? textDarkBackground : textLightBackground, //DARK MODE COLOURS MAIN CONTAINER
       padding: isPhone ? '0 5px' : '20px 70px',
       gridArea: '2/1/3/2',
     },

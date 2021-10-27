@@ -5,6 +5,7 @@ import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
+import { useTheme } from '@mui/material/styles'
 
 const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
@@ -14,14 +15,19 @@ const useStylesRoot = makeStyles({
   },
   mainContentContainer: {
     // width: '70%',
+    // background: 'red',
   },
 })
 
 export default function contactMe() {
   const classesRoot = useStylesRoot()
-
+  const theme = useTheme()
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
+  const { darkMode } = state
+  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const { textLight: textLightBackground, textDark: textDarkBackground } =
+    theme.palette.background
   const { hamburger, contactsArr, contactsObj, secondHeaderHeightPortrait } =
     vars
 
@@ -99,15 +105,19 @@ export default function contactMe() {
         gridTemplateRows: 'auto 1fr auto',
         gridTemplateColumns: '100%',
       },
-      mainContainer: { gridArea: '2/1/3/2', background: 'grey' },
+      mainContainer: {
+        gridArea: '2/1/3/2',
+        background: darkMode ? textDarkBackground : textLightBackground,
+      },
       buttonContainer: {
         gridArea: '3/1/4/2',
-        background: 'orange',
+        background: primaryColor,
         padding: '10px 0',
       },
       header: {
         gridArea: '1/1/2/2',
-        background: 'purple',
+        background: primaryColor,
+        color: 'white',
       },
     })
     const classes = useStyles()

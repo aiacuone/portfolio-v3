@@ -26,7 +26,11 @@ function MyApp({ Component, pageProps }) {
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
-      background: { paper: darkMode ? '#1c1c1c' : '#f5f5f5' },
+      background: {
+        paper: darkMode ? '#1c1c1c' : '#f5f5f5',
+        textDark: '#3c3c3c',
+        textLight: '#dedede',
+      },
       primary: {
         main: '#607893',
       },
@@ -40,7 +44,6 @@ function MyApp({ Component, pageProps }) {
       MuiButton: {
         styleOverrides: {
           root: {
-            // color: darkMode ? 'white' : '#000000', //BUTTON TEXT COLOR
             color: 'white',
             fontSize: '1.1rem',
           },

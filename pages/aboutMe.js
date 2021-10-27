@@ -4,8 +4,10 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
+import { useTheme } from '@mui/material/styles'
 
 export default function aboutMe() {
+  const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const {
     hamburger,
@@ -17,12 +19,15 @@ export default function aboutMe() {
     headerHeightPortrait,
     secondHeaderHeightPortrait,
   } = vars
-  const { selections } = state
+  const { selections, darkMode } = state
   const { setSelections } = setState
   const { isPhone, isPhoneLandscape } = state.phone
   const selection = selections['aboutMe']
   const selectedOptionObj = aboutMeObj[aboutMeArr[selection]]
   const { getDetails, name: optionName, icon } = selectedOptionObj
+  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const { textLight: textLightBackground, textDark: textDarkBackground } =
+    theme.palette.background
   const mainDetails = getDetails()
 
   const useStylesRoot = makeStyles({
@@ -54,7 +59,7 @@ export default function aboutMe() {
           key={item.name}
           onClick={() => setSelections({ ...selections, ['aboutMe']: index })}
           className={classesRoot.button}
-          style={{ background: index == selection && 'purple' }}>
+          style={{ background: index == selection && primaryDarkColor }}>
           <Grid
             container
             className={classesRoot.container}
@@ -179,7 +184,7 @@ export default function aboutMe() {
       },
       mainContainer: {
         gridArea: '2/1/19/11',
-        background: 'orange',
+        // background: primaryColor,
         overflowY: 'scroll',
         padding: '10px',
       },
@@ -252,13 +257,13 @@ export default function aboutMe() {
 
       mainContainer: {
         gridArea: '1/1/3/2',
-        background: 'green',
+        background: darkMode ? textDarkBackground : textLightBackground,
 
         overflowY: 'scroll',
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
-        background: 'orange',
+        background: primaryColor,
         zIndex: 3,
       },
       buttonContainer2: {
