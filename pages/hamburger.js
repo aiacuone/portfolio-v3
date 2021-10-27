@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles'
 import { UserContext } from '../utils/UserContext'
 import { useRouter } from 'next/router'
 import Button from '@mui/material/Button'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
 
 const useStyles = makeStyles({
   root: {},
@@ -53,7 +54,13 @@ export default function hamburger() {
           <h3 className={classes.link}>CONTACT ME</h3>
         </Link>
       </Grid>
-      <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button>
+      <Grid container justifyContent="center">
+        <Brightness4Icon
+          fontSize="large"
+          style={{ cursor: 'pointer', margin: '10px' }}
+          onClick={() => setDarkMode(!darkMode)}
+        />
+      </Grid>
     </Grid>
   )
 }

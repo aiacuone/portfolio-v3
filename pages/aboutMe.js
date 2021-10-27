@@ -133,10 +133,12 @@ export default function aboutMe() {
         gridArea: '1/1/11/2',
         background: primaryColor,
         minHeight: '150px',
+        color: 'white',
       },
       header: {
         gridArea: '1/2/2/10',
         background: primaryColor,
+        color: 'white',
       },
       mainContainer: {
         gridArea: '2/2/11/10',
@@ -189,17 +191,17 @@ export default function aboutMe() {
       header: {
         gridArea: '1/1/2/11',
         background: primaryColor,
+        color: 'white',
       },
       mainContainer: {
         gridArea: '2/1/19/11',
-        // background: primaryColor,
         overflowY: 'scroll',
         padding: '10px',
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
         background: primaryColor,
-        // zIndex: 10,
+        color: 'white',
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',

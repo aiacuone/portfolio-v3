@@ -46,6 +46,7 @@ function MyApp({ Component, pageProps }) {
           root: {
             color: 'white',
             fontSize: '1.1rem',
+            fontWeight: 300,
           },
           textSecondary: {
             color: 'black',
@@ -60,10 +61,7 @@ function MyApp({ Component, pageProps }) {
     },
     shape: { borderRadius: 0 },
     typography: {
-      fontFamily: 'Calibri',
-      MuiButton: {
-        color: 'red',
-      },
+      fontFamily: 'Segoe UI',
     },
   })
 
@@ -88,7 +86,7 @@ function MyApp({ Component, pageProps }) {
 
   const vars = {
     projectsArr,
-    hamburger: { height: 35, width: 35, padding: 7 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
+    hamburger: { height: 40, width: 40, padding: 7 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
     projectsObj,
     skillsObj,
     skillsArr,

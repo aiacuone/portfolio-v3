@@ -698,7 +698,11 @@ export default function projects() {
         background: 'white',
       },
 
-      header: { gridArea: '1/2/2/10', background: primaryColor },
+      header: {
+        gridArea: '1/2/2/10',
+        background: primaryColor,
+        color: 'white',
+      },
       mainContainer: {
         gridArea: '2/2/10/10',
         // background: 'grey',
@@ -762,7 +766,11 @@ export default function projects() {
           hamburger.padding * 2 + hamburger.height
         }px`,
       },
-      header: { gridArea: '1/1/2/11', background: primaryColor },
+      header: {
+        gridArea: '1/1/2/11',
+        background: primaryColor,
+        color: 'white',
+      },
       mainContainer: { gridArea: '2/1/14/11' },
       projectButtons: {
         gridArea: '14/1/15/11',

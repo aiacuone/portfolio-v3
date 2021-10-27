@@ -176,6 +176,7 @@ export default function contactMe() {
       header: {
         gridArea: '1/2/2/10',
         background: primaryColor,
+        color: 'white',
       },
       mainContainer: {
         gridArea: '2/2/11/10',
@@ -232,6 +233,7 @@ export default function contactMe() {
       header: {
         gridArea: '1/1/2/11',
         background: primaryColor,
+        color: 'white',
       },
       mainContainer: {
         gridArea: '2/1/19/11',

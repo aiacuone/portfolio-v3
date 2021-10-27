@@ -5,6 +5,9 @@ import { UserContext } from '../utils/UserContext'
 import Link from 'next/link'
 import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import hamburger from '../public/images/misc/hamburger.svg'
+import Image from 'next/image'
 
 export default function Layout({ children }) {
   const theme = useTheme()
@@ -28,6 +31,11 @@ export default function Layout({ children }) {
 
   const classesRoot = useStylesRoot()
 
+  // const StyledSVG = ({ height, width, color, src }) => {
+  //   const svg = src
+  //   return <Image src={src} width={width} height={height} layout="fixed" />
+  // }
+
   const Phone = () => {
     const useStyles = makeStyles({
       root: {
@@ -41,10 +49,10 @@ export default function Layout({ children }) {
         position: 'absolute',
         bottom: !isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM BOTTOM
         right: isPhoneLandscape && hamburgerPadding, //HEIGHT OF HAMBURGER FROM RIGHT
-        background: 'orange',
         height: hamburgerHeight,
         width: hamburgerWidth,
         zIndex: 100,
+        cursor: 'pointer',
       },
     })
 
@@ -57,7 +65,15 @@ export default function Layout({ children }) {
         justifyContent="center"
         alignItems="center">
         <Link href="/hamburger">
-          <Grid className={classes.hamburger}></Grid>
+          <Grid className={classes.hamburger}>
+            <Image
+              src={hamburger}
+              layout="fixed"
+              height={hamburgerHeight}
+              width={hamburgerWidth}
+              style={{ fill: 'red' }}
+            />
+          </Grid>
         </Link>
         {children}
       </Grid>
@@ -151,8 +167,25 @@ export default function Layout({ children }) {
       return (
         <>
           {navLinks}
-          <Grid item>
-            <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button>
+          <Grid item style={{ paddingRight: '30px', cursor: 'pointer' }}>
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              style={{ height: '100%' }}>
+              <Brightness4Icon
+                color="secondary"
+                onClick={() => setDarkMode(!darkMode)}
+              />
+            </Grid>
+            {/* <Image
+              src={Brightness4Icon}
+              layout="fixed"
+              width={50}
+              height={50}
+            /> */}
+
+            {/* <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button> */}
           </Grid>
         </>
       )
@@ -165,7 +198,7 @@ export default function Layout({ children }) {
           <Grid container alignItems="center" className={classes.linksHeader}>
             <Grid
               container
-              spacing={3}
+              spacing={2}
               className={classes.linksHeader2}
               justifyContent="flex-end">
               <NavLinks />

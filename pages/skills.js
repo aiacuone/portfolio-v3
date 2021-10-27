@@ -228,6 +228,7 @@ export default function skills() {
       header: {
         gridArea: '1/1/2/10',
         background: primaryColor,
+        color: 'white',
       },
       buttonContainer: {
         gridArea: '9/1/11/10',
@@ -283,6 +284,7 @@ export default function skills() {
       header: {
         gridArea: '1/1/2/11',
         background: primaryColor,
+        color: 'white',
       },
       mainContainer: {
         gridArea: '2/1/19/11',
