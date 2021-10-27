@@ -5,6 +5,7 @@ import { UserContext } from '../utils/UserContext'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import { useTheme } from '@mui/material/styles'
+import { HobbiesIcon, WorkIcon, StoryIcon } from '../components/icons'
 
 export default function aboutMe() {
   const theme = useTheme()
@@ -59,9 +60,17 @@ export default function aboutMe() {
     headerText: {},
   })
 
-  const Buttons = ({ size }) => {
+  const Buttons = ({ size, color }) => {
     const buttons = aboutMeArr.map((item, index) => {
-      const { name, icon } = aboutMeObj[item]
+      const { name } = aboutMeObj[item]
+      const iconObj = {
+        hobbies: <HobbiesIcon size={size} color={color} />,
+        work: <WorkIcon size={size} color={color} />,
+        story: <StoryIcon size={size} color={color} />,
+      }
+
+      const icon = iconObj[item]
+
       return (
         <Grid
           key={item.name}
@@ -74,7 +83,7 @@ export default function aboutMe() {
             alignItems="center"
             direction="column"
             justifyContent="center">
-            <Image src={icon} layout="fixed" width={size} height={size} />
+            {icon}
             <Typography>{name}</Typography>
           </Grid>
         </Grid>
@@ -84,6 +93,14 @@ export default function aboutMe() {
   }
 
   const Header = ({ variant, size }) => {
+    const iconObj = {
+      hobbies: <HobbiesIcon size={size} color={darkMode ? 'white' : 'black'} />,
+      work: <WorkIcon size={size} color={darkMode ? 'white' : 'black'} />,
+      story: <StoryIcon size={size} color={darkMode ? 'white' : 'black'} />,
+    }
+
+    const icon = iconObj[aboutMeArr[selection]]
+
     return (
       <Grid
         container
@@ -93,7 +110,8 @@ export default function aboutMe() {
         <Grid>
           <Grid container alignItems="center" spacing={1}>
             <Grid item>
-              <Image src={icon} layout="fixed" height={size} width={size} />
+              {/* <Image src={icon} layout="fixed" height={size} width={size} /> */}
+              {icon}
             </Grid>
             <Grid item>
               <Typography variant={variant} className={classesRoot.headerText}>
@@ -162,7 +180,7 @@ export default function aboutMe() {
           ABOUT ME
         </Grid>
         <Grid className={classes.buttonContainer} container direction="column">
-          <Buttons size={30} />
+          <Buttons size={30} color="white" />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -170,7 +188,7 @@ export default function aboutMe() {
           justifyContent="center"
           alignItems="center">
           <Grid>
-            <Header variant="h4" size={30} />
+            <Header variant="h5" size={40} />
             <MainDetails variant="h5" size={40} />
           </Grid>
         </Grid>
@@ -232,12 +250,12 @@ export default function aboutMe() {
           // alignItems="center"
         >
           <Grid>
-            <Header variant="h4" size={30} />
+            <Header variant="h5" size={40} />
             <MainDetails />
           </Grid>
         </Grid>
         <Grid className={classes.buttonContainer} container>
-          <Buttons size={25} />
+          <Buttons size={25} color="white" />
         </Grid>
         <Grid className={classes.hamburgerGap} />
       </Grid>
@@ -279,6 +297,7 @@ export default function aboutMe() {
         gridArea: '3/1/4/2',
         background: primaryColor,
         zIndex: 3,
+        color: 'white',
       },
       buttonContainer2: {
         maxWidth: '500px',
@@ -302,7 +321,7 @@ export default function aboutMe() {
             className={classes.buttonContainer}
             justifyContent="center">
             <Grid container className={classes.buttonContainer2}>
-              <Buttons size={35} />
+              <Buttons size={35} color="white" />
             </Grid>
           </Grid>
         </Grid>
