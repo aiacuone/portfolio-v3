@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
     },
     shape: { borderRadius: 0 },
     typography: {
-      fontFamily: 'Segoe UI',
+      fontFamily: 'Calibri',
     },
   })
 

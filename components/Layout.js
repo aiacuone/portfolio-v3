@@ -144,6 +144,11 @@ export default function Layout({ children }) {
         width: '50px',
         background: 'purple',
       },
+      navLink: {
+        fontSize: '.9rem',
+        textTransform: 'none',
+        // background: 'red',
+      },
     })
 
     const NavLinks = () => {
@@ -159,7 +164,7 @@ export default function Layout({ children }) {
         return (
           <Grid item>
             <Link href={`/${link}`}>
-              <Button>{name}</Button>
+              <Button className={classes.navLink}>{name}</Button>
             </Link>
           </Grid>
         )
@@ -198,7 +203,7 @@ export default function Layout({ children }) {
           <Grid container alignItems="center" className={classes.linksHeader}>
             <Grid
               container
-              spacing={2}
+              spacing={1}
               className={classes.linksHeader2}
               justifyContent="flex-end">
               <NavLinks />
