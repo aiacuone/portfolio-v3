@@ -60,6 +60,7 @@ export default function projects() {
       flexGrow: 1,
       maxWidth: '300px',
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
+      fontSize: isPhone && '.8rem',
       // background: 'white',
     },
     viewButton: {
@@ -79,6 +80,7 @@ export default function projects() {
       zIndex: 1,
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px',
       maxWidth: '300px',
+      fontSize: isPhone && '.8rem',
     },
     viewButtonContainer: {
       flexWrap: 'nowrap',
@@ -197,7 +199,11 @@ export default function projects() {
       <Grid className={classesRoot.viewButton}>
         <Link href={projectGitHubLink}>
           <a target="_blank">
-            <Button fullWidth color="secondary" variant="text">
+            <Button
+              fullWidth
+              color="secondary"
+              variant="text"
+              style={{ fontSize: isPhone && '.8rem' }}>
               View GitHub
             </Button>
           </a>
@@ -211,7 +217,11 @@ export default function projects() {
       <Grid className={classesRoot.viewButton} item>
         <Link href={projectLink}>
           <a target="_blank">
-            <Button fullWidth color="secondary" variant="text">
+            <Button
+              fullWidth
+              color="secondary"
+              variant="text"
+              style={{ fontSize: isPhone && '.8rem' }}>
               View Project
             </Button>
             {/* <Typography textAlign="center">VIEW PROJECT</Typography> */}
@@ -262,7 +272,10 @@ export default function projects() {
     const projectButtons = projectsArr.map((project, index) => {
       return (
         <Button
-          style={{ background: index == selection.project && primaryDarkColor }}
+          style={{
+            background: index == selection.project && primaryDarkColor,
+            fontSize: isPhone && '.8rem',
+          }}
           onClick={() => {
             const newSelections = { ...selections }
             newSelections['projects'].project = index
