@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles'
 import Link from 'next/link'
 import { UserContext } from '../utils/UserContext'
 import { useContext } from 'react'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
 
 const useStyles = makeStyles({
   root: {
@@ -48,7 +49,7 @@ const useStylesP = makeStyles({
     width: '50px',
     background: 'purple',
   },
-  linkContainer: { zIndex: 2, background: 'purple' },
+  linkContainer: { zIndex: 2 },
   link: { padding: '10px 0', textAlign: 'center' },
 
   phoneContainer: {
@@ -62,8 +63,10 @@ const useStylesP = makeStyles({
 })
 
 export default function Home() {
-  const { state } = useContext(UserContext)
+  const { state, setState } = useContext(UserContext)
   const { isPhone } = state.phone
+  const { darkMode } = state
+  const { setDarkMode } = setState
 
   const classes = useStyles()
   const classesP = useStylesP()
@@ -74,7 +77,6 @@ export default function Home() {
         className={classesP.linkContainer}
         alignItems="center"
         direction="column">
-        HOME
         <Grid item>
           <Link href="projects">
             <h3 className={classesP.link}>PROJECTS</h3>
@@ -95,6 +97,19 @@ export default function Home() {
             <h3 className={classesP.link}>CONTACT ME</h3>
           </Link>
         </Grid>
+        <DarkMode />
+      </Grid>
+    )
+  }
+
+  const DarkMode = () => {
+    return (
+      <Grid container justifyContent="center">
+        <Brightness4Icon
+          fontSize="large"
+          style={{ cursor: 'pointer', margin: '10px' }}
+          onClick={() => setDarkMode(!darkMode)}
+        />
       </Grid>
     )
   }

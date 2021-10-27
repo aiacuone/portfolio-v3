@@ -50,10 +50,11 @@ export default function aboutMe() {
       paddingBottom: isPhone ? '10px' : '30px',
     },
     mainDetailsContainer: {
-      background: darkMode ? textDarkBackground : textLightBackground,
+      // background: darkMode ? textDarkBackground : textLightBackground,
     },
     mainDetailsContainer2: {
       padding: isPhone ? '0px 30px' : '0 70px', //PADDING OF MAIN CONTAINER
+      // background: 'green',
     },
     headerText: {},
   })
@@ -146,6 +147,7 @@ export default function aboutMe() {
         overflowY: 'scroll',
         padding: '10px',
         zIndex: 50,
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
       hamburgerGap: {
         gridArea: '2/10/11/11',
@@ -197,6 +199,7 @@ export default function aboutMe() {
         gridArea: '2/1/19/11',
         overflowY: 'scroll',
         padding: '10px',
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
       buttonContainer: {
         gridArea: '19/1/20/11',

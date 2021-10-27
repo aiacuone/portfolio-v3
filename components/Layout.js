@@ -8,6 +8,7 @@ import { useTheme } from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import hamburger from '../public/images/misc/hamburger.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {
   const theme = useTheme()
@@ -21,7 +22,8 @@ export default function Layout({ children }) {
     padding: hamburgerPadding,
   } = vars.hamburger
   const { main: primaryColor, dark: darkPrimaryColor } = theme.palette.primary
-
+  const router = useRouter()
+  console.log(router.pathname)
   const useStylesRoot = makeStyles({
     root: {
       width: '100%',
@@ -31,10 +33,12 @@ export default function Layout({ children }) {
 
   const classesRoot = useStylesRoot()
 
-  // const StyledSVG = ({ height, width, color, src }) => {
-  //   const svg = src
-  //   return <Image src={src} width={width} height={height} layout="fixed" />
-  // }
+  function handleClick() {
+    if (router.pathname == '/') {
+      return router.back()
+    }
+    return router.push('/')
+  }
 
   const Phone = () => {
     const useStyles = makeStyles({
@@ -44,6 +48,7 @@ export default function Layout({ children }) {
         height: windowHeight,
         minHeight: '270px',
         minWidth: '270px',
+        fontSize: '.9rem',
       },
       hamburger: {
         position: 'absolute',
@@ -64,17 +69,16 @@ export default function Layout({ children }) {
         className={classes.root}
         justifyContent="center"
         alignItems="center">
-        <Link href="/hamburger">
-          <Grid className={classes.hamburger}>
-            <Image
-              src={hamburger}
-              layout="fixed"
-              height={hamburgerHeight}
-              width={hamburgerWidth}
-              style={{ fill: 'red' }}
-            />
-          </Grid>
-        </Link>
+        <Grid className={classes.hamburger}>
+          <Image
+            onClick={handleClick}
+            src={hamburger}
+            layout="fixed"
+            height={hamburgerHeight}
+            width={hamburgerWidth}
+            style={{ fill: 'red' }}
+          />
+        </Grid>
         {children}
       </Grid>
     )
@@ -183,14 +187,6 @@ export default function Layout({ children }) {
                 onClick={() => setDarkMode(!darkMode)}
               />
             </Grid>
-            {/* <Image
-              src={Brightness4Icon}
-              layout="fixed"
-              width={50}
-              height={50}
-            /> */}
-
-            {/* <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button> */}
           </Grid>
         </>
       )
