@@ -58,7 +58,6 @@ export default function Layout({ children }) {
           y2="16"
         />
         <line
-          // fill={darkMode ? 'white' : 'black'}
           id="XMLID_836_"
           stroke={darkMode ? 'white' : 'black'}
           strokeLinecap="round"
@@ -71,7 +70,6 @@ export default function Layout({ children }) {
           y2="25"
         />
         <line
-          // fill={darkMode ? 'white' : 'black'}
           id="XMLID_835_"
           stroke={darkMode ? 'white' : 'black'}
           strokeLinecap="round"
