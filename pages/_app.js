@@ -16,7 +16,7 @@ import Paper from '@mui/material/Paper'
 function MyApp({ Component, pageProps }) {
   const [windowHeight, setWindowHeight] = useState('100%')
   const [showViewButtons, setShowViewButtons] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const [selections, setSelections] = useState({
     projects: { project: 0, details: 0 },
     skills: 0,
@@ -26,8 +26,29 @@ function MyApp({ Component, pageProps }) {
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      background: { paper: darkMode ? '#1c1c1c' : '#f5f5f5' },
+      primary: {
+        main: '#607893',
+      },
+      secondary: {
+        main: '#f5f5f5',
+        dark: '#d9d9d9',
+        contrastText: 'black',
+      },
     },
     components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            // color: darkMode ? 'white' : '#000000', //BUTTON TEXT COLOR
+            color: 'white',
+            fontSize: '1.1rem',
+          },
+          textSecondary: {
+            color: 'black',
+          },
+        },
+      },
       MuiButtonBase: {
         defaultProps: {
           disableRipple: true,
@@ -36,16 +57,9 @@ function MyApp({ Component, pageProps }) {
     },
     shape: { borderRadius: 0 },
     typography: {
-      fontFamily: 'Cantarell',
+      fontFamily: 'Calibri',
       MuiButton: {
         color: 'red',
-      },
-    },
-    overrides: {
-      MuiButton: {
-        root: {
-          fontSize: '3rem',
-        },
       },
     },
   })
@@ -87,7 +101,7 @@ function MyApp({ Component, pageProps }) {
     secondHeaderHeightLandscape: 25,
     buttonsNormalHeight: '30px',
     // handleScroll,
-    primaryColor: 'grey',
+    primaryColor: '#009dbc',
   }
 
   const state = {

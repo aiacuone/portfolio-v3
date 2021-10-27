@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { makeStyles } from '@mui/styles'
 import { UserContext } from '../utils/UserContext'
 import { useRouter } from 'next/router'
+import Button from '@mui/material/Button'
 
 const useStyles = makeStyles({
   root: {},
@@ -11,7 +12,9 @@ const useStyles = makeStyles({
 })
 
 export default function hamburger() {
-  const { state } = useContext(UserContext)
+  const { state, setState } = useContext(UserContext)
+  const { darkMode } = state
+  const { setDarkMode } = setState
   const { isPhone } = state.phone
   const router = useRouter()
 
@@ -50,6 +53,7 @@ export default function hamburger() {
           <h3 className={classes.link}>CONTACT ME</h3>
         </Link>
       </Grid>
+      <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button>
     </Grid>
   )
 }

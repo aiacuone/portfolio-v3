@@ -4,8 +4,10 @@ import { makeStyles } from '@mui/styles'
 import { UserContext } from '../utils/UserContext'
 import Link from 'next/link'
 import Button from '@mui/material/Button'
+import { useTheme } from '@mui/material/styles'
 
 export default function Layout({ children }) {
+  const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const { phone, windowHeight, darkMode } = state
   const { setDarkMode } = setState
@@ -15,6 +17,7 @@ export default function Layout({ children }) {
     width: hamburgerWidth,
     padding: hamburgerPadding,
   } = vars.hamburger
+  const { main: primaryColor, dark: darkPrimaryColor } = theme.palette.primary
 
   const useStylesRoot = makeStyles({
     root: {
@@ -76,7 +79,7 @@ export default function Layout({ children }) {
       },
       header: {
         width: '100%',
-        background: 'yellow',
+        background: primaryColor,
         gridArea: '1/1/2/11',
       },
       linksHeader: { height: '100%' },

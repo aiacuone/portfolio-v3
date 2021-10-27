@@ -11,8 +11,10 @@ import { images as skillsImages } from '../public/images/skills'
 import { InsertEmoticonOutlined } from '@material-ui/icons'
 // import { screenshots } from '../public/images/screenshots'
 import Link from 'next/link'
+import { useTheme } from '@mui/material/styles'
 
 export default function projects() {
+  const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const {
@@ -24,11 +26,13 @@ export default function projects() {
     headerHeightLandscape,
     secondHeaderHeightLandscape,
     handleScroll,
-    primaryColor,
   } = vars
 
-  const { selections } = state
+  const { selections, darkMode } = state
   const { setSelections } = setState
+  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const { main: secondaryColor, dark: secondaryColorDark } =
+    theme.palette.secondary
 
   const selection = selections['projects']
   const projectObj = projectsObj[projectsArr[selection.project]]
@@ -62,6 +66,7 @@ export default function projects() {
       overflow: 'hidden',
       maxWidth: '300px',
       margin: '0px 10px',
+      color: 'black',
     },
 
     projectButton: {
@@ -101,7 +106,7 @@ export default function projects() {
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
-      // background: '#c2c2c2',
+      background: darkMode ? '#3c3c3c' : '#dedede', //DARK MODE COLOURS MAIN CONTAINER
       padding: isPhone ? '0 5px' : '20px 70px',
       gridArea: '2/1/3/2',
     },
@@ -113,11 +118,7 @@ export default function projects() {
       minWidth: '65px',
     },
     symbol: {},
-    mainDetailsContainer: {
-      // margin: 0,
-      // paddingTop: '20px', //PADDING BETWEEN PROJECT HEADER AND START OF MAIN CONTAINER TEXT
-      // padding: 0,
-    },
+    mainDetailsContainer: {},
     paddingGap: { height: '30px' },
     screenshotContainer: {
       padding: '20px',
@@ -133,13 +134,16 @@ export default function projects() {
         <Grid
           key={button + index}
           className={classesRoot.detailContainer}
-          style={{ background: selection.details == index && 'blue' }}>
+          // style={{ background: selection.details == index && 'blue' }}
+        >
           <Grid
             container
             justifyContent="center"
             className={classesRoot.detailContainer2}>
             <Button
               fullWidth
+              color="secondary"
+              variant="text"
               className={classesRoot.detailButtons}
               onClick={() => {
                 const newSelections = { ...selections }
@@ -156,7 +160,11 @@ export default function projects() {
     const buttons = arr.map((button, index) => {
       return (
         <Button
-          style={{ background: selection.details == index && 'blue' }}
+          color="secondary"
+          variant="text"
+          style={{
+            background: selection.details == index && secondaryColorDark,
+          }}
           className={classesRoot.detailButtons}
           onClick={() => {
             const newSelections = { ...selections }
@@ -179,7 +187,9 @@ export default function projects() {
       <Grid className={classesRoot.viewButton}>
         <Link href={projectGitHubLink}>
           <a target="_blank">
-            <Button fullWidth>View GitHub</Button>
+            <Button fullWidth color="secondary" variant="text">
+              View GitHub
+            </Button>
           </a>
         </Link>
       </Grid>
@@ -191,7 +201,9 @@ export default function projects() {
       <Grid className={classesRoot.viewButton} item>
         <Link href={projectLink}>
           <a target="_blank">
-            <Button fullWidth>View Project</Button>
+            <Button fullWidth color="secondary" variant="text">
+              View Project
+            </Button>
             {/* <Typography textAlign="center">VIEW PROJECT</Typography> */}
           </a>
         </Link>
@@ -219,7 +231,9 @@ export default function projects() {
           justifyContent="center"
           key={project.name + index}
           className={classesRoot.projectButtonContainer}
-          style={{ background: index == selection.project && 'orange' }}>
+          style={{
+            background: index == selection.project && primaryDarkColor,
+          }}>
           <Grid container className={classesRoot.projectButtonContainer2}>
             <Button
               onClick={() => {
@@ -238,7 +252,7 @@ export default function projects() {
     const projectButtons = projectsArr.map((project, index) => {
       return (
         <Button
-          style={{ background: index == selection.project && 'orange' }}
+          style={{ background: index == selection.project && primaryDarkColor }}
           onClick={() => {
             const newSelections = { ...selections }
             newSelections['projects'].project = index
@@ -837,7 +851,6 @@ export default function projects() {
       detailsButtonContainer: { gridArea: '2/1/3/11', background: 'white' },
       mainContainer: {
         gridArea: '3/1/10/11',
-        // background: 'orange',
       },
       viewButtonsContainer: {
         gridArea: '10/1/11/11',
