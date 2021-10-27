@@ -33,8 +33,11 @@ export default function projects() {
   const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
   const { main: secondaryColor, dark: secondaryColorDark } =
     theme.palette.secondary
-  const { textLight: textLightBackground, textDark: textDarkBackground } =
-    theme.palette.background
+  const {
+    textLight: textLightBackground,
+    textDark: textDarkBackground,
+    paper: backgroundColor,
+  } = theme.palette.background
   const selection = selections['projects']
   const projectObj = projectsObj[projectsArr[selection.project]]
   const {
@@ -57,6 +60,7 @@ export default function projects() {
       flexGrow: 1,
       maxWidth: '300px',
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
+      // background: 'white',
     },
     viewButton: {
       // height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
@@ -84,10 +88,12 @@ export default function projects() {
     detailContainer: {
       padding: 0,
       width: isPhoneLandscape ? '100%' : '50%',
+      // background: secondaryColor,
     },
     detailContainer2: { height: '100%' },
     projectButtonContainer: {
       // flexGrow: 1,
+      background: primaryColor,
     },
     projectButtonContainer2: {
       height: '100%',
@@ -131,12 +137,14 @@ export default function projects() {
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
     const buttonsLandscape = arr.map((button, index) => {
+      const style = {
+        background: selection.details == index && secondaryColorDark,
+      }
       return (
         <Grid
           key={button + index}
           className={classesRoot.detailContainer}
-          // style={{ background: selection.details == index && 'blue' }}
-        >
+          style={style}>
           <Grid
             container
             justifyContent="center"
@@ -159,13 +167,14 @@ export default function projects() {
     })
 
     const buttons = arr.map((button, index) => {
+      const style = {
+        background: selection.details == index && secondaryColorDark,
+      }
       return (
         <Button
           color="secondary"
           variant="text"
-          style={{
-            background: selection.details == index && secondaryColorDark,
-          }}
+          style={style}
           className={classesRoot.detailButtons}
           onClick={() => {
             const newSelections = { ...selections }
@@ -684,12 +693,12 @@ export default function projects() {
         }px`, //WIDTH OF BUTTONS CONTAINER
       },
       buttonContainer: {
-        background: 'yellow',
         gridArea: '1/1/11/2',
         zIndex: 2,
+        background: 'white',
       },
 
-      header: { gridArea: '1/2/2/10', background: 'brown' },
+      header: { gridArea: '1/2/2/10', background: primaryColor },
       mainContainer: {
         gridArea: '2/2/10/10',
         // background: 'grey',
@@ -699,7 +708,7 @@ export default function projects() {
       viewButtons: { background: 'brown' },
       hamburgerGap: {
         gridArea: '1/10/11/11',
-        background: 'purple',
+        background: backgroundColor,
         zIndex: 1,
       },
     })
@@ -708,7 +717,6 @@ export default function projects() {
     const Buttons = () => {
       return (
         <Grid className={classes.buttonContainer} container>
-          {/* {projectButtons} */}
           <ProjectButtons />
           <DetailButtons />
         </Grid>
@@ -754,26 +762,25 @@ export default function projects() {
           hamburger.padding * 2 + hamburger.height
         }px`,
       },
-      header: { gridArea: '1/1/2/11' },
-      mainContainer: { gridArea: '2/1/14/11', background: 'grey' },
+      header: { gridArea: '1/1/2/11', background: primaryColor },
+      mainContainer: { gridArea: '2/1/14/11' },
       projectButtons: {
         gridArea: '14/1/15/11',
-        background: 'yellow',
+        background: primaryColor,
         minWidth: '340px',
       },
       detailsButtons: {
         gridArea: '15/1/16/11',
-        background: 'orange',
+        background: 'white',
       },
       hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
       hamburger: {
         gridArea: '1/2/3/3',
-        background: 'red',
       },
       container: {
         height: '100%',
         width: '100%',
-        background: 'purple',
+        background: backgroundColor,
         display: 'grid',
         gridTemplateColumns: `1fr ${
           hamburger.width + hamburger.padding * 2

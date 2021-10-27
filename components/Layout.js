@@ -33,11 +33,9 @@ export default function Layout({ children }) {
       root: {
         position: 'relative',
         width: '100vw',
-        // height: `${windowHeight}px`,
         height: windowHeight,
         minHeight: '270px',
         minWidth: '270px',
-        // background: 'red',
       },
       hamburger: {
         position: 'absolute',
@@ -152,10 +150,10 @@ export default function Layout({ children }) {
       })
       return (
         <>
+          {navLinks}
           <Grid item>
             <Button onClick={() => setDarkMode(!darkMode)}>DARK</Button>
           </Grid>
-          {navLinks}
         </>
       )
     }
