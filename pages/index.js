@@ -16,7 +16,7 @@ export default function Home() {
   const { isPhone, isPhonePortrait, isPhoneLandscape } = state.phone
   const { darkMode } = state
   const { setDarkMode } = setState
-  const { contactsArr, contactsObj } = vars
+  const { contactsArr, contactsObj, skillsObj } = vars
   const router = useRouter()
 
   const useStyles = makeStyles({
@@ -42,18 +42,11 @@ export default function Home() {
       position: 'absolute',
       bottom: 10,
       right: 10,
-      // background: 'green',
-      // height: '50px',
-      // width: '50px',
-      // background: 'yellow',
     },
     skills: {
       position: 'absolute',
       top: 10,
       left: 10,
-      height: '50px',
-      width: '50px',
-      background: 'blue',
     },
     linkContainer: { zIndex: 2 },
     link: { padding: '10px 0', textAlign: 'center' },
@@ -174,6 +167,28 @@ export default function Home() {
     )
   }
 
+  const SkillsButtons = ({ size }) => {
+    const arr = ['react', 'javaScript', 'next', 'material', 'git']
+
+    const icons = arr.map((skill) => {
+      const src = skillsObj[skill].image
+      return (
+        <Grid item>
+          <Image height={size} width={size} layout="fixed" src={src} />
+        </Grid>
+      )
+    })
+
+    return (
+      <Grid
+        container
+        spacing={2}
+        direction={isPhoneLandscape ? 'row' : 'column'}>
+        {icons}
+      </Grid>
+    )
+  }
+
   const Normal = () => {
     return (
       <Grid
@@ -193,11 +208,13 @@ export default function Home() {
         className={classesP.phoneContainer}
         justifyContent="center"
         alignItems="center">
-        <Grid className={classesP.skills}>skills index</Grid>
+        <Grid className={classesP.skills}>
+          <SkillsButtons size={30} />
+        </Grid>
         <Grid className={classesP.london}>
           <Grid container className={classesP.londonContainer}>
             <p className={classesP.londonText}>South London, UK</p>
-            <LondonIcon height={isPhonePortrait ? 200 : 110} color="grey" />
+            <LondonIcon height={isPhonePortrait ? 180 : 110} color="grey" />
           </Grid>
         </Grid>
         <Grid className={classesP.me}>
