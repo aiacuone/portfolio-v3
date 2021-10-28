@@ -6,12 +6,6 @@ import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
-import {
-  GitHubIcon,
-  EmailIcon,
-  LinkedinIcon,
-  PhoneIcon,
-} from '../components/icons'
 
 export default function contactMe() {
   const theme = useTheme()
@@ -31,43 +25,22 @@ export default function contactMe() {
 
   const useStylesRoot = makeStyles({
     root: { height: '100%', width: '100%', backgroundColor },
-    // button: { margin: '10px 0', background: 'red' },
-    button: {
-      // zIndex: 3,
-      // flexGrow: 1,
-      // background: 'red',
-      // height: 30,
-      // width: 30,
-      // height: '30%',
-    },
-    mainContentContainer: {
-      // width: '70%',
-      // background: 'red',
-    },
+    button: {},
+    mainContentContainer: {},
   })
   const classesRoot = useStylesRoot()
 
   const Buttons = ({ size }) => {
-    // const props = { height: size, width: size }
     return contactsArr.map((item, index) => {
-      const { image, link } = contactsObj[item]
+      const { image: Image, link } = contactsObj[item]
       if (!isPhone && item == 'phone') return
-
-      const buttonObj = {
-        email: <EmailIcon size={size} color={darkMode ? 'white' : 'black'} />,
-        linkedin: (
-          <LinkedinIcon size={size} color={darkMode ? 'white' : 'black'} />
-        ),
-        gitHub: <GitHubIcon size={size} color={darkMode ? 'white' : 'black'} />,
-        phone: <PhoneIcon size={size} color={darkMode ? 'white' : 'black'} />,
-      }
-
-      const icon = buttonObj[item]
 
       return (
         <Grid item className={classesRoot.button}>
           <Link href={link}>
-            <a target="_blank">{icon}</a>
+            <a target="_blank">
+              <Image size={size} color={darkMode ? 'white' : 'black'} />
+            </a>
           </Link>
         </Grid>
       )

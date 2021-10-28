@@ -11,10 +11,11 @@ import Image from 'next/image'
 import { LondonIcon } from '../components/icons'
 
 export default function Home() {
-  const { state, setState } = useContext(UserContext)
+  const { state, setState, vars } = useContext(UserContext)
   const { isPhone, isPhonePortrait } = state.phone
   const { darkMode } = state
   const { setDarkMode } = setState
+  const { contactsArr, contactsObj } = vars
 
   const useStyles = makeStyles({
     root: {
@@ -34,9 +35,6 @@ export default function Home() {
       position: 'absolute',
       top: 0,
       right: 0,
-      // height: '50px',
-      // width: '50px',
-      // background: 'lime',
     },
     links: {
       position: 'absolute',
@@ -147,6 +145,8 @@ export default function Home() {
       </Grid>
     )
   }
+
+  // const ContactButtons = () => {}
 
   const Normal = () => {
     return (

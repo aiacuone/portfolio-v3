@@ -1,19 +1,33 @@
 import { images as contactImages } from '../public/images/contact'
+import {
+  GitHubIcon,
+  LinkedinIcon,
+  EmailIcon,
+  PhoneIcon,
+} from '../components/icons'
 
 function getContactObj() {
   const { email, linkedin, phone, gitHub } = contactImages
 
   const obj = {
-    email: { name: 'Email', image: email, link: 'mailto:aiacuone@gmail.com' },
+    email: {
+      name: 'Email',
+      image: EmailIcon,
+      link: 'mailto:aiacuone@gmail.com',
+    },
     linkedin: {
       name: 'Linkedin',
-      image: linkedin,
+      image: LinkedinIcon,
       link: 'https://www.linkedin.com/in/adrian-iacuone/',
     },
-    phone: { name: 'Phone', image: phone, link: 'tel:07393961334' },
+    phone: {
+      name: 'Phone',
+      image: PhoneIcon,
+      link: 'tel:07393961334',
+    },
     gitHub: {
       name: 'GitHub',
-      image: gitHub,
+      image: GitHubIcon,
       link: 'https://github.com/aiacuone/',
     },
   }

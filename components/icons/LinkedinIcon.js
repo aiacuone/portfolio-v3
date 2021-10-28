@@ -5,7 +5,7 @@ export default function LinkedinIcon({ size, color }) {
     <svg
       height={size}
       width={size}
-      fill="white"
+      fill={color}
       version="1.1"
       id="Layer_1"
       xmlnsSerif="http://www.serif.com/"
