@@ -178,7 +178,11 @@ export default function aboutMe() {
 
     return (
       <Grid className={classes.root}>
-        <Grid className={classes.header} container justifyContent="center">
+        <Grid
+          className={classes.header}
+          container
+          justifyContent="center"
+          alignItems="center">
           ABOUT ME
         </Grid>
         <Grid className={classes.buttonContainer} container direction="column">

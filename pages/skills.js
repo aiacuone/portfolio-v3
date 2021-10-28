@@ -30,11 +30,19 @@ export default function skills() {
   const selection = selections['skills']
   const selectedSkillObj = skillsObj[skillsArr[selection]]
   const { getDetails, image, name } = selectedSkillObj
-  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const {
+    main: primaryColor,
+    dark: primaryDarkColor,
+    light: primaryLightColor,
+  } = theme.palette.primary
   const mainDetails = getDetails()
 
   const useStylesRoot = makeStyles({
-    root: { height: '100%', width: '100%' },
+    root: {
+      height: '100%',
+      width: '100%',
+      color: darkMode ? 'white' : 'black',
+    },
     buttonContainer: { height: '50%' },
     buttonContainer2: {},
     button: { zIndex: 1 },
@@ -63,7 +71,14 @@ export default function skills() {
           onClick={() => setSelections({ ...selections, skills: index })}
           s
           className={classesRoot.imageContainer}
-          style={{ background: index == selection && primaryDarkColor }}>
+          style={{
+            background:
+              index == selection && darkMode
+                ? primaryDarkColor
+                : index == selection && !darkMode
+                ? primaryColor
+                : 'null',
+          }}>
           <Grid
             container
             justifyContent="center"
@@ -175,7 +190,7 @@ export default function skills() {
         gridArea: '1/1/10/11',
       },
       buttonContainer: {
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         gridArea: '10/1/11/11',
       },
       buttonContainer2: {
@@ -227,12 +242,11 @@ export default function skills() {
       },
       header: {
         gridArea: '1/1/2/10',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
       },
       buttonContainer: {
         gridArea: '9/1/11/10',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         minWidth: '600px',
         flexWrap: 'nowrap',
       },
@@ -283,8 +297,7 @@ export default function skills() {
       },
       header: {
         gridArea: '1/1/2/11',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
       },
       mainContainer: {
         gridArea: '2/1/19/11',
@@ -292,7 +305,7 @@ export default function skills() {
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         minWidth: '250px',
       },
       hamburgerGap: {
