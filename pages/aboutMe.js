@@ -26,7 +26,11 @@ export default function aboutMe() {
   const selection = selections['aboutMe']
   const selectedOptionObj = aboutMeObj[aboutMeArr[selection]]
   const { getDetails, name: optionName, icon } = selectedOptionObj
-  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const {
+    main: primaryColor,
+    dark: primaryDarkColor,
+    light: primaryLightColor,
+  } = theme.palette.primary
   const {
     textLight: textLightBackground,
     textDark: textDarkBackground,
@@ -38,7 +42,6 @@ export default function aboutMe() {
     root: {
       height: '100%',
       width: '100%',
-      // background: darkMode ? textDarkBackground : textLightBackground,
     },
     bottomNav: {
       display: 'flex',
@@ -46,23 +49,21 @@ export default function aboutMe() {
       background: backgroundColor,
     },
     button: { flexGrow: 1, cursor: 'pointer' },
-    container: { height: '100%' },
+    container: { height: '100%', color: darkMode ? 'white' : 'black' },
     mainContentHeaderContainer: {
       paddingBottom: isPhone ? '10px' : '30px',
     },
-    mainDetailsContainer: {
-      // background: darkMode ? textDarkBackground : textLightBackground,
-    },
+    mainDetailsContainer: {},
     mainDetailsContainer2: {
       padding: isPhone ? '0px 30px' : '0 70px', //PADDING OF MAIN CONTAINER
-      // background: 'green',
     },
     headerText: {},
   })
 
-  const Buttons = ({ size, color }) => {
+  const Buttons = ({ size }) => {
     const buttons = aboutMeArr.map((item, index) => {
       const { name } = aboutMeObj[item]
+      const color = darkMode ? 'white' : 'black'
       const iconObj = {
         hobbies: <HobbiesIcon size={size} color={color} />,
         work: <WorkIcon size={size} color={color} />,
@@ -76,7 +77,12 @@ export default function aboutMe() {
           key={item.name}
           onClick={() => setSelections({ ...selections, ['aboutMe']: index })}
           className={classesRoot.button}
-          style={{ background: index == selection && primaryDarkColor }}>
+          style={{
+            background:
+              index == selection && darkMode
+                ? primaryDarkColor
+                : index == selection && !darkMode && primaryColor,
+          }}>
           <Grid
             container
             className={classesRoot.container}
@@ -109,10 +115,7 @@ export default function aboutMe() {
         alignItems="flex-end">
         <Grid>
           <Grid container alignItems="center" spacing={1}>
-            <Grid item>
-              {/* <Image src={icon} layout="fixed" height={size} width={size} /> */}
-              {icon}
-            </Grid>
+            <Grid item>{icon}</Grid>
             <Grid item>
               <Typography variant={variant} className={classesRoot.headerText}>
                 {optionName}
@@ -150,14 +153,14 @@ export default function aboutMe() {
       },
       buttonContainer: {
         gridArea: '1/1/11/2',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         minHeight: '150px',
         color: 'white',
       },
       header: {
         gridArea: '1/2/2/10',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
+        color: darkMode ? 'white' : 'black',
       },
       mainContainer: {
         gridArea: '2/2/11/10',
@@ -210,8 +213,8 @@ export default function aboutMe() {
       },
       header: {
         gridArea: '1/1/2/11',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
+        color: darkMode ? 'white' : 'black',
       },
       mainContainer: {
         gridArea: '2/1/19/11',
@@ -221,7 +224,7 @@ export default function aboutMe() {
       },
       buttonContainer: {
         gridArea: '19/1/20/11',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         color: 'white',
       },
       hamburgerGap: {
@@ -295,7 +298,7 @@ export default function aboutMe() {
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         zIndex: 3,
         color: 'white',
       },

@@ -19,7 +19,11 @@ export default function Layout({ children }) {
     width: hamburgerWidth,
     padding: hamburgerPadding,
   } = vars.hamburger
-  const { main: primaryColor, dark: darkPrimaryColor } = theme.palette.primary
+  const {
+    main: primaryColor,
+    dark: darkPrimaryColor,
+    light: lightPrimaryColor,
+  } = theme.palette.primary
   const router = useRouter()
 
   const useStylesRoot = makeStyles({
@@ -142,7 +146,7 @@ export default function Layout({ children }) {
       },
       header: {
         width: '100%',
-        background: primaryColor,
+        background: darkMode ? darkPrimaryColor : lightPrimaryColor,
         gridArea: '1/1/2/11',
       },
       linksHeader: { height: '100%' },
