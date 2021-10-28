@@ -30,7 +30,11 @@ export default function projects() {
 
   const { selections, darkMode } = state
   const { setSelections } = setState
-  const { main: primaryColor, dark: primaryDarkColor } = theme.palette.primary
+  const {
+    main: primaryColor,
+    dark: primaryDarkColor,
+    light: primaryLightColor,
+  } = theme.palette.primary
   const { main: secondaryColor, dark: secondaryColorDark } =
     theme.palette.secondary
   const {
@@ -53,6 +57,7 @@ export default function projects() {
       height: '100%',
       width: '100%',
       // background: 'green',
+      color: darkMode ? 'white' : 'black',
     },
     detailButtons: {
       width: isPhonePortrait && '50%',
@@ -81,6 +86,7 @@ export default function projects() {
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px',
       maxWidth: '300px',
       fontSize: isPhone && '.8rem',
+      color: darkMode ? 'white' : 'black',
     },
     viewButtonContainer: {
       flexWrap: 'nowrap',
@@ -95,7 +101,7 @@ export default function projects() {
     detailContainer2: { height: '100%' },
     projectButtonContainer: {
       // flexGrow: 1,
-      background: primaryColor,
+      background: darkMode ? primaryColor : primaryLightColor,
     },
     projectButtonContainer2: {
       height: '100%',
@@ -252,7 +258,12 @@ export default function projects() {
           key={project.name + index}
           className={classesRoot.projectButtonContainer}
           style={{
-            background: index == selection.project && primaryDarkColor,
+            background:
+              index == selection.project && darkMode
+                ? primaryDarkColor
+                : index == selection.project && !darkMode
+                ? primaryColor
+                : 'null',
           }}>
           <Grid container className={classesRoot.projectButtonContainer2}>
             <Button
@@ -273,8 +284,12 @@ export default function projects() {
       return (
         <Button
           style={{
-            background: index == selection.project && primaryDarkColor,
-            fontSize: isPhone && '.8rem',
+            background:
+              index == selection.project && darkMode
+                ? primaryDarkColor
+                : index == selection.project && !darkMode
+                ? primaryColor
+                : 'null',
           }}
           onClick={() => {
             const newSelections = { ...selections }
@@ -713,8 +728,8 @@ export default function projects() {
 
       header: {
         gridArea: '1/2/2/10',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
+        // color: 'white',
       },
       mainContainer: {
         gridArea: '2/2/10/10',
@@ -781,13 +796,13 @@ export default function projects() {
       },
       header: {
         gridArea: '1/1/2/11',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
+        // color: 'white',
       },
       mainContainer: { gridArea: '2/1/14/11' },
       projectButtons: {
         gridArea: '14/1/15/11',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         minWidth: '340px',
       },
       detailsButtons: {
@@ -875,7 +890,7 @@ export default function projects() {
       detailsButton: { color: 'black', flexGrow: 1 },
       projectButtonContainer: {
         gridArea: '1/1/2/11',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
       },
       detailsButtonContainer: { gridArea: '2/1/3/11', background: 'white' },
       mainContainer: {
@@ -883,7 +898,7 @@ export default function projects() {
       },
       viewButtonsContainer: {
         gridArea: '10/1/11/11',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         padding: '5px',
       },
     })
