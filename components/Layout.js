@@ -265,7 +265,7 @@ export default function Layout({ children }) {
           <Grid container className={classes.backgroundContainer}>
             <Grid className={classes.backgroundContainer2}>
               <Grid item className={classes.me}>
-                me
+                me layout
               </Grid>
               <Grid item className={classes.links}>
                 links

@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { UserContext } from '../utils/UserContext'
 import { useContext } from 'react'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
+import { selfie } from '../public/images/home'
+import Image from 'next/image'
 
 const useStyles = makeStyles({
   root: {
@@ -18,11 +20,11 @@ const useStyles = makeStyles({
 const useStylesP = makeStyles({
   me: {
     position: 'absolute',
-    bottom: 10, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
-    left: 10,
-    height: '50px',
-    width: '50px',
-    background: 'red',
+    bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+    left: -145,
+    // height: '50px',
+    // width: '50px',
+    // background: 'red',
   },
   london: {
     position: 'absolute',
@@ -47,7 +49,7 @@ const useStylesP = makeStyles({
     left: 10,
     height: '50px',
     width: '50px',
-    background: 'purple',
+    background: 'blue',
   },
   linkContainer: { zIndex: 2 },
   link: { padding: '10px 0', textAlign: 'center' },
@@ -114,6 +116,25 @@ export default function Home() {
     )
   }
 
+  const Selfie = ({ width }) => {
+    const style = {
+      width: width,
+      filter: `brightness(${darkMode ? '50%' : '100%'})`,
+      position: 'relative',
+    }
+
+    return (
+      <Grid style={style} item>
+        <p style={{ position: 'absolute', bottom: 55, right: 10, zIndex: 2 }}>
+          Adrian Iacuone
+        </p>
+        <Grid container alignItems="flex-end" style={{ height: '100%' }}>
+          <Image responsive src={selfie} />
+        </Grid>
+      </Grid>
+    )
+  }
+
   const Normal = () => {
     return (
       <Grid
@@ -133,9 +154,11 @@ export default function Home() {
         className={classesP.phoneContainer}
         justifyContent="center"
         alignItems="center">
-        <Grid className={classesP.skills}>skills</Grid>
+        <Grid className={classesP.skills}>skills index</Grid>
         <Grid className={classesP.london}>london</Grid>
-        <Grid className={classesP.me}>me</Grid>
+        <Grid className={classesP.me}>
+          <Selfie width={300} />
+        </Grid>
         <Grid className={classesP.links}>links</Grid>
         <Links />
       </Grid>
