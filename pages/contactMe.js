@@ -6,6 +6,12 @@ import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
+import {
+  GitHubIcon,
+  EmailIcon,
+  LinkedinIcon,
+  PhoneIcon,
+} from '../components/icons'
 
 export default function contactMe() {
   const theme = useTheme()
@@ -16,6 +22,7 @@ export default function contactMe() {
     main: primaryColor,
     dark: primaryDarkColor,
     paper: backgroundColor,
+    light: primaryLightColor,
   } = theme.palette.primary
   const { textLight: textLightBackground, textDark: textDarkBackground } =
     theme.palette.background
@@ -26,7 +33,12 @@ export default function contactMe() {
     root: { height: '100%', width: '100%', backgroundColor },
     // button: { margin: '10px 0', background: 'red' },
     button: {
-      zIndex: 3,
+      // zIndex: 3,
+      // flexGrow: 1,
+      // background: 'red',
+      // height: 30,
+      // width: 30,
+      // height: '30%',
     },
     mainContentContainer: {
       // width: '70%',
@@ -36,26 +48,28 @@ export default function contactMe() {
   const classesRoot = useStylesRoot()
 
   const Buttons = ({ size }) => {
-    const props = { height: size, width: size }
+    // const props = { height: size, width: size }
     return contactsArr.map((item, index) => {
       const { image, link } = contactsObj[item]
       if (!isPhone && item == 'phone') return
 
-      function handleClick() {}
+      const buttonObj = {
+        email: <EmailIcon size={size} color={darkMode ? 'white' : 'black'} />,
+        linkedin: (
+          <LinkedinIcon size={size} color={darkMode ? 'white' : 'black'} />
+        ),
+        gitHub: <GitHubIcon size={size} color={darkMode ? 'white' : 'black'} />,
+        phone: <PhoneIcon size={size} color={darkMode ? 'white' : 'black'} />,
+      }
+
+      const icon = buttonObj[item]
 
       return (
-        <Link href={link}>
-          <a target="_blank">
-            <Image
-              onClick={handleClick}
-              key={item.name + index}
-              className={classesRoot.button}
-              src={image}
-              layout="fixed"
-              {...props}
-            />
-          </a>
-        </Link>
+        <Grid item className={classesRoot.button}>
+          <Link href={link}>
+            <a target="_blank">{icon}</a>
+          </Link>
+        </Grid>
       )
     })
   }
@@ -115,13 +129,13 @@ export default function contactMe() {
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
-        background: primaryColor,
+        background: darkMode ? primaryColor : primaryLightColor,
         padding: '10px 0',
       },
       header: {
         gridArea: '1/1/2/2',
-        background: primaryColor,
-        color: 'white',
+        background: darkMode ? primaryColor : primaryLightColor,
+        color: darkMode ? 'white' : 'black',
       },
     })
     const classes = useStyles()
@@ -176,7 +190,7 @@ export default function contactMe() {
       header: {
         gridArea: '1/2/2/10',
         background: primaryColor,
-        color: 'white',
+        color: darkMode ? 'white' : 'black',
       },
       mainContainer: {
         gridArea: '2/2/11/10',
@@ -205,7 +219,7 @@ export default function contactMe() {
           className={classes.buttonContainer}
           container
           direction="column">
-          <Buttons size={35} />
+          <Buttons size={40} />
         </Grid>
         <Grid
           className={classes.mainContainer}
@@ -225,7 +239,7 @@ export default function contactMe() {
         width: '100%',
         height: '100%',
         display: 'grid',
-        gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) 45px ${
+        gridTemplateRows: `${secondHeaderHeightPortrait}px 30px repeat(16,1fr) auto ${
           hamburger.padding * 2 + hamburger.width
         }px `,
         gridTemplateColumns: 'repeat(10,1fr)',
@@ -233,7 +247,7 @@ export default function contactMe() {
       header: {
         gridArea: '1/1/2/11',
         background: primaryColor,
-        color: 'white',
+        color: darkMode ? 'white' : 'black',
       },
       mainContainer: {
         gridArea: '2/1/19/11',
@@ -242,6 +256,7 @@ export default function contactMe() {
       buttonContainer: {
         gridArea: '19/1/20/11',
         background: primaryColor,
+        padding: '5px',
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
@@ -270,8 +285,9 @@ export default function contactMe() {
           className={classes.buttonContainer}
           container
           justifyContent="space-around"
-          alignItems="center">
-          <Buttons size={30} />
+          // alignItems="center"
+        >
+          <Buttons size={40} />
         </Grid>
         <Grid className={classes.hamburgerGap} />
       </Grid>

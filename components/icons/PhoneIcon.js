@@ -1,0 +1,25 @@
+import React from 'react'
+
+export default function PhoneIcon({ size, color }) {
+  return (
+    <svg
+      fill={color}
+      height={size}
+      width={size}
+      version="1.1"
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="0 0 23 23"
+      style={{ enableBackground: 'new 0 0 23 23' }}
+      xmlSpace="preserve">
+      <path
+        d="M17.2,14.9c-0.4-0.2-0.9-0.2-1.3,0l-2,1.2c-0.5,0.3-1,0.2-1.5-0.1c-0.7-0.6-1.9-1.5-2.9-2.5s-2-2.2-2.5-2.9
+   c-0.3-0.4-0.4-1-0.1-1.4l1.2-2c0.2-0.4,0.2-0.9,0-1.3l-3-5.1C4.8,0.1,4.2-0.1,3.7,0c-0.5,0.1-1.2,0.5-2,1.2
+   c-2.3,2.3-3.5,6.2,5.2,14.9s12.6,7.5,14.9,5.2c0.7-0.7,1.1-1.4,1.2-2c0.1-0.6-0.1-1.1-0.6-1.4C21.1,17.2,18.5,15.6,17.2,14.9z"
+      />
+    </svg>
+  )
+}

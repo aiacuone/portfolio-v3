@@ -200,6 +200,7 @@ export default function Layout({ children }) {
       navLink: {
         fontSize: '.9rem',
         textTransform: 'none',
+        color: darkMode ? 'white' : 'black',
         // background: 'red',
       },
     })
@@ -232,7 +233,7 @@ export default function Layout({ children }) {
               alignItems="center"
               style={{ height: '100%' }}>
               <Brightness4Icon
-                color="secondary"
+                color={!darkMode ? 'inherit' : 'secondary'}
                 onClick={() => setDarkMode(!darkMode)}
               />
             </Grid>

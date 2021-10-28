@@ -164,7 +164,7 @@ export default function aboutMe() {
       },
       mainContainer: {
         gridArea: '2/2/11/10',
-        // background: 'grey',
+
         overflowY: 'scroll',
         padding: '10px',
         zIndex: 50,
@@ -172,7 +172,6 @@ export default function aboutMe() {
       },
       hamburgerGap: {
         gridArea: '2/10/11/11',
-        // background: 'lime',
       },
     })
     const classes = useStyles()
