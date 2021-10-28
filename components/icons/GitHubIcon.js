@@ -16,11 +16,11 @@ export default function GitHubIcon({ size, color }) {
       style={{ enableBackground: 'new 0 0 448 448' }}
       xmlSpace="preserve">
       <style type="text/css">
-        {`.st0{fill-rule:evenodd;clip-rule:evenodd;}`}
+        {`.st1{fill-rule:evenodd;clip-rule:evenodd;}`}
       </style>
       <g>
         <path
-          class="st0"
+          class="st1"
           d="M224,0C100.3,0,0,102.8,0,229.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1
        c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8C82.5,340.1,67.8,333,67.8,333c-20.3-14.3,1.5-14,1.5-14
        c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5

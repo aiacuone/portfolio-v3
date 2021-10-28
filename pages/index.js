@@ -9,13 +9,15 @@ import Brightness4Icon from '@mui/icons-material/Brightness4'
 import { selfie } from '../public/images/home'
 import Image from 'next/image'
 import { LondonIcon } from '../components/icons'
+import { useRouter } from 'next/router'
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
-  const { isPhone, isPhonePortrait } = state.phone
+  const { isPhone, isPhonePortrait, isPhoneLandscape } = state.phone
   const { darkMode } = state
   const { setDarkMode } = setState
   const { contactsArr, contactsObj } = vars
+  const router = useRouter()
 
   const useStyles = makeStyles({
     root: {
@@ -40,10 +42,10 @@ export default function Home() {
       position: 'absolute',
       bottom: 10,
       right: 10,
-      background: 'green',
-      height: '50px',
-      width: '50px',
-      background: 'yellow',
+      // background: 'green',
+      // height: '50px',
+      // width: '50px',
+      // background: 'yellow',
     },
     skills: {
       position: 'absolute',
@@ -146,7 +148,31 @@ export default function Home() {
     )
   }
 
-  // const ContactButtons = () => {}
+  const ContactButtons = ({ size }) => {
+    const icons = contactsArr.map((contact) => {
+      const { image, link } = contactsObj[contact]
+      const Icon = image
+
+      return (
+        <Grid item>
+          <Link href={link}>
+            <a target="_blank">
+              <Icon size={size} color={darkMode ? 'white' : 'grey'} />
+            </a>
+          </Link>
+        </Grid>
+      )
+    })
+
+    return (
+      <Grid
+        container
+        spacing={3}
+        direction={isPhoneLandscape ? 'row' : 'column'}>
+        {icons}
+      </Grid>
+    )
+  }
 
   const Normal = () => {
     return (
@@ -177,7 +203,9 @@ export default function Home() {
         <Grid className={classesP.me}>
           <Selfie width={isPhonePortrait ? 300 : 250} />
         </Grid>
-        <Grid className={classesP.links}>links</Grid>
+        <Grid className={classesP.links}>
+          <ContactButtons size={35} />
+        </Grid>
         <Links />
       </Grid>
     )
