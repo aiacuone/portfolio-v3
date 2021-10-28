@@ -8,67 +8,74 @@ import { useContext } from 'react'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import { selfie } from '../public/images/home'
 import Image from 'next/image'
-
-const useStyles = makeStyles({
-  root: {
-    height: '100%',
-    width: '100%',
-  },
-  normalContainer: {},
-})
-
-const useStylesP = makeStyles({
-  me: {
-    position: 'absolute',
-    bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
-    left: -145,
-    // height: '50px',
-    // width: '50px',
-    // background: 'red',
-  },
-  london: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    height: '50px',
-    width: '50px',
-    background: 'lime',
-  },
-  links: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
-    background: 'green',
-    height: '50px',
-    width: '50px',
-    background: 'yellow',
-  },
-  skills: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    height: '50px',
-    width: '50px',
-    background: 'blue',
-  },
-  linkContainer: { zIndex: 2 },
-  link: { padding: '10px 0', textAlign: 'center' },
-
-  phoneContainer: {
-    height: '100%',
-    width: '100%',
-  },
-  normalContainer: {
-    height: '100%',
-    width: '100%',
-  },
-})
+import { LondonIcon } from '../components/icons'
 
 export default function Home() {
   const { state, setState } = useContext(UserContext)
-  const { isPhone } = state.phone
+  const { isPhone, isPhonePortrait } = state.phone
   const { darkMode } = state
   const { setDarkMode } = setState
+
+  const useStyles = makeStyles({
+    root: {
+      height: '100%',
+      width: '100%',
+    },
+    normalContainer: {},
+  })
+
+  const useStylesP = makeStyles({
+    me: {
+      position: 'absolute',
+      bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+      left: isPhonePortrait ? -145 : -120,
+    },
+    london: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      // height: '50px',
+      // width: '50px',
+      // background: 'lime',
+    },
+    links: {
+      position: 'absolute',
+      bottom: 10,
+      right: 10,
+      background: 'green',
+      height: '50px',
+      width: '50px',
+      background: 'yellow',
+    },
+    skills: {
+      position: 'absolute',
+      top: 10,
+      left: 10,
+      height: '50px',
+      width: '50px',
+      background: 'blue',
+    },
+    linkContainer: { zIndex: 2 },
+    link: { padding: '10px 0', textAlign: 'center' },
+
+    phoneContainer: {
+      height: '100%',
+      width: '100%',
+    },
+    normalContainer: {
+      height: '100%',
+      width: '100%',
+    },
+    londonContainer: {
+      position: 'relative',
+    },
+    londonText: {
+      position: 'absolute',
+      whiteSpace: 'nowrap',
+      left: isPhonePortrait ? -100 : -110,
+      top: 5,
+    },
+  })
 
   const classes = useStyles()
   const classesP = useStylesP()
@@ -120,15 +127,21 @@ export default function Home() {
     const style = {
       width: width,
       filter: `brightness(${darkMode ? '50%' : '100%'})`,
-      position: 'relative',
+      height: '100%',
     }
 
     return (
-      <Grid style={style} item>
-        <p style={{ position: 'absolute', bottom: 55, right: 10, zIndex: 2 }}>
+      <Grid style={{ position: 'relative' }} item>
+        <p
+          style={{
+            position: 'absolute',
+            bottom: 55,
+            right: isPhonePortrait ? 10 : -15,
+            zIndex: 2,
+          }}>
           Adrian Iacuone
         </p>
-        <Grid container alignItems="flex-end" style={{ height: '100%' }}>
+        <Grid container alignItems="flex-end" style={style}>
           <Image responsive src={selfie} />
         </Grid>
       </Grid>
@@ -155,9 +168,14 @@ export default function Home() {
         justifyContent="center"
         alignItems="center">
         <Grid className={classesP.skills}>skills index</Grid>
-        <Grid className={classesP.london}>london</Grid>
+        <Grid className={classesP.london}>
+          <Grid container className={classesP.londonContainer}>
+            <p className={classesP.londonText}>South London, UK</p>
+            <LondonIcon height={isPhonePortrait ? 200 : 110} color="grey" />
+          </Grid>
+        </Grid>
         <Grid className={classesP.me}>
-          <Selfie width={300} />
+          <Selfie width={isPhonePortrait ? 300 : 250} />
         </Grid>
         <Grid className={classesP.links}>links</Grid>
         <Links />
