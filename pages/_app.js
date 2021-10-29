@@ -27,9 +27,13 @@ function MyApp({ Component, pageProps }) {
     palette: {
       mode: darkMode ? 'dark' : 'light',
       background: {
-        paper: darkMode ? '#1c1c1c' : '#e9e9e9',
+        // paper: darkMode ? '#1c1c1c' : '#e9e9e9',
+        default: darkMode ? '#1c1c1c' : '#e9e9e9',
+
         textDark: '#3c3c3c',
         textLight: '#f5f5f5',
+        // detailContainer: '#444444',
+        detailContainer: '#1E1E1E',
       },
       primary: {
         main: '#607893',

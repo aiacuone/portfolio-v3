@@ -43,7 +43,9 @@ export default function projects() {
   const {
     textLight: textLightBackground,
     textDark: textDarkBackground,
-    paper: backgroundColor,
+    default: backgroundColor,
+    paper,
+    detailContainer,
   } = theme.palette.background
   const selection = selections['projects']
   const projectObj = projectsObj[projectsArr[selection.project]]
@@ -54,6 +56,7 @@ export default function projects() {
     projectLink,
     projectGitHubLink,
   } = projectObj
+  const { grey } = theme.palette
 
   const useStylesRoot = makeStyles({
     root: {
@@ -68,6 +71,7 @@ export default function projects() {
       maxWidth: '300px',
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
       fontSize: isPhone && '.8rem',
+      color: darkMode ? 'white' : 'black',
     },
     viewButton: {
       // height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
@@ -149,58 +153,75 @@ export default function projects() {
 
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
-    const buttonsLandscape = arr.map((button, index) => {
-      const style = {
-        background: selection.details == index && secondaryColorDark,
-      }
-      return (
-        <Grid
-          key={button + index}
-          className={classesRoot.detailContainer}
-          style={style}>
-          <Grid
-            container
-            justifyContent="center"
-            className={classesRoot.detailContainer2}>
-            <Button
-              fullWidth
-              color="secondary"
-              variant="text"
-              className={classesRoot.detailButtons}
-              onClick={() => {
-                const newSelections = { ...selections }
-                newSelections['projects'].details = index
-                setSelections(newSelections)
-              }}>
-              {button}
-            </Button>
-          </Grid>
-        </Grid>
-      )
-    })
 
-    const buttons = arr.map((button, index) => {
-      const style = {
-        background: selection.details == index && secondaryColorDark,
-      }
-      return (
-        <Button
-          color="secondary"
-          variant="text"
-          style={style}
-          className={classesRoot.detailButtons}
-          onClick={() => {
-            const newSelections = { ...selections }
-            newSelections['projects'].details = index
-            setSelections(newSelections)
-          }}>
-          {button}
-        </Button>
-      )
-    })
+    const Landscape = () => {
+      return arr.map((button, index) => {
+        const style = {
+          // background: selection.details == index && 'white',
+          background:
+            darkMode && selection.details == index
+              ? textDarkBackground
+              : !darkMode && selection.details == index
+              ? textLightBackground
+              : null,
+        }
+        return (
+          <Grid
+            key={button + index}
+            className={classesRoot.detailContainer}
+            style={style}>
+            <Grid
+              container
+              justifyContent="center"
+              className={classesRoot.detailContainer2}>
+              <Button
+                fullWidth
+                color="secondary"
+                variant="text"
+                className={classesRoot.detailButtons}
+                onClick={() => {
+                  const newSelections = { ...selections }
+                  newSelections['projects'].details = index
+                  setSelections(newSelections)
+                }}>
+                {button}
+              </Button>
+            </Grid>
+          </Grid>
+        )
+      })
+    }
+
+    const Other = () => {
+      return arr.map((button, index) => {
+        const style = {
+          background:
+            darkMode && selection.details == index
+              ? textDarkBackground
+              : !darkMode && selection.details == index
+              ? textLightBackground
+              : null,
+        }
+        return (
+          <Button
+            color="secondary"
+            variant="text"
+            style={style}
+            className={classesRoot.detailButtons}
+            onClick={() => {
+              const newSelections = { ...selections }
+              newSelections['projects'].details = index
+              setSelections(newSelections)
+            }}>
+            {button}
+          </Button>
+        )
+      })
+    }
+
     return (
       <Grid container justifyContent="center">
-        {isPhoneLandscape ? buttonsLandscape : buttons}
+        {isPhoneLandscape ? <Landscape /> : <Other />}
       </Grid>
     )
   }
@@ -767,20 +788,17 @@ export default function projects() {
       buttonContainer: {
         gridArea: '1/1/11/2',
         zIndex: 2,
-        background: 'white',
+        background: darkMode ? grey[700] : 'white',
       },
 
       header: {
         gridArea: '1/2/2/10',
         background: darkMode ? primaryColor : primaryLightColor,
-        // color: 'white',
       },
       mainContainer: {
         gridArea: '2/2/10/10',
-        // background: 'grey',
         marginRight: `${hamburger.width + hamburger.padding}px`,
       },
-      // viewButtons: { gridArea: '10/2/11/10', background: 'brown' },
       viewButtons: { background: 'brown' },
       hamburgerGap: {
         gridArea: '1/10/11/11',
@@ -841,26 +859,27 @@ export default function projects() {
       header: {
         gridArea: '1/1/2/11',
         background: darkMode ? primaryColor : primaryLightColor,
-        // color: 'white',
       },
       mainContainer: { gridArea: '2/1/14/11' },
       projectButtons: {
-        gridArea: '14/1/15/11',
+        gridArea: '15/1/16/11',
         background: darkMode ? primaryColor : primaryLightColor,
         minWidth: '340px',
       },
       detailsButtons: {
-        gridArea: '15/1/16/11',
-        background: 'white',
+        gridArea: '14/1/15/11',
+        background: darkMode ? grey[700] : secondaryColorDark,
       },
-      hamburgerGap: { gridArea: '16/1/17/11', background: 'blue' },
+      hamburgerGap: {
+        gridArea: '16/1/17/11',
+      },
       hamburger: {
         gridArea: '1/2/3/3',
       },
       container: {
         height: '100%',
         width: '100%',
-        background: backgroundColor,
+        background: darkMode ? textDarkBackground : backgroundColor,
         display: 'grid',
         gridTemplateColumns: `1fr ${
           hamburger.width + hamburger.padding * 2
@@ -921,7 +940,6 @@ export default function projects() {
         height: '100%',
       },
       container: {
-        // background: 'white',
         maxWidth: maxWidth,
         width: width,
         height: height,
@@ -937,7 +955,10 @@ export default function projects() {
         gridArea: '1/1/2/11',
         background: darkMode ? primaryColor : primaryLightColor,
       },
-      detailsButtonContainer: { gridArea: '2/1/3/11', background: 'white' },
+      detailsButtonContainer: {
+        gridArea: '2/1/3/11',
+        background: darkMode ? detailContainer : 'white',
+      },
       mainContainer: {
         gridArea: '3/1/10/11',
       },

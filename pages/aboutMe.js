@@ -252,8 +252,7 @@ export default function aboutMe() {
           className={classes.mainContainer}
           container
           justifyContent="center"
-          // alignItems="center"
-        >
+          alignItems="center">
           <Grid>
             <Header variant="h5" size={40} />
             <MainDetails />
