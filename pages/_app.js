@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         styleOverrides: {
           root: {
             color: 'white',
-            fontSize: '1.1rem',
+            fontSize: '1.05rem',
             fontWeight: 300,
           },
           textSecondary: {

@@ -138,8 +138,8 @@ export default function Layout({ children }) {
         <p
           style={{
             position: 'absolute',
-            bottom: 55,
-            right: 10,
+            bottom: 80,
+            right: 50,
             zIndex: 2,
           }}>
           Adrian Iacuone
