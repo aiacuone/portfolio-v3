@@ -12,6 +12,8 @@ import { InsertEmoticonOutlined } from '@material-ui/icons'
 // import { screenshots } from '../public/images/screenshots'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
+import NewBanner from '../components/icons/NewBannerIcon'
+import { newBanner } from '../public/images/misc'
 
 export default function projects() {
   const theme = useTheme()
@@ -86,6 +88,7 @@ export default function projects() {
       maxWidth: '300px',
       fontSize: isPhone && '.8rem',
       color: darkMode ? 'white' : 'black',
+      position: 'relative',
     },
     viewButtonContainer: {
       flexWrap: 'nowrap',
@@ -101,6 +104,7 @@ export default function projects() {
     },
     projectButtonContainer2: {
       height: '100%',
+      position: 'relative',
     },
     mainDetailsContainer2: {
       height: '100%',
@@ -132,6 +136,12 @@ export default function projects() {
     paddingGap: { height: '30px' },
     screenshotContainer: {
       padding: '20px',
+    },
+    newBanner: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      filter: 'opacity(50%)',
     },
   })
 
@@ -246,59 +256,81 @@ export default function projects() {
   }
 
   const ProjectButtons = () => {
-    const projectButtonsLandscape = projectsArr.map((project, index) => {
-      return (
-        <Grid
-          container
-          justifyContent="center"
-          key={project.name + index}
-          className={classesRoot.projectButtonContainer}
-          style={{
-            background:
-              index == selection.project && darkMode
-                ? primaryDarkColor
-                : index == selection.project && !darkMode
-                ? primaryColor
-                : 'null',
-          }}>
-          <Grid container className={classesRoot.projectButtonContainer2}>
-            <Button
-              onClick={() => {
-                const newSelections = { ...selections }
-                newSelections['projects'].project = index
-                setSelections(newSelections)
-              }}
-              className={classesRoot.projectButton}>
-              {projectsObj[project].name}
-            </Button>
+    const Landscape = () => {
+      return projectsArr.map((project, index) => {
+        const { name } = projectsObj[project]
+        return (
+          <Grid
+            container
+            justifyContent="center"
+            key={project.name + index}
+            className={classesRoot.projectButtonContainer}
+            style={{
+              background:
+                index == selection.project && darkMode
+                  ? primaryDarkColor
+                  : index == selection.project && !darkMode
+                  ? primaryColor
+                  : 'null',
+            }}>
+            <Grid container className={classesRoot.projectButtonContainer2}>
+              <Button
+                onClick={() => {
+                  const newSelections = { ...selections }
+                  newSelections['projects'].project = index
+                  setSelections(newSelections)
+                }}
+                className={classesRoot.projectButton}>
+                {name}
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-      )
-    })
+        )
+      })
+    }
 
-    const projectButtons = projectsArr.map((project, index) => {
-      return (
-        <Button
-          style={{
-            background:
-              index == selection.project && darkMode
-                ? primaryDarkColor
-                : index == selection.project && !darkMode
-                ? primaryColor
-                : 'null',
-          }}
-          onClick={() => {
-            const newSelections = { ...selections }
-            newSelections['projects'].project = index
-            setSelections(newSelections)
-          }}
-          className={classesRoot.projectButton}>
-          {projectsObj[project].name}
-        </Button>
-      )
-    })
+    const Other = () => {
+      return projectsArr.map((project, index) => {
+        const { name, isNew } = projectsObj[project]
+        return (
+          <Button
+            style={{
+              background:
+                index == selection.project && darkMode
+                  ? primaryDarkColor
+                  : index == selection.project && !darkMode
+                  ? primaryColor
+                  : 'null',
+            }}
+            onClick={() => {
+              const newSelections = { ...selections }
+              newSelections['projects'].project = index
+              setSelections(newSelections)
+            }}
+            className={classesRoot.projectButton}>
+            {isNew && (
+              <>
+                <Grid className={classesRoot.newBanner}>
+                  <NewBanner width={80} color="white" />
+                </Grid>
+                <p
+                  style={{
+                    position: 'absolute',
+                    top: -2,
+                    left: 3,
+                    fontSize: '.75rem',
+                  }}>
+                  NEW
+                </p>
+              </>
+            )}
+            {name}
+          </Button>
+        )
+      })
+    }
 
-    return isPhoneLandscape ? projectButtonsLandscape : projectButtons
+    return isPhoneLandscape ? <Landscape /> : <Other />
   }
 
   const MainDetails = () => {

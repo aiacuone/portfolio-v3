@@ -91,7 +91,7 @@ export const projectsObj = {
   },
   tekkenNet: {
     name: 'Tekken-Net',
-    new: true,
+    isNew: true,
     internalName: 'tekkenNet',
     projectLink: 'https://aiacuone-tekkenet.netlify.app/',
     projectGitHubLink: 'https://github.com/aiacuone/tekken-net',
@@ -150,7 +150,7 @@ export const projectsObj = {
   },
   noteTaker: {
     name: 'Note Taker',
-    new: false,
+    isNew: false,
     internalName: 'noteTaker',
     projectLink: 'https://aiacuone-note-taker.netlify.app/',
     projectGitHubLink: 'https://github.com/aiacuone/Note-Taker',
