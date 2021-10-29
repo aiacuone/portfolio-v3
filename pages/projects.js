@@ -258,7 +258,7 @@ export default function projects() {
   const ProjectButtons = () => {
     const Landscape = () => {
       return projectsArr.map((project, index) => {
-        const { name } = projectsObj[project]
+        const { name, isNew } = projectsObj[project]
         return (
           <Grid
             container
@@ -281,6 +281,22 @@ export default function projects() {
                   setSelections(newSelections)
                 }}
                 className={classesRoot.projectButton}>
+                {isNew && (
+                  <>
+                    <Grid className={classesRoot.newBanner}>
+                      <NewBanner width={isPhone ? 60 : 80} color="white" />
+                    </Grid>
+                    <p
+                      style={{
+                        position: 'absolute',
+                        top: isPhone ? 0 : -2,
+                        left: 3,
+                        fontSize: isPhone ? '.5rem' : '.75rem',
+                      }}>
+                      NEW
+                    </p>
+                  </>
+                )}
                 {name}
               </Button>
             </Grid>
@@ -311,14 +327,14 @@ export default function projects() {
             {isNew && (
               <>
                 <Grid className={classesRoot.newBanner}>
-                  <NewBanner width={80} color="white" />
+                  <NewBanner width={isPhone ? 60 : 80} color="white" />
                 </Grid>
                 <p
                   style={{
                     position: 'absolute',
-                    top: -2,
+                    top: isPhone ? 0 : -2,
                     left: 3,
-                    fontSize: '.75rem',
+                    fontSize: isPhone ? '.5rem' : '.75rem',
                   }}>
                   NEW
                 </p>
