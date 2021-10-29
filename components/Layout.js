@@ -7,6 +7,9 @@ import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import { useRouter } from 'next/router'
+import { selfie } from '../public/images/home'
+import Image from 'next/image'
+import { LondonIcon, NextIcon } from '../components/icons'
 
 export default function Layout({ children }) {
   const theme = useTheme()
@@ -24,6 +27,7 @@ export default function Layout({ children }) {
     dark: darkPrimaryColor,
     light: lightPrimaryColor,
   } = theme.palette.primary
+  const { contactsArr, contactsObj, skillsObj } = vars
   const router = useRouter()
 
   const useStylesRoot = makeStyles({
@@ -96,6 +100,83 @@ export default function Layout({ children }) {
     return router.push('/')
   }
 
+  const ContactButtons = ({ size }) => {
+    const icons = contactsArr.map((contact) => {
+      if (contact == 'phone') return
+      const { image, link } = contactsObj[contact]
+      const Icon = image
+      return (
+        <Grid item>
+          <Link href={link}>
+            <a target="_blank">
+              <Icon size={size} color="grey" />
+            </a>
+          </Link>
+        </Grid>
+      )
+    })
+
+    return (
+      <Grid
+        container
+        spacing={3}
+        direction={isPhoneLandscape ? 'row' : 'column'}>
+        {icons}
+      </Grid>
+    )
+  }
+
+  const Selfie = ({ width }) => {
+    const style = {
+      width: width,
+      filter: `brightness(${darkMode ? '50%' : '100%'})`,
+      height: '100%',
+    }
+
+    return (
+      <Grid style={{ position: 'relative' }} item>
+        <p
+          style={{
+            position: 'absolute',
+            bottom: 55,
+            right: 10,
+            zIndex: 2,
+          }}>
+          Adrian Iacuone
+        </p>
+        <Grid container alignItems="flex-end" style={style}>
+          <Image responsive src={selfie} />
+        </Grid>
+      </Grid>
+    )
+  }
+
+  const SkillsButtons = ({ size }) => {
+    const arr = ['react', 'javaScript', 'next', 'material', 'git']
+    const icons = arr.map((skill) => {
+      const src = skillsObj[skill].image
+
+      return (
+        <Grid item>
+          {skill == 'next' ? (
+            <NextIcon size={size} color={darkMode ? 'white' : 'black'} />
+          ) : (
+            <Image height={size} width={size} layout="fixed" src={src} />
+          )}
+        </Grid>
+      )
+    })
+
+    return (
+      <Grid
+        container
+        spacing={2}
+        direction={isPhoneLandscape ? 'row' : 'column'}>
+        {icons}
+      </Grid>
+    )
+  }
+
   const Phone = () => {
     const useStyles = makeStyles({
       root: {
@@ -166,42 +247,38 @@ export default function Layout({ children }) {
       },
       me: {
         position: 'absolute',
-        bottom: 10, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
-        left: 10,
-        height: '50px',
-        width: '50px',
-        background: 'red',
+        bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+        left: -220,
       },
       london: {
         position: 'absolute',
-        top: 10,
-        right: 10,
-        height: '50px',
-        width: '50px',
-        background: 'lime',
+        top: 0,
+        right: 0,
       },
       links: {
         position: 'absolute',
-        bottom: 10,
-        right: 10,
-        background: 'green',
-        height: '50px',
-        width: '50px',
-        background: 'yellow',
+        bottom: 20,
+        right: 20,
       },
       skills: {
         position: 'absolute',
-        top: 10,
-        left: 10,
-        height: '50px',
-        width: '50px',
-        background: 'purple',
+        top: 20,
+        left: 20,
       },
       navLink: {
         fontSize: '.9rem',
         textTransform: 'none',
         color: darkMode ? 'white' : 'black',
         // background: 'red',
+      },
+      londonContainer: {
+        position: 'relative',
+      },
+      londonText: {
+        position: 'absolute',
+        whiteSpace: 'nowrap',
+        left: -100,
+        top: 20,
       },
     })
 
@@ -265,16 +342,19 @@ export default function Layout({ children }) {
           <Grid container className={classes.backgroundContainer}>
             <Grid className={classes.backgroundContainer2}>
               <Grid item className={classes.me}>
-                me layout
+                <Selfie width={450} />
               </Grid>
               <Grid item className={classes.links}>
-                links
+                <ContactButtons size={50} />
               </Grid>
               <Grid item className={classes.skills}>
-                skills
+                <SkillsButtons size={35} />
               </Grid>
               <Grid item className={classes.london}>
-                london
+                <Grid container className={classes.londonContainer}>
+                  <p className={classes.londonText}>South London, UK</p>
+                  <LondonIcon height={250} color="grey" />
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

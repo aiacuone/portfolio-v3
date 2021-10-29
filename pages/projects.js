@@ -881,6 +881,7 @@ export default function projects() {
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
         gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
+        zIndex: 1,
       },
       detailsButton: { color: 'black', flexGrow: 1 },
       projectButtonContainer: {

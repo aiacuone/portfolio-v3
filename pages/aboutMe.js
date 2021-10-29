@@ -290,6 +290,7 @@ export default function aboutMe() {
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
         gridTemplateColumns: '100%',
+        zIndex: 1,
       },
 
       mainContainer: {

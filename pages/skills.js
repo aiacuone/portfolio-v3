@@ -51,7 +51,7 @@ export default function skills() {
       flexGrow: 1,
       cursor: 'pointer',
       height: '100%',
-      zIndex: 1,
+      // zIndex: 1,
     },
     imageContainer2: {
       height: '100%',
@@ -184,6 +184,7 @@ export default function skills() {
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
         gridTemplateRows: 'auto repeat(8,1fr) 65px',
+        zIndex: 1,
       },
       mainContainer: {
         background: darkMode ? textBackgroundDark : textBackgroundLight,
