@@ -6,6 +6,7 @@ import LinkedinIcon from './LinkedinIcon'
 import GitHubIcon from './GitHubIcon'
 import PhoneIcon from './PhoneIcon'
 import LondonIcon from './LondonIcon'
+import NextIcon from './NextIcon'
 
 export {
   HobbiesIcon,
@@ -16,4 +17,5 @@ export {
   GitHubIcon,
   PhoneIcon,
   LondonIcon,
+  NextIcon,
 }

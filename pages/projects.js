@@ -26,6 +26,7 @@ export default function projects() {
     headerHeightLandscape,
     secondHeaderHeightLandscape,
     handleScroll,
+    mainContainerPadding,
   } = vars
 
   const { selections, darkMode } = state
@@ -56,7 +57,6 @@ export default function projects() {
     root: {
       height: '100%',
       width: '100%',
-      // background: 'green',
       color: darkMode ? 'white' : 'black',
     },
     detailButtons: {
@@ -66,7 +66,6 @@ export default function projects() {
       maxWidth: '300px',
       height: isPhoneLandscape ? '100%' : isPhonePortrait ? '40px' : '30px', //HEIGHT OF DETAIL BUTTONS
       fontSize: isPhone && '.8rem',
-      // background: 'white',
     },
     viewButton: {
       // height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
@@ -94,13 +93,10 @@ export default function projects() {
       paddingTop: isPhone && '20px',
     },
     detailContainer: {
-      padding: 0,
       width: isPhoneLandscape ? '100%' : '50%',
-      // background: secondaryColor,
     },
     detailContainer2: { height: '100%' },
     projectButtonContainer: {
-      // flexGrow: 1,
       background: darkMode ? primaryColor : primaryLightColor,
     },
     projectButtonContainer2: {
@@ -108,7 +104,6 @@ export default function projects() {
     },
     mainDetailsContainer2: {
       height: '100%',
-      // flexWrap: 'nowrap',
       overflowY: 'scroll',
       zIndex: 3,
       display: 'grid',
@@ -122,7 +117,7 @@ export default function projects() {
     },
     detailsContainer: {
       background: darkMode ? textDarkBackground : textLightBackground, //DARK MODE COLOURS MAIN CONTAINER
-      padding: isPhone ? '0 5px' : '20px 70px',
+      padding: mainContainerPadding,
       gridArea: '2/1/3/2',
     },
     text: {

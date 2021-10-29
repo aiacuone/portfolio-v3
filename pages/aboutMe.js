@@ -19,6 +19,7 @@ export default function aboutMe() {
     secondHeaderHeightLandscape,
     headerHeightPortrait,
     secondHeaderHeightPortrait,
+    mainContainerPadding,
   } = vars
   const { selections, darkMode } = state
   const { setSelections } = setState
@@ -54,9 +55,7 @@ export default function aboutMe() {
       paddingBottom: isPhone ? '10px' : '30px',
     },
     mainDetailsContainer: {},
-    mainDetailsContainer2: {
-      padding: isPhone ? '0px 30px' : '0 70px', //PADDING OF MAIN CONTAINER
-    },
+    mainDetailsContainer2: {},
     headerText: {},
   })
 
@@ -166,7 +165,7 @@ export default function aboutMe() {
         gridArea: '2/2/11/10',
 
         overflowY: 'scroll',
-        padding: '10px',
+        padding: mainContainerPadding,
         zIndex: 50,
         background: darkMode ? textDarkBackground : textLightBackground,
       },
@@ -222,7 +221,7 @@ export default function aboutMe() {
       mainContainer: {
         gridArea: '2/1/19/11',
         overflowY: 'scroll',
-        padding: '10px',
+        padding: mainContainerPadding,
         background: darkMode ? textDarkBackground : textLightBackground,
       },
       buttonContainer: {
@@ -296,7 +295,7 @@ export default function aboutMe() {
       mainContainer: {
         gridArea: '1/1/3/2',
         background: darkMode ? textDarkBackground : textLightBackground,
-
+        padding: mainContainerPadding,
         overflowY: 'scroll',
       },
       buttonContainer: {

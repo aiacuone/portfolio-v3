@@ -103,6 +103,7 @@ function MyApp({ Component, pageProps }) {
     buttonsNormalHeight: '30px',
     // handleScroll,
     primaryColor: '#009dbc',
+    mainContainerPadding: isPhone ? '10px 10px' : '20px 50px',
   }
 
   const state = {

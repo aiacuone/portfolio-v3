@@ -8,8 +8,8 @@ import { useContext } from 'react'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import { selfie } from '../public/images/home'
 import Image from 'next/image'
-import { LondonIcon } from '../components/icons'
-import { useRouter } from 'next/router'
+import { LondonIcon, NextIcon } from '../components/icons'
+import { useTheme } from '@mui/material/styles'
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
@@ -17,7 +17,7 @@ export default function Home() {
   const { darkMode } = state
   const { setDarkMode } = setState
   const { contactsArr, contactsObj, skillsObj } = vars
-  const router = useRouter()
+  const theme = useTheme()
 
   const useStyles = makeStyles({
     root: {
@@ -145,12 +145,11 @@ export default function Home() {
     const icons = contactsArr.map((contact) => {
       const { image, link } = contactsObj[contact]
       const Icon = image
-
       return (
         <Grid item>
           <Link href={link}>
             <a target="_blank">
-              <Icon size={size} color={darkMode ? 'white' : 'grey'} />
+              <Icon size={size} color="grey" />
             </a>
           </Link>
         </Grid>
@@ -169,12 +168,16 @@ export default function Home() {
 
   const SkillsButtons = ({ size }) => {
     const arr = ['react', 'javaScript', 'next', 'material', 'git']
-
     const icons = arr.map((skill) => {
       const src = skillsObj[skill].image
+
       return (
         <Grid item>
-          <Image height={size} width={size} layout="fixed" src={src} />
+          {skill == 'next' ? (
+            <NextIcon size={size} color={darkMode ? 'white' : 'black'} />
+          ) : (
+            <Image height={size} width={size} layout="fixed" src={src} />
+          )}
         </Grid>
       )
     })

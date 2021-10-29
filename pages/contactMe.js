@@ -91,7 +91,6 @@ export default function contactMe() {
       container: {
         height: '400px',
         width: '400px',
-        background: 'white',
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
         gridTemplateColumns: '100%',

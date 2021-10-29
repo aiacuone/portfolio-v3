@@ -18,6 +18,7 @@ export default function skills() {
     secondHeaderHeightPortrait,
     headerHeightLandscape,
     secondHeaderHeightLandscape,
+    mainContainerPadding,
   } = vars
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const { selections, darkMode } = state
@@ -56,8 +57,7 @@ export default function skills() {
       height: '100%',
     },
     mainDetailsContainer: {
-      padding: isPhone ? '10px 10px ' : '30px 70px',
-      // background: darkMode ? textBackgroundDark : 'blue',
+      padding: mainContainerPadding,
     },
   })
 
