@@ -47,6 +47,7 @@ function MyApp({ Component, pageProps }) {
             color: 'white',
             fontSize: '1.05rem',
             fontWeight: 300,
+            padding: 0,
           },
           textSecondary: {
             color: 'black',

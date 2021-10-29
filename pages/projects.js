@@ -69,7 +69,7 @@ export default function projects() {
     },
     viewButton: {
       // height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
-      height: '100%',
+      height: isPhone ? '100%' : '30px',
       whiteSpace: 'nowrap',
       flexGrow: 1,
       background: 'white',
@@ -222,10 +222,11 @@ export default function projects() {
               fullWidth
               color="secondary"
               variant="text"
-              style={{ fontSize: isPhone && '.8rem' }}>
+              style={{
+                fontSize: isPhone && '.8rem',
+              }}>
               View Project
             </Button>
-            {/* <Typography textAlign="center">VIEW PROJECT</Typography> */}
           </a>
         </Link>
       </Grid>
