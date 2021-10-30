@@ -802,7 +802,7 @@ export default function projects() {
       viewButtons: { background: 'brown' },
       hamburgerGap: {
         gridArea: '1/10/11/11',
-        background: backgroundColor,
+        background: darkMode ? textDarkBackground : textLightBackground,
         zIndex: 1,
       },
     })
@@ -868,7 +868,7 @@ export default function projects() {
       },
       detailsButtons: {
         gridArea: '14/1/15/11',
-        background: darkMode ? grey[700] : secondaryColorDark,
+        background: darkMode ? grey[700] : 'white',
       },
       hamburgerGap: {
         gridArea: '16/1/17/11',

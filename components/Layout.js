@@ -182,7 +182,8 @@ export default function Layout({ children }) {
       root: {
         position: 'relative',
         width: '100vw',
-        height: windowHeight,
+        // height: windowHeight,
+        height: '100%',
         minHeight: '270px',
         minWidth: '270px',
         fontSize: '.9rem',
