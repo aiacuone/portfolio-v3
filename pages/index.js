@@ -49,7 +49,7 @@ export default function Home() {
       left: 10,
     },
     linkContainer: { zIndex: 2 },
-    link: { padding: '10px 0', textAlign: 'center' },
+    link: { padding: '10px 0', textAlign: 'center', cursor: 'pointer' },
 
     phoneContainer: {
       height: '100%',

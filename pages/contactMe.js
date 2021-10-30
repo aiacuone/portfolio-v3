@@ -29,7 +29,7 @@ export default function contactMe() {
   } = vars
 
   const useStylesRoot = makeStyles({
-    root: { height: '100%', width: '100%', backgroundColor },
+    root: { height: '100%', width: '100%', backgroundColor, zIndex: 1 },
     button: {},
     mainContentContainer: {},
   })
@@ -67,9 +67,13 @@ export default function contactMe() {
               </p>
             </Grid>
             <Grid item>
-              <p>
-                <b>Email: </b>aiacuone@gmail.com
-              </p>
+              <Link href="mailto:aiacuone@gmail.com">
+                <a target="_blank">
+                  <p>
+                    <b>Email: </b>aiacuone@gmail.com
+                  </p>
+                </a>
+              </Link>
             </Grid>
             <Grid item>
               <p>
@@ -77,9 +81,19 @@ export default function contactMe() {
               </p>
             </Grid>
             <Grid item>
-              <p>
-                <b>Phone: </b>07393 961 334
-              </p>
+              {isPhone ? (
+                <Link href={'tel:07393961334'}>
+                  <a target="_blank">
+                    <p>
+                      <b>Phone: </b>07393 961 334
+                    </p>
+                  </a>
+                </Link>
+              ) : (
+                <p>
+                  <b>Phone: </b>07393 961 334
+                </p>
+              )}
             </Grid>
           </Grid>
         </Grid>

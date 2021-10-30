@@ -4,7 +4,7 @@ const { hobbies, work, details, story } = images
 
 export const aboutMeObj = {
   story: {
-    name: 'Story',
+    name: 'My Story',
     icon: story,
     getDetails: () => {
       return (

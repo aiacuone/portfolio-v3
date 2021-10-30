@@ -500,7 +500,7 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h4>Lessons</h4>
+                <h4>Lessons Learnt</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
                 <p>{learn}</p>
