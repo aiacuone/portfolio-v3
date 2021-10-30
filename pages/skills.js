@@ -239,7 +239,7 @@ export default function skills() {
         gridTemplateColumns: `repeat(9,1fr) ${
           hamburger.padding * 2 + hamburger.width
         }px`,
-        background: defaultBackground,
+        background: darkMode ? textBackgroundDark : textBackgroundLight,
       },
       header: {
         gridArea: '1/1/2/10',
@@ -311,7 +311,7 @@ export default function skills() {
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
-        background: defaultBackground,
+        background: darkMode ? textBackgroundDark : textBackgroundLight,
       },
     })
     const classes = useStyles()

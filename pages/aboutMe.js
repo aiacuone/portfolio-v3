@@ -170,7 +170,8 @@ export default function aboutMe() {
         background: darkMode ? textDarkBackground : textLightBackground,
       },
       hamburgerGap: {
-        gridArea: '2/10/11/11',
+        gridArea: '1/10/11/11',
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
     })
     const classes = useStyles()
@@ -231,7 +232,7 @@ export default function aboutMe() {
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
-        background: backgroundColor,
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
       button: { flexGrow: 1, background: 'lime' },
       container: { height: '100%' },

@@ -20,8 +20,13 @@ export default function contactMe() {
   } = theme.palette.primary
   const { textLight: textLightBackground, textDark: textDarkBackground } =
     theme.palette.background
-  const { hamburger, contactsArr, contactsObj, secondHeaderHeightPortrait } =
-    vars
+  const {
+    hamburger,
+    contactsArr,
+    contactsObj,
+    secondHeaderHeightPortrait,
+    headerHeightPortrait,
+  } = vars
 
   const useStylesRoot = makeStyles({
     root: { height: '100%', width: '100%', backgroundColor },
@@ -150,7 +155,7 @@ export default function contactMe() {
         width: '100%',
         height: '100%',
         display: 'grid',
-        gridTemplateRows: `${secondHeaderHeightPortrait}px  repeat(8,1fr)`,
+        gridTemplateRows: `${headerHeightPortrait}px  repeat(8,1fr)`,
         gridTemplateColumns: `80px repeat(8,1fr) ${
           hamburger.padding * 2 + hamburger.width
         }px`, //WIDTH OF BUTTON CONTAINER
@@ -160,7 +165,7 @@ export default function contactMe() {
         background: primaryColor,
       },
       header: {
-        gridArea: '1/2/2/10',
+        gridArea: '1/2/2/11',
         background: primaryColor,
         color: darkMode ? 'white' : 'black',
       },
@@ -170,7 +175,7 @@ export default function contactMe() {
       },
       hamburgerGap: {
         gridArea: '2/10/11/11',
-        // background: 'lime',
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
       button: {},
     })
@@ -232,7 +237,7 @@ export default function contactMe() {
       },
       hamburgerGap: {
         gridArea: '20/1/21/11',
-        // background: textDarkBackground,
+        background: darkMode ? textDarkBackground : textLightBackground,
       },
     })
     const classes = useStyles()
