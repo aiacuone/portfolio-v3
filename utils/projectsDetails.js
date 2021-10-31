@@ -228,33 +228,40 @@ export const projectsObj = {
     projectGitHubLink: 'https://github.com/aiacuone/Note-Taker',
     details: {
       basic: {
-        lastUpdated: 'Last Updated NOTE TAKER',
+        lastUpdated: 'May, 2021',
+        summary:
+          'Search and filters Tekken character moves. Originally the data required manually searching through excel spreadsheet like formats, but this application allows for a fast and easy to use filtering system.',
         langLib: [
           'react',
-          'material',
+          'javaScript',
           'next',
+          'material',
+          'git',
+          'gitHub',
+          'npm',
+          'css',
+          'html',
+          'OOP',
           'lodash',
           'illustrator',
-          'html',
-          'css',
-          'git',
         ],
-        methods: ['method one', 'method 2', 'method 3'],
+
         screenshots: [noteTaker1, noteTaker2],
-        areas: ['area1', 'area2', 'area3'],
         questions: {
-          create: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          learn: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          challenges: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          create: `At this point, the Tekken community is solely reliant on a 3rd party website called https://rbnorway.org/t7-frame-data/ to access the Tekken character information. All the information is in a excel spreadsheet like format and is a very manually process to search for the information you need.
+          `,
+          learn: [
+            'The data requires reformatting from an excel spreadsheet to a javaScript object',
+            'Importing and exporting data from external files',
+          ],
+          challenges: [
+            'Due to the data coming from a 3rd party website, the data lacks consistency. I found that there were times where there would be characters within the data that would create errors',
+            'Creating a filtering functions for each filter option',
+          ],
         },
       },
       technical: {
+        methods: ['method one', 'method 2', 'method 3'],
         hooks: ['hook1', 'hook2', 'hook3'],
         components: {},
         libraries: {
