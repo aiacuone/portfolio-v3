@@ -520,6 +520,23 @@ export default function projects() {
         </Grid>
       )
     }
+
+    const typeOfFilter = (data) => {
+      var result
+      switch (typeof data) {
+        case 'string':
+          result = 'This is a string'
+          break
+        case 'object':
+          result = 'This is a array'
+          break
+        case 'function':
+          result = 'This is a function'
+          break
+      }
+      return result
+    }
+
     const TechnicalDetails = () => {
       const {
         hooks,
@@ -995,7 +1012,7 @@ export default function projects() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            <MainDetails />
+            {/* <MainDetails /> */}
           </Grid>
           <Grid
             container
