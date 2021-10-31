@@ -94,7 +94,7 @@ export const projectsObj = {
           'Ternary Operator',
         ],
         questions: {
-          how: [
+          improved: [
             'Fetching from an API',
             'Using data from an API',
             'Local and API filtering',
@@ -122,53 +122,100 @@ export const projectsObj = {
     projectGitHubLink: 'https://github.com/aiacuone/tekken-net',
     details: {
       basic: {
-        lastUpdated: 'Last Updated TEKKEN NET',
-        langLib: ['react', 'material', 'next'],
-        methods: ['method one', 'method 2', 'method 3'],
+        lastUpdated: 'September, 2021',
+        summary:
+          'Search and filters Tekken character moves. Originally the data required manually searching through excel spreadsheet like formats, but this application allows for a fast and easy to use filtering system.',
+        langLib: [
+          'react',
+          'javaScript',
+          'next',
+          'material',
+          'git',
+          'gitHub',
+          'npm',
+          'css',
+          'html',
+          'OOP',
+          'lodash',
+          'illustrator',
+        ],
+
         screenshots: [tekkenNet1, tekkenNet2],
         areas: ['area1', 'area2', 'area3'],
         questions: {
-          create: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          learn: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          challenges: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          create: `At this point, the Tekken community is solely reliant on a 3rd party website called https://rbnorway.org/t7-frame-data/ to access the Tekken character information. All the information is in a excel spreadsheet like format and is a very manually process to search for the information you need.`,
+          learn: [
+            'Asynchronous coding can be very important when dealing with APIs',
+            'It can be difficult resizing react components from Front-End libraries',
+            'React Resize detector can help with thatAPIs can be restrictive',
+          ],
+          challenges: `Ideally the API would fetch all the data at once and the required data is filtered, however the API used within the application is restricted in a way where you can only fetch a single page at a time. To overcome this problem, asynchronous functions are automatically called when results are below a certain threshold, and additional pages are fetched.`,
         },
       },
       technical: {
-        hooks: ['hook1', 'hook2', 'hook3'],
-        components: {},
-        libraries: {
-          materialUI: {
-            name: 'Material UI',
-            components: {
-              drawer: { name: 'Drawer', why: 'Why did I use this component?' },
+        methods: [
+          'map',
+          'forEach',
+          'join',
+          'push',
+          'slice',
+          'charAt',
+          'Math.ceil',
+          'Math.round',
+          'Object.keys',
+        ],
+        hooks: ['useState', 'useRef', 'useEffect', 'useContext', 'useCallback'],
+        dependencies: {
+          'Material UI': {
+            useTheme: {},
+            useMediaQuery: { why: 'Control layout based on size of window' },
+            Grid: {},
+            Drawer: {
+              why: 'To save space and have data appear offset from the main screen',
             },
-            methods: {},
+            Button: {},
+            Slider: {},
+            Typography: {},
+            Paper: {},
+            MaterialIcon: {},
+            Table: {},
           },
-          lodash: {
-            name: 'Lodash',
-            methods: {
-              debounce: {
-                name: 'Debounce',
-                why: 'Why did I use this Library Method?',
-              },
+          next: { Image: {}, Router: {} },
+          Lodash: {
+            debounce: {
+              name: 'Debounce',
+              why: 'To restrict the amount of times data is fetched from the API',
             },
-            components: {},
+            find: { name: 'Find', why: '' },
+          },
+          'React Resize Detector': {
+            why: 'To resize Material UI table based on window size',
           },
         },
+        Other: [
+          'Event handlers',
+          'Spread Operator',
+          'Destructuring',
+          'Asynchronous Functions',
+          'Fetching and using data from an API',
+          'Timestamps',
+          'Ternary Operator',
+        ],
+
         questions: {
-          how: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          change: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.`,
-          future: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          improved: [
+            'Seperating database information to the logic of the application, then import or exporting where needed',
+            'Regex',
+            'Using filter method',
+            'Resizing library components based on screen size',
+          ],
+          change: [
+            'The layout needs improvement on the mobile sized window',
+            'The table needs to be easier to use on the phone sized window',
+          ],
+          future: [
+            'Eventually the plan is to compare a Tekken move to another Tekken move and give the user can rate how it how well it works, then the rating goes onto a database',
+          ],
         },
       },
     },
@@ -230,7 +277,7 @@ export const projectsObj = {
           },
         },
         questions: {
-          how: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
+          improved: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
 
           Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
           change: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
