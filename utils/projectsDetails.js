@@ -260,38 +260,49 @@ export const projectsObj = {
         },
       },
       technical: {
-        methods: ['method one', 'method 2', 'method 3'],
-        hooks: ['hook1', 'hook2', 'hook3'],
+        methods: [
+          'map',
+          'join',
+          'splice',
+          'Object.keys',
+          'push',
+          'sort',
+          'reverse',
+          'pop',
+        ],
+        hooks: ['useState', 'useEffect', 'useRef', 'useCallback'],
         components: {},
-        libraries: {
-          materialUI: {
-            name: 'Material UI',
-            components: {
-              drawer: { name: 'Drawer', why: 'Why did I use this component?' },
-            },
-            methods: {},
+        dependencies: {
+          'React HTML Parser': {
+            why: 'To parse the output data from the Sun Editor component',
+          },
+          'Sun Editor': {
+            why: 'Allow for user to input text into application',
           },
           lodash: {
-            name: 'Lodash',
-            methods: {
-              // debounce: {
-              //   name: 'Debounce',
-              //   why: 'Why did I use this Library Method?',
-              // },
+            set: {
+              why: 'To designate where to make updates within the database',
             },
-            components: {},
           },
         },
+        other: [
+          'Constructors used to create folders',
+          'Event handlers',
+          'Spread Operator',
+          'Ternary Operator',
+          'Custom Hook',
+          'setTimeout',
+        ],
         questions: {
-          improved: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          change: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
-          future: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis a sem rutrum suscipit. Etiam facilisis imperdiet dui sed aliquet. Morbi convallis, ipsum sit amet iaculis cursus, neque ante sodales dui, molestie ultrices diam diam sollicitudin dolor. Pellentesque elementum quis purus ut euismod. Pellentesque maximus ipsum nec molestie feugiat. Donec id ipsum eu metus eleifend varius ut a purus. Ut lacinia pellentesque ex in maximus.
-
-          Phasellus pretium nisi a sem bibendum maximus. Nulla convallis eros sit amet ex consectetur sodales. Morbi fermentum ex risus, a pharetra tortor viverra ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra.`,
+          improved: [
+            'Object Oriented Programming and destructuring',
+            'Understanding the basics of layouts',
+            'State, all page pages and menu pop ups were created using state',
+          ],
+          change:
+            'I want to implement YouTube clips similar to how Evernote implements YouTube videos, but I want the final product to be similar to a gif.',
+          future:
+            'I want to implement YouTube clips similar to how Evernote implements YouTube videos, but I want the final product to be similar to a gif.',
         },
       },
     },
