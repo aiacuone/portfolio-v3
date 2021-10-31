@@ -230,12 +230,11 @@ export const projectsObj = {
       basic: {
         lastUpdated: 'May, 2021',
         summary:
-          'Search and filters Tekken character moves. Originally the data required manually searching through excel spreadsheet like formats, but this application allows for a fast and easy to use filtering system.',
+          'An application with the same concept as Google Drive or Evernote, but with ideas that I would like to see implemented.',
         langLib: [
           'react',
           'javaScript',
           'next',
-          'material',
           'git',
           'gitHub',
           'npm',
@@ -245,18 +244,18 @@ export const projectsObj = {
           'lodash',
           'illustrator',
         ],
-
         screenshots: [noteTaker1, noteTaker2],
         questions: {
-          create: `At this point, the Tekken community is solely reliant on a 3rd party website called https://rbnorway.org/t7-frame-data/ to access the Tekken character information. All the information is in a excel spreadsheet like format and is a very manually process to search for the information you need.
-          `,
+          create: `To create an application based on the CRUD (create, read, update, delete) system. Note applications such as One Note, Google Drive and Evernote still have time till they perfect themselves, Note Taker is implementing ideas that I would like to see in any of those applications.`,
           learn: [
-            'The data requires reformatting from an excel spreadsheet to a javaScript object',
-            'Importing and exporting data from external files',
+            `Although not used within this application, 'React Router' or 'Next Router' is the better option to change pages comparing to using state.`,
+            'Creating a class or id for each division within the application is too time consuming',
+            'The ideal way to implement the CRUD system is to incorporate an API',
+            'Creating all visuals without a Front-end library is not efficient',
           ],
           challenges: [
-            'Due to the data coming from a 3rd party website, the data lacks consistency. I found that there were times where there would be characters within the data that would create errors',
-            'Creating a filtering functions for each filter option',
+            'Object Oriented Programming and Destructuring. Note Taker is takes advantage of the perks of Object Oriented Programming, and pushed my skills at the time.',
+            'Creating all visuals without a library. Without a front-end library, all visuals were created manually, and required focus towards layout and spacing.',
           ],
         },
       },
