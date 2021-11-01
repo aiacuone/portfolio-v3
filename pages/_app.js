@@ -80,6 +80,38 @@ function MyApp({ Component, pageProps }) {
     isPhoneWidthLandscape && isPhoneHeightLandscape ? true : false
   const isPhone = isPhonePortrait || isPhoneLandscape ? true : false
 
+  function convertData(data) {
+    const getString = () => {
+      return <p>{data}</p>
+    }
+    const getArray = () => {
+      return (
+        <ul>
+          {data.map((item) => {
+            return <li>{item}</li>
+          })}
+        </ul>
+      )
+    }
+    const getFunction = () => {
+      return data()
+    }
+
+    var result
+    switch (typeof data) {
+      case 'string':
+        result = getString()
+        break
+      case 'object':
+        result = getArray()
+        break
+      case 'function':
+        result = getFunction()
+        break
+    }
+    return result
+  }
+
   const normalPageContainerDimensions = {
     maxWidth: '1300px',
     minWidth: '650px',
@@ -109,6 +141,7 @@ function MyApp({ Component, pageProps }) {
     // handleScroll,
     primaryColor: '#009dbc',
     mainContainerPadding: isPhone ? '10px 10px' : '20px 50px',
+    convertData,
   }
 
   const state = {

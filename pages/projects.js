@@ -29,6 +29,7 @@ export default function projects() {
     secondHeaderHeightLandscape,
     handleScroll,
     mainContainerPadding,
+    convertData,
   } = vars
 
   const { selections, darkMode } = state
@@ -380,9 +381,10 @@ export default function projects() {
     }
 
     const BasicDetails = () => {
-      const { lastUpdated, langLib, methods, screenshots, questions } =
+      const { lastUpdated, langLib, screenshots, questions, summary } =
         basicDetails
       const { create, learn, challenges } = questions
+      console.log(questions)
       return (
         <Grid
           container
@@ -398,7 +400,7 @@ export default function projects() {
                 <h4>Last Updated</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <p>{lastUpdated}</p>
+                {convertData(lastUpdated)}
               </Grid>
             </Grid>
           </Grid>
@@ -408,7 +410,7 @@ export default function projects() {
                 <h4>Summary</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <ProjectSummary />
+                {convertData(summary)}
               </Grid>
             </Grid>
           </Grid>
@@ -442,20 +444,7 @@ export default function projects() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Grid container direction="column">
-              <Grid item>
-                <h4>Methods Used</h4>
-              </Grid>
-              <Grid item className={classesRoot.text}>
-                <ul>
-                  {methods.map((method) => {
-                    return <li>{method}</li>
-                  })}
-                </ul>
-              </Grid>
-            </Grid>
-          </Grid>
+
           <Grid item>
             <Grid container direction="column">
               <Grid item>
@@ -493,7 +482,8 @@ export default function projects() {
                 <h4>Why create this project?</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <p>{create}</p>
+                {/* <p>{create}</p> */}
+                {convertData(create)}
               </Grid>
             </Grid>
           </Grid>
@@ -503,7 +493,8 @@ export default function projects() {
                 <h4>Lessons Learnt</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <p>{learn}</p>
+                {/* <p>{learn}</p> */}
+                {convertData(learn)}
               </Grid>
             </Grid>
           </Grid>
@@ -513,28 +504,13 @@ export default function projects() {
                 <h4>Biggest challenges</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <p>{challenges}</p>
+                {/* <p>{challenges}</p> */}
+                {convertData(challenges)}
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       )
-    }
-
-    const typeOfFilter = (data) => {
-      var result
-      switch (typeof data) {
-        case 'string':
-          result = 'This is a string'
-          break
-        case 'object':
-          result = 'This is a array'
-          break
-        case 'function':
-          result = 'This is a function'
-          break
-      }
-      return result
     }
 
     const TechnicalDetails = () => {
@@ -544,7 +520,6 @@ export default function projects() {
         libraries: librariesObj,
         questions,
       } = technicalDetails
-      const librariesArr = Object.keys(librariesObj)
       const { how, change, future } = questions
 
       const { libraries: selectedProjectLibrariesObj } =
@@ -1012,7 +987,7 @@ export default function projects() {
             className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
-            {/* <MainDetails /> */}
+            <MainDetails />
           </Grid>
           <Grid
             container

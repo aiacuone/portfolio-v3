@@ -18,6 +18,8 @@ export const projectsObj = {
     details: {
       basic: {
         lastUpdated: 'October, 2021',
+        summary:
+          'Uses an API to get the latest deals for online games across multiple online stores.',
         langLib: [
           'react',
           'javaScript',
@@ -123,8 +125,16 @@ export const projectsObj = {
     details: {
       basic: {
         lastUpdated: 'September, 2021',
-        summary:
-          'Search and filters Tekken character moves. Originally the data required manually searching through excel spreadsheet like formats, but this application allows for a fast and easy to use filtering system.',
+        summary: () => {
+          return (
+            <p>
+              this is afunction Search and filters Tekken character moves.
+              Originally the data required manually searching through excel
+              spreadsheet like formats, but this application allows for a fast
+              and easy to use filtering system.
+            </p>
+          )
+        },
         langLib: [
           'react',
           'javaScript',
@@ -141,9 +151,18 @@ export const projectsObj = {
         ],
 
         screenshots: [tekkenNet1, tekkenNet2],
-        areas: ['area1', 'area2', 'area3'],
         questions: {
-          create: `At this point, the Tekken community is solely reliant on a 3rd party website called https://rbnorway.org/t7-frame-data/ to access the Tekken character information. All the information is in a excel spreadsheet like format and is a very manually process to search for the information you need.`,
+          create: () => {
+            return (
+              <p>
+                At this point, the Tekken community is solely reliant on a 3rd
+                party website called https://rbnorway.org/t7-frame-data/ to
+                access the Tekken character information. All the information is
+                in a excel spreadsheet like format and is a very manually
+                process to search for the information you need.
+              </p>
+            )
+          },
           learn: [
             'Asynchronous coding can be very important when dealing with APIs',
             'It can be difficult resizing react components from Front-End libraries',
