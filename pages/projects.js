@@ -482,7 +482,6 @@ export default function projects() {
                 <h4>Why create this project?</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                {/* <p>{create}</p> */}
                 {convertData(create)}
               </Grid>
             </Grid>
@@ -493,7 +492,6 @@ export default function projects() {
                 <h4>Lessons Learnt</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                {/* <p>{learn}</p> */}
                 {convertData(learn)}
               </Grid>
             </Grid>
@@ -504,7 +502,6 @@ export default function projects() {
                 <h4>Biggest challenges</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                {/* <p>{challenges}</p> */}
                 {convertData(challenges)}
               </Grid>
             </Grid>
@@ -514,128 +511,8 @@ export default function projects() {
     }
 
     const TechnicalDetails = () => {
-      const {
-        hooks,
-        components,
-        libraries: librariesObj,
-        questions,
-      } = technicalDetails
-      const { how, change, future } = questions
-
-      const { libraries: selectedProjectLibrariesObj } =
-        projectObj.details.technical
-      const selectedProjectLibrariesArr = Object.keys(
-        selectedProjectLibrariesObj
-      )
-
-      function getShowLibraryMethods() {
-        var boolean
-
-        selectedProjectLibrariesArr.forEach((item) => {
-          const obj = selectedProjectLibrariesObj[item].methods
-          const arr = Object.keys(obj)
-          if (arr.length > 0) {
-            return (boolean = true)
-          }
-        })
-
-        return boolean
-      }
-
-      function getShowLibraryComponents() {
-        var boolean
-
-        selectedProjectLibrariesArr.forEach((item) => {
-          const obj = selectedProjectLibrariesObj[item].components
-          const arr = Object.keys(obj)
-          if (arr.length > 0) {
-            return (boolean = true)
-          }
-        })
-
-        return boolean
-      }
-
-      const showLibraryMethods = getShowLibraryMethods()
-      const showLibraryComponents = getShowLibraryComponents()
-
-      const LibraryMethods = () => {
-        const methods = selectedProjectLibrariesArr.map((item) => {
-          const { methods, name } = selectedProjectLibrariesObj[item]
-          const methodsArr = Object.keys(methods)
-          if (methodsArr.length == 0) return
-          const image = skillsImages[item]
-
-          return (
-            <Grid container direction="column">
-              <Grid container alignItems="center" spacing={1}>
-                <Grid item>
-                  <Image src={image} layout="fixed" width={20} height={20} />
-                </Grid>
-                <Grid item>
-                  <h4>{name}</h4>
-                </Grid>
-                {methodsArr.map((item) => {
-                  const method = methods[item]
-                  const { name, why } = method
-                  return (
-                    <Grid item>
-                      <p>
-                        <b>{`${name}:`}</b> {`${why}`}
-                      </p>
-                    </Grid>
-                  )
-                })}
-              </Grid>
-            </Grid>
-          )
-        })
-        return methods
-      }
-
-      const LibraryComponents = () => {
-        const components = selectedProjectLibrariesArr.map((item) => {
-          const { components, name } = selectedProjectLibrariesObj[item]
-          const componentsArr = Object.keys(components)
-          if (componentsArr.length == 0) return
-          const image = skillsImages[item]
-
-          return (
-            <Grid container direction="column">
-              <Grid container alignItems="center" spacing={1}>
-                <Grid item>
-                  <Image src={image} layout="fixed" width={20} height={20} />
-                </Grid>
-                <Grid item>
-                  <h4>{name}</h4>
-                </Grid>
-                {componentsArr.map((item) => {
-                  const component = components[item]
-                  const { name, why } = component
-                  return (
-                    <Grid item>
-                      <p>
-                        <b>{`${name}:`}</b> {`${why} `}
-                      </p>
-                    </Grid>
-                  )
-                })}
-              </Grid>
-            </Grid>
-          )
-        })
-        return components
-      }
-
-      const getShowComponents = () => {
-        var boolean
-        if (Object.keys(components).length > 0) {
-          boolean = true
-        }
-        return boolean
-      }
-
-      const showComponents = getShowComponents()
+      const { hooks, methods, dependencies, questions } = technicalDetails
+      const { improved, change, future } = questions
 
       return (
         <Grid
@@ -651,70 +528,35 @@ export default function projects() {
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h4>Hooks</h4>
+                <h4>Methods</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                <ul>
-                  {hooks.map((hook) => {
-                    return <li>{hook}</li>
-                  })}
-                </ul>
+                {convertData(methods)}
               </Grid>
             </Grid>
           </Grid>
-          {showComponents && (
-            <Grid item>
-              <Grid container direction="column">
-                <Grid item>
-                  <h4>Components</h4>
-                </Grid>
-                <Grid item className={classesRoot.text}>
-                  {Object.keys(components).map((item) => {
-                    const { name, why } = components[item]
-                    return <p>{`${name}: ${why}`}</p>
-                  })}
-                </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>Hooks</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                {convertData(hooks)}
               </Grid>
             </Grid>
-          )}
-          {showLibraryMethods && (
-            <Grid item>
-              <Grid container direction="column">
-                <Grid item>
-                  <Typography>
-                    <b>Library Methods</b>
-                  </Typography>
-                </Grid>
-                <Grid item className={classesRoot.text}>
-                  <LibraryMethods />
-                </Grid>
-              </Grid>
-            </Grid>
-          )}
-          {showLibraryComponents && (
-            <Grid item>
-              <Grid container direction="column">
-                <Grid item>
-                  <Typography>
-                    <b>Library Components</b>
-                  </Typography>
-                </Grid>
-                <Grid item className={classesRoot.text}>
-                  <LibraryComponents />
-                </Grid>
-              </Grid>
-            </Grid>
-          )}
+          </Grid>
           <Grid item>
             <Typography textAlign="center">Questions</Typography>
           </Grid>
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                <h4>How has your coding improved completing this project</h4>
+                <h4>
+                  What areas of development have improved with this project?
+                </h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                {how}
+                {convertData(improved)}
               </Grid>
             </Grid>
           </Grid>
@@ -727,7 +569,7 @@ export default function projects() {
                 </h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                {change}
+                {convertData(change)}
               </Grid>
             </Grid>
           </Grid>
@@ -737,7 +579,7 @@ export default function projects() {
                 <h4>What ideas do you have for the future of this project?</h4>
               </Grid>
               <Grid item className={classesRoot.text}>
-                {future}
+                {convertData(future)}
               </Grid>
             </Grid>
           </Grid>

@@ -128,10 +128,10 @@ export const projectsObj = {
         summary: () => {
           return (
             <p>
-              this is afunction Search and filters Tekken character moves.
-              Originally the data required manually searching through excel
-              spreadsheet like formats, but this application allows for a fast
-              and easy to use filtering system.
+              Search and filters Tekken character moves. Originally the data
+              required manually searching through excel spreadsheet like
+              formats, but this application allows for a fast and easy to use
+              filtering system.
             </p>
           )
         },
