@@ -182,7 +182,6 @@ export default function Layout({ children }) {
       root: {
         position: 'relative',
         width: '100vw',
-        // height: windowHeight,
         height: '100%',
         minHeight: '270px',
         minWidth: '270px',
@@ -270,7 +269,6 @@ export default function Layout({ children }) {
         fontSize: '.9rem',
         textTransform: 'none',
         color: darkMode ? 'white' : 'black',
-        // background: 'red',
       },
       londonContainer: {
         position: 'relative',
@@ -287,7 +285,7 @@ export default function Layout({ children }) {
       const navArr = [
         { name: 'Home', link: '' },
         { name: 'Projects', link: 'projects' },
-        { name: 'skills', link: 'skills' },
+        { name: 'Skills', link: 'skills' },
         { name: 'About Me', link: 'aboutMe' },
         { name: 'Contact Me', link: 'contactMe' },
       ]

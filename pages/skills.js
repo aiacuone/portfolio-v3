@@ -58,6 +58,7 @@ export default function skills() {
     },
     mainDetailsContainer: {
       padding: mainContainerPadding,
+      // fontSize: '20px',
     },
   })
 
@@ -254,6 +255,8 @@ export default function skills() {
       container: {
         gridArea: '2/1/9/10',
         background: darkMode ? textBackgroundDark : textBackgroundLight,
+        overflowY: 'scroll',
+        padding: '20px',
       },
     })
     const classes = useStyles()
