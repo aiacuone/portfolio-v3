@@ -17,7 +17,7 @@ export default function NewBannerIcon({ width, height, color }) {
       xmlSpace="preserve">
       <style type="text/css">{`.newBanner{fill:${color}`}</style>
       <g>
-        <polygon class="newBanner" points="0,88 0,0 207,0 	" />
+        <polygon className="newBanner" points="0,88 0,0 207,0 	" />
       </g>
     </svg>
   )
