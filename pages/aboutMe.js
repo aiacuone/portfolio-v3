@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useTheme } from '@mui/material/styles'
 import { HobbiesIcon, WorkIcon, StoryIcon } from '../components/icons'
 
-export default function aboutMe() {
+export default function AboutMe() {
   const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const {

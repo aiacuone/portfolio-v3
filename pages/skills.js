@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
 
-export default function skills() {
+export default function Skills() {
   const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const {

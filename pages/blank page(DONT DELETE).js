@@ -7,7 +7,7 @@ const useStylesRoot = makeStyles({
   root: { height: '100%', width: '100%' },
 })
 
-export default function blankPage() {
+export default function BlankPage() {
   const classesRoot = useStylesRoot()
 
   const { state } = useContext(UserContext)

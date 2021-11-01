@@ -15,7 +15,7 @@ import { useTheme } from '@mui/material/styles'
 import NewBanner from '../components/icons/NewBannerIcon'
 import { newBanner } from '../public/images/misc'
 
-export default function projects() {
+export default function Projects() {
   const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone

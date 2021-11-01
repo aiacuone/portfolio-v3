@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
 
-export default function contactMe() {
+export default function ContactMe() {
   const theme = useTheme()
   const { state, vars } = useContext(UserContext)
   const { isPhone, isPhoneLandscape } = state.phone
