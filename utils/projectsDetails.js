@@ -164,63 +164,36 @@ export const projectsObj = {
             )
           },
           learn: [
-            'Asynchronous coding can be very important when dealing with APIs',
-            'It can be difficult resizing react components from Front-End libraries',
-            'React Resize detector can help with thatAPIs can be restrictive',
+            'The data requires reformatting from an excel spreadsheet to a javaScript object',
+            'Importing and exporting data from external files',
           ],
-          challenges: `Ideally the API would fetch all the data at once and the required data is filtered, however the API used within the application is restricted in a way where you can only fetch a single page at a time. To overcome this problem, asynchronous functions are automatically called when results are below a certain threshold, and additional pages are fetched.`,
+          challenges: [
+            'Due to the data coming from a 3rd party website, the data lacks consistency. I found that there were times where there would be characters within the data that would create errors',
+            'Creating a filtering functions for each filter option',
+          ],
         },
       },
       technical: {
-        methods: [
-          'Map',
-          'ForEach',
-          'Join',
-          'Push',
-          'Slice',
-          'CharAt',
-          'Math.ceil',
-          'Math.round',
-          'Object.keys',
-        ],
-        hooks: ['useState', 'useRef', 'useEffect', 'useContext', 'useCallback'],
+        methods: ['Map', 'IndexOf', 'Filter', 'Replace', 'Substring'],
+        hooks: ['useState', 'useEffect'],
         dependencies: {
-          'Material UI': {
-            useTheme: { why: '' },
-            useMediaQuery: { why: 'Control layout based on size of window' },
-            Grid: { why: '' },
-            Drawer: {
-              why: 'To save space and have data appear offset from the main screen',
+          Material: {
+            'Material Icons': { why: '' },
+            useMediaQuery: {
+              why: 'To control the layout between phone and regular screens',
             },
-            Button: { why: '' },
-            Slider: { why: '' },
+            useStyles: { why: '' },
             Typography: { why: '' },
-            Paper: { why: '' },
-            MaterialIcon: { why: '' },
-            Table: { why: '' },
-          },
-          Next: { Image: { why: '' }, Router: { why: '' } },
-          Lodash: {
-            debounce: {
-              name: 'Debounce',
-              why: 'To restrict the amount of times data is fetched from the API',
+            Button: { why: '' },
+            Stepper: {
+              why: 'To create steps for instructions in introduction page',
             },
-            find: { name: 'Find', why: '' },
+            Paper: { why: '' },
+            Grid: { why: '' },
           },
-          'React Resize Detector': {
-            why: 'To resize Material UI table based on window size',
-          },
+          next: { Image: { why: '' }, Link: { why: '' }, Head: { why: '' } },
         },
-        Other: [
-          'Event handlers',
-          'Spread Operator',
-          'Destructuring',
-          'Asynchronous Functions',
-          'Fetching and using data from an API',
-          'Timestamps',
-          'Ternary Operator',
-        ],
-
+        Other: ['Spread Operator', 'Destructuring', 'Spread Operator', 'regex'],
         questions: {
           improved: [
             'Seperating database information to the logic of the application, then import or exporting where needed',
@@ -299,7 +272,7 @@ export const projectsObj = {
             why: 'Allow for user to input text into application',
           },
           Lodash: {
-            set: {
+            Set: {
               why: 'To designate where to make updates within the database',
             },
           },
