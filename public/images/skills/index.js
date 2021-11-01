@@ -1,4 +1,4 @@
-import javaScript from './javaScript.svg'
+import javaScript from './javascript.svg'
 import react from './react.svg'
 import next from './next.svg'
 import materialUI from './material.svg'
