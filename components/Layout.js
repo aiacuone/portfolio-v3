@@ -45,7 +45,7 @@ export default function Layout({ children }) {
         height={hamburgerHeight}
         width={hamburgerWidth}
         onClick={handleClick}
-        enable-background="new 0 0 32 32"
+        enableBackground="new 0 0 32 32"
         id="Filled_Line"
         version="1.1"
         viewBox="0 0 32 32"

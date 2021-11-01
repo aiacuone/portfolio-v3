@@ -3,7 +3,6 @@ import React from 'react'
 export default function HobbiesIcon({ size, color }) {
   return (
     <svg
-      height="512px"
       fill={color}
       id="Layer_1"
       //   style="enable-background:new 0 0 512 512;"
