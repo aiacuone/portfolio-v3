@@ -49,12 +49,12 @@ export const projectsObj = {
       },
       technical: {
         methods: [
-          'map',
-          'forEach',
-          'join',
-          'push',
-          'slice',
-          'charAt',
+          'Map',
+          'ForEach',
+          'Join',
+          'Push',
+          'Slice',
+          'CharAt',
           'Math.ceil',
           'Math.round',
           'Object.keys',
@@ -62,25 +62,25 @@ export const projectsObj = {
         hooks: ['useState', 'useRef', 'useEffect', 'useContext', 'useCallback'],
         dependencies: {
           'Material UI': {
-            useTheme: {},
+            useTheme: { why: '' },
             useMediaQuery: { why: 'Control layout based on size of window' },
-            Grid: {},
+            Grid: { why: '' },
             Drawer: {
               why: 'To save space and have data appear offset from the main screen',
             },
-            Button: {},
-            Slider: {},
-            Typography: {},
-            Paper: {},
-            MaterialIcon: {},
-            Table: {},
+            Button: { why: '' },
+            Slider: { why: '' },
+            Typography: { why: '' },
+            Paper: { why: '' },
+            MaterialIcon: { why: '' },
+            Table: { why: '' },
           },
-          next: { Image: {}, Router: {} },
+          Next: { Image: { why: '' }, Router: { why: '' } },
           Lodash: {
-            debounce: {
+            Debounce: {
               why: 'To restrict the amount of times data is fetched from the API',
             },
-            find: { why: '' },
+            Find: { why: '' },
           },
           'React Resize Detector': {
             why: 'To resize Material UI table based on window size',
@@ -173,12 +173,12 @@ export const projectsObj = {
       },
       technical: {
         methods: [
-          'map',
-          'forEach',
-          'join',
-          'push',
-          'slice',
-          'charAt',
+          'Map',
+          'ForEach',
+          'Join',
+          'Push',
+          'Slice',
+          'CharAt',
           'Math.ceil',
           'Math.round',
           'Object.keys',
@@ -186,20 +186,20 @@ export const projectsObj = {
         hooks: ['useState', 'useRef', 'useEffect', 'useContext', 'useCallback'],
         dependencies: {
           'Material UI': {
-            useTheme: {},
+            useTheme: { why: '' },
             useMediaQuery: { why: 'Control layout based on size of window' },
-            Grid: {},
+            Grid: { why: '' },
             Drawer: {
               why: 'To save space and have data appear offset from the main screen',
             },
-            Button: {},
-            Slider: {},
-            Typography: {},
-            Paper: {},
-            MaterialIcon: {},
-            Table: {},
+            Button: { why: '' },
+            Slider: { why: '' },
+            Typography: { why: '' },
+            Paper: { why: '' },
+            MaterialIcon: { why: '' },
+            Table: { why: '' },
           },
-          next: { Image: {}, Router: {} },
+          Next: { Image: { why: '' }, Router: { why: '' } },
           Lodash: {
             debounce: {
               name: 'Debounce',
@@ -280,14 +280,14 @@ export const projectsObj = {
       },
       technical: {
         methods: [
-          'map',
-          'join',
-          'splice',
+          'Map',
+          'Join',
+          'Splice',
           'Object.keys',
-          'push',
-          'sort',
-          'reverse',
-          'pop',
+          'Push',
+          'Sort',
+          'Reverse',
+          'Pop',
         ],
         hooks: ['useState', 'useEffect', 'useRef', 'useCallback'],
         components: {},
@@ -298,7 +298,7 @@ export const projectsObj = {
           'Sun Editor': {
             why: 'Allow for user to input text into application',
           },
-          lodash: {
+          Lodash: {
             set: {
               why: 'To designate where to make updates within the database',
             },
@@ -310,7 +310,7 @@ export const projectsObj = {
           'Spread Operator',
           'Ternary Operator',
           'Custom Hook',
-          'setTimeout',
+          'SetTimeout',
         ],
         questions: {
           improved: [

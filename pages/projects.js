@@ -511,8 +511,41 @@ export default function projects() {
     }
 
     const TechnicalDetails = () => {
-      const { hooks, methods, dependencies, questions } = technicalDetails
+      const {
+        hooks,
+        methods,
+        dependencies: dependenciesObj,
+        questions,
+      } = technicalDetails
       const { improved, change, future } = questions
+
+      const Dependencies = () => {
+        const dependencyArr = Object.keys(dependenciesObj)
+
+        return dependencyArr.map((dependency) => {
+          const dependencyObj = dependenciesObj[dependency]
+          const dependencyArr = Object.keys(dependencyObj)
+          return (
+            <Grid item>
+              <h4>{dependency}</h4>
+              {dependencyArr.map((item) => {
+                const { why } = dependencyObj
+                const { why: subWhy } = dependencyObj[item]
+                return (
+                  <Grid>
+                    {dependencyArr.length > 0 && item !== 'why' && (
+                      <p>{`${item !== 'why' && item}${subWhy && ' - '}${
+                        subWhy && subWhy
+                      }`}</p>
+                    )}
+                    <p>{why && why}</p>
+                  </Grid>
+                )
+              })}
+            </Grid>
+          )
+        })
+      }
 
       return (
         <Grid
@@ -524,6 +557,18 @@ export default function projects() {
             <Typography textAlign="center">
               <b>TECHNICAL DETAILS</b>
             </Typography>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>Dependencies</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                <Grid container direction="column" spacing={1}>
+                  <Dependencies />
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item>
             <Grid container direction="column">
