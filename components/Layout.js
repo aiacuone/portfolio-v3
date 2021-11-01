@@ -101,12 +101,12 @@ export default function Layout({ children }) {
   }
 
   const ContactButtons = ({ size }) => {
-    const icons = contactsArr.map((contact) => {
+    const icons = contactsArr.map((contact, index) => {
       if (contact == 'phone') return
       const { image, link } = contactsObj[contact]
       const Icon = image
       return (
-        <Grid item>
+        <Grid item key={contact + index}>
           <Link href={link}>
             <a target="_blank">
               <Icon size={size} color="grey" />
@@ -153,11 +153,11 @@ export default function Layout({ children }) {
 
   const SkillsButtons = ({ size }) => {
     const arr = ['react', 'javaScript', 'next', 'material', 'git']
-    const icons = arr.map((skill) => {
+    const icons = arr.map((skill, index) => {
       const src = skillsObj[skill].image
 
       return (
-        <Grid item>
+        <Grid item key={skill + index}>
           {skill == 'next' ? (
             <NextIcon size={size} color={darkMode ? 'white' : 'black'} />
           ) : (
@@ -289,10 +289,10 @@ export default function Layout({ children }) {
         { name: 'About Me', link: 'aboutMe' },
         { name: 'Contact Me', link: 'contactMe' },
       ]
-      const navLinks = navArr.map((nav) => {
+      const navLinks = navArr.map((nav, index) => {
         const { name, link } = nav
         return (
-          <Grid item>
+          <Grid item key={nav + index}>
             <Link href={`/${link}`}>
               <Button className={classes.navLink}>{name}</Button>
             </Link>

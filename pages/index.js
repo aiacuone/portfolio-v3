@@ -142,11 +142,11 @@ export default function Home() {
   }
 
   const ContactButtons = ({ size }) => {
-    const icons = contactsArr.map((contact) => {
+    const icons = contactsArr.map((contact, index) => {
       const { image, link } = contactsObj[contact]
       const Icon = image
       return (
-        <Grid item>
+        <Grid item key={`contactButton${contact + index} `}>
           <Link href={link}>
             <a target="_blank">
               <Icon size={size} color="grey" />
@@ -168,11 +168,11 @@ export default function Home() {
 
   const SkillsButtons = ({ size }) => {
     const arr = ['react', 'javaScript', 'next', 'material', 'git']
-    const icons = arr.map((skill) => {
+    const icons = arr.map((skill, index) => {
       const src = skillsObj[skill].image
 
       return (
-        <Grid item>
+        <Grid item key={`skillButton${skill + index}`}>
           {skill == 'next' ? (
             <NextIcon size={size} color={darkMode ? 'white' : 'black'} />
           ) : (

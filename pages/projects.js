@@ -201,6 +201,7 @@ export default function projects() {
         const style = getStyle(index)
         return (
           <Button
+            key={`button1${button + index}`}
             color="secondary"
             variant="text"
             style={style}
@@ -328,6 +329,7 @@ export default function projects() {
         const { name, isNew } = projectsObj[project]
         return (
           <Button
+            key={`project${project + index}`}
             style={{
               background:
                 index == selection.project && darkMode
@@ -411,10 +413,12 @@ export default function projects() {
                 <h4>Languages/Libraries/Applications</h4>
               </Grid>
               <Grid container>
-                {langLib.map((item) => {
-                  console.log(item, 'item')
+                {langLib.map((item, index) => {
                   return (
-                    <Grid item className={classesRoot.langLib}>
+                    <Grid
+                      item
+                      key={`langLib${item + index}`}
+                      className={classesRoot.langLib}>
                       <Grid
                         className={classesRoot.symbol}
                         container
@@ -448,9 +452,12 @@ export default function projects() {
                   justifyContent="center"
                   spacing={1}
                   className={classesRoot.screenshotContainer}>
-                  {screenshots.map((screenshot) => {
+                  {screenshots.map((screenshot, index) => {
                     return (
-                      <Grid item className={classesRoot.screenshot}>
+                      <Grid
+                        key={`screenshot${screenshot + index}`}
+                        item
+                        className={classesRoot.screenshot}>
                         <Image
                           src={screenshot}
                           layout="fixed"
@@ -515,7 +522,7 @@ export default function projects() {
       const Dependencies = () => {
         const dependencyArr = Object.keys(dependenciesObj)
 
-        return dependencyArr.map((dependency) => {
+        return dependencyArr.map((dependency, index) => {
           const dependencyObj = dependenciesObj[dependency]
           const dependencyArr = Object.keys(dependencyObj)
           const imageProps =
@@ -523,7 +530,7 @@ export default function projects() {
               ? { height: 30, width: 40 }
               : { height: 25, width: 25 }
           return (
-            <Grid item>
+            <Grid item key={dependency + index}>
               <Grid container alignItems="center" spacing={1}>
                 <Grid item>
                   <Grid container alignItems="center">
@@ -544,11 +551,11 @@ export default function projects() {
                   </Grid>
                 )}
               </Grid>
-              {dependencyArr.map((item) => {
+              {dependencyArr.map((item, index) => {
                 const { why } = dependencyObj
                 const { why: subWhy } = dependencyObj[item]
                 return (
-                  <Grid>
+                  <Grid key={`dependency1${(item, index)}`}>
                     {dependencyArr.length > 0 && item !== 'why' && (
                       <p>{`${item !== 'why' && item}${subWhy && ' - '}${
                         subWhy && subWhy

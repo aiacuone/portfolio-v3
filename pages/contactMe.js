@@ -41,7 +41,7 @@ export default function contactMe() {
       if (!isPhone && item == 'phone') return
 
       return (
-        <Grid item className={classesRoot.button}>
+        <Grid item className={classesRoot.button} key={item + index}>
           <Link href={link}>
             <a target="_blank">
               <Image size={size} color={darkMode ? 'white' : 'black'} />

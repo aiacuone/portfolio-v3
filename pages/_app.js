@@ -87,8 +87,8 @@ function MyApp({ Component, pageProps }) {
     const getArray = () => {
       return (
         <ul>
-          {data.map((item) => {
-            return <li>{item}</li>
+          {data.map((item, index) => {
+            return <li key={(item, index)}>{item}</li>
           })}
         </ul>
       )
