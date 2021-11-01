@@ -24,6 +24,7 @@ a {
   min-height: -webkit-fill-available;
 }
 
-p {
+p,
+ul {
   font-size: 0.9rem;
 }

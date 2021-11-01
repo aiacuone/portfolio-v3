@@ -376,10 +376,6 @@ export default function projects() {
 
     const detailSelection = selections['projects'].details
 
-    const ProjectSummary = () => {
-      return projectSummaries[projectObj.internalName]
-    }
-
     const BasicDetails = () => {
       const { lastUpdated, langLib, screenshots, questions, summary } =
         basicDetails
@@ -516,6 +512,7 @@ export default function projects() {
         methods,
         dependencies: dependenciesObj,
         questions,
+        other,
       } = technicalDetails
       const { improved, change, future } = questions
 
@@ -525,9 +522,30 @@ export default function projects() {
         return dependencyArr.map((dependency) => {
           const dependencyObj = dependenciesObj[dependency]
           const dependencyArr = Object.keys(dependencyObj)
+
           return (
             <Grid item>
-              <h4>{dependency}</h4>
+              <Grid container alignItems="center" spacing={1}>
+                <Grid item>
+                  <Grid container alignItems="center">
+                    <h4>
+                      {skillsObj[dependency]
+                        ? skillsObj[dependency].name
+                        : dependency}
+                    </h4>
+                  </Grid>
+                </Grid>
+                {skillsObj[dependency] && (
+                  <Grid item>
+                    <Image
+                      layout="fixed"
+                      height={25}
+                      width={25}
+                      src={skillsObj[dependency].image}
+                    />
+                  </Grid>
+                )}
+              </Grid>
               {dependencyArr.map((item) => {
                 const { why } = dependencyObj
                 const { why: subWhy } = dependencyObj[item]
@@ -587,6 +605,16 @@ export default function projects() {
               </Grid>
               <Grid item className={classesRoot.text}>
                 {convertData(hooks)}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item>
+                <h4>Other</h4>
+              </Grid>
+              <Grid item className={classesRoot.text}>
+                {convertData(other)}
               </Grid>
             </Grid>
           </Grid>

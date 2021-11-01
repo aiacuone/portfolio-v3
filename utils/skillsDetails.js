@@ -87,7 +87,7 @@ export const skillsObj = {
     },
   },
   OOP: {
-    name: 'Object Oriented Programming',
+    name: 'OOP',
     image: OOP,
     getDetails: () => {
       return <p>ObjectDETAILS</p>

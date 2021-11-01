@@ -39,8 +39,8 @@ export const projectsObj = {
           create: 'To get experience and understanding of APIs.',
           learn: [
             'Asynchronous coding can be very important when dealing with APIs',
-            'It can be difficult resizing react components from Front-End libraries',
-            'React Resize detector can help with that APIs can be restrictive',
+            'It can be difficult resizing react components from Front-End libraries, the React Resize Detector component can help',
+            `APIs are not always versatile`,
           ],
 
           challenges:
@@ -61,7 +61,7 @@ export const projectsObj = {
         ],
         hooks: ['useState', 'useRef', 'useEffect', 'useContext', 'useCallback'],
         dependencies: {
-          'Material UI': {
+          material: {
             useTheme: { why: '' },
             useMediaQuery: { why: 'Control layout based on size of window' },
             Grid: { why: '' },
@@ -75,8 +75,8 @@ export const projectsObj = {
             MaterialIcon: { why: '' },
             Table: { why: '' },
           },
-          Next: { Image: { why: '' }, Router: { why: '' } },
-          Lodash: {
+          next: { Image: { why: '' }, Router: { why: '' } },
+          lodash: {
             Debounce: {
               why: 'To restrict the amount of times data is fetched from the API',
             },
@@ -86,7 +86,7 @@ export const projectsObj = {
             why: 'To resize Material UI table based on window size',
           },
         },
-        Other: [
+        other: [
           'Event handlers',
           'Spread Operator',
           'Destructuring',
@@ -177,7 +177,7 @@ export const projectsObj = {
         methods: ['Map', 'IndexOf', 'Filter', 'Replace', 'Substring'],
         hooks: ['useState', 'useEffect'],
         dependencies: {
-          Material: {
+          material: {
             'Material Icons': { why: '' },
             useMediaQuery: {
               why: 'To control the layout between phone and regular screens',
@@ -193,7 +193,7 @@ export const projectsObj = {
           },
           next: { Image: { why: '' }, Link: { why: '' }, Head: { why: '' } },
         },
-        Other: ['Spread Operator', 'Destructuring', 'Spread Operator', 'regex'],
+        other: ['Spread Operator', 'Destructuring', 'Spread Operator', 'regex'],
         questions: {
           improved: [
             'Seperating database information to the logic of the application, then import or exporting where needed',
@@ -265,16 +265,16 @@ export const projectsObj = {
         hooks: ['useState', 'useEffect', 'useRef', 'useCallback'],
         components: {},
         dependencies: {
+          lodash: {
+            Set: {
+              why: 'To designate where to make updates within the database',
+            },
+          },
           'React HTML Parser': {
             why: 'To parse the output data from the Sun Editor component',
           },
           'Sun Editor': {
             why: 'Allow for user to input text into application',
-          },
-          Lodash: {
-            Set: {
-              why: 'To designate where to make updates within the database',
-            },
           },
         },
         other: [
