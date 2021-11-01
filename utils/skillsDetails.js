@@ -25,7 +25,20 @@ export const skillsObj = {
         <p className="skillsText">
           I have put the vast majority of my efforts towards becoming a React
           Developer. React is versatile and constantly changing, and the
-          possibilities seem endless
+          possibilities to me seem endless.
+          <br />
+          <br />
+          <b>Experience with React:</b>
+          <ul className="skillsText list">
+            <li>useState</li>
+            <li>useEffect</li>
+            <li>useRef</li>
+            <li>useCallback</li>
+            <li>useMemo</li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
         </p>
       )
     },
@@ -33,35 +46,56 @@ export const skillsObj = {
   javaScript: {
     name: 'JavaScript',
     image: javaScript,
-    getDetails: () => {
+    getDetails: (darkMode) => {
+      const style = {
+        background: 'white',
+        padding: '6px 20px',
+        textDecoration: 'none',
+        margin: '0 10px',
+        whiteSpace: 'nowrap',
+        width: '150px',
+        textAlign: 'center',
+      }
       return (
         <>
           <p className="skillsText">
             At the core of development when using React. I completed an online
-            Javascript tutorial using Freecodecamp.
+            Javascript tutorial using Freecodecamp. <br />
           </p>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              alignItems: 'center',
-              padding: '20px',
-            }}>
-            <a href="https://imgbb.com/vVpgJz9" target="_blank">
-              <h4>Javascript Certificate</h4>
-            </a>
-            <a
-              href="https://freecodecamp-notes-portfolio.netlify.app/"
-              target="_blank">
-              <h4>Workings and Notes</h4>
-            </a>
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '20px',
+                gridAutoFlow: 'column',
+              }}>
+              <a href="https://imgbb.com/vVpgJz9" target="_blank" style={style}>
+                <p>Certificate</p>
+              </a>
+              <a
+                style={style}
+                href="https://freecodecamp-notes-portfolio.netlify.app/"
+                target="_blank">
+                <p>Workings/Notes</p>
+              </a>
+            </div>
           </div>
-
-          {/* <ul className="skillsText list">
-            <li> Javascript Certificate</li>
-            <li> Workings and Notes</li>
-          </ul> */}
+          <b>Experience with Javascript:</b>
+          <ul className="skillsText list">
+            <li>ES6</li>
+            <li>Array Methods</li>
+            <li>Object Methods</li>
+            <li>String Methods</li>
+            <li>OOP(Object Oriented Programming)</li>
+            <li>Constructors</li>
+            <li>Regular Expressions</li>
+            <li>Debugging</li>
+            <li>Data Structures</li>
+            <li>Algorithms</li>
+            <li>Functional Programming</li>
+          </ul>
         </>
       )
     },
@@ -85,7 +119,9 @@ export const skillsObj = {
       return (
         <>
           <p className="skillsText">
-            Material UI is my preferred Front-end library. Components used:
+            Material UI is my preferred Front-end library.
+            <br />
+            <br /> <b>Experience with Material UI:</b>
           </p>
           <ul className="skillsText list">
             <li>Grid</li>
@@ -130,7 +166,7 @@ export const skillsObj = {
         <p className="skillsText">
           I have all my projects up on GitHub that can be viewed{' '}
           <a href="https://github.com/aiacuone" target="_blank">
-            here
+            <b>here</b>
           </a>
         </p>
       )
@@ -142,8 +178,8 @@ export const skillsObj = {
     getDetails: () => {
       return (
         <p className="skillsText">
-          At the core of development when using React. Without CSS there is no
-          React.
+          At the core of development when using React. All my projects include
+          CSS.
         </p>
       )
     },
@@ -154,8 +190,8 @@ export const skillsObj = {
     getDetails: () => {
       return (
         <p className="skillsText">
-          At the core of development when using React. Without HTML there is no
-          React.
+          At the core of development when using React. All my projects include
+          HTML.
         </p>
       )
     },
@@ -166,9 +202,9 @@ export const skillsObj = {
     getDetails: () => {
       return (
         <p className="skillsText">
-          (Object Oriented Programming) All my projects and experience are
+          <b>Object Oriented Programming</b> All my projects and experience are
           Object biased. I have experience using JSON files from an API,
-          destructuring and extracting information from objects
+          destructuring and constructors.
         </p>
       )
     },
@@ -181,7 +217,9 @@ export const skillsObj = {
         <>
           <p className="skillsText">
             I've found the Lodash library to offer tools that makes me more
-            efficient and productive. Tools I've used:
+            efficient and productive. <br />
+            <br />
+            <b>Lodash Methods Used:</b>
           </p>
           <ul className="skillsText list">
             <li>Uniq</li>

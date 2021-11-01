@@ -143,6 +143,8 @@ export default function Skills() {
     mainContainer: {
       gridArea: '2/1/19/11',
       background: darkMode ? textBackgroundDark : textBackgroundLight,
+      overflowY: 'scroll',
+      padding: '10px',
     },
     buttonContainer: {
       gridArea: '19/1/20/11',

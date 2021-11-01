@@ -19,7 +19,7 @@ export const projectsObj = {
       basic: {
         lastUpdated: 'October, 2021',
         summary:
-          'Uses an API to get the latest deals for online games across multiple online stores.',
+          'Uses an API to get the latest deals for online games across multiple online stores. Cheapshark allows for filtering based on Price, Release Date, Reviews and Rating',
         langLib: [
           'react',
           'javaScript',
@@ -44,7 +44,7 @@ export const projectsObj = {
           ],
 
           challenges:
-            'Ideally the API would fetch all the data at once and the required data is filtered, however the API used within the application is restricted in a way where you can only fetch a single page at a time. To overcome this problem, asynchronous functions are automatically called when results are below a certain threshold, and additional pages are fetched.',
+            'Ideally the API would fetch all the data at once and the required data is filtered, however the API used within the application is restricted in a way where you can only fetch a limited amount of results at a time. To overcome this problem, asynchronous functions are automatically called when results are below a certain threshold, and additional data is fetched.',
         },
       },
       technical: {
@@ -63,22 +63,22 @@ export const projectsObj = {
         dependencies: {
           material: {
             useTheme: { why: '' },
-            useMediaQuery: { why: 'Control layout based on size of window' },
+            useMediaQuery: { why: 'To control layout based on size of window' },
             Grid: { why: '' },
             Drawer: {
-              why: 'To save space and have data appear offset from the main screen',
+              why: '',
             },
             Button: { why: '' },
             Slider: { why: '' },
             Typography: { why: '' },
             Paper: { why: '' },
-            MaterialIcon: { why: '' },
+            'Material Icons': { why: '' },
             Table: { why: '' },
           },
           next: { Image: { why: '' }, Router: { why: '' } },
           lodash: {
             Debounce: {
-              why: 'To restrict the amount of times data is fetched from the API',
+              why: 'Functions are called to automatically fetch data from the API when the amount of games goes below a threshold and debounce is helping with excessive function calls',
             },
             Find: { why: '' },
           },
@@ -87,7 +87,7 @@ export const projectsObj = {
           },
         },
         other: [
-          'Event handlers',
+          'Event Handlers',
           'Spread Operator',
           'Destructuring',
           'Asynchronous Functions',
@@ -108,8 +108,8 @@ export const projectsObj = {
           ],
 
           change: [
-            'I now consider the Material UI drawer component to be too much and would consider something more simple',
-            'I want to incorporate a table that is easier to use for mobile size',
+            'I now consider the Material UI drawer component to be excessive, in a similar situation I would explore a more simple option',
+            'I want to incorporate a table that is easier to use for small devices',
           ],
           future: `To create my own API and design it in a way where I'm not restricted to fetching single pages at a time`,
         },
@@ -128,10 +128,11 @@ export const projectsObj = {
         summary: () => {
           return (
             <p>
-              Search and filters Tekken character moves. Originally the data
-              required manually searching through excel spreadsheet like
-              formats, but this application allows for a fast and easy to use
-              filtering system.
+              Tekken, a game created 18+ years ago, with 50+ characters, each
+              character having 80+ moves, with each move having their own
+              characteristics and attributes. Tekken-Net provides and easy to
+              use platform, with various ways to filter and search for your
+              characters moves.
             </p>
           )
         },
@@ -155,10 +156,13 @@ export const projectsObj = {
             return (
               <p>
                 At this point, the Tekken community is solely reliant on a 3rd
-                party website called https://rbnorway.org/t7-frame-data/ to
-                access the Tekken character information. All the information is
-                in a excel spreadsheet like format and is a very manually
-                process to search for the information you need.
+                party website called{' '}
+                <a href="https://rbnorway.org/t7-frame-data/" target="_blank">
+                  RBNorway
+                </a>{' '}
+                to access the Tekken character information. All the information
+                is in a excel like spreadsheet and is a very manually process to
+                search for the information you need.
               </p>
             )
           },
@@ -167,8 +171,8 @@ export const projectsObj = {
             'Importing and exporting data from external files',
           ],
           challenges: [
-            'Due to the data coming from a 3rd party website, the data lacks consistency. I found that there were times where there would be characters within the data that would create errors',
-            'Creating a filtering functions for each filter option',
+            'Due to the data coming from a 3rd party website, the data lacks consistency. At times there would be symbols and characters within the data that created errors',
+            'Creating filter functions for each filter option',
           ],
         },
       },
@@ -196,7 +200,7 @@ export const projectsObj = {
         questions: {
           improved: [
             'Seperating database information to the logic of the application, then import or exporting where needed',
-            'Regex',
+            'Regex. A large part of the filtering process is based on using regex. The reason why regex was so important is due to the lack of consistency within the data.',
             'Using filter method',
             'Resizing library components based on screen size',
           ],
@@ -204,9 +208,8 @@ export const projectsObj = {
             'The layout needs improvement on the mobile sized window',
             'The table needs to be easier to use on the phone sized window',
           ],
-          future: [
-            'Eventually the plan is to compare a Tekken move to another Tekken move and give the user can rate how it how well it works, then the rating goes onto a database',
-          ],
+          future:
+            'To allow the user to compare Tekken moves, then rate the comparison. The ratings are stored onto a database that can be then be viewed by all users',
         },
       },
     },
@@ -221,7 +224,7 @@ export const projectsObj = {
       basic: {
         lastUpdated: 'May, 2021',
         summary:
-          'An application with the same concept as Google Drive or Evernote, but with ideas that I would like to see implemented.',
+          'The same concept as Google Drive or Evernote, but with ideas that I would like to see implemented.',
         langLib: [
           'react',
           'javaScript',
@@ -236,15 +239,14 @@ export const projectsObj = {
         ],
         screenshots: [noteTaker1, noteTaker2],
         questions: {
-          create: `To create an application based on the CRUD (create, read, update, delete) system. Note applications such as One Note, Google Drive and Evernote still have time till they perfect themselves, Note Taker is implementing ideas that I would like to see in any of those applications.`,
+          create: `To create an application based on the CRUD (create, read, update, delete) system. I find myself switching between Note applications such as Evernote and Google drive, and I would enjoy using an application customised for me.`,
           learn: [
-            `Although not used within this application, 'React Router' or 'Next Router' is the better option to change pages comparing to using state.`,
-            'Creating a class or id for each division within the application is too time consuming',
-            'The ideal way to implement the CRUD system is to incorporate an API',
+            `Routing within a React application is more efficient and easier to do using either React Router or Next Router`,
+            'Creating a class or ID for each division is not efficient, a Front-end library have tools for this',
             'Creating all visuals without a Front-end library is not efficient',
           ],
           challenges: [
-            'Object Oriented Programming and Destructuring. Note Taker is takes advantage of the perks of Object Oriented Programming, and pushed my skills at the time.',
+            'Object Oriented Programming and Destructuring. Note Taker takes advantage of the perks of Object Oriented Programming, and pushed my skills at the time.',
             'Creating all visuals without a library. Without a front-end library, all visuals were created manually, and required focus towards layout and spacing.',
           ],
         },
@@ -269,7 +271,7 @@ export const projectsObj = {
             },
           },
           'Sun Editor': {
-            why: 'Allow for user to input text into application',
+            why: 'Allow for the user to input text, images and video into the application',
           },
           'React HTML Parser': {
             why: 'To parse the output from the Sun Editor component',
@@ -287,10 +289,12 @@ export const projectsObj = {
           improved: [
             'Object Oriented Programming and destructuring',
             'Understanding the basics of layouts',
-            'State, all page pages and menu pop ups were created using state',
+            'State, the application does not take advantage of a router, therefore state was used instead',
           ],
-          change:
-            'I want to implement YouTube clips similar to how Evernote implements YouTube videos, but I want the final product to be similar to a gif.',
+          change: [
+            'Incorporate a Front-end Library',
+            'To allow for dynamic window sizing for smaller & larger devices',
+          ],
           future:
             'I want to implement YouTube clips similar to how Evernote implements YouTube videos, but I want the final product to be similar to a gif.',
         },

@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
         styleOverrides: {
           root: {
             color: 'white',
-            fontSize: '1.05rem',
+            fontSize: '1.rem',
             fontWeight: 300,
             padding: 0,
           },
