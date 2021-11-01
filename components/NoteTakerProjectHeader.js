@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
-import logo from '../public/images/projectHeaders/NoteTakerLogo.svg'
+import logo from '../public/images/projectHeaders/noteTakerLogo.svg'
 import Image from 'next/image'
 import { UserContext } from '../utils/UserContext'
 
