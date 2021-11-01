@@ -146,7 +146,7 @@ export default function projects() {
       position: 'absolute',
       top: 0,
       left: 0,
-      filter: 'opacity(50%)',
+      filter: 'opacity(20%)',
     },
   })
 
@@ -155,17 +155,20 @@ export default function projects() {
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
 
+    const getStyle = (index) => {
+      return {
+        background:
+          darkMode && selection.details == index
+            ? '#272727'
+            : !darkMode && selection.details == index
+            ? grey[300]
+            : null,
+      }
+    }
+
     const Landscape = () => {
       return arr.map((button, index) => {
-        const style = {
-          // background: selection.details == index && 'white',
-          background:
-            darkMode && selection.details == index
-              ? textDarkBackground
-              : !darkMode && selection.details == index
-              ? textLightBackground
-              : null,
-        }
+        const style = getStyle(index)
         return (
           <Grid
             key={button + index}
@@ -195,14 +198,7 @@ export default function projects() {
 
     const Other = () => {
       return arr.map((button, index) => {
-        const style = {
-          background:
-            darkMode && selection.details == index
-              ? textDarkBackground
-              : !darkMode && selection.details == index
-              ? textLightBackground
-              : null,
-        }
+        const style = getStyle(index)
         return (
           <Button
             color="secondary"
@@ -380,7 +376,6 @@ export default function projects() {
       const { lastUpdated, langLib, screenshots, questions, summary } =
         basicDetails
       const { create, learn, challenges } = questions
-      console.log(questions)
       return (
         <Grid
           container
@@ -417,6 +412,7 @@ export default function projects() {
               </Grid>
               <Grid container>
                 {langLib.map((item) => {
+                  console.log(item, 'item')
                   return (
                     <Grid item className={classesRoot.langLib}>
                       <Grid
@@ -522,7 +518,10 @@ export default function projects() {
         return dependencyArr.map((dependency) => {
           const dependencyObj = dependenciesObj[dependency]
           const dependencyArr = Object.keys(dependencyObj)
-
+          const imageProps =
+            dependency == 'next'
+              ? { height: 30, width: 40 }
+              : { height: 25, width: 25 }
           return (
             <Grid item>
               <Grid container alignItems="center" spacing={1}>
@@ -539,8 +538,7 @@ export default function projects() {
                   <Grid item>
                     <Image
                       layout="fixed"
-                      height={25}
-                      width={25}
+                      {...imageProps}
                       src={skillsObj[dependency].image}
                     />
                   </Grid>
@@ -864,7 +862,7 @@ export default function projects() {
       },
       detailsButtonContainer: {
         gridArea: '2/1/3/11',
-        background: darkMode ? detailContainer : 'white',
+        background: darkMode ? textDarkBackground : 'white',
       },
       mainContainer: {
         gridArea: '3/1/10/11',

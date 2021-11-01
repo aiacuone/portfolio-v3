@@ -270,11 +270,11 @@ export const projectsObj = {
               why: 'To designate where to make updates within the database',
             },
           },
-          'React HTML Parser': {
-            why: 'To parse the output data from the Sun Editor component',
-          },
           'Sun Editor': {
             why: 'Allow for user to input text into application',
+          },
+          'React HTML Parser': {
+            why: 'To parse the output from the Sun Editor component',
           },
         },
         other: [
