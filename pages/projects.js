@@ -152,125 +152,6 @@ export default function Projects() {
   })
   const classesRoot = useStylesRoot()
 
-  const useStylesL = makeStyles({
-    root: {
-      display: 'grid',
-      height: '100%',
-      width: '100%',
-      gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
-      gridTemplateColumns: `120px repeat(8,1fr) ${
-        hamburger.width + hamburger.padding * 2
-      }px`, //WIDTH OF BUTTONS CONTAINER
-    },
-    buttonContainer: {
-      gridArea: '1/1/11/2',
-      zIndex: 2,
-      background: darkMode ? grey[700] : 'white',
-    },
-
-    header: {
-      gridArea: '1/2/2/10',
-      background: darkMode ? primaryColor : primaryLightColor,
-    },
-    mainContainer: {
-      gridArea: '2/2/10/10',
-      marginRight: `${hamburger.width + hamburger.padding}px`,
-    },
-    viewButtons: { background: 'brown' },
-    hamburgerGap: {
-      gridArea: '1/10/11/11',
-      background: darkMode ? textDarkBackground : textLightBackground,
-      zIndex: 1,
-    },
-  })
-  const classesL = useStylesL()
-
-  const useStylesP = makeStyles({
-    root: {
-      display: 'grid',
-      height: '100%',
-      width: '100%',
-      gridTemplateColumns: 'repeat(10,1fr)',
-      gridTemplateRows: `${headerHeightPortrait}px repeat(12,1fr)  auto auto ${
-        hamburger.padding * 2 + hamburger.height
-      }px`,
-    },
-    header: {
-      gridArea: '1/1/2/11',
-      background: darkMode ? primaryColor : primaryLightColor,
-    },
-    mainContainer: { gridArea: '2/1/14/11' },
-    projectButtons: {
-      gridArea: '15/1/16/11',
-      background: darkMode ? primaryColor : primaryLightColor,
-      minWidth: '340px',
-    },
-    detailsButtons: {
-      gridArea: '14/1/15/11',
-      background: darkMode ? grey[700] : 'white',
-    },
-    hamburgerGap: {
-      gridArea: '16/1/17/11',
-    },
-    hamburger: {
-      gridArea: '1/2/3/3',
-    },
-    container: {
-      height: '100%',
-      width: '100%',
-      background: darkMode ? textDarkBackground : backgroundColor,
-      display: 'grid',
-      gridTemplateColumns: `1fr ${
-        hamburger.width + hamburger.padding * 2
-      }px 1fr`,
-      gridTemplateRows: `1fr ${hamburger.padding}px`,
-    },
-    projectButton: {
-      flexGrow: 1,
-    },
-    viewButton: {
-      height: '100%',
-    },
-  })
-  const classesP = useStylesP()
-
-  const useStylesN = makeStyles({
-    root: {
-      width: '100%',
-      height: '100%',
-    },
-    container: {
-      maxWidth: maxWidth,
-      width: width,
-      height: height,
-      minHeight: minHeight,
-      minWidth: minWidth,
-      display: 'grid',
-      gridTemplateColumns: 'repeat(10,1fr)',
-      gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
-      zIndex: 1,
-    },
-    detailsButton: { color: 'black', flexGrow: 1 },
-    projectButtonContainer: {
-      gridArea: '1/1/2/11',
-      background: darkMode ? primaryColor : primaryLightColor,
-    },
-    detailsButtonContainer: {
-      gridArea: '2/1/3/11',
-      background: darkMode ? textDarkBackground : 'white',
-    },
-    mainContainer: {
-      gridArea: '3/1/10/11',
-
-    },
-    viewButtonsContainer: {
-      gridArea: '10/1/11/11',
-      background: darkMode ? primaryColor : primaryLightColor,
-      padding: '5px',
-    },
-  })
-  const classesN = useStylesN()
-
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
 
@@ -395,23 +276,28 @@ export default function Projects() {
   }
 
   const ProjectButtons = () => {
+    const getStyle = ({ index, project }) => {
+      return {
+        background:
+          index == selection.project && darkMode
+            ? primaryDarkColor
+            : index == selection.project && !darkMode
+            ? primaryColor
+            : 'null',
+      }
+    }
+
     const Landscape = () => {
       return projectsArr.map((project, index) => {
         const { name, isNew } = projectsObj[project]
+        const style = getStyle({ project, index })
         return (
           <Grid
             container
             justifyContent="center"
             key={project.name + index}
             className={classesRoot.projectButtonContainer}
-            style={{
-              background:
-                index == selection.project && darkMode
-                  ? primaryDarkColor
-                  : index == selection.project && !darkMode
-                  ? primaryColor
-                  : 'null',
-            }}>
+            style={{ ...style }}>
             <Grid container className={classesRoot.projectButtonContainer2}>
               <Button
                 onClick={() => {
@@ -447,16 +333,12 @@ export default function Projects() {
     const Other = () => {
       return projectsArr.map((project, index) => {
         const { name, isNew } = projectsObj[project]
+        const style = getStyle({ project, index })
         return (
           <Button
             key={`project${project + index}`}
             style={{
-              background:
-                index == selection.project && darkMode
-                  ? primaryDarkColor
-                  : index == selection.project && !darkMode
-                  ? primaryColor
-                  : 'null',
+              ...style,
               paddingTop: isPhone && '5px',
             }}
             onClick={() => {
@@ -477,7 +359,7 @@ export default function Projects() {
                 <p
                   style={{
                     position: 'absolute',
-                    top: isPhone ? -1 : -4,
+                    top: isPhone ? -3 : -4,
                     left: isPhone ? 8 : 10,
                     fontSize: isPhone ? '.5rem' : '.75rem',
                   }}>
@@ -812,9 +694,41 @@ export default function Projects() {
   }
 
   const Landscape = () => {
+    const useStyles = makeStyles({
+      root: {
+        display: 'grid',
+        height: '100%',
+        width: '100%',
+        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(7,1fr) auto`,
+        gridTemplateColumns: `120px repeat(8,1fr) ${
+          hamburger.width + hamburger.padding * 2
+        }px`, //WIDTH OF BUTTONS CONTAINER
+      },
+      buttonContainer: {
+        gridArea: '1/1/11/2',
+        zIndex: 2,
+        background: darkMode ? grey[700] : 'white',
+      },
+
+      header: {
+        gridArea: '1/2/2/10',
+        background: darkMode ? primaryColor : primaryLightColor,
+      },
+      mainContainer: {
+        gridArea: '2/2/10/10',
+        marginRight: `${hamburger.width + hamburger.padding}px`,
+      },
+      viewButtons: { background: 'brown' },
+      hamburgerGap: {
+        gridArea: '1/10/11/11',
+        background: darkMode ? textDarkBackground : textLightBackground,
+        zIndex: 1,
+      },
+    })
+    const classes = useStyles()
     const Buttons = () => {
       return (
-        <Grid className={classesL.buttonContainer} container>
+        <Grid className={classes.buttonContainer} container>
           <ProjectButtons />
           <DetailButtons />
         </Grid>
@@ -822,25 +736,25 @@ export default function Projects() {
     }
 
     return (
-      <Grid className={classesL.root} alignItems="stretch">
+      <Grid className={classes.root} alignItems="stretch">
         <Buttons />
 
         <Grid
-          className={classesL.header}
+          className={classes.header}
           container
           justifyContent="center"
           alignItems="center">
           PROJECTS
         </Grid>
         <Grid
-          className={classesL.mainContainer}
+          className={classes.mainContainer}
           container
           justifyContent="center"
           alignItems="center">
           <MainDetails />
         </Grid>
 
-        <Grid className={classesL.hamburgerGap} />
+        <Grid className={classes.hamburgerGap} />
       </Grid>
     )
   }
@@ -850,31 +764,79 @@ export default function Projects() {
   }
 
   const Portrait = () => {
+    const useStyles = makeStyles({
+      root: {
+        display: 'grid',
+        height: '100%',
+        width: '100%',
+        gridTemplateColumns: 'repeat(10,1fr)',
+        gridTemplateRows: `${headerHeightPortrait}px repeat(12,1fr)  auto auto ${
+          hamburger.padding * 2 + hamburger.height
+        }px`,
+      },
+      header: {
+        gridArea: '1/1/2/11',
+        background: darkMode ? primaryColor : primaryLightColor,
+      },
+      mainContainer: { gridArea: '2/1/14/11' },
+      projectButtons: {
+        gridArea: '15/1/16/11',
+        background: darkMode ? primaryColor : primaryLightColor,
+        minWidth: '340px',
+      },
+      detailsButtons: {
+        gridArea: '14/1/15/11',
+        background: darkMode ? grey[700] : 'white',
+      },
+      hamburgerGap: {
+        gridArea: '16/1/17/11',
+      },
+      hamburger: {
+        gridArea: '1/2/3/3',
+      },
+      container: {
+        height: '100%',
+        width: '100%',
+        background: darkMode ? textDarkBackground : backgroundColor,
+        display: 'grid',
+        gridTemplateColumns: `1fr ${
+          hamburger.width + hamburger.padding * 2
+        }px 1fr`,
+        gridTemplateRows: `1fr ${hamburger.padding}px`,
+      },
+      projectButton: {
+        flexGrow: 1,
+      },
+      viewButton: {
+        height: '100%',
+      },
+    })
+    const classes = useStyles()
     return (
-      <Grid className={classesP.root}>
+      <Grid className={classes.root}>
         <Grid
-          className={classesP.header}
+          className={classes.header}
           container
           justifyContent="center"
           alignItems="center">
           PROJECTS
         </Grid>
-        <Grid className={classesP.projectButtons} container>
+        <Grid className={classes.projectButtons} container>
           <ProjectButtons />
         </Grid>
-        <Grid className={classesP.detailsButtons} container>
+        <Grid className={classes.detailsButtons} container>
           <DetailButtons />
         </Grid>
         <Grid
-          className={classesP.mainContainer}
+          className={classes.mainContainer}
           container
           justifyContent="center"
           alignItems="center">
           <MainDetails />
         </Grid>
-        <Grid className={classesP.hamburgerGap}>
-          <Grid className={classesP.container}>
-            <Grid className={classesP.hamburger} />
+        <Grid className={classes.hamburgerGap}>
+          <Grid className={classes.container}>
+            <Grid className={classes.hamburger} />
           </Grid>
         </Grid>
       </Grid>
@@ -886,36 +848,72 @@ export default function Projects() {
   }
 
   const Normal = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        minHeight: '600px',
+      },
+      container: {
+        maxWidth: maxWidth,
+        width: width,
+        height: height,
+        minHeight: minHeight,
+        minWidth: minWidth,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(10,1fr)',
+        gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
+        zIndex: 1,
+      },
+      detailsButton: { color: 'black', flexGrow: 1 },
+      projectButtonContainer: {
+        gridArea: '1/1/2/11',
+        background: darkMode ? primaryColor : primaryLightColor,
+      },
+      detailsButtonContainer: {
+        gridArea: '2/1/3/11',
+        background: darkMode ? textDarkBackground : 'white',
+      },
+      mainContainer: {
+        gridArea: '3/1/10/11',
+      },
+      viewButtonsContainer: {
+        gridArea: '10/1/11/11',
+        background: darkMode ? primaryColor : primaryLightColor,
+        padding: '5px',
+      },
+    })
+    const classes = useStyles()
     return (
       <Grid
         container
         justifyContent="center"
         alignItems="center"
-        className={classesN.root}>
-        <Grid container className={classesN.container}>
+        className={classes.root}>
+        <Grid container className={classes.container}>
           <Grid
             container
             justifyContent="center"
             alignItems="center"
-            className={classesN.projectButtonContainer}
+            className={classes.projectButtonContainer}
             direction="column">
             <Grid container justifyContent="center">
               <ProjectButtons />
             </Grid>
           </Grid>
-          <Grid container className={classesN.detailsButtonContainer}>
+          <Grid container className={classes.detailsButtonContainer}>
             <DetailButtons />
           </Grid>
           <Grid
             container
-            className={classesN.mainContainer}
+            className={classes.mainContainer}
             justifyContent="center"
             alignItems="center">
             <MainDetails />
           </Grid>
           <Grid
             container
-            className={classesN.viewButtonsContainer}
+            className={classes.viewButtonsContainer}
             justifyContent="center">
             <ViewButtons />
           </Grid>

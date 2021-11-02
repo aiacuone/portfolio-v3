@@ -13,7 +13,7 @@ export default function Skills() {
     hamburger,
     skillsObj,
     skillsArr,
-    normalPageContainerDimensions: container,
+    normalPageContainerDimensions,
     headerHeightPortrait,
     secondHeaderHeightPortrait,
     headerHeightLandscape,
@@ -36,7 +36,6 @@ export default function Skills() {
     dark: primaryDarkColor,
     light: primaryLightColor,
   } = theme.palette.primary
-  const { width, maxWidth, minWidth, height, maxHeight, minHeight } = container
   const mainDetails = getDetails({ darkMode })
 
   const useStylesRoot = makeStyles({
@@ -70,15 +69,11 @@ export default function Skills() {
     },
     container: {
       background: 'white',
-      maxWidth: maxWidth,
-      width: width,
-      height: height,
-      minHeight: minHeight,
-      minWidth: minWidth,
       display: 'grid',
       gridTemplateColumns: 'repeat(10,1fr)',
       gridTemplateRows: 'auto repeat(8,1fr) 65px',
       zIndex: 1,
+      ...normalPageContainerDimensions,
     },
     mainContainer: {
       background: darkMode ? textBackgroundDark : textBackgroundLight,

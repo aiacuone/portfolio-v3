@@ -225,7 +225,7 @@ export default function Layout({ children }) {
         display: 'grid',
         gridTemplateRows: '40px repeat(10,1fr)', //HEADER HEIGHT
         gridTemplateColumns: 'repeat(10,1fr)',
-        minHeight: '600px',
+        // minHeight: '600px',
         minWidth: '600px',
       },
       header: {

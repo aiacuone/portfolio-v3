@@ -26,7 +26,7 @@ export const skillsObj = {
           possibilities to me seem endless.
           <br />
           <br />
-          <b>Experience with React:</b>
+          <b>Experience:</b>
           <ul className="skillsText list">
             <li>Reusable components</li>
             <li>useState</li>
@@ -79,7 +79,7 @@ export const skillsObj = {
             </a>
           </div>
           <br />
-          <b>Experience with Javascript:</b>
+          <b>Experience:</b>
           <ul className="skillsText list">
             <li>ES6</li>
             <li>Array Methods</li>
@@ -118,7 +118,7 @@ export const skillsObj = {
           <p className="skillsText">
             Material UI is my preferred Front-end library.
             <br />
-            <br /> <b>Experience with Material UI:</b>
+            <br /> <b>Experience:</b>
           </p>
           <ul className="skillsText list">
             <li>Grid</li>
@@ -217,7 +217,7 @@ export const skillsObj = {
             I've found the Lodash library to offer tools that makes me more
             efficient and productive. <br />
             <br />
-            <b>Lodash Methods Used:</b>
+            <b>Experience:</b>
           </p>
           <ul className="skillsText list">
             <li>Uniq</li>
