@@ -79,8 +79,8 @@ export const aboutMeObj = {
       return (
         <p>
           I have put the majority of my focus towards Front-End development. My
-          studies have been largely based on JavaScript and React, and my
-          projects have been largely based on creating a fast, easy to use
+          studies have been largely based on JavaScript and React, and when
+          creating projects the goal in mind is to create a fast, easy to use
           experience.
           <br />
           <br />
@@ -92,8 +92,8 @@ export const aboutMeObj = {
           developer.
           <br />
           <br />I strongly believe in an experience that is fast and easy to
-          use. I believe the user experience plays a very large part in whether
-          the customer chooses your service or another.
+          use. I believe the user experience plays a very large part in what
+          services they choose to use.
         </p>
       )
     },

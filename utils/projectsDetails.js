@@ -78,7 +78,7 @@ export const projectsObj = {
           next: { Image: { why: '' }, Router: { why: '' } },
           lodash: {
             Debounce: {
-              why: 'Functions are called to automatically fetch data from the API when the amount of games goes below a threshold and debounce is helping with excessive function calls',
+              why: 'Functions are called to automatically fetch data from the API when the amount of games goes below a threshold and debounce is used to restrict the amount of times the functions are called',
             },
             Find: {
               why: 'Used so that data did not needed to be duplicated whilst iterating over an object. The data is gathered by iterating over an object that is responsible for giving the user the ability to select the stores they wish to view deals for, then returns a string that is then implented as a query to the API, and the result is fetched data from the specified stores.',
@@ -289,6 +289,7 @@ export const projectsObj = {
           'Ternary Operator',
           'Custom Hook',
           'SetTimeout',
+          'Time Stamps',
         ],
         questions: {
           improved: [

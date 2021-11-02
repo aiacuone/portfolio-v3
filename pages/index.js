@@ -19,84 +19,42 @@ export default function Home() {
   const { contactsArr, contactsObj, skillsObj } = vars
   const theme = useTheme()
 
-  const useStyles = makeStyles({
+  const useStylesRoot = makeStyles({
     root: {
       height: '100%',
       width: '100%',
     },
+    linkContainer: { zIndex: 2 },
+    link: { padding: '10px 0', textAlign: 'center', cursor: 'pointer' },
     normalContainer: {},
   })
 
-  const useStylesP = makeStyles({
-    me: {
-      position: 'absolute',
-      bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
-      left: isPhonePortrait ? -145 : -120,
-    },
-    london: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-    },
-    links: {
-      position: 'absolute',
-      bottom: 10,
-      right: 10,
-    },
-    skills: {
-      position: 'absolute',
-      top: 10,
-      left: 10,
-    },
-    linkContainer: { zIndex: 2 },
-    link: { padding: '10px 0', textAlign: 'center', cursor: 'pointer' },
-
-    phoneContainer: {
-      height: '100%',
-      width: '100%',
-    },
-    normalContainer: {
-      height: '100%',
-      width: '100%',
-    },
-    londonContainer: {
-      position: 'relative',
-    },
-    londonText: {
-      position: 'absolute',
-      whiteSpace: 'nowrap',
-      left: isPhonePortrait ? -100 : -110,
-      top: 5,
-    },
-  })
-
-  const classes = useStyles()
-  const classesP = useStylesP()
+  const classesRoot = useStylesRoot()
 
   const Links = () => {
     return (
       <Grid
-        className={classesP.linkContainer}
+        className={classesRoot.linkContainer}
         alignItems="center"
         direction="column">
         <Grid item>
           <Link href="projects">
-            <h3 className={classesP.link}>PROJECTS</h3>
+            <h3 className={classesRoot.link}>PROJECTS</h3>
           </Link>
         </Grid>
         <Grid item>
           <Link href="skills">
-            <h3 className={classesP.link}>SKILLS</h3>
+            <h3 className={classesRoot.link}>SKILLS</h3>
           </Link>
         </Grid>
         <Grid item>
           <Link href="aboutMe">
-            <h3 className={classesP.link}>ABOUT ME</h3>
+            <h3 className={classesRoot.link}>ABOUT ME</h3>
           </Link>
         </Grid>
         <Grid item>
           <Link href="contactMe">
-            <h3 className={classesP.link}>CONTACT ME</h3>
+            <h3 className={classesRoot.link}>CONTACT ME</h3>
           </Link>
         </Grid>
         <DarkMode />
@@ -198,32 +156,73 @@ export default function Home() {
         container
         justifyContent="center"
         alignItems="center"
-        className={classes.normalContainer}>
+        className={classesRoot.normalContainer}>
         <Links />
       </Grid>
     )
   }
 
   const Phone = () => {
+    const useStyles = makeStyles({
+      me: {
+        position: 'absolute',
+        bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+        left: isPhonePortrait ? -145 : -120,
+      },
+      london: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+      },
+      links: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+      },
+      skills: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+      },
+
+      phoneContainer: {
+        height: '100%',
+        width: '100%',
+      },
+      normalContainer: {
+        height: '100%',
+        width: '100%',
+      },
+      londonContainer: {
+        position: 'relative',
+      },
+      londonText: {
+        position: 'absolute',
+        whiteSpace: 'nowrap',
+        left: isPhonePortrait ? -140 : -160,
+        top: 10,
+      },
+    })
+    const classes = useStyles()
     return (
       <Grid
         container
-        className={classesP.phoneContainer}
+        className={classes.phoneContainer}
         justifyContent="center"
         alignItems="center">
-        <Grid className={classesP.skills}>
+        <Grid className={classes.skills}>
           <SkillsButtons size={30} />
         </Grid>
-        <Grid className={classesP.london}>
-          <Grid container className={classesP.londonContainer}>
-            <p className={classesP.londonText}>South London, UK</p>
+        <Grid className={classes.london}>
+          <Grid container className={classes.londonContainer}>
+            <p className={classes.londonText}>South-West London, UK</p>
             <LondonIcon height={isPhonePortrait ? 180 : 110} color="grey" />
           </Grid>
         </Grid>
-        <Grid className={classesP.me}>
+        <Grid className={classes.me}>
           <Selfie width={isPhonePortrait ? 300 : 250} />
         </Grid>
-        <Grid className={classesP.links}>
+        <Grid className={classes.links}>
           <ContactButtons size={35} />
         </Grid>
         <Links />
@@ -232,7 +231,7 @@ export default function Home() {
   }
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classesRoot.root}>
       <Head>
         <title>Home</title>
         <meta name="description" content="Generated by create next app" />

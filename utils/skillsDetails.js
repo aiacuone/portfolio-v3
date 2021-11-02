@@ -103,8 +103,8 @@ export const skillsObj = {
     getDetails: () => {
       return (
         <p className="skillsText">
-          I find Next JS to have a lot useful tools that I regularly and is my
-          preferred platform to create my projects
+          I find Next JS to have a lot useful tools that I regularly use and is
+          my preferred platform to create my projects
         </p>
       )
     },
