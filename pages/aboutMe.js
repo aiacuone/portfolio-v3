@@ -23,7 +23,7 @@ export default function AboutMe() {
   } = vars
   const { selections, darkMode } = state
   const { setSelections } = setState
-  const { isPhone, isPhoneLandscape } = state.phone
+  const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const selection = selections['aboutMe']
   const selectedOptionObj = aboutMeObj[aboutMeArr[selection]]
   const { getDetails, name: optionName, icon } = selectedOptionObj
@@ -50,8 +50,16 @@ export default function AboutMe() {
       flexDirection: isPhoneLandscape && 'column',
       background: backgroundColor,
     },
-    button: { flexGrow: 1, cursor: 'pointer' },
-    container: { height: '100%', color: darkMode ? 'white' : 'black' },
+    button: {
+      flexGrow: 1,
+      cursor: 'pointer',
+      maxWidth: isPhonePortrait && '33%',
+    },
+    container: {
+      height: '100%',
+      color: darkMode ? 'white' : 'black',
+      // background: 'green',
+    },
     mainContentHeaderContainer: {
       paddingBottom: isPhone ? '10px' : '30px',
     },
@@ -60,114 +68,6 @@ export default function AboutMe() {
     headerText: {},
   })
   const classesRoot = useStylesRoot()
-
-  const useStylesL = makeStyles({
-    root: {
-      width: '100%',
-      height: '100%',
-      display: 'grid',
-      gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
-      gridTemplateColumns: `100px repeat(8,1fr) ${
-        hamburger.padding * 2 + hamburger.width
-      }px`, //WIDTH OF BUTTON CONTAINER
-    },
-    buttonContainer: {
-      gridArea: '1/1/11/2',
-      background: darkMode ? primaryColor : primaryLightColor,
-      minHeight: '150px',
-      color: 'white',
-    },
-    header: {
-      gridArea: '1/2/2/10',
-      background: darkMode ? primaryColor : primaryLightColor,
-      color: darkMode ? 'white' : 'black',
-    },
-    mainContainer: {
-      gridArea: '2/2/11/10',
-
-      overflowY: 'scroll',
-      padding: mainContainerPadding,
-      zIndex: 50,
-      background: darkMode ? textDarkBackground : textLightBackground,
-    },
-    hamburgerGap: {
-      gridArea: '1/10/11/11',
-      background: darkMode ? textDarkBackground : textLightBackground,
-    },
-  })
-  const classesL = useStylesL()
-
-  const useStylesN = makeStyles({
-    root: {
-      width: '100%',
-      height: '100%',
-    },
-    container: {
-      background: 'white',
-      maxWidth: maxWidth,
-      width: width,
-      height: height,
-      minHeight: minHeight,
-      minWidth: minWidth,
-      display: 'grid',
-      gridTemplateRows: 'auto 1fr auto',
-      gridTemplateColumns: '100%',
-      zIndex: 1,
-    },
-
-    mainContainer: {
-      gridArea: '1/1/3/2',
-      background: darkMode ? textDarkBackground : textLightBackground,
-      padding: mainContainerPadding,
-      overflowY: 'scroll',
-    },
-    buttonContainer: {
-      gridArea: '3/1/4/2',
-      background: darkMode ? primaryColor : primaryLightColor,
-      zIndex: 3,
-      color: 'white',
-    },
-    buttonContainer2: {
-      maxWidth: '500px',
-    },
-  })
-  const classesN = useStylesN()
-
-  const useStylesP = makeStyles({
-    root: {
-      width: '100%',
-      height: '100%',
-      display: 'grid',
-      gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(16,1fr) 50px ${
-        hamburger.padding * 2 + hamburger.width
-      }px`,
-      gridTemplateColumns: 'repeat(10,1fr)',
-    },
-    header: {
-      gridArea: '1/1/2/11',
-      background: darkMode ? primaryColor : primaryLightColor,
-      color: darkMode ? 'white' : 'black',
-    },
-    mainContainer: {
-      gridArea: '2/1/19/11',
-      overflowY: 'scroll',
-      padding: mainContainerPadding,
-      background: darkMode ? textDarkBackground : textLightBackground,
-    },
-    buttonContainer: {
-      gridArea: '19/1/20/11',
-      background: darkMode ? primaryColor : primaryLightColor,
-      color: 'white',
-    },
-    hamburgerGap: {
-      gridArea: '20/1/21/11',
-      background: darkMode ? textDarkBackground : textLightBackground,
-    },
-    button: { flexGrow: 1, background: 'lime' },
-    container: { height: '100%' },
-    button2: { background: 'grey', borderRadius: 0, height: '100%' },
-  })
-  const classesP = useStylesP()
 
   const Buttons = ({ size }) => {
     const buttons = aboutMeArr.map((item, index) => {
@@ -199,6 +99,7 @@ export default function AboutMe() {
             direction="column"
             justifyContent="center">
             {icon}
+
             <Typography>{name}</Typography>
           </Grid>
         </Grid>
@@ -250,20 +151,55 @@ export default function AboutMe() {
   }
 
   const Landscape = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: `${headerHeightLandscape}px ${secondHeaderHeightLandscape}px repeat(8,1fr)`,
+        gridTemplateColumns: `100px repeat(8,1fr) ${
+          hamburger.padding * 2 + hamburger.width
+        }px`, //WIDTH OF BUTTON CONTAINER
+      },
+      buttonContainer: {
+        gridArea: '1/1/11/2',
+        background: darkMode ? primaryColor : primaryLightColor,
+        minHeight: '150px',
+        color: 'white',
+      },
+      header: {
+        gridArea: '1/2/2/10',
+        background: darkMode ? primaryColor : primaryLightColor,
+        color: darkMode ? 'white' : 'black',
+      },
+      mainContainer: {
+        gridArea: '2/2/11/10',
+
+        overflowY: 'scroll',
+        padding: mainContainerPadding,
+        zIndex: 50,
+        background: darkMode ? textDarkBackground : textLightBackground,
+      },
+      hamburgerGap: {
+        gridArea: '1/10/11/11',
+        background: darkMode ? textDarkBackground : textLightBackground,
+      },
+    })
+    const classes = useStyles()
     return (
-      <Grid className={classesL.root}>
+      <Grid className={classes.root}>
         <Grid
-          className={classesL.header}
+          className={classes.header}
           container
           justifyContent="center"
           alignItems="center">
           ABOUT ME
         </Grid>
-        <Grid className={classesL.buttonContainer} container direction="column">
+        <Grid className={classes.buttonContainer} container direction="column">
           <Buttons size={30} color="white" />
         </Grid>
         <Grid
-          className={classesL.mainContainer}
+          className={classes.mainContainer}
           container
           justifyContent="center"
           alignItems="center">
@@ -272,23 +208,58 @@ export default function AboutMe() {
             <MainDetails variant="h5" size={40} />
           </Grid>
         </Grid>
-        <Grid className={classesL.hamburgerGap}></Grid>
+        <Grid className={classes.hamburgerGap}></Grid>
       </Grid>
     )
   }
 
   const Portrait = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: `${headerHeightPortrait}px ${secondHeaderHeightPortrait}px repeat(16,1fr) 50px ${
+          hamburger.padding * 2 + hamburger.width
+        }px`,
+        gridTemplateColumns: 'repeat(10,1fr)',
+      },
+      header: {
+        gridArea: '1/1/2/11',
+        background: darkMode ? primaryColor : primaryLightColor,
+        color: darkMode ? 'white' : 'black',
+      },
+      mainContainer: {
+        gridArea: '2/1/19/11',
+        overflowY: 'scroll',
+        padding: mainContainerPadding,
+        background: darkMode ? textDarkBackground : textLightBackground,
+      },
+      buttonContainer: {
+        gridArea: '19/1/20/11',
+        background: darkMode ? primaryColor : primaryLightColor,
+        color: 'white',
+      },
+      hamburgerGap: {
+        gridArea: '20/1/21/11',
+        background: darkMode ? textDarkBackground : textLightBackground,
+      },
+      button: { flexGrow: 1, background: 'lime' },
+      container: { height: '100%', flexGrow: 1 },
+      button2: { background: 'grey', borderRadius: 0, height: '100%' },
+    })
+    const classes = useStyles()
     return (
-      <Grid className={classesP.root}>
+      <Grid className={classes.root}>
         <Grid
-          className={classesP.header}
+          className={classes.header}
           container
           justifyContent="center"
           alignItems="center">
           ABOUT ME
         </Grid>
         <Grid
-          className={classesP.mainContainer}
+          className={classes.mainContainer}
           container
           justifyContent="center"
           alignItems="center">
@@ -297,10 +268,10 @@ export default function AboutMe() {
             <MainDetails />
           </Grid>
         </Grid>
-        <Grid className={classesP.buttonContainer} container>
+        <Grid className={classes.buttonContainer} container>
           <Buttons size={25} color="white" />
         </Grid>
-        <Grid className={classesP.hamburgerGap} />
+        <Grid className={classes.hamburgerGap} />
       </Grid>
     )
   }
@@ -310,22 +281,58 @@ export default function AboutMe() {
   }
 
   const Normal = () => {
+    const useStyles = makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+        zIndex: 4,
+      },
+      container: {
+        background: 'white',
+        maxWidth: maxWidth,
+        width: width,
+        height: height,
+        minHeight: minHeight,
+        minWidth: minWidth,
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr auto',
+        gridTemplateColumns: '100%',
+        zIndex: 1,
+      },
+
+      mainContainer: {
+        gridArea: '1/1/3/2',
+        background: darkMode ? textDarkBackground : textLightBackground,
+        padding: mainContainerPadding,
+        overflowY: 'scroll',
+      },
+      buttonContainer: {
+        gridArea: '3/1/4/2',
+        background: darkMode ? primaryColor : primaryLightColor,
+        zIndex: 3,
+        color: 'white',
+      },
+      buttonContainer2: {
+        maxWidth: '500px',
+      },
+    })
+    const classes = useStyles()
     return (
       <Grid
         container
         justifyContent="center"
         alignItems="center"
-        className={classesN.root}>
-        <Grid container className={classesN.container}>
-          <Grid className={classesN.mainContainer} container>
+        className={classes.root}>
+        <Grid container className={classes.container}>
+          <Grid className={classes.mainContainer} container>
             <Header variant="h4" size={50} />
             <MainDetails />
           </Grid>
           <Grid
             container
-            className={classesN.buttonContainer}
+            className={classes.buttonContainer}
             justifyContent="center">
-            <Grid container className={classesN.buttonContainer2}>
+            <Grid container className={classes.buttonContainer2}>
               <Buttons size={35} color="white" />
             </Grid>
           </Grid>
