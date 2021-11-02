@@ -124,6 +124,34 @@ export default function Skills() {
   })
   const classesP = useStylesP()
 
+  const useStylesN = makeStyles({
+    root: {
+      width: '100%',
+      height: '100%',
+    },
+    container: {
+      background: 'white',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(10,1fr)',
+      gridTemplateRows: 'auto repeat(8,1fr) 65px',
+      zIndex: 1,
+      ...normalPageContainerDimensions,
+    },
+    mainContainer: {
+      background: darkMode ? textBackgroundDark : textBackgroundLight,
+      gridArea: '1/1/10/11',
+      overflowY: 'scroll',
+    },
+    buttonContainer: {
+      background: darkMode ? primaryColor : primaryLightColor,
+      gridArea: '10/1/11/11',
+    },
+    buttonContainer2: {
+      maxWidth: '800px', //WIDTH OF BUTTON CONTAINER
+    },
+  })
+  const classesN = useStylesN()
+
   const Buttons = ({ size }) => {
     const SkillsButton = ({ src, index }) => {
       const props = { height: size, width: size }
