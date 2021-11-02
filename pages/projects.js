@@ -124,7 +124,6 @@ export default function Projects() {
     },
     projectHeaderContainer: {
       background: 'white',
-      // height: isPhone ? '50px' : '120px',
       gridArea: '1/1/2/3',
     },
     detailsContainer: {
@@ -159,7 +158,7 @@ export default function Projects() {
 
     const selectedColor =
       darkMode && !isPhone
-        ? '#272727'
+        ? '#333333'
         : !darkMode && !isPhone
         ? grey[300]
         : !darkMode && isPhone

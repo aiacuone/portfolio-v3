@@ -16,7 +16,10 @@ export default function NewBannerIcon({ width, height, color }) {
       style={{ enableBackground: 'new 0 0 269 88' }}
       xmlSpace="preserve">
       <style type="text/css">{`.newBanner{fill:#FFFFFF;}`}</style>
-      <path class="newBanner" d="M207,0H0v64h197.5c5.2,0,9.5-4.3,9.5-9.5V0z" />
+      <path
+        className="newBanner"
+        d="M207,0H0v64h197.5c5.2,0,9.5-4.3,9.5-9.5V0z"
+      />
     </svg>
   )
 }
