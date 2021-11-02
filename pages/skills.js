@@ -37,7 +37,7 @@ export default function Skills() {
     light: primaryLightColor,
   } = theme.palette.primary
   const { width, maxWidth, minWidth, height, maxHeight, minHeight } = container
-  const mainDetails = getDetails()
+  const mainDetails = getDetails({ darkMode })
 
   const useStylesRoot = makeStyles({
     root: {
@@ -52,14 +52,12 @@ export default function Skills() {
       flexGrow: 1,
       cursor: 'pointer',
       height: '100%',
-      // zIndex: 1,
     },
     imageContainer2: {
       height: '100%',
     },
     mainDetailsContainer: {
       padding: mainContainerPadding,
-      // fontSize: '20px',
     },
   })
 
@@ -85,6 +83,7 @@ export default function Skills() {
     mainContainer: {
       background: darkMode ? textBackgroundDark : textBackgroundLight,
       gridArea: '1/1/10/11',
+      overflowY: 'scroll',
     },
     buttonContainer: {
       background: darkMode ? primaryColor : primaryLightColor,

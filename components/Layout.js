@@ -279,7 +279,7 @@ export default function Layout({ children }) {
       londonText: {
         position: 'absolute',
         whiteSpace: 'nowrap',
-        left: -100,
+        left: -130,
         top: 20,
       },
     })
@@ -354,7 +354,7 @@ export default function Layout({ children }) {
               </Grid>
               <Grid item className={classes.london}>
                 <Grid container className={classes.londonContainer}>
-                  <p className={classes.londonText}>South London, UK</p>
+                  <p className={classes.londonText}>South-West London, UK</p>
                   <LondonIcon height={250} color="grey" />
                 </Grid>
               </Grid>

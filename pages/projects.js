@@ -145,7 +145,7 @@ export default function Projects() {
     },
     newBanner: {
       position: 'absolute',
-      top: 0,
+      top: isPhonePortrait ? -5 : 0,
       left: 0,
       filter: 'opacity(20%)',
     },
@@ -261,6 +261,7 @@ export default function Projects() {
     },
     mainContainer: {
       gridArea: '3/1/10/11',
+
     },
     viewButtonsContainer: {
       gridArea: '10/1/11/11',
@@ -456,6 +457,7 @@ export default function Projects() {
                   : index == selection.project && !darkMode
                   ? primaryColor
                   : 'null',
+              paddingTop: isPhone && '5px',
             }}
             onClick={() => {
               const newSelections = { ...selections }
@@ -466,14 +468,18 @@ export default function Projects() {
             {isNew && (
               <>
                 <Grid className={classesRoot.newBanner}>
-                  <NewBanner width={isPhone ? 50 : 60} color="white" />
+                  <NewBanner
+                    height={isPhone && 25}
+                    width={isPhone ? 45 : 60}
+                    color="white"
+                  />
                 </Grid>
                 <p
                   style={{
                     position: 'absolute',
-                    top: isPhone ? -5 : -3,
-                    left: isPhone ? 7 : 10,
-                    fontSize: isPhone ? '.7rem' : '.75rem',
+                    top: isPhone ? -1 : -4,
+                    left: isPhone ? 8 : 10,
+                    fontSize: isPhone ? '.5rem' : '.75rem',
                   }}>
                   NEW
                 </p>

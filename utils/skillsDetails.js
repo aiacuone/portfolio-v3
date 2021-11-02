@@ -7,13 +7,11 @@ const {
   materialUI,
   git,
   gitHub,
-  npm,
   css,
   html,
   OOP,
   lodash,
   illustrator,
-  photoshop,
 } = skillsImages
 
 export const skillsObj = {
@@ -30,13 +28,13 @@ export const skillsObj = {
           <br />
           <b>Experience with React:</b>
           <ul className="skillsText list">
+            <li>Reusable components</li>
             <li>useState</li>
             <li>useEffect</li>
             <li>useRef</li>
             <li>useCallback</li>
             <li>useMemo</li>
-            <li></li>
-            <li></li>
+            {/* <li>SVGs</li> */}
             <li></li>
           </ul>
         </p>
@@ -46,49 +44,48 @@ export const skillsObj = {
   javaScript: {
     name: 'JavaScript',
     image: javaScript,
-    getDetails: (darkMode) => {
+    getDetails: ({ darkMode }) => {
       const style = {
-        background: 'white',
+        background: darkMode ? 'grey' : 'white',
         padding: '6px 20px',
         textDecoration: 'none',
-        margin: '0 10px',
+        margin: '10px 10px',
         whiteSpace: 'nowrap',
         width: '150px',
         textAlign: 'center',
+        color: darkMode ? 'white' : 'black',
+        display: 'inline-block',
       }
       return (
-        <>
+        <div>
           <p className="skillsText">
             At the core of development when using React. I completed an online
             Javascript tutorial using Freecodecamp. <br />
           </p>
-          <div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '20px',
-                gridAutoFlow: 'column',
-              }}>
-              <a href="https://imgbb.com/vVpgJz9" target="_blank" style={style}>
-                <p>Certificate</p>
-              </a>
-              <a
-                style={style}
-                href="https://freecodecamp-notes-portfolio.netlify.app/"
-                target="_blank">
-                <p>Workings/Notes</p>
-              </a>
-            </div>
+          <br />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}>
+            <a href="https://imgbb.com/vVpgJz9" target="_blank" style={style}>
+              <p>Certificate</p>
+            </a>
+            <a
+              style={style}
+              href="https://freecodecamp-notes-portfolio.netlify.app/"
+              target="_blank">
+              <p>Workings/Notes</p>
+            </a>
           </div>
+          <br />
           <b>Experience with Javascript:</b>
           <ul className="skillsText list">
             <li>ES6</li>
             <li>Array Methods</li>
             <li>Object Methods</li>
             <li>String Methods</li>
-            <li>OOP(Object Oriented Programming)</li>
+            <li>OOP (Object Oriented Programming)</li>
             <li>Constructors</li>
             <li>Regular Expressions</li>
             <li>Debugging</li>
@@ -96,7 +93,7 @@ export const skillsObj = {
             <li>Algorithms</li>
             <li>Functional Programming</li>
           </ul>
-        </>
+        </div>
       )
     },
   },
@@ -137,6 +134,7 @@ export const skillsObj = {
             <li>Accordion</li>
             <li>Stepper</li>
           </ul>
+          <br />
           <p className="skillsText">
             Where and why I have used these components can be found on my
             Projects page within the Technical tab
@@ -227,6 +225,7 @@ export const skillsObj = {
             <li>Find</li>
             <li>Set</li>
           </ul>
+          <br />
           <p className="skillsText">
             Where and why I have used these methods can be found on my Projects
             page within the Technical tab
