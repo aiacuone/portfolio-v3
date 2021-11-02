@@ -92,6 +92,7 @@ export default function Layout({ children }) {
       </svg>
     )
   }
+  const isHome = router.pathname === '/' ? true : false
 
   function handleClick() {
     if (router.pathname == '/') {
@@ -206,9 +207,11 @@ export default function Layout({ children }) {
         className={classes.root}
         justifyContent="center"
         alignItems="center">
-        <Grid className={classes.hamburger}>
-          <Hamburger />
-        </Grid>
+        {!isHome && (
+          <Grid className={classes.hamburger}>
+            <Hamburger />
+          </Grid>
+        )}
         {children}
       </Grid>
     )

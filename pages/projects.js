@@ -351,7 +351,7 @@ export default function Projects() {
               fullWidth
               color="secondary"
               variant="text"
-              style={{ fontSize: isPhone && '.8rem' }}>
+              style={{ fontSize: isPhone && '.8rem', height: '100%' }}>
               View GitHub
             </Button>
           </a>
@@ -371,6 +371,7 @@ export default function Projects() {
               variant="text"
               style={{
                 fontSize: isPhone && '.8rem',
+                height: '100%',
               }}>
               View Project
             </Button>
@@ -421,14 +422,14 @@ export default function Projects() {
                 {isNew && (
                   <>
                     <Grid className={classesRoot.newBanner}>
-                      <NewBanner width={isPhone ? 60 : 80} color="white" />
+                      <NewBanner width={isPhone ? 60 : 70} color="white" />
                     </Grid>
                     <p
                       style={{
                         position: 'absolute',
-                        top: isPhone ? 0 : -2,
-                        left: 3,
-                        fontSize: isPhone ? '.5rem' : '.75rem',
+                        top: isPhone ? -3 : -2,
+                        left: 9,
+                        fontSize: isPhone ? '.7rem' : '.75rem',
                       }}>
                       NEW
                     </p>
@@ -465,14 +466,14 @@ export default function Projects() {
             {isNew && (
               <>
                 <Grid className={classesRoot.newBanner}>
-                  <NewBanner width={isPhone ? 60 : 80} color="white" />
+                  <NewBanner width={isPhone ? 50 : 60} color="white" />
                 </Grid>
                 <p
                   style={{
                     position: 'absolute',
-                    top: isPhone ? 0 : -2,
-                    left: 3,
-                    fontSize: isPhone ? '.5rem' : '.75rem',
+                    top: isPhone ? -5 : -3,
+                    left: isPhone ? 7 : 10,
+                    fontSize: isPhone ? '.7rem' : '.75rem',
                   }}>
                   NEW
                 </p>

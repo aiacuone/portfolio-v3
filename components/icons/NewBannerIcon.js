@@ -3,7 +3,7 @@ import React from 'react'
 export default function NewBannerIcon({ width, height, color }) {
   return (
     <svg
-      //   fill={color}
+      fill={color}
       width={width}
       height={height}
       version="1.1"
@@ -15,10 +15,8 @@ export default function NewBannerIcon({ width, height, color }) {
       viewBox="0 0 269 88"
       style={{ enableBackground: 'new 0 0 269 88' }}
       xmlSpace="preserve">
-      <style type="text/css">{`.newBanner{fill:${color}`}</style>
-      <g>
-        <polygon className="newBanner" points="0,88 0,0 207,0 	" />
-      </g>
+      <style type="text/css">{`.newBanner{fill:'white';}`}</style>
+      <rect class="newBanner" width="207" height="64" />
     </svg>
   )
 }

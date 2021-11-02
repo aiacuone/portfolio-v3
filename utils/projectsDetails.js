@@ -157,7 +157,10 @@ export const projectsObj = {
               <p>
                 At this point, the Tekken community is solely reliant on a 3rd
                 party website called{' '}
-                <a href="https://rbnorway.org/t7-frame-data/" target="_blank">
+                <a
+                  style={{ fontWeight: 'bold' }}
+                  href="https://rbnorway.org/t7-frame-data/"
+                  target="_blank">
                   RBNorway
                 </a>{' '}
                 to access the Tekken character information. All the information
