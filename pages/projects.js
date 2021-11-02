@@ -863,7 +863,6 @@ export default function Projects() {
       root: {
         width: '100%',
         height: '100%',
-        minHeight: '600px',
       },
       container: {
         maxWidth: maxWidth,
