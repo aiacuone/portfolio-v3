@@ -272,6 +272,7 @@ export default function Layout({ children }) {
         fontSize: '.9rem',
         textTransform: 'none',
         color: darkMode ? 'white' : 'black',
+        minWidth: '80px',
       },
       londonContainer: {
         position: 'relative',
@@ -290,7 +291,7 @@ export default function Layout({ children }) {
         { name: 'Projects', link: 'projects' },
         { name: 'Skills', link: 'skills' },
         { name: 'About Me', link: 'aboutMe' },
-        { name: 'Contact Me', link: 'contactMe' },
+        { name: 'Contact', link: 'contactMe' },
       ]
       const navLinks = navArr.map((nav, index) => {
         const { name, link } = nav

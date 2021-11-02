@@ -75,17 +75,6 @@ export default function Projects() {
       fontSize: isPhone && '.8rem',
       color: darkMode ? 'white' : 'black',
     },
-    viewButton: {
-      // height: isPhoneLandscape ? '25px' : isPhonePortrait ? '100%' : '30px', //HEIGHT OF VIEW BUTTONS
-      height: isPhone ? '100%' : '30px',
-      whiteSpace: 'nowrap',
-      flexGrow: 1,
-      background: 'white',
-      overflow: 'hidden',
-      maxWidth: '300px',
-      margin: '0px 10px',
-      color: 'black',
-    },
 
     projectButton: {
       flexGrow: 1,
@@ -100,6 +89,19 @@ export default function Projects() {
       flexWrap: 'nowrap',
       zIndex: 3,
       paddingTop: isPhone && '20px',
+    },
+    viewButtonContainer2: {
+      height: '100%',
+      whiteSpace: 'nowrap',
+      flexGrow: 1,
+      background: 'white',
+      overflow: 'hidden',
+      maxWidth: '300px',
+      margin: '0px 10px',
+      color: 'black',
+    },
+    viewButton: {
+      height: isPhoneLandscape ? '40px' : !isPhonePortrait ? '35px' : 'null', //HEIGHT OF BUTTONS
     },
     detailContainer: {
       width: isPhoneLandscape ? '100%' : '50%',
@@ -155,14 +157,20 @@ export default function Projects() {
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
 
+    const selectedColor =
+      darkMode && !isPhone
+        ? '#272727'
+        : !darkMode && !isPhone
+        ? grey[300]
+        : !darkMode && isPhone
+        ? textLightBackground
+        : darkMode && isPhone
+        ? textDarkBackground
+        : null
+
     const getStyle = (index) => {
       return {
-        background:
-          darkMode && selection.details == index
-            ? '#272727'
-            : !darkMode && selection.details == index
-            ? grey[300]
-            : null,
+        background: selection.details == index && selectedColor,
       }
     }
 
@@ -226,14 +234,15 @@ export default function Projects() {
 
   const ViewGitHubButton = () => {
     return (
-      <Grid className={classesRoot.viewButton}>
+      <Grid className={classesRoot.viewButtonContainer2}>
         <Link href={projectGitHubLink}>
           <a target="_blank">
             <Button
+              className={classesRoot.viewButton}
               fullWidth
               color="secondary"
               variant="text"
-              style={{ fontSize: isPhone && '.8rem', height: '100%' }}>
+              style={{ fontSize: isPhone && '.8rem' }}>
               View GitHub
             </Button>
           </a>
@@ -244,16 +253,16 @@ export default function Projects() {
 
   const ViewProjectButton = () => {
     return (
-      <Grid className={classesRoot.viewButton} item>
+      <Grid className={classesRoot.viewButtonContainer2} item>
         <Link href={projectLink}>
           <a target="_blank">
             <Button
+              className={classesRoot.viewButton}
               fullWidth
               color="secondary"
               variant="text"
               style={{
                 fontSize: isPhone && '.8rem',
-                height: '100%',
               }}>
               View Project
             </Button>
@@ -284,6 +293,9 @@ export default function Projects() {
             : index == selection.project && !darkMode
             ? primaryColor
             : 'null',
+      }
+      return {
+        background: index == selection.project && selectedColor,
       }
     }
 
