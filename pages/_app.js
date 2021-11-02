@@ -112,7 +112,7 @@ function MyApp({ Component, pageProps }) {
     return result
   }
 
-  const normalPageContainerDimensions = {
+  const mainContainerNormalStyle = {
     maxWidth: '1300px',
     minWidth: '650px',
     maxHeight: '1200px',
@@ -123,13 +123,21 @@ function MyApp({ Component, pageProps }) {
     // background: 'red',
   }
 
+  const mainContentNormalStyle = {
+    // background: 'red',
+    overflowY: 'scroll',
+    padding: '100px 100px',
+    height: '100%',
+    width: '100%',
+  }
+
   const vars = {
     projectsArr,
     hamburger: { height: 40, width: 40, padding: 7 }, //ONLY CHANGE SIZES RELATED TO HAMBURGER HERE
     projectsObj,
     skillsObj,
     skillsArr,
-    normalPageContainerDimensions,
+    mainContainerNormalStyle,
     skillsObj,
     contactsObj,
     contactsArr,
@@ -142,8 +150,10 @@ function MyApp({ Component, pageProps }) {
     buttonsNormalHeight: '30px',
     // handleScroll,
     primaryColor: '#009dbc',
-    mainContainerPadding: isPhone ? '10px 10px' : '20px 50px',
+    // mainContainerPadding: isPhone ? '10px 10px' : '20px 50px',
+    mainContainerPadding: isPhone && '10px 10px',
     convertData,
+    mainContentNormalStyle,
   }
 
   const state = {

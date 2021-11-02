@@ -13,12 +13,13 @@ export default function Skills() {
     hamburger,
     skillsObj,
     skillsArr,
-    normalPageContainerDimensions,
+    mainContainerNormalStyle,
     headerHeightPortrait,
     secondHeaderHeightPortrait,
     headerHeightLandscape,
     secondHeaderHeightLandscape,
     mainContainerPadding,
+    mainContentNormalStyle,
   } = vars
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const { selections, darkMode } = state
@@ -176,15 +177,15 @@ export default function Skills() {
         gridTemplateColumns: 'repeat(10,1fr)',
         gridTemplateRows: 'auto repeat(8,1fr) 65px',
         zIndex: 1,
-        ...normalPageContainerDimensions,
+        ...mainContainerNormalStyle,
       },
       mainContainer: {
         background: darkMode ? textBackgroundDark : textBackgroundLight,
         gridArea: '1/1/10/11',
-        overflowY: 'scroll',
       },
       mainContainer2: {
-        maxWidth: '900px',
+        // maxWidth: '900px',
+        ...mainContentNormalStyle,
       },
       buttonContainer: {
         background: darkMode ? primaryColor : primaryLightColor,
@@ -209,11 +210,17 @@ export default function Skills() {
             alignItems="center">
             <Grid
               container
+              direction="column"
               alignItems="center"
               justifyContent="center"
               className={classes.mainContainer2}>
-              <Header />
-              <MainDetails />
+              <Grid item>
+                <Header />
+              </Grid>
+
+              <Grid item style={{ paddingTop: '20px' }}>
+                <MainDetails />
+              </Grid>
             </Grid>
           </Grid>
           <Grid
