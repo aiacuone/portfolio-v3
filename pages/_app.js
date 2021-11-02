@@ -116,7 +116,7 @@ function MyApp({ Component, pageProps }) {
     maxWidth: '1300px',
     minWidth: '650px',
     maxHeight: '1200px',
-    minHeight: '350px',
+    minHeight: '450px',
     width: '70vw',
     height: '70vh',
     // padding: '50px',

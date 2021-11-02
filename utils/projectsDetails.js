@@ -80,7 +80,9 @@ export const projectsObj = {
             Debounce: {
               why: 'Functions are called to automatically fetch data from the API when the amount of games goes below a threshold and debounce is helping with excessive function calls',
             },
-            Find: { why: '' },
+            Find: {
+              why: 'Used so that data did not needed to be duplicated whilst iterating over an object. The data is gathered by iterating over an object that is responsible for giving the user the ability to select the stores they wish to view deals for, then returns a string that is then implented as a query to the API, and the result is fetched data from the specified stores.',
+            },
           },
           'React Resize Detector': {
             why: 'To resize Material UI table based on window size',
@@ -199,7 +201,7 @@ export const projectsObj = {
           },
           next: { Image: { why: '' }, Link: { why: '' }, Head: { why: '' } },
         },
-        other: ['Spread Operator', 'Destructuring', 'Spread Operator', 'regex'],
+        other: ['Spread Operator', 'Destructuring', 'Spread Operator', 'Regex'],
         questions: {
           improved: [
             'Seperating database information to the logic of the application, then import or exporting where needed',
