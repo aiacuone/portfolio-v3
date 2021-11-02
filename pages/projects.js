@@ -293,9 +293,6 @@ export default function Projects() {
             ? primaryColor
             : 'null',
       }
-      return {
-        background: index == selection.project && selectedColor,
-      }
     }
 
     const Landscape = () => {
@@ -370,7 +367,7 @@ export default function Projects() {
                 <p
                   style={{
                     position: 'absolute',
-                    top: isPhone ? -3 : -4,
+                    top: isPhone ? -1 : -4,
                     left: isPhone ? 8 : 10,
                     fontSize: isPhone ? '.5rem' : '.75rem',
                   }}>
