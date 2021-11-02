@@ -7,10 +7,8 @@ import { skillsObj, skillsArr } from '../utils/skillsDetails'
 import { projectsObj, projectsArr } from '../utils/projectsDetails'
 import { aboutMeObj, aboutMeArr } from '../utils/aboutMeDetails'
 import { contactsObj, contactsArr } from '../utils/contactDetails'
-// import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@mui/material/styles'
 import { createTheme } from '@mui/material/styles'
-import { borderRadius } from '@mui/system'
 import Paper from '@mui/material/Paper'
 
 function MyApp({ Component, pageProps }) {
@@ -27,12 +25,9 @@ function MyApp({ Component, pageProps }) {
     palette: {
       mode: darkMode ? 'dark' : 'light',
       background: {
-        // paper: darkMode ? '#1c1c1c' : '#e9e9e9',
         default: darkMode ? '#1c1c1c' : '#e9e9e9',
-
         textDark: '#3c3c3c',
         textLight: '#f5f5f5',
-        // detailContainer: '#444444',
         detailContainer: '#1E1E1E',
       },
       primary: {
@@ -113,22 +108,20 @@ function MyApp({ Component, pageProps }) {
   }
 
   const mainContainerNormalStyle = {
-    maxWidth: '1300px',
+    maxWidth: '1100px',
     minWidth: '650px',
     maxHeight: '1200px',
     minHeight: '450px',
     width: '70vw',
     height: '70vh',
-    // padding: '50px',
-    // background: 'red',
   }
 
   const mainContentNormalStyle = {
-    // background: 'red',
     overflowY: 'scroll',
-    padding: '100px 100px',
+    padding: '70px 70px',
     height: '100%',
     width: '100%',
+    flexWrap: 'nowrap',
   }
 
   const vars = {
@@ -148,9 +141,7 @@ function MyApp({ Component, pageProps }) {
     headerHeightLandscape: 20,
     secondHeaderHeightLandscape: 25,
     buttonsNormalHeight: '30px',
-    // handleScroll,
     primaryColor: '#009dbc',
-    // mainContainerPadding: isPhone ? '10px 10px' : '20px 50px',
     mainContainerPadding: isPhone && '10px 10px',
     convertData,
     mainContentNormalStyle,

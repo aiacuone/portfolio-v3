@@ -128,7 +128,7 @@ export default function Projects() {
     detailsContainer: {
       background: darkMode ? textDarkBackground : textLightBackground, //DARK MODE COLOURS MAIN CONTAINER
       padding: `${isPhone ? '10px' : '20px'} ${
-        isPhone ? '10px' : mainContentNormalStyle.padding.substring(0, 5)
+        isPhone ? '10px' : mainContentNormalStyle.padding.substring(5, 11)
       } `,
 
       gridArea: '2/1/3/2',
@@ -154,7 +154,6 @@ export default function Projects() {
     },
   })
   const classesRoot = useStylesRoot()
-
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
 
