@@ -101,7 +101,7 @@ export default function Projects() {
       color: 'black',
     },
     viewButton: {
-      height: isPhoneLandscape ? '40px' : !isPhonePortrait ? '35px' : 'null', //HEIGHT OF BUTTONS
+      height: isPhone ? '40px' : '30px', //HEIGHT OF BUTTONS
     },
     detailContainer: {
       width: isPhoneLandscape ? '100%' : '50%',
