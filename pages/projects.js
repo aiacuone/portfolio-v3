@@ -23,13 +23,13 @@ export default function Projects() {
     hamburger,
     projectsArr,
     projectsObj,
-    normalPageContainerDimensions: container,
+    mainContainerNormalStyle,
     headerHeightPortrait,
     headerHeightLandscape,
     secondHeaderHeightLandscape,
     handleScroll,
-    mainContainerPadding,
     convertData,
+    mainContentNormalStyle,
   } = vars
 
   const { selections, darkMode } = state
@@ -58,7 +58,6 @@ export default function Projects() {
     projectGitHubLink,
   } = projectObj
   const { grey } = theme.palette
-  const { width, maxWidth, minWidth, height, maxHeight, minHeight } = container
 
   const useStylesRoot = makeStyles({
     root: {
@@ -128,7 +127,10 @@ export default function Projects() {
     },
     detailsContainer: {
       background: darkMode ? textDarkBackground : textLightBackground, //DARK MODE COLOURS MAIN CONTAINER
-      padding: mainContainerPadding,
+      padding: `${isPhone ? '10px' : '20px'} ${
+        isPhone ? '10px' : mainContentNormalStyle.padding.substring(5, 11)
+      } `,
+
       gridArea: '2/1/3/2',
     },
     text: {
@@ -152,7 +154,6 @@ export default function Projects() {
     },
   })
   const classesRoot = useStylesRoot()
-
   const DetailButtons = () => {
     const arr = ['basic', 'technical']
 
@@ -862,15 +863,11 @@ export default function Projects() {
         height: '100%',
       },
       container: {
-        maxWidth: maxWidth,
-        width: width,
-        height: height,
-        minHeight: minHeight,
-        minWidth: minWidth,
         display: 'grid',
         gridTemplateColumns: 'repeat(10,1fr)',
         gridTemplateRows: 'auto auto auto repeat(6,1fr) auto',
         zIndex: 1,
+        ...mainContainerNormalStyle,
       },
       detailsButton: { color: 'black', flexGrow: 1 },
       projectButtonContainer: {

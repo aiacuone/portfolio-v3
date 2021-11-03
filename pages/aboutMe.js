@@ -12,7 +12,8 @@ export default function AboutMe() {
   const { state, vars, setState } = useContext(UserContext)
   const {
     hamburger,
-    normalPageContainerDimensions: container,
+
+    mainContainerNormalStyle,
     aboutMeObj,
     aboutMeArr,
     headerHeightLandscape,
@@ -20,6 +21,7 @@ export default function AboutMe() {
     headerHeightPortrait,
     secondHeaderHeightPortrait,
     mainContainerPadding,
+    mainContentNormalStyle,
   } = vars
   const { selections, darkMode } = state
   const { setSelections } = setState
@@ -37,7 +39,7 @@ export default function AboutMe() {
     textDark: textDarkBackground,
     paper: backgroundColor,
   } = theme.palette.background
-  const { width, maxWidth, minWidth, height, maxHeight, minHeight } = container
+  // const { width, maxWidth, minWidth, height, maxHeight, minHeight } = container
   const mainDetails = getDetails()
 
   const useStylesRoot = makeStyles({
@@ -289,22 +291,22 @@ export default function AboutMe() {
       },
       container: {
         background: 'white',
-        maxWidth: maxWidth,
-        width: width,
-        height: height,
-        minHeight: minHeight,
-        minWidth: minWidth,
+        background: darkMode ? textDarkBackground : textLightBackground,
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
         gridTemplateColumns: '100%',
         zIndex: 1,
+        ...mainContainerNormalStyle,
       },
 
       mainContainer: {
         gridArea: '1/1/3/2',
-        background: darkMode ? textDarkBackground : textLightBackground,
-        padding: mainContainerPadding,
-        overflowY: 'scroll',
+        height: '100%',
+        // padding: mainContainerPadding,
+        // overflowY: 'scroll',
+      },
+      mainContainer2: {
+        ...mainContentNormalStyle,
       },
       buttonContainer: {
         gridArea: '3/1/4/2',
@@ -323,10 +325,25 @@ export default function AboutMe() {
         justifyContent="center"
         alignItems="center"
         className={classes.root}>
-        <Grid container className={classes.container}>
-          <Grid className={classes.mainContainer} container>
-            <Header variant="h4" size={50} />
-            <MainDetails />
+        <Grid
+          container
+          className={classes.container}
+          alignItems="center"
+          justifyContent="center">
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="center">
+            <Grid
+              container
+              direction="column"
+              className={classes.mainContainer2}
+              container
+              justifyContent="center"
+              alignItems="center">
+              <Header variant="h4" size={50} />
+              <MainDetails />
+            </Grid>
           </Grid>
           <Grid
             container

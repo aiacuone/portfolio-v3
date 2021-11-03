@@ -284,7 +284,7 @@ export const projectsObj = {
         },
         other: [
           'Constructors used to create folders',
-          'Event handlers',
+          'Event Handlers',
           'Spread Operator',
           'Ternary Operator',
           'Custom Hook',
