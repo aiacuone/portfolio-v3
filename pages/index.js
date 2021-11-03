@@ -21,7 +21,7 @@ export default function Home() {
   const { setDarkMode } = setState
   const { contactsArr, contactsObj, skillsObj } = vars
   const theme = useTheme()
-  const [portfolioSize, setPortfolioSize] = useState()
+  const primaryColor = theme.palette.primary.light
 
   const useStylesRoot = makeStyles({
     root: {
@@ -67,10 +67,11 @@ export default function Home() {
   }
 
   const Hero = () => {
-    const height = 350
+    const height = 310
     const width = 250
-    const gap = 6
+    const gap = 5
     const borderRadius = 50
+    const fontSize = 20
     const useStyles = makeStyles({
       root: {
         width: `${width}px`,
@@ -107,20 +108,29 @@ export default function Home() {
         gridArea: '2/1/3/2',
         flexGrow: 1,
         padding: `${gap}px 0`,
+        cursor: 'pointer',
+        zIndex: 1,
       },
       buttonContainer2: {
-        background: 'orange',
+        background: primaryColor,
         height: '100%',
         width: '100%',
+        fontSize: `${fontSize}px`,
       },
     })
 
     const classes = useStyles()
 
     const Buttons = () => {
-      const arr = ['Projects', 'Skills', 'About Me', 'Contact Me']
+      const obj = {
+        Projects: { link: '/projects' },
+        Skills: { link: '/skills' },
+        'About Me': { link: '/aboutMe' },
+        'Contact Me': { link: '/contactMe' },
+      }
+      const arr = Object.keys(obj)
       const buttons = arr.map((button, index) => {
-        console.log(arr.length)
+        const { link } = obj[button]
         const style = {
           borderTopRightRadius: index == 0 && `${borderRadius}px`,
           borderTopLeftRadius: index == 0 && `${borderRadius}px`,
@@ -131,16 +141,18 @@ export default function Home() {
         }
 
         return (
-          <Grid item className={classes.button}>
-            <Grid
-              container
-              style={style}
-              className={classes.buttonContainer2}
-              justifyContent="center"
-              alignItems="center">
-              {button}
+          <Link href={link}>
+            <Grid item className={classes.button}>
+              <Grid
+                container
+                style={style}
+                className={classes.buttonContainer2}
+                justifyContent="center"
+                alignItems="center">
+                {button}
+              </Grid>
             </Grid>
-          </Grid>
+          </Link>
         )
       })
       return (
