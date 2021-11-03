@@ -225,12 +225,11 @@ export default function Layout({ children }) {
         display: 'grid',
         gridTemplateRows: '40px repeat(10,1fr)', //HEADER HEIGHT
         gridTemplateColumns: 'repeat(10,1fr)',
-        // minHeight: '600px',
         minWidth: '600px',
       },
       header: {
         width: '100%',
-        background: darkMode ? darkPrimaryColor : lightPrimaryColor,
+        background: darkMode ? primaryColor : lightPrimaryColor,
         gridArea: '1/1/2/11',
       },
       linksHeader: { height: '100%' },
