@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Grid from '@mui/material/Grid'
@@ -10,6 +11,8 @@ import { selfie } from '../public/images/home'
 import Image from 'next/image'
 import { LondonIcon, NextIcon } from '../components/icons'
 import { useTheme } from '@mui/material/styles'
+import { nameText, portfolioText } from '../public/images/misc/home'
+import ReactResizeDetector from 'react-resize-detector'
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
@@ -18,6 +21,7 @@ export default function Home() {
   const { setDarkMode } = setState
   const { contactsArr, contactsObj, skillsObj } = vars
   const theme = useTheme()
+  const [portfolioSize, setPortfolioSize] = useState()
 
   const useStylesRoot = makeStyles({
     root: {
@@ -58,6 +62,131 @@ export default function Home() {
           </Link>
         </Grid>
         <DarkMode />
+      </Grid>
+    )
+  }
+
+  const Hero = () => {
+    const height = 350
+    const width = 250
+    const gap = 6
+    const borderRadius = 50
+    const useStyles = makeStyles({
+      root: {
+        width: `${width}px`,
+        height: `${height}px`,
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'auto 1fr auto',
+      },
+      portfolioContainer: {
+        position: 'relative',
+        display: 'block',
+        gridArea: '1/1/2/2',
+        marginBottom: `${gap}px`,
+      },
+      container: {
+        position: 'relative',
+        height: '100%',
+        background: 'orange',
+        width: '100%',
+      },
+      nameContainer: {
+        position: 'relative',
+        display: 'block',
+        gridArea: '3/1/4/2',
+        marginTop: `${gap}px`,
+      },
+      nameContainer2: {
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
+      },
+      buttonContainer: {},
+      button: {
+        gridArea: '2/1/3/2',
+        flexGrow: 1,
+        padding: `${gap}px 0`,
+      },
+      buttonContainer2: {
+        background: 'orange',
+        height: '100%',
+        width: '100%',
+      },
+    })
+
+    const classes = useStyles()
+
+    const Buttons = () => {
+      const arr = ['Projects', 'Skills', 'About Me', 'Contact Me']
+      const buttons = arr.map((button, index) => {
+        console.log(arr.length)
+        const style = {
+          borderTopRightRadius: index == 0 && `${borderRadius}px`,
+          borderTopLeftRadius: index == 0 && `${borderRadius}px`,
+          borderBottomLeftRadius:
+            index == arr.length - 1 && `${borderRadius}px`,
+          borderBottomRightRadius:
+            index == arr.length - 1 && `${borderRadius}px`,
+        }
+
+        return (
+          <Grid item className={classes.button}>
+            <Grid
+              container
+              style={style}
+              className={classes.buttonContainer2}
+              justifyContent="center"
+              alignItems="center">
+              {button}
+            </Grid>
+          </Grid>
+        )
+      })
+      return (
+        <Grid container direction="column">
+          {buttons}
+        </Grid>
+      )
+    }
+    return (
+      <Grid className={classes.root} container>
+        <ReactResizeDetector handleWidth handleHeight>
+          {({ width, height }) => {
+            return (
+              <Grid container className={classes.portfolioContainer}>
+                <Image
+                  alt="portfolio"
+                  layout="responsive"
+                  src={portfolioText}
+                  width={width}
+                  height={height}
+                />
+              </Grid>
+            )
+          }}
+        </ReactResizeDetector>
+        <Grid container className={classes.buttonContainer}>
+          <Buttons />
+        </Grid>
+        <ReactResizeDetector handleWidth handleHeight>
+          {({ width, height }) => {
+            return (
+              <Grid
+                container
+                className={classes.nameContainer}
+                direction="column">
+                <Image
+                  alt="name"
+                  layout="responsive"
+                  src={nameText}
+                  width={width}
+                  height={height}
+                />
+              </Grid>
+            )
+          }}
+        </ReactResizeDetector>
       </Grid>
     )
   }
@@ -157,7 +286,8 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
         className={classesRoot.normalContainer}>
-        <Links />
+        {/* <Links /> */}
+        <Hero />
       </Grid>
     )
   }
@@ -225,7 +355,8 @@ export default function Home() {
         <Grid className={classes.links}>
           <ContactButtons size={35} />
         </Grid>
-        <Links />
+        {/* <Links /> */}
+        <Hero />
       </Grid>
     )
   }
