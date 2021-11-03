@@ -55,6 +55,9 @@ export const skillsObj = {
         textAlign: 'center',
         color: darkMode ? 'white' : 'black',
         display: 'inline-block',
+        border: `1px ${darkMode ? '#717171' : '#e8e8e8'} solid`,
+        borderRadius: '7px',
+        // fontSize: '15px',
       }
       return (
         <div>
