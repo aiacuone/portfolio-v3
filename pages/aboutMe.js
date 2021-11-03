@@ -290,7 +290,7 @@ export default function AboutMe() {
         zIndex: 4,
       },
       container: {
-        background: 'white',
+        // background: 'white',
         background: darkMode ? textDarkBackground : textLightBackground,
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
@@ -338,7 +338,6 @@ export default function AboutMe() {
               container
               direction="column"
               className={classes.mainContainer2}
-              container
               justifyContent="center"
               alignItems="center">
               <Header variant="h4" size={50} />
