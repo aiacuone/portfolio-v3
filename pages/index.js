@@ -1,5 +1,5 @@
+import { useState } from 'react'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import Link from 'next/link'
@@ -10,6 +10,8 @@ import { selfie } from '../public/images/home'
 import Image from 'next/image'
 import { LondonIcon, NextIcon } from '../components/icons'
 import { useTheme } from '@mui/material/styles'
+import { PortfolioComponent } from '../public/images/misc/home'
+import ReactResizeDetector from 'react-resize-detector'
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
@@ -18,6 +20,7 @@ export default function Home() {
   const { setDarkMode } = setState
   const { contactsArr, contactsObj, skillsObj } = vars
   const theme = useTheme()
+  const { light: primaryLight, main: primaryMain } = theme.palette.primary
 
   const useStylesRoot = makeStyles({
     root: {
@@ -31,45 +34,152 @@ export default function Home() {
 
   const classesRoot = useStylesRoot()
 
-  const Links = () => {
-    return (
-      <Grid
-        className={classesRoot.linkContainer}
-        alignItems="center"
-        direction="column">
-        <Grid item>
-          <Link href="projects">
-            <h3 className={classesRoot.link}>PROJECTS</h3>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="skills">
-            <h3 className={classesRoot.link}>SKILLS</h3>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="aboutMe">
-            <h3 className={classesRoot.link}>ABOUT ME</h3>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="contactMe">
-            <h3 className={classesRoot.link}>CONTACT ME</h3>
-          </Link>
-        </Grid>
-        <DarkMode />
-      </Grid>
-    )
-  }
+  const Hero = () => {
+    const height = isPhone ? 250 : 250
+    const width = isPhone ? 150 : 180
+    const gap = 5
+    const borderRadius = 20
+    const fontSize = isPhone ? 15 : 17
+    const useStyles = makeStyles({
+      root: {
+        width: `${width}px`,
+        height: `${height}px`,
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'auto 1fr auto',
+      },
+      portfolioContainer: {
+        position: 'relative',
+        gridArea: '1/1/2/2',
+        marginBottom: `${gap}px`,
+      },
+      container: {
+        position: 'relative',
+        height: '100%',
+        background: 'orange',
+        width: '100%',
+      },
+      nameContainer: {
+        position: 'relative',
+        gridArea: '3/1/4/2',
+        marginTop: `${gap}px`,
+      },
+      nameContainer2: {
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
+      },
+      buttonContainer: {},
+      button: {
+        gridArea: '2/1/3/2',
+        flexGrow: 1,
+        padding: `${gap}px 0`,
+        cursor: 'pointer',
+        zIndex: 1,
+      },
+      buttonContainer2: {
+        background: darkMode ? primaryMain : primaryLight,
+        height: '100%',
+        width: '100%',
+        fontSize: `${fontSize}px`,
+      },
+    })
 
-  const DarkMode = () => {
+    const classes = useStyles()
+
+    const Buttons = () => {
+      const obj = {
+        Projects: { link: '/projects' },
+        Skills: { link: '/skills' },
+        'About Me': { link: '/aboutMe' },
+        'Contact Me': { link: '/contactMe' },
+        darkMode: { link: '/skills' },
+      }
+      const arr = Object.keys(obj)
+      const buttons = arr.map((button, index) => {
+        const { link } = obj[button]
+        const style = {
+          borderTopRightRadius: index == 0 && `${borderRadius}px`,
+          borderTopLeftRadius: index == 0 && `${borderRadius}px`,
+          borderBottomLeftRadius:
+            index == arr.length - 1 && `${borderRadius}px`,
+          borderBottomRightRadius:
+            index == arr.length - 1 && `${borderRadius}px`,
+        }
+
+        if (button == 'darkMode') {
+          return (
+            <Grid
+              item
+              className={classes.button}
+              onClick={() => setDarkMode(!darkMode)}>
+              <Grid
+                container
+                style={style}
+                className={classes.buttonContainer2}
+                justifyContent="center"
+                alignItems="center">
+                <Brightness4Icon fontSize="small" />
+              </Grid>
+            </Grid>
+          )
+        }
+
+        return (
+          <Link href={link}>
+            <Grid item className={classes.button}>
+              <Grid
+                container
+                style={style}
+                className={classes.buttonContainer2}
+                justifyContent="center"
+                alignItems="center">
+                {button}
+              </Grid>
+            </Grid>
+          </Link>
+        )
+      })
+      return (
+        <Grid container direction="column">
+          {buttons}
+        </Grid>
+      )
+    }
     return (
-      <Grid container justifyContent="center">
-        <Brightness4Icon
-          fontSize="large"
-          style={{ cursor: 'pointer', margin: '10px' }}
-          onClick={() => setDarkMode(!darkMode)}
-        />
+      <Grid className={classes.root} container>
+        <ReactResizeDetector handleWidth handleHeight>
+          {({ width, height }) => {
+            return (
+              <Grid container className={classes.portfolioContainer}>
+                <PortfolioComponent
+                  width={width}
+                  height={height}
+                  color={darkMode ? 'white' : 'black'}
+                />
+              </Grid>
+            )
+          }}
+        </ReactResizeDetector>
+        <Grid container className={classes.buttonContainer}>
+          <Buttons />
+        </Grid>
+        {/* <ReactResizeDetector handleWidth handleHeight>
+          {({ width, height }) => {
+            return (
+              <Grid
+                container
+                className={classes.nameContainer}
+                direction="column">
+                <NameComponent
+                  width={width}
+                  height={height}
+                  color={darkMode ? 'white' : 'black'}
+                />
+              </Grid>
+            )
+          }}
+        </ReactResizeDetector> */}
       </Grid>
     )
   }
@@ -157,7 +267,7 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
         className={classesRoot.normalContainer}>
-        <Links />
+        <Hero />
       </Grid>
     )
   }
@@ -225,7 +335,7 @@ export default function Home() {
         <Grid className={classes.links}>
           <ContactButtons size={35} />
         </Grid>
-        <Links />
+        <Hero />
       </Grid>
     )
   }

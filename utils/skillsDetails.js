@@ -62,8 +62,8 @@ export const skillsObj = {
       return (
         <div>
           <p className="skillsText">
-            At the core of development when using React. I completed an online
-            Javascript tutorial using Freecodecamp. <br />
+            At the core of development when using React. I completed the online
+            Freecodecamp Javascript bootcamp February, 2021. <br />
           </p>
           <br />
           <div
