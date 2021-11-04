@@ -110,6 +110,7 @@ export default function Home() {
         if (button == 'darkMode') {
           return (
             <Grid
+              key={button + index}
               item
               className={classes.button}
               onClick={() => setDarkMode(!darkMode)}>
@@ -126,7 +127,7 @@ export default function Home() {
         }
 
         return (
-          <Link href={link}>
+          <Link href={link} key={button + index}>
             <Grid item className={classes.button}>
               <Grid
                 container
