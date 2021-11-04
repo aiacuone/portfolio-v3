@@ -70,7 +70,7 @@ export default function Home() {
     const height = isPhone ? 250 : 250
     const width = isPhone ? 150 : 180
     const gap = 5
-    const borderRadius = 50
+    const borderRadius = 20
     const fontSize = isPhone ? 15 : 20
     const useStyles = makeStyles({
       root: {
@@ -132,6 +132,7 @@ export default function Home() {
       const buttons = arr.map((button, index) => {
         const { link } = obj[button]
         const style = {
+          // padding: index == 0 || (index == arr.length - 1 && '7px 0'),
           borderTopRightRadius: index == 0 && `${borderRadius}px`,
           borderTopLeftRadius: index == 0 && `${borderRadius}px`,
           borderBottomLeftRadius:
