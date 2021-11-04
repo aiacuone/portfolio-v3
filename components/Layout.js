@@ -146,7 +146,7 @@ export default function Layout({ children }) {
           Adrian Iacuone
         </p>
         <Grid container alignItems="flex-end" style={style}>
-          <Image responsive src={selfie} />
+          <Image src={selfie} quality={0} />
         </Grid>
       </Grid>
     )

@@ -93,7 +93,7 @@ export default function Home() {
         Skills: { link: '/skills' },
         'About Me': { link: '/aboutMe' },
         'Contact Me': { link: '/contactMe' },
-        DarkMode: { link: '/skills' },
+        darkMode: { link: '/skills' },
       }
       const arr = Object.keys(obj)
       const buttons = arr.map((button, index) => {
@@ -107,7 +107,7 @@ export default function Home() {
             index == arr.length - 1 && `${borderRadius}px`,
         }
 
-        if (button == 'DarkMode') {
+        if (button == 'darkMode') {
           return (
             <Grid
               item
