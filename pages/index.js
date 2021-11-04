@@ -67,11 +67,11 @@ export default function Home() {
   }
 
   const Hero = () => {
-    const height = 310
-    const width = 250
+    const height = isPhone ? 250 : 250
+    const width = isPhone ? 150 : 180
     const gap = 5
     const borderRadius = 50
-    const fontSize = 20
+    const fontSize = isPhone ? 15 : 20
     const useStyles = makeStyles({
       root: {
         width: `${width}px`,
