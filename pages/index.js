@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
 import Link from 'next/link'
@@ -11,15 +10,8 @@ import { selfie } from '../public/images/home'
 import Image from 'next/image'
 import { LondonIcon, NextIcon } from '../components/icons'
 import { useTheme } from '@mui/material/styles'
-import {
-  NameComponent,
-  PortfolioComponent,
-  nameText,
-  portfolioText,
-} from '../public/images/misc/home'
+import { PortfolioComponent } from '../public/images/misc/home'
 import ReactResizeDetector from 'react-resize-detector'
-
-// console.log(NameComponent(), PortfolioComponent(), nameText)
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
@@ -28,7 +20,6 @@ export default function Home() {
   const { setDarkMode } = setState
   const { contactsArr, contactsObj, skillsObj } = vars
   const theme = useTheme()
-  // const primaryColor = theme.palette.primary.light
   const { light: primaryLight, main: primaryMain } = theme.palette.primary
 
   const useStylesRoot = makeStyles({
@@ -44,7 +35,7 @@ export default function Home() {
   const classesRoot = useStylesRoot()
 
   const Hero = () => {
-    const height = isPhone ? 220 : 250
+    const height = isPhone ? 250 : 250
     const width = isPhone ? 150 : 180
     const gap = 5
     const borderRadius = 20
@@ -59,7 +50,6 @@ export default function Home() {
       },
       portfolioContainer: {
         position: 'relative',
-        // display: 'block',
         gridArea: '1/1/2/2',
         marginBottom: `${gap}px`,
       },
@@ -71,7 +61,6 @@ export default function Home() {
       },
       nameContainer: {
         position: 'relative',
-        // display: 'block',
         gridArea: '3/1/4/2',
         marginTop: `${gap}px`,
       },
@@ -104,6 +93,7 @@ export default function Home() {
         Skills: { link: '/skills' },
         'About Me': { link: '/aboutMe' },
         'Contact Me': { link: '/contactMe' },
+        DarkMode: { link: '/skills' },
       }
       const arr = Object.keys(obj)
       const buttons = arr.map((button, index) => {
@@ -115,6 +105,24 @@ export default function Home() {
             index == arr.length - 1 && `${borderRadius}px`,
           borderBottomRightRadius:
             index == arr.length - 1 && `${borderRadius}px`,
+        }
+
+        if (button == 'DarkMode') {
+          return (
+            <Grid
+              item
+              className={classes.button}
+              onClick={() => setDarkMode(!darkMode)}>
+              <Grid
+                container
+                style={style}
+                className={classes.buttonContainer2}
+                justifyContent="center"
+                alignItems="center">
+                <Brightness4Icon fontSize="small" />
+              </Grid>
+            </Grid>
+          )
         }
 
         return (
@@ -156,7 +164,7 @@ export default function Home() {
         <Grid container className={classes.buttonContainer}>
           <Buttons />
         </Grid>
-        <ReactResizeDetector handleWidth handleHeight>
+        {/* <ReactResizeDetector handleWidth handleHeight>
           {({ width, height }) => {
             return (
               <Grid
@@ -171,19 +179,7 @@ export default function Home() {
               </Grid>
             )
           }}
-        </ReactResizeDetector>
-      </Grid>
-    )
-  }
-
-  const DarkMode = () => {
-    return (
-      <Grid container justifyContent="center">
-        <Brightness4Icon
-          fontSize="large"
-          style={{ cursor: 'pointer', margin: '10px' }}
-          onClick={() => setDarkMode(!darkMode)}
-        />
+        </ReactResizeDetector> */}
       </Grid>
     )
   }
