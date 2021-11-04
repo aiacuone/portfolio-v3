@@ -11,8 +11,15 @@ import { selfie } from '../public/images/home'
 import Image from 'next/image'
 import { LondonIcon, NextIcon } from '../components/icons'
 import { useTheme } from '@mui/material/styles'
-import { nameText, portfolioText } from '../public/images/misc/home'
+import {
+  NameComponent,
+  PortfolioComponent,
+  nameText,
+  portfolioText,
+} from '../public/images/misc/home'
 import ReactResizeDetector from 'react-resize-detector'
+
+// console.log(NameComponent(), PortfolioComponent(), nameText)
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
@@ -21,7 +28,8 @@ export default function Home() {
   const { setDarkMode } = setState
   const { contactsArr, contactsObj, skillsObj } = vars
   const theme = useTheme()
-  const primaryColor = theme.palette.primary.light
+  // const primaryColor = theme.palette.primary.light
+  const { light: primaryLight, main: primaryMain } = theme.palette.primary
 
   const useStylesRoot = makeStyles({
     root: {
@@ -35,43 +43,12 @@ export default function Home() {
 
   const classesRoot = useStylesRoot()
 
-  const Links = () => {
-    return (
-      <Grid
-        className={classesRoot.linkContainer}
-        alignItems="center"
-        direction="column">
-        <Grid item>
-          <Link href="projects">
-            <h3 className={classesRoot.link}>PROJECTS</h3>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="skills">
-            <h3 className={classesRoot.link}>SKILLS</h3>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="aboutMe">
-            <h3 className={classesRoot.link}>ABOUT ME</h3>
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="contactMe">
-            <h3 className={classesRoot.link}>CONTACT ME</h3>
-          </Link>
-        </Grid>
-        <DarkMode />
-      </Grid>
-    )
-  }
-
   const Hero = () => {
-    const height = isPhone ? 250 : 250
+    const height = isPhone ? 220 : 250
     const width = isPhone ? 150 : 180
     const gap = 5
     const borderRadius = 20
-    const fontSize = isPhone ? 15 : 20
+    const fontSize = isPhone ? 15 : 17
     const useStyles = makeStyles({
       root: {
         width: `${width}px`,
@@ -82,7 +59,7 @@ export default function Home() {
       },
       portfolioContainer: {
         position: 'relative',
-        display: 'block',
+        // display: 'block',
         gridArea: '1/1/2/2',
         marginBottom: `${gap}px`,
       },
@@ -94,7 +71,7 @@ export default function Home() {
       },
       nameContainer: {
         position: 'relative',
-        display: 'block',
+        // display: 'block',
         gridArea: '3/1/4/2',
         marginTop: `${gap}px`,
       },
@@ -112,7 +89,7 @@ export default function Home() {
         zIndex: 1,
       },
       buttonContainer2: {
-        background: primaryColor,
+        background: darkMode ? primaryMain : primaryLight,
         height: '100%',
         width: '100%',
         fontSize: `${fontSize}px`,
@@ -132,7 +109,6 @@ export default function Home() {
       const buttons = arr.map((button, index) => {
         const { link } = obj[button]
         const style = {
-          // padding: index == 0 || (index == arr.length - 1 && '7px 0'),
           borderTopRightRadius: index == 0 && `${borderRadius}px`,
           borderTopLeftRadius: index == 0 && `${borderRadius}px`,
           borderBottomLeftRadius:
@@ -168,12 +144,10 @@ export default function Home() {
           {({ width, height }) => {
             return (
               <Grid container className={classes.portfolioContainer}>
-                <Image
-                  alt="portfolio"
-                  layout="responsive"
-                  src={portfolioText}
+                <PortfolioComponent
                   width={width}
                   height={height}
+                  color={darkMode ? 'white' : 'black'}
                 />
               </Grid>
             )
@@ -189,12 +163,10 @@ export default function Home() {
                 container
                 className={classes.nameContainer}
                 direction="column">
-                <Image
-                  alt="name"
-                  layout="responsive"
-                  src={nameText}
+                <NameComponent
                   width={width}
                   height={height}
+                  color={darkMode ? 'white' : 'black'}
                 />
               </Grid>
             )
@@ -299,7 +271,6 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
         className={classesRoot.normalContainer}>
-        {/* <Links /> */}
         <Hero />
       </Grid>
     )
@@ -368,7 +339,6 @@ export default function Home() {
         <Grid className={classes.links}>
           <ContactButtons size={35} />
         </Grid>
-        {/* <Links /> */}
         <Hero />
       </Grid>
     )
