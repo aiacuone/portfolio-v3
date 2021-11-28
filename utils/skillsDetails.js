@@ -164,10 +164,10 @@ export const skillsObj = {
     image: gitHub,
     getDetails: () => {
       return (
-        <p className="skillsText" style={{ whiteSpace: 'nowrap' }}>
-          I have all my projects up on GitHub that can be viewed{' '}
+        <p className="skillsText">
+          I have all my projects up on GitHub that can be viewed
           <a href="https://github.com/aiacuone" target="_blank">
-            <b>here</b>
+            <b> here</b>
           </a>
         </p>
       )
@@ -178,7 +178,7 @@ export const skillsObj = {
     image: css,
     getDetails: () => {
       return (
-        <p className="skillsText" style={{ whiteSpace: 'nowrap' }}>
+        <p className="skillsText">
           At the core of development when using React. All my projects include
           CSS.
         </p>
@@ -190,7 +190,7 @@ export const skillsObj = {
     image: html,
     getDetails: () => {
       return (
-        <p className="skillsText" style={{ whiteSpace: 'nowrap' }}>
+        <p className="skillsText">
           At the core of development when using React. All my projects include
           HTML
         </p>
