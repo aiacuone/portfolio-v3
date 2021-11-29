@@ -117,46 +117,49 @@ export const skillsObj = {
         display: 'inline-block',
         border: `1px ${darkMode ? '#717171' : '#e8e8e8'} solid`,
         borderRadius: '7px',
-        // fontSize: '15px',
+        fontSize: '15px',
       }
       return (
         <p className="skillsText">
-          A major focus in my next projects is to incorporate Typescript. I have
-          completed an online course that can be viewed{' '}
+          A major focus in my next project is to incorporate Typescript, and
+          will incorporate into all my projects going forward. I have completed
+          an online course that can be viewed{' '}
           <a href="https://youtu.be/BwuLxPH8IDs?t=0" target="_blank">
             <b>here</b>
           </a>
           . I have completed all my notes and are currently going through the
-          process of creating my next projects with Typescript.
+          process of creating my next project with Typescript.
           <br /> <br />
           The tutorial notes can be found here:
           <br />
-          <ul className="skillsText list">
-            <li>
-              <a
-                href="https://drive.google.com/file/d/1Im81Gcb2STd8zgQWT50C7P6JF-pLfEZt/view?usp=sharing"
-                target="_blank"
-                style={style}>
-                Page 1
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://drive.google.com/file/d/10JCDhchqXPWGWsrf7UKSJ6d6wbxuuqUx/view?usp=sharing"
-                target="_blank"
-                style={style}>
-                Page 2
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://drive.google.com/file/d/1hCk-sgO5_IIInt0JG4G6WHe_ou0z3Vu3/view?usp=sharing"
-                target="_blank"
-                style={style}>
-                Page 3
-              </a>
-            </li>
-          </ul>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <ul className="skillsText list">
+              <li>
+                <a
+                  href="https://drive.google.com/file/d/1Im81Gcb2STd8zgQWT50C7P6JF-pLfEZt/view?usp=sharing"
+                  target="_blank"
+                  style={style}>
+                  Page 1
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://drive.google.com/file/d/10JCDhchqXPWGWsrf7UKSJ6d6wbxuuqUx/view?usp=sharing"
+                  target="_blank"
+                  style={style}>
+                  Page 2
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://drive.google.com/file/d/1hCk-sgO5_IIInt0JG4G6WHe_ou0z3Vu3/view?usp=sharing"
+                  target="_blank"
+                  style={style}>
+                  Page 3
+                </a>
+              </li>
+            </ul>
+          </div>
         </p>
       )
     },
