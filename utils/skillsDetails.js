@@ -13,6 +13,8 @@ const {
   lodash,
   illustrator,
   typescript,
+  express,
+  node,
 } = skillsImages
 
 export const skillsObj = {
@@ -233,6 +235,66 @@ export const skillsObj = {
           <a href="https://github.com/aiacuone" target="_blank">
             <b> here</b>
           </a>
+        </p>
+      )
+    },
+  },
+  express: {
+    name: 'Express',
+    image: express,
+    getDetails: () => {
+      return (
+        <p className="skillsText">
+          A long term goal I have is to become a Full Stack Developer, and
+          Express will play a very important part in that goal. A major focus on
+          my next project is to create an API using Express.
+          <br />
+          <br />I have completed an online course that can be found{' '}
+          <a
+            href="https://www.youtube.com/watch?v=Oe421EPjeBE&t=0s&ab_channel=freeCodeCamp.org"
+            target="_blank">
+            <b>here</b>
+          </a>
+          .
+          <br />
+          <br />
+          My notes for the course can be found{' '}
+          <a
+            href="https://drive.google.com/file/d/1W2OJJT_j991oWOAsBqOz2pv1_aSf_qHh/view?usp=sharing"
+            target="_blank">
+            <b>here</b>
+          </a>
+          .
+        </p>
+      )
+    },
+  },
+  node: {
+    name: 'Node JS',
+    image: node,
+    getDetails: () => {
+      return (
+        <p className="skillsText">
+          A long term goal I have is to become a Full Stack Developer, and Node
+          will play a very important part in that goal. A major focus on my next
+          project is to create an API using Node.
+          <br />
+          <br />I have completed an online course that can be found{' '}
+          <a
+            href="https://www.youtube.com/watch?v=Oe421EPjeBE&t=0s&ab_channel=freeCodeCamp.org"
+            target="_blank">
+            <b>here</b>
+          </a>
+          .
+          <br />
+          <br />
+          My notes for the course can be found{' '}
+          <a
+            href="https://drive.google.com/file/d/1W2OJJT_j991oWOAsBqOz2pv1_aSf_qHh/view?usp=sharing"
+            target="_blank">
+            <b>here</b>
+          </a>
+          .
         </p>
       )
     },

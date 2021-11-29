@@ -17,6 +17,8 @@ import linkedin from './linkedIn.svg'
 import moon from './moon.svg'
 import phone from './phone.svg'
 import typescript from './typescript.svg'
+import express from './express.svg'
+import node from './node.svg'
 
 export const images = {
   javaScript,
@@ -38,4 +40,6 @@ export const images = {
   moon,
   phone,
   typescript,
+  express,
+  node,
 }
