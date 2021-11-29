@@ -122,7 +122,7 @@ export const skillsObj = {
       return (
         <p className="skillsText">
           A major focus in my next projects is to incorporate Typescript. I have
-          completed an online tutorial that can be viewed{' '}
+          completed an online course that can be viewed{' '}
           <a href="https://youtu.be/BwuLxPH8IDs?t=0" target="_blank">
             <b>here</b>
           </a>
