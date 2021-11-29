@@ -153,10 +153,9 @@ export default function Layout({ children }) {
   }
 
   const SkillsButtons = ({ size }) => {
-    const arr = ['react', 'javaScript', 'typescript', 'material', 'git']
+    const arr = ['react', 'javaScript', 'next', 'material', 'git']
     const icons = arr.map((skill, index) => {
       const src = skillsObj[skill].image
-
       return (
         <Grid item key={skill + index}>
           {skill == 'next' ? (
