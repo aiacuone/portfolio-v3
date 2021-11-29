@@ -16,6 +16,7 @@ import email from './email.svg'
 import linkedin from './linkedIn.svg'
 import moon from './moon.svg'
 import phone from './phone.svg'
+import typescript from './typescript.svg'
 
 export const images = {
   javaScript,
@@ -36,4 +37,5 @@ export const images = {
   linkedin,
   moon,
   phone,
+  typescript,
 }
