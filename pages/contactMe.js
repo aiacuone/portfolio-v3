@@ -19,7 +19,6 @@ export default function ContactMe() {
     theme.palette.background
   const {
     hamburger,
-    contactsArr,
     contactsObj,
     secondHeaderHeightPortrait,
     headerHeightPortrait,
@@ -124,12 +123,11 @@ export default function ContactMe() {
   const classesL = useStylesL()
 
   const Buttons = ({ size }) => {
-    return contactsArr.map((item, index) => {
-      const { image: Image, link } = contactsObj[item]
-      if (!isPhone && item == 'phone') return
+    return Object.entries(contactsObj).map(([key, values], index) => {
+      const { image: Image, link } = values
 
       return (
-        <Grid item className={classesRoot.button} key={item + index}>
+        <Grid item className={classesRoot.button} key={key + index}>
           <Link href={link}>
             <a target="_blank">
               <Image

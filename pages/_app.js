@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { skillsObj, skillsArr } from '../utils/skillsDetails'
 import { projectsObj, projectsArr } from '../utils/projectsDetails'
 import { aboutMeObj, aboutMeArr } from '../utils/aboutMeDetails'
-import { contactsObj, contactsArr } from '../utils/contactDetails'
+import { contactsObj } from '../utils/contactDetails'
 import { ThemeProvider } from '@mui/material/styles'
 import { createTheme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
@@ -128,9 +128,7 @@ function MyApp({ Component, pageProps }) {
     skillsObj,
     skillsArr,
     mainContainerNormalStyle,
-    skillsObj,
     contactsObj,
-    contactsArr,
     aboutMeObj,
     aboutMeArr,
     headerHeightPortrait: 20,

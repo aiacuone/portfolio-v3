@@ -22,12 +22,8 @@ export default function Layout({ children }) {
     width: hamburgerWidth,
     padding: hamburgerPadding,
   } = vars.hamburger
-  const {
-    main: primaryColor,
-    dark: darkPrimaryColor,
-    light: lightPrimaryColor,
-  } = theme.palette.primary
-  const { contactsArr, contactsObj, skillsObj } = vars
+  const { main: primaryColor, light: lightPrimaryColor } = theme.palette.primary
+  const { contactsObj, skillsObj } = vars
   const router = useRouter()
 
   const useStylesRoot = makeStyles({
@@ -102,12 +98,11 @@ export default function Layout({ children }) {
   }
 
   const ContactButtons = ({ size }) => {
-    const icons = contactsArr.map((contact, index) => {
-      if (contact == 'phone') return
-      const { image, link } = contactsObj[contact]
+    const icons = Object.entries(contactsObj).map(([key, values], index) => {
+      const { image, link } = values
       const Icon = image
       return (
-        <Grid item key={contact + index}>
+        <Grid item key={key + index}>
           <Link href={link}>
             <a target="_blank">
               <Icon size={size} color="grey" />

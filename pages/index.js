@@ -18,7 +18,7 @@ export default function Home() {
   const { isPhone, isPhonePortrait, isPhoneLandscape } = state.phone
   const { darkMode } = state
   const { setDarkMode } = setState
-  const { contactsArr, contactsObj, skillsObj } = vars
+  const { contactsObj, skillsObj } = vars
   const theme = useTheme()
   const { light: primaryLight, main: primaryMain } = theme.palette.primary
 
@@ -172,26 +172,23 @@ export default function Home() {
   }
 
   const ContactButtons = ({ size }) => {
-    const icons = contactsArr.map((contact, index) => {
-      const { image, link } = contactsObj[contact]
-      const Icon = image
-      return (
-        <Grid item key={`contactButton${contact + index} `}>
-          <NextLink href={link}>
-            <a target="_blank">
-              <Icon size={size} color="grey" />
-            </a>
-          </NextLink>
-        </Grid>
-      )
-    })
-
     return (
       <Grid
         container
         spacing={3}
         direction={isPhoneLandscape ? 'row' : 'column'}>
-        {icons}
+        {Object.entries(contactsObj).map(([key, values], index) => {
+          const Icon = values.image
+          return (
+            <Grid item key={`contactButton${key + index} `}>
+              <NextLink href={values.link}>
+                <a target="_blank">
+                  <Icon size={size} color="grey" />
+                </a>
+              </NextLink>
+            </Grid>
+          )
+        })}
       </Grid>
     )
   }
