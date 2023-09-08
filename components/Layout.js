@@ -14,7 +14,7 @@ import { LondonIcon, NextIcon } from '../components/icons'
 export default function Layout({ children }) {
   const theme = useTheme()
   const { state, vars, setState } = useContext(UserContext)
-  const { phone, windowHeight, darkMode } = state
+  const { phone, darkMode } = state
   const { setDarkMode } = setState
   const { isPhone, isPhoneLandscape } = phone
   const {
@@ -146,7 +146,7 @@ export default function Layout({ children }) {
           Adrian Iacuone
         </p>
         <Grid container alignItems="flex-end" style={style}>
-          <Image src={selfie} quality={0} />
+          <Image src={selfie} quality={0} alt="Selfie Image" />
         </Grid>
       </Grid>
     )

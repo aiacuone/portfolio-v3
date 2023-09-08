@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Typography from '@mui/material/Typography'
-import Image from 'next/image'
 import { useTheme } from '@mui/material/styles'
 import { HobbiesIcon, WorkIcon, StoryIcon } from '../components/icons'
 
@@ -39,7 +38,6 @@ export default function AboutMe() {
     textDark: textDarkBackground,
     paper: backgroundColor,
   } = theme.palette.background
-  // const { width, maxWidth, minWidth, height, maxHeight, minHeight } = container
   const mainDetails = getDetails()
 
   const useStylesRoot = makeStyles({
@@ -60,7 +58,6 @@ export default function AboutMe() {
     container: {
       height: '100%',
       color: darkMode ? 'white' : 'black',
-      // background: 'green',
     },
     mainContentHeaderContainer: {
       paddingBottom: isPhone ? '10px' : '30px',
@@ -290,7 +287,6 @@ export default function AboutMe() {
         zIndex: 4,
       },
       container: {
-        // background: 'white',
         background: darkMode ? textDarkBackground : textLightBackground,
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
@@ -302,8 +298,6 @@ export default function AboutMe() {
       mainContainer: {
         gridArea: '1/1/3/2',
         height: '100%',
-        // padding: mainContainerPadding,
-        // overflowY: 'scroll',
       },
       mainContainer2: {
         ...mainContentNormalStyle,

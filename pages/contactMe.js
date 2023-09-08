@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import { makeStyles } from '@mui/styles'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
-import Image from 'next/image'
-import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
 
@@ -14,7 +12,6 @@ export default function ContactMe() {
   const { darkMode } = state
   const {
     main: primaryColor,
-    dark: primaryDarkColor,
     paper: backgroundColor,
     light: primaryLightColor,
   } = theme.palette.primary
@@ -135,7 +132,11 @@ export default function ContactMe() {
         <Grid item className={classesRoot.button} key={item + index}>
           <Link href={link}>
             <a target="_blank">
-              <Image size={size} color={darkMode ? 'white' : 'black'} />
+              <Image
+                size={size}
+                color={darkMode ? 'white' : 'black'}
+                alt="Contact Image"
+              />
             </a>
           </Link>
         </Grid>
@@ -275,9 +276,7 @@ export default function ContactMe() {
         <Grid
           className={classesP.buttonContainer}
           container
-          justifyContent="space-around"
-          // alignItems="center"
-        >
+          justifyContent="space-around">
           <Buttons size={40} />
         </Grid>
         <Grid className={classesP.hamburgerGap} />

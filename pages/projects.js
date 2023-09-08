@@ -4,16 +4,12 @@ import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { projectHeaders, projectSummaries } from '../components/'
+import { projectHeaders } from '../components/'
 import Image from 'next/image'
 import { skillsObj } from '../utils/skillsDetails'
-import { images as skillsImages } from '../public/images/skills'
-import { InsertEmoticonOutlined } from '@material-ui/icons'
-// import { screenshots } from '../public/images/screenshots'
 import Link from 'next/link'
 import { useTheme } from '@mui/material/styles'
 import NewBanner from '../components/icons/NewBannerIcon'
-import { newBanner } from '../public/images/misc'
 
 export default function Projects() {
   const theme = useTheme()
@@ -39,24 +35,14 @@ export default function Projects() {
     dark: primaryDarkColor,
     light: primaryLightColor,
   } = theme.palette.primary
-  const { main: secondaryColor, dark: secondaryColorDark } =
-    theme.palette.secondary
   const {
     textLight: textLightBackground,
     textDark: textDarkBackground,
     default: backgroundColor,
-    paper,
-    detailContainer,
   } = theme.palette.background
   const selection = selections['projects']
   const projectObj = projectsObj[projectsArr[selection.project]]
-  const {
-    name: projectName,
-    isNew,
-    details: projectDetails,
-    projectLink,
-    projectGitHubLink,
-  } = projectObj
+  const { details: projectDetails, projectLink, projectGitHubLink } = projectObj
   const { grey } = theme.palette
 
   const useStylesRoot = makeStyles({
@@ -445,6 +431,7 @@ export default function Projects() {
                           layout="fixed"
                           height={isPhone ? 30 : 40}
                           width={isPhone ? 30 : 40}
+                          alt="Skills Image"
                         />
                         <Typography textAlign="center">
                           {skillsObj[item].name}
@@ -479,6 +466,7 @@ export default function Projects() {
                           layout="fixed"
                           height={100}
                           width={300}
+                          alt="Screenshot Image"
                         />
                       </Grid>
                     )
@@ -563,6 +551,7 @@ export default function Projects() {
                       layout="fixed"
                       {...imageProps}
                       src={skillsObj[dependency].image}
+                      alt="Skills Image"
                     />
                   </Grid>
                 )}

@@ -165,22 +165,6 @@ export default function Home() {
         <Grid container className={classes.buttonContainer}>
           <Buttons />
         </Grid>
-        {/* <ReactResizeDetector handleWidth handleHeight>
-          {({ width, height }) => {
-            return (
-              <Grid
-                container
-                className={classes.nameContainer}
-                direction="column">
-                <NameComponent
-                  width={width}
-                  height={height}
-                  color={darkMode ? 'white' : 'black'}
-                />
-              </Grid>
-            )
-          }}
-        </ReactResizeDetector> */}
       </Grid>
     )
   }
@@ -204,7 +188,7 @@ export default function Home() {
           Adrian Iacuone
         </p>
         <Grid container alignItems="flex-end" style={style}>
-          <Image responsive src={selfie} />
+          <Image responsive src={selfie} alt="Self Image" />
         </Grid>
       </Grid>
     )
@@ -245,7 +229,13 @@ export default function Home() {
           {skill == 'next' ? (
             <NextIcon size={size} color={darkMode ? 'white' : 'black'} />
           ) : (
-            <Image height={size} width={size} layout="fixed" src={src} />
+            <Image
+              height={size}
+              width={size}
+              layout="fixed"
+              src={src}
+              alt="Skills Image"
+            />
           )}
         </Grid>
       )

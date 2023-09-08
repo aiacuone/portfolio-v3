@@ -22,14 +22,10 @@ export default function TekkenNetProjectHeader() {
     imageContainer: {
       height: '100%',
       position: 'absolute',
-      // right: isPhonePortrait ? -200 : isPhoneLandscape ? -50 : 0,
       top: isPhonePortrait ? -10 : isPhoneLandscape ? -20 : -10,
-      // background: 'green',
     },
     logoContainer: {
       position: 'absolute',
-      // left: 50,
-      // top: 0,
       marginRight: 120,
     },
   })
@@ -47,6 +43,7 @@ export default function TekkenNetProjectHeader() {
           layout="fixed"
           height={isPhonePortrait ? 300 : isPhoneLandscape ? 400 : 500}
           width={600}
+          alt="Tekken Net Image"
         />
       </Grid>
     </Grid>

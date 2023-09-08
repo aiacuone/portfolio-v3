@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { makeStyles } from '@mui/styles'
+import React, { useContext } from 'react'
 import Grid from '@mui/material/Grid'
 import { UserContext } from '../utils/UserContext'
 import Image from 'next/image'

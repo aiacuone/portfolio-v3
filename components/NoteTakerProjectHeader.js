@@ -31,7 +31,7 @@ export default function NoteTakerProjectHeader() {
       alignItems="center"
       className={classes.root}>
       <Grid className={classes.imageContainer} container>
-        <Image src={logo} layout="fill" />
+        <Image src={logo} layout="fill" alt="Logo Image" />
       </Grid>
     </Grid>
   )
