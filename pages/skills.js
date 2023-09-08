@@ -23,11 +23,8 @@ export default function Skills() {
   const { isPhone, isPhoneLandscape, isPhonePortrait } = state.phone
   const { selections, darkMode } = state
   const { setSelections } = setState
-  const {
-    textLight: textBackgroundLight,
-    textDark: textBackgroundDark,
-    paper: defaultBackground,
-  } = theme.palette.background
+  const { textLight: textBackgroundLight, textDark: textBackgroundDark } =
+    theme.palette.background
   const selection = selections['skills']
   const selectedSkillObj = skillsObj[skillsArr[selection]]
   const { getDetails, image, name } = selectedSkillObj
@@ -75,16 +72,18 @@ export default function Skills() {
     }
 
     const Portrait = () => {
-      const buttons1 = skillsArr.map((skill, index) => {
-        const { image, name } = skillsObj[skill]
+      const buttons1 = Object.entries(skillsObj).map(([key, values], index) => {
         if (index >= skillsArr.length / 2) return
-        return <SkillsButton index={index} src={image} key={name + index} />
+        return (
+          <SkillsButton index={index} src={values.image} key={key + index} />
+        )
       })
 
-      const buttons2 = skillsArr.map((skill, index) => {
-        const { image, name } = skillsObj[skill]
+      const buttons2 = Object.entries(skillsObj).map(([key, values], index) => {
         if (index < skillsArr.length / 2) return
-        return <SkillsButton index={index} src={image} key={name + index} />
+        return (
+          <SkillsButton index={index} src={values.image} key={key + index} />
+        )
       })
 
       return (
@@ -99,10 +98,13 @@ export default function Skills() {
       )
     }
     const Other = () => {
-      return skillsArr.map((skill, index) => {
-        const { image, name } = skillsObj[skill]
+      return Object.entries(skillsObj).map(([key, values], index) => {
         return (
-          <SkillsButton index={index} src={image} key={name + index + index} />
+          <SkillsButton
+            index={index}
+            src={values.image}
+            key={values.name + key + index}
+          />
         )
       })
     }

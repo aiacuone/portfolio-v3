@@ -136,7 +136,6 @@ export default function Layout({ children }) {
             position: 'absolute',
             bottom: 80,
             right: 50,
-            zIndex: 2,
           }}>
           Adrian Iacuone
         </p>
