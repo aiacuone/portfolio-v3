@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { UserContext } from '../utils/UserContext'
 import { useContext } from 'react'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
@@ -12,6 +12,7 @@ import { LondonIcon, NextIcon } from '../components/icons'
 import { useTheme } from '@mui/material/styles'
 import { PortfolioComponent } from '../public/images/misc/home'
 import ReactResizeDetector from 'react-resize-detector'
+import { Link } from '@mui/material'
 
 export default function Home() {
   const { state, setState, vars } = useContext(UserContext)
@@ -127,8 +128,11 @@ export default function Home() {
         }
 
         return (
-          <Link href={link} key={button + index}>
-            <Grid item className={classes.button}>
+          <NextLink href={link} key={button + index}>
+            <Link
+              item
+              className={classes.button}
+              sx={{ textDecoration: 'none', color: 'black' }}>
               <Grid
                 container
                 style={style}
@@ -137,8 +141,8 @@ export default function Home() {
                 alignItems="center">
                 {button}
               </Grid>
-            </Grid>
-          </Link>
+            </Link>
+          </NextLink>
         )
       })
       return (
@@ -200,11 +204,11 @@ export default function Home() {
       const Icon = image
       return (
         <Grid item key={`contactButton${contact + index} `}>
-          <Link href={link}>
+          <NextLink href={link}>
             <a target="_blank">
               <Icon size={size} color="grey" />
             </a>
-          </Link>
+          </NextLink>
         </Grid>
       )
     })
