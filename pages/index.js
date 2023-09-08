@@ -310,7 +310,7 @@ export default function Home() {
       londonText: {
         position: 'absolute',
         whiteSpace: 'nowrap',
-        left: isPhonePortrait ? -140 : -160,
+        left: isPhonePortrait ? -70 : -160,
         top: 10,
       },
     })
@@ -326,7 +326,7 @@ export default function Home() {
         </Grid>
         <Grid className={classes.london}>
           <Grid container className={classes.londonContainer}>
-            <p className={classes.londonText}>South-West London, UK</p>
+            <p className={classes.londonText}>London, UK</p>
             <LondonIcon height={isPhonePortrait ? 180 : 110} color="grey" />
           </Grid>
         </Grid>

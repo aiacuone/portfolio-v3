@@ -168,7 +168,7 @@ export default function ContactMe() {
             </Grid>
             <Grid item>
               <p>
-                <b>Location: </b>Balham, London
+                <b>Location: </b>Croydon, London
               </p>
             </Grid>
             <Grid item>

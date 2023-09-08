@@ -60,9 +60,6 @@ function MyApp({ Component, pageProps }) {
       },
     },
     shape: { borderRadius: 0 },
-    typography: {
-      fontFamily: 'Calibri',
-    },
   })
 
   const isPhoneWidthPortrait = useMediaQuery('(max-width:430px)')

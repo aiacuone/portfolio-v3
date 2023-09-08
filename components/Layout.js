@@ -161,7 +161,13 @@ export default function Layout({ children }) {
           {skill == 'next' ? (
             <NextIcon size={size} color={darkMode ? 'white' : 'black'} />
           ) : (
-            <Image height={size} width={size} layout="fixed" src={src} />
+            <Image
+              height={size}
+              width={size}
+              layout="fixed"
+              src={src}
+              alt="Skill Image"
+            />
           )}
         </Grid>
       )
@@ -278,7 +284,7 @@ export default function Layout({ children }) {
       londonText: {
         position: 'absolute',
         whiteSpace: 'nowrap',
-        left: -130,
+        left: -60,
         top: 20,
       },
     })
@@ -291,19 +297,21 @@ export default function Layout({ children }) {
         { name: 'About Me', link: 'aboutMe' },
         { name: 'Contact', link: 'contactMe' },
       ]
-      const navLinks = navArr.map((nav, index) => {
-        const { name, link } = nav
-        return (
-          <Grid item key={nav + index}>
-            <Link href={`/${link}`}>
-              <Button className={classes.navLink}>{name}</Button>
-            </Link>
-          </Grid>
-        )
-      })
+
       return (
         <>
-          {navLinks}
+          {navArr.map((nav, index) => {
+            const { name, link } = nav
+            return (
+              <Grid item key={nav + index}>
+                <Link href={`/${link}`} passHref>
+                  <a>
+                    <Button className={classes.navLink}>{name}</Button>
+                  </a>
+                </Link>
+              </Grid>
+            )
+          })}
           <Grid item style={{ paddingRight: '30px', cursor: 'pointer' }}>
             <Grid
               container
@@ -353,7 +361,7 @@ export default function Layout({ children }) {
               </Grid>
               <Grid item className={classes.london}>
                 <Grid container className={classes.londonContainer}>
-                  <p className={classes.londonText}>South-West London, UK</p>
+                  <p className={classes.londonText}>London, UK</p>
                   <LondonIcon height={250} color="grey" />
                 </Grid>
               </Grid>

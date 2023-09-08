@@ -214,7 +214,7 @@ export default function Skills() {
               alignItems="center"
               justifyContent="center"
               className={classes.mainContainer2}>
-              <Grid item>
+              <Grid item sx={{ marginTop: '50px' }}>
                 <Header />
               </Grid>
 
