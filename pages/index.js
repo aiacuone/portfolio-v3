@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Head from 'next/head'
 import Grid from '@mui/material/Grid'
 import { makeStyles } from '@mui/styles'
@@ -23,18 +22,6 @@ export default function Home() {
   const theme = useTheme()
   const { light: primaryLight, main: primaryMain } = theme.palette.primary
 
-  const useStylesRoot = makeStyles({
-    root: {
-      height: '100%',
-      width: '100%',
-    },
-    linkContainer: { zIndex: 2 },
-    link: { padding: '10px 0', textAlign: 'center', cursor: 'pointer' },
-    normalContainer: {},
-  })
-
-  const classesRoot = useStylesRoot()
-
   const Hero = () => {
     const height = isPhone ? 250 : 250
     const width = isPhone ? 150 : 180
@@ -42,35 +29,6 @@ export default function Home() {
     const borderRadius = 20
     const fontSize = isPhone ? 15 : 17
     const useStyles = makeStyles({
-      root: {
-        width: `${width}px`,
-        height: `${height}px`,
-        display: 'grid',
-        gridTemplateColumns: '1fr',
-        gridTemplateRows: 'auto 1fr auto',
-      },
-      portfolioContainer: {
-        position: 'relative',
-        gridArea: '1/1/2/2',
-        marginBottom: `${gap}px`,
-      },
-      container: {
-        position: 'relative',
-        height: '100%',
-        background: 'orange',
-        width: '100%',
-      },
-      nameContainer: {
-        position: 'relative',
-        gridArea: '3/1/4/2',
-        marginTop: `${gap}px`,
-      },
-      nameContainer2: {
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
-      },
-      buttonContainer: {},
       button: {
         gridArea: '2/1/3/2',
         flexGrow: 1,
@@ -152,11 +110,25 @@ export default function Home() {
       )
     }
     return (
-      <Grid className={classes.root} container>
+      <Grid
+        sx={{
+          width: `${width}px`,
+          height: `${height}px`,
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gridTemplateRows: 'auto 1fr auto',
+        }}
+        container>
         <ReactResizeDetector handleWidth handleHeight>
           {({ width, height }) => {
             return (
-              <Grid container className={classes.portfolioContainer}>
+              <Grid
+                container
+                sx={{
+                  position: 'relative',
+                  gridArea: '1/1/2/2',
+                  marginBottom: `${gap}px`,
+                }}>
                 <PortfolioComponent
                   width={width}
                   height={height}
@@ -166,7 +138,7 @@ export default function Home() {
             )
           }}
         </ReactResizeDetector>
-        <Grid container className={classes.buttonContainer}>
+        <Grid container>
           <Buttons />
         </Grid>
       </Grid>
@@ -174,12 +146,6 @@ export default function Home() {
   }
 
   const Selfie = ({ width }) => {
-    const style = {
-      width: width,
-      filter: `brightness(${darkMode ? '50%' : '100%'})`,
-      height: '100%',
-    }
-
     return (
       <Grid style={{ position: 'relative' }} item>
         <p
@@ -191,7 +157,14 @@ export default function Home() {
           }}>
           Adrian Iacuone
         </p>
-        <Grid container alignItems="flex-end" style={style}>
+        <Grid
+          container
+          alignItems="flex-end"
+          sx={{
+            width: width,
+            filter: `brightness(${darkMode ? '50%' : '100%'})`,
+            height: '100%',
+          }}>
           <Image responsive src={selfie} alt="Self Image" />
         </Grid>
       </Grid>
@@ -257,77 +230,53 @@ export default function Home() {
 
   const Normal = () => {
     return (
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        className={classesRoot.normalContainer}>
+      <Grid container justifyContent="center" alignItems="center">
         <Hero />
       </Grid>
     )
   }
 
   const Phone = () => {
-    const useStyles = makeStyles({
-      me: {
-        position: 'absolute',
-        bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
-        left: isPhonePortrait ? -145 : -120,
-      },
-      london: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-      },
-      links: {
-        position: 'absolute',
-        bottom: 10,
-        right: 10,
-      },
-      skills: {
-        position: 'absolute',
-        top: 10,
-        left: 10,
-      },
-
-      phoneContainer: {
-        height: '100%',
-        width: '100%',
-      },
-      normalContainer: {
-        height: '100%',
-        width: '100%',
-      },
-      londonContainer: {
-        position: 'relative',
-      },
-      londonText: {
-        position: 'absolute',
-        whiteSpace: 'nowrap',
-        left: isPhonePortrait ? -70 : -160,
-        top: 10,
-      },
-    })
-    const classes = useStyles()
     return (
       <Grid
         container
-        className={classes.phoneContainer}
+        sx={{
+          height: '100%',
+          width: '100%',
+        }}
         justifyContent="center"
         alignItems="center">
-        <Grid className={classes.skills}>
+        <Grid sx={{ position: 'absolute', top: 10, left: 10 }}>
           <SkillsButtons size={30} />
         </Grid>
-        <Grid className={classes.london}>
-          <Grid container className={classes.londonContainer}>
-            <p className={classes.londonText}>London, UK</p>
+        <Grid
+          sx={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+          }}>
+          <Grid container sx={{ position: 'relative' }}>
+            <p
+              sx={{
+                position: 'absolute',
+                whiteSpace: 'nowrap',
+                left: isPhonePortrait ? -70 : -160,
+                top: 10,
+              }}>
+              London, UK
+            </p>
             <LondonIcon height={isPhonePortrait ? 180 : 110} color="grey" />
           </Grid>
         </Grid>
-        <Grid className={classes.me}>
+        <Grid
+          sx={{
+            position: 'absolute',
+            bottom: 0, //THESE VALUES SET TO 10 DUE TO PADDING/MARGIN ISSUES
+            left: isPhonePortrait ? -145 : -120,
+          }}>
           <Selfie width={isPhonePortrait ? 300 : 250} />
         </Grid>
-        <Grid className={classes.links}>
+        <Grid sx={{ position: 'absolute', bottom: 10, right: 10 }}>
           <ContactButtons size={35} />
         </Grid>
         <Hero />
@@ -336,7 +285,7 @@ export default function Home() {
   }
 
   return (
-    <Grid container className={classesRoot.root}>
+    <Grid container sx={{ height: '100%', width: '100%' }}>
       <Head>
         <title>Home</title>
         <meta name="description" content="Generated by create next app" />
